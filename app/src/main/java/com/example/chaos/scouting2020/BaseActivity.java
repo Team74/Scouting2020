@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 public class BaseActivity extends AppCompatActivity {
 
-    protected int highGoalNumber = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,54 +23,36 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void AddMenuButtons(int resourceIdLayout) {
-        //the layout on which you are working
         ConstraintLayout layout = (ConstraintLayout) findViewById(resourceIdLayout);
         ConstraintSet set = new ConstraintSet();
         set.clone(layout);
-        // set the properties for button
-        String[] buttonText = { "Login", "Auton", "Teleop", "Endgame", "Opinion" };
-        Button[] menuButtons = new Button[buttonText.length];
-// TBD:  skip button for current screen
-        for(int i=0; i < buttonText.length; i++) {
-            menuButtons[i] = new Button(this);
-            menuButtons[i].setText(buttonText[i]);
-            menuButtons[i].setId(View.generateViewId());
-            layout.addView(menuButtons[i]);
-            set.connect(menuButtons[i].getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT,0);
+        final String[] menuNames = { "Login", "Auton", "Teleop", "Endgame", "Opinion" };
+        final Class[] menuClasses = { LoginActivity.class, AutonActivity.class, TeleopActivity.class, EndgameActivity.class, OpinionActivity.class };
+        Button[] menuButtons = new Button[menuNames.length];
+        for(int i=0; i < menuNames.length; i++) {
+            final int b = i;
+            // create the button and set the properties
+            menuButtons[b] = new Button(this);
+            menuButtons[b].setText(menuNames[b]);
+            menuButtons[b].setId(View.generateViewId());
+            // if button is for current activity, disable it
+            menuButtons[b].setEnabled(!(menuClasses[b].getSimpleName().equals(this.getClass().getSimpleName())));
+            layout.addView(menuButtons[b]);
+            // attach to right of screen
+            set.connect(menuButtons[b].getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT,0);
             if (i==0) {
                 // attach to top of screen
-                set.connect(menuButtons[i].getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
+                set.connect(menuButtons[b].getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
             } else {
                 // attach to bottom of previous button
-                set.connect(menuButtons[i].getId(), ConstraintSet.TOP, menuButtons[i-1].getId(), ConstraintSet.BOTTOM, 0);
+                set.connect(menuButtons[b].getId(), ConstraintSet.TOP, menuButtons[i-1].getId(), ConstraintSet.BOTTOM, 0);
             }
-            set.constrainHeight(menuButtons[i].getId(), 64);
+            set.constrainHeight(menuButtons[b].getId(), 64);
             set.applyTo(layout);
-            menuButtons[i].setOnClickListener(new View.OnClickListener() {
+            menuButtons[b].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent;
-// TBD:  this is pretty ugly, is there a better way?
-                    Button b = (Button)v;
-                    String buttonText = b.getText().toString();
-                    switch(buttonText) {
-                        default:
-                        case "Login":
-                            intent = new Intent(BaseActivity.this, LoginActivity.class);
-                            break;
-                        case "Auton":
-                            intent = new Intent(BaseActivity.this, AutonActivity.class);
-                            break;
-                        case "Teleop":
-                            intent = new Intent(BaseActivity.this, TeleopActivity.class);
-                            break;
-                        case "Endgame":
-                            intent = new Intent(BaseActivity.this, EndgameActivity.class);
-                            break;
-                        case "Opinion":
-                            intent = new Intent(BaseActivity.this, OpinionActivity.class);
-                            break;
-                    }
+                    Intent intent = new Intent(BaseActivity.this, menuClasses[b]);
                     startActivity(intent);
                 }
             });

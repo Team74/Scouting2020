@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 public class AutonActivity extends BaseActivity {
+    protected int highGoalNumber = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
