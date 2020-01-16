@@ -1,23 +1,17 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-public class AutonActivity extends AppCompatActivity {
-    protected int HighGoalNumber = 0;
-    protected void DisplayHighGoalNumber(){
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.HighGoalNumber);
-        HighGoalNumberText.setText("" + HighGoalNumber);
-    }
-
+public class AutonActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
-        DisplayHighGoalNumber();
+        // add our common menu buttons
+        AddMenuButtons(R.id.activity_auton);
+        DisplayValue(R.id.HighGoalNumber, highGoalNumber);
     }
 
     public void teleopButtonPressed(View teleopButton) {
@@ -26,12 +20,12 @@ public class AutonActivity extends AppCompatActivity {
     }
 
     public void teleopHighGoalPlus(View teleopHighGoalPlus) {
-     HighGoalNumber = HighGoalNumber + 1;
-     DisplayHighGoalNumber();
+        highGoalNumber = highGoalNumber + 1;
+        DisplayValue(R.id.HighGoalNumber, highGoalNumber);
     }
 
     public void teleopHighGoalMinus(View teleopHighGoalMinus) {
-     HighGoalNumber = HighGoalNumber - 1;
-     DisplayHighGoalNumber();
+        highGoalNumber = highGoalNumber - 1;
+        DisplayValue(R.id.HighGoalNumber, highGoalNumber);
     }
 }
