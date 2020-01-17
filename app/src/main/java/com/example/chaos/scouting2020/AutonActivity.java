@@ -8,16 +8,27 @@ import android.widget.TextView;
 
 public class AutonActivity extends AppCompatActivity {
     protected int HighGoalNumber = 0;
+    protected int LowGoalNumber = 0;
+    protected int PickUpNumber = 0;
     protected void DisplayHighGoalNumber(){
         TextView HighGoalNumberText = (TextView) findViewById(R.id.HighGoalNumber);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
-
+    protected void DisplayLowGoalNumber() {
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.LowGoalNumber);
+        LowGoalNumberText.setText("" + LowGoalNumber);
+    }
+    protected void DisplayPickUpNumber() {
+        TextView PickUpNumberText = (TextView) findViewById(R.id.PickUpNumber);
+        PickUpNumberText.setText("" + PickUpNumber);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
         DisplayHighGoalNumber();
+        DisplayLowGoalNumber();
+        DisplayPickUpNumber();
     }
 
     public void teleopButtonPressed(View teleopButton) {
@@ -33,5 +44,23 @@ public class AutonActivity extends AppCompatActivity {
     public void teleopHighGoalMinus(View teleopHighGoalMinus) {
      HighGoalNumber = HighGoalNumber - 1;
      DisplayHighGoalNumber();
+    }
+    public void teleopLowGoalPlus(View teleopLowGoalPlus) {
+        LowGoalNumber = LowGoalNumber + 1;
+        DisplayLowGoalNumber();
+    }
+
+    public void teleopLowGoalMinus(View teleopLowGoalMinus) {
+        LowGoalNumber = LowGoalNumber - 1;
+        DisplayLowGoalNumber();
+    }
+    public void teleopPickUpPlus(View teleopPickUpPlus) {
+        PickUpNumber = PickUpNumber + 1;
+        DisplayPickUpNumber();
+    }
+
+    public void teleopPickUpMinus(View teleopPickUpMinus) {
+        PickUpNumber = PickUpNumber - 1;
+        DisplayPickUpNumber();
     }
 }
