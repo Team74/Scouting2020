@@ -1,3 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Scouting 2020</string>
+
+    <string name="app_name">Scouting2020</string>
+    <string name="name_prompt">Select Your Name</string>
+
+    <string-array name="name_array">
+        <item>Zane</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
 </resources>
