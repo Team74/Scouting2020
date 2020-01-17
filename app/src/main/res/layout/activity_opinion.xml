@@ -4,13 +4,486 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OpinionActivity">
+    tools:context=".OpinionActivity"
+    tools:layout_editor_absoluteY="73dp">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Opinion"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="77dp" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="131dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="131dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.667"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="131dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="279dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="140dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="140dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337">
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout8"
+        android:layout_width="280dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/ShootingButtonRating1"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ShootingButtonRating2"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.222"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ShootingButtonRating3"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ShootingButtonRating4"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ShootingButtonRating5"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/ShootingRatingTextView"
+            android:layout_width="280dp"
+            android:layout_height="19dp"
+            android:layout_marginBottom="8dp"
+            android:text="Shooting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ClimbingButtonRating1"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ClimbingButtonRating2"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ClimbingButtonRating3"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ClimbingButtonRating4"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/ClimbingButtonRating5"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/ClimbingRatingTextView"
+            android:layout_width="280dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Climbing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.196" />
+
+        <Button
+            android:id="@+id/WheelButtonRating1"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/WheelButtonRating2"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/WheelButtonRating3"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/WheelButtonRating4"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/WheelButtonRating5"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/WheelRatingTextView"
+            android:layout_width="280dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Wheel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.423" />
+
+        <Button
+            android:id="@+id/AutonRatingButton1"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/AutonRatingButton2"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/AutonRatingButton3"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/AutonRatingButton4"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/AutonRatingButton5"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView" />
+
+        <TextView
+            android:id="@+id/AutonRatingTextView"
+            android:layout_width="280dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Auton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.65" />
+
+        <Button
+            android:id="@+id/DriverRatingButton1"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/DriverRatingButton2"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/DriverRatingButton3"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/DriverRatingButton4"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/DriverRatingButton5"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/DriverRatingTextView"
+            android:layout_width="280dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Driver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.876" />
+
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>
