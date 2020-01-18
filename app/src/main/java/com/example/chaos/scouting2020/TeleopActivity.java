@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class TeleopActivity extends AppCompatActivity {
+public class TeleopActivity extends BaseActivity {
     private int highGoalNumber = 0;
     protected void displayHighGoalNumber() {
         TextView teleopHighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumber);

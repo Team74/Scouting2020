@@ -191,7 +191,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="1 Star"
-        android:textSize="git "
         app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
         app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
         app:layout_constraintHorizontal_bias="0.0"

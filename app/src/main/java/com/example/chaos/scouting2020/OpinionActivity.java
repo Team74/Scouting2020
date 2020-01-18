@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class OpinionActivity extends AppCompatActivity {
+public class OpinionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

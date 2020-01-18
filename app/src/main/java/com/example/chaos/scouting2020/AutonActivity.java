@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class AutonActivity extends AppCompatActivity {
+public class AutonActivity extends BaseActivity {
     protected int HighGoalNumber = 0;
     protected int LowGoalNumber = 0;
     protected int PickUpNumber = 0;
