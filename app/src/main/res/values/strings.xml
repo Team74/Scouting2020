@@ -1,3 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Scouting 2020</string>
+
+    <string name="app_name">Scouting2020</string>
+    <string name="name_prompt">Select Your Name</string>
+    <string name="teamNum_prompt">Select The Team#</string>
+
+    <string-array name="name_array">
+        <item>Zane</item>
+        <item>Matthew</item>
+        <item>Jaewoo</item>
+        <item>Jacob</item>
+        <item>Dillan</item>
+        <item>Tim</item>
+        <item>Shane</item>
+        <item>Ben</item>
+    </string-array>
+
+    <string-array name="teamNum_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+
 </resources>

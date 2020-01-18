@@ -8,22 +8,22 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="114dp"
-        android:layout_height="57dp"
+        android:layout_width="152dp"
+        android:layout_height="52dp"
         android:text="Endgame"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="210dp"
-        android:layout_height="124dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="161dp"
+        android:layout_height="69dp"
         android:onClick="opinionButtonPressed"
         android:text="Opinion"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -76,11 +76,12 @@
         android:id="@+id/textView4"
         android:layout_width="204dp"
         android:layout_height="34dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="220dp"
         android:text="Robot Broke Down"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/switch1" />
 
     <TextView
         android:id="@+id/textView5"
@@ -95,7 +96,6 @@
         android:id="@+id/radioGroup2"
         android:layout_width="437dp"
         android:layout_height="126dp"
-        android:layout_marginStart="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,12 +131,31 @@
         android:id="@+id/editText"
         android:layout_width="458dp"
         android:layout_height="200dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="244dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:text="Notes"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="161dp"
+        android:layout_height="67dp"
+        android:onClick="autonButtonPressed"
+        android:text="Auton"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="161dp"
+        android:layout_height="69dp"
+        android:onClick="teleopButtonPressed"
+        android:text="Teleop"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
 </android.support.constraint.ConstraintLayout>
