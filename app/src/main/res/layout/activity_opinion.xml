@@ -7,483 +7,669 @@
     tools:context=".OpinionActivity"
     tools:layout_editor_absoluteY="73dp">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout7"
-        android:layout_width="131dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/ShootingRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rate the Shooting of This Robot"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline8.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline2" />
 
-    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/ClimbingRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rate the Climbing of This Robot"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline27.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline21.2" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="131dp"
-        android:layout_height="60dp"
+    <TextView
+        android:id="@+id/WheelRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rate the Wheel Spinning of This Robot"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline46.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline40.4" />
+
+    <TextView
+        android:id="@+id/AutonRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rate the Auton Stage of This Robot"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline66"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline59.6" />
+
+    <TextView
+        android:id="@+id/DriverRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rate the Driver of This Robot"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline85.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline78.8" />
+
+    <TextView
+        android:id="@+id/QRTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="QR Number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline9.334"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline2" />
+
+    <TextView
+        android:id="@+id/TTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TeamNumber"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline16.667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline9.334" />
+
+    <TextView
+        android:id="@+id/ScouterTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="ScouterName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline16.667" />
+
+    <TextView
+        android:id="@+id/EmptyTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.667"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:text="Empty"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline50"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline25" />
 
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="131dp"
-        android:layout_height="60dp"
+    <TextView
+        android:id="@+id/WouldYouPickTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Would You Pick This Robot?"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline75"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline50" />
 
-    </android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/ShootingButtonRating1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1 Star"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline8.4"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="279dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout9"
-        android:layout_width="140dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout6"
-        android:layout_width="140dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.686"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.337">
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout8"
-        android:layout_width="280dp"
-        android:layout_height="295dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/ShootingButtonRating2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline20.2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline8.4" />
 
-        <Button
-            android:id="@+id/ShootingButtonRating1"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ShootingButtonRating3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline8.4"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/ShootingButtonRating2"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.222"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ShootingButtonRating4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline8.4" />
 
-        <Button
-            android:id="@+id/ShootingButtonRating3"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ShootingButtonRating5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline8.4" />
 
-        <Button
-            android:id="@+id/ShootingButtonRating4"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ClimbingButtonRating1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1 Star"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline27.6"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/ShootingButtonRating5"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ShootingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ClimbingButtonRating2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline27.6" />
 
-        <TextView
-            android:id="@+id/ShootingRatingTextView"
-            android:layout_width="280dp"
-            android:layout_height="19dp"
-            android:layout_marginBottom="8dp"
-            android:text="Shooting"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ClimbingButtonRating3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline27.6" />
 
-        <Button
-            android:id="@+id/ClimbingButtonRating1"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ClimbingButtonRating4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline27.6" />
 
-        <Button
-            android:id="@+id/ClimbingButtonRating2"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ClimbingButtonRating5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline40.4"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline27.6" />
 
-        <Button
-            android:id="@+id/ClimbingButtonRating3"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/WheelButtonRating1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1 Star"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline59.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline46.8" />
 
-        <Button
-            android:id="@+id/ClimbingButtonRating4"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/WheelButtonRating2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline59.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline46.8" />
 
-        <Button
-            android:id="@+id/ClimbingButtonRating5"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/WheelRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ClimbingRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/WheelButtonRating3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline59.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline46.8" />
 
-        <TextView
-            android:id="@+id/ClimbingRatingTextView"
-            android:layout_width="280dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Climbing"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.196" />
+    <Button
+        android:id="@+id/WheelButtonRating4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline59.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline46.8" />
 
-        <Button
-            android:id="@+id/WheelButtonRating1"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/WheelButtonRating5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline59.6"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline46.8" />
 
-        <Button
-            android:id="@+id/WheelButtonRating2"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/AutonButtonRating1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1 Star"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline78.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline66" />
 
-        <Button
-            android:id="@+id/WheelButtonRating3"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/AutonButtonRating2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline78.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline66" />
 
-        <Button
-            android:id="@+id/WheelButtonRating4"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/AutonButtonRating3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline78.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline66" />
 
-        <Button
-            android:id="@+id/WheelButtonRating5"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/AutonRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/WheelRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/AutonButtonRating4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline78.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline66" />
 
-        <TextView
-            android:id="@+id/WheelRatingTextView"
-            android:layout_width="280dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Wheel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.423" />
+    <Button
+        android:id="@+id/AutonButtonRating5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline78.8"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline66" />
 
-        <Button
-            android:id="@+id/AutonRatingButton1"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/DriverButtonRating1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1 Star"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline1"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline85.2" />
 
-        <Button
-            android:id="@+id/AutonRatingButton2"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/DriverButtonRating2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline10.6"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline85.2" />
 
-        <Button
-            android:id="@+id/AutonRatingButton3"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/DriverButtonRating3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="3 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline20.2"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline85.2" />
 
-        <Button
-            android:id="@+id/AutonRatingButton4"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/DriverButtonRating4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="4 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline29.8"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline85.2" />
 
-        <Button
-            android:id="@+id/AutonRatingButton5"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/DriverRatingTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/AutonRatingTextView" />
+    <Button
+        android:id="@+id/DriverButtonRating5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="5 Stars"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline39.4"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline85.2" />
 
-        <TextView
-            android:id="@+id/AutonRatingTextView"
-            android:layout_width="280dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Auton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
+    <Button
+        android:id="@+id/NoButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="No"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
-        <Button
-            android:id="@+id/DriverRatingButton1"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/AutonButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="autonButtonPressed"
+        android:text="Auton"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline33.667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline26" />
 
-        <Button
-            android:id="@+id/DriverRatingButton2"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/TeleopButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="teleopButtonPressed"
+        android:text="Teleop"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuidline41.334"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline33.667" />
 
-        <Button
-            android:id="@+id/DriverRatingButton3"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/EndgameButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="endgameButtonPressed"
+        android:text="Endgame"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizantalGuideline49"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuidline41.334" />
 
-        <Button
-            android:id="@+id/DriverRatingButton4"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/YesButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
-        <Button
-            android:id="@+id/DriverRatingButton5"
-            android:layout_width="56dp"
-            android:layout_height="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DriverRatingTextView"
-            app:layout_constraintVertical_bias="0.0" />
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Exit"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline25"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/DriverRatingTextView"
-            android:layout_width="280dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Driver"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.876" />
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".02" />
 
-    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline8.4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.084" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline9.334"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.093333334" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline16.667"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".166666667" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline21.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.212" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".24" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline27.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.276" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline33.667"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".336666667" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline40.4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.404" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuidline41.334"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".413333334" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline46.8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.468" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizantalGuideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".49" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline59.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.596" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline78.8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.788" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline85.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.852" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline98"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline10.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.106" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline20.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.202" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline29.8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.298" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline39.4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.394" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>

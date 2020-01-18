@@ -6,65 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".AutonActivity">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/HighGoalTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="HighGoal"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <Button
-        android:id="@+id/TeleopButton"
+    <TextView
+        android:id="@+id/HighGoalNumber"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline25"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HighGoalTextView" />
+
+    <TextView
+        android:id="@+id/LowGoalTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="LowGoal"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline50" />
+
+    <TextView
+        android:id="@+id/LowGoalNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline75"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LowGoalTextView" />
+
+    <TextView
+        android:id="@+id/QRTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="QR Number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline2" />
+
+    <TextView
+        android:id="@+id/TTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Team Number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline16.667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline9" />
+
+    <TextView
+        android:id="@+id/ScouterTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Scouter Name"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline16.667" />
+
+    <TextView
+        android:id="@+id/PickUpTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="PickUp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline50" />
+
+    <TextView
+        android:id="@+id/PickUpNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LowGoalNumber"
+        app:layout_constraintTop_toBottomOf="@+id/PickUpTextView" />
+
+    <Button
+        android:id="@+id/Autonbutton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="autonButtonPressed"
+        android:text="Auton"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline33.667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline26" />
+
+    <Button
+        android:id="@+id/TeleopButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:onClick="teleopButtonPressed"
-        android:text="teleop"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:text="Teleop"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline41.334"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline33.667" />
+
+    <Button
+        android:id="@+id/EndgameButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="endgameButtonPressed"
+        android:text="Endgame"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline49"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline41.334" />
 
     <Button
         android:id="@+id/HighGoalPlusButton"
@@ -78,10 +177,10 @@
         android:text="+"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline50"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline25"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline25" />
 
     <Button
         android:id="@+id/HighGoalMinusButton"
@@ -95,10 +194,10 @@
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline50"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline25" />
 
     <Button
         android:id="@+id/LowGoalMinusButton"
@@ -113,9 +212,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
     <Button
         android:id="@+id/LowGoalPlusButton"
@@ -131,9 +230,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline25"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
     <Button
         android:id="@+id/PickUpMinusButton"
@@ -148,9 +247,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintEnd_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
     <Button
         android:id="@+id/PickUpPlusButton"
@@ -166,94 +265,105 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintStart_toStartOf="@+id/VerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/HorizontalGuideline75" />
 
-    <TextView
-        android:id="@+id/HighGoalTextView"
-        android:layout_width="0dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="HighGoal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".02" />
 
-    <TextView
-        android:id="@+id/LowGoalTextView"
-        android:layout_width="0dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline9"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="LowGoal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
 
-    <TextView
-        android:id="@+id/PickUpTextView"
-        android:layout_width="0dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline16.667"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="PickUp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".166666667" />
 
-    <TextView
-        android:id="@+id/HighGoalNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HighGoalTextView" />
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".24" />
 
-    <TextView
-        android:id="@+id/LowGoalNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LowGoalTextView" />
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
 
-    <TextView
-        android:id="@+id/PickUpNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LowGoalNumber"
-        app:layout_constraintTop_toBottomOf="@+id/PickUpTextView" />
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline33.667"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".336666667" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline41.334"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".413333334" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".49" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>

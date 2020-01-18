@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class EndgameActivity extends AppCompatActivity {
+public class EndgameActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
