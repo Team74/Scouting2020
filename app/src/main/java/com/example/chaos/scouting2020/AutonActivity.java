@@ -34,6 +34,7 @@ public class AutonActivity extends AppCompatActivity {
     public void teleopButtonPressed(View teleopButton) {
         Intent intent = new Intent(this, TeleopActivity.class);
         startActivity(intent);
+
     }
 
     public void teleopHighGoalPlus(View teleopHighGoalPlus) {
