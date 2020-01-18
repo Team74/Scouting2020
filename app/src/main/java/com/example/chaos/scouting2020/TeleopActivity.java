@@ -9,33 +9,78 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class TeleopActivity extends BaseActivity {
-    private int highGoalNumber = 0;
-    protected void displayHighGoalNumber() {
-        TextView teleopHighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumber);
-        teleopHighGoalNumberText.setText("" + highGoalNumber);
+    protected int HighGoalNumber = 0;
+    protected int LowGoalNumber = 0;
+    protected int PickUpNumber = 0;
+    protected void DisplayHighGoalNumber() {
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumber);
+        HighGoalNumberText.setText("" + HighGoalNumber);
+    }
+
+    protected void DisplayLowGoalNumber() {
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.teleopLowGoalNumber);
+        LowGoalNumberText.setText("" + LowGoalNumber);
+    }
+
+    protected void DisplayPickUpNumber() {
+        TextView PickUpNumberText = (TextView) findViewById(R.id.teleopPickUpNumber);
+        PickUpNumberText.setText("" + PickUpNumber);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
-        displayHighGoalNumber();
+        DisplayHighGoalNumber();
+        DisplayLowGoalNumber();
+        DisplayPickUpNumber();
 
     }
+
     public void autonButtonPressed(View autonButton) {
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }
+
     public void endgameButtonPressed(View endgameButton) {
         Intent intent = new Intent(this, EndgameActivity.class);
         startActivity(intent);
     }
-    public void teleopHighGoalPlusButtonPressed(View teleopHighGoalPlusButton) {
-        highGoalNumber = highGoalNumber + 1;
-        displayHighGoalNumber();
+
+    public void teleopHighGoalPlus(View teleopHighGoalPlus) {
+        HighGoalNumber = HighGoalNumber + 1;
+        DisplayHighGoalNumber();
     }
-    public void teleopHighGoalMinusButtonPressed(View teleopHighGoalMinusButton) {
-        highGoalNumber = highGoalNumber - 1;
-        displayHighGoalNumber();
+
+    public void teleopHighGoalMinus(View teleopHighGoalMinus) {
+        if (HighGoalNumber != 0) {
+            HighGoalNumber = HighGoalNumber - 1;
+            DisplayHighGoalNumber();
+        }
+
+    }
+
+    public void teleopLowGoalPlus(View teleopLowGoalPlus) {
+        LowGoalNumber = LowGoalNumber + 1;
+        DisplayLowGoalNumber();
+    }
+
+    public void teleopLowGoalMinus(View teleopLowGoalMinus) {
+        if (LowGoalNumber != 0) {
+            LowGoalNumber = LowGoalNumber - 1;
+            DisplayLowGoalNumber();
+        }
+    }
+
+    public void teleopPickUpPlus(View teleopPickUpPlus) {
+        PickUpNumber = PickUpNumber + 1;
+        DisplayPickUpNumber();
+    }
+
+    public void teleopPickUpMinus(View teleopPickUpMinus) {
+        if (PickUpNumber != 0) {
+            PickUpNumber = PickUpNumber - 1;
+            DisplayPickUpNumber();
+        }
     }
 }
