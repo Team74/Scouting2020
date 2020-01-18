@@ -14,14 +14,17 @@ public class AutonActivity extends AppCompatActivity {
         TextView HighGoalNumberText = (TextView) findViewById(R.id.HighGoalNumber);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
+
     protected void DisplayLowGoalNumber() {
         TextView LowGoalNumberText = (TextView) findViewById(R.id.LowGoalNumber);
         LowGoalNumberText.setText("" + LowGoalNumber);
     }
+
     protected void DisplayPickUpNumber() {
         TextView PickUpNumberText = (TextView) findViewById(R.id.PickUpNumber);
         PickUpNumberText.setText("" + PickUpNumber);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +34,18 @@ public class AutonActivity extends AppCompatActivity {
         DisplayPickUpNumber();
     }
 
+    public void autonButtonPressed(View autonButton) {
+        Intent intent = new Intent(this, AutonActivity.class);
+        startActivity(intent);
+    }
+
     public void teleopButtonPressed(View teleopButton) {
         Intent intent = new Intent(this, TeleopActivity.class);
+        startActivity(intent);
+    }
+
+    public void endgameButtonPressed(View endgameButton) {
+        Intent intent = new Intent(this, EndgameActivity.class);
         startActivity(intent);
     }
 
@@ -42,25 +55,33 @@ public class AutonActivity extends AppCompatActivity {
     }
 
     public void teleopHighGoalMinus(View teleopHighGoalMinus) {
-     HighGoalNumber = HighGoalNumber - 1;
+        if (HighGoalNumber != 0) {
+            HighGoalNumber = HighGoalNumber - 1;
+        }
      DisplayHighGoalNumber();
     }
+
     public void teleopLowGoalPlus(View teleopLowGoalPlus) {
         LowGoalNumber = LowGoalNumber + 1;
         DisplayLowGoalNumber();
     }
 
     public void teleopLowGoalMinus(View teleopLowGoalMinus) {
-        LowGoalNumber = LowGoalNumber - 1;
+        if (LowGoalNumber != 0) {
+            LowGoalNumber = LowGoalNumber - 1;
+        }
         DisplayLowGoalNumber();
     }
+
     public void teleopPickUpPlus(View teleopPickUpPlus) {
         PickUpNumber = PickUpNumber + 1;
         DisplayPickUpNumber();
     }
 
     public void teleopPickUpMinus(View teleopPickUpMinus) {
-        PickUpNumber = PickUpNumber - 1;
+        if (PickUpNumber != 0) {
+            PickUpNumber = PickUpNumber - 1;
+        }
         DisplayPickUpNumber();
     }
 }
