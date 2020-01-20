@@ -28,17 +28,17 @@ public class AutonActivity extends BaseActivity {
     }
 
     protected void DisplayHighGoalNumber(){
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.HighGoalNumber);
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumber);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
-        TextView LowGoalNumberText = (TextView) findViewById(R.id.LowGoalNumber);
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumber);
         LowGoalNumberText.setText("" + LowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
-        TextView PickUpNumberText = (TextView) findViewById(R.id.PickUpNumber);
+        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumber);
         PickUpNumberText.setText("" + PickUpNumber);
     }
 
@@ -57,7 +57,7 @@ public class AutonActivity extends BaseActivity {
         //EntityTeamRoundData entityData = teamRound.getRecord(74, 1);
         //Log.d("testing", Integer.toString(entityData.TeamNumber));
         setContentView(R.layout.activity_auton);
-        refresh(74, 1);
+        //refresh(74, 1);
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
@@ -79,36 +79,36 @@ public class AutonActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    public void teleopHighGoalPlus(View teleopHighGoalPlus) {
+    public void autonHighGoalPlus(View autonHighGoalPlus) {
      HighGoalNumber = HighGoalNumber + 1;
      DisplayHighGoalNumber();
     }
 
-    public void teleopHighGoalMinus(View teleopHighGoalMinus) {
+    public void autonHighGoalMinus(View autonHighGoalMinus) {
         if (HighGoalNumber != 0) {
             HighGoalNumber = HighGoalNumber - 1;
             DisplayHighGoalNumber();
         }
     }
 
-    public void teleopLowGoalPlus(View teleopLowGoalPlus) {
+    public void autonLowGoalPlus(View autonLowGoalPlus) {
         LowGoalNumber = LowGoalNumber + 1;
         DisplayLowGoalNumber();
     }
 
-    public void teleopLowGoalMinus(View teleopLowGoalMinus) {
+    public void autonLowGoalMinus(View autonLowGoalMinus) {
         if (LowGoalNumber != 0) {
             LowGoalNumber = LowGoalNumber - 1;
             DisplayLowGoalNumber();
         }
     }
 
-    public void teleopPickUpPlus(View teleopPickUpPlus) {
+    public void autonPickUpPlus(View autonPickUpPlus) {
         PickUpNumber = PickUpNumber + 1;
         DisplayPickUpNumber();
     }
 
-    public void teleopPickUpMinus(View teleopPickUpMinus) {
+    public void autonPickUpMinus(View autonPickUpMinus) {
         if(PickUpNumber != 0) {
             PickUpNumber = PickUpNumber - 1;
             DisplayPickUpNumber();
@@ -117,11 +117,11 @@ public class AutonActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        teamRound.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, 74, 1);
+        //teamRound.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, 74, 1);
     }
 
     protected void onResume() {
         super.onResume();
-        refresh(74, 1);
+        //refresh(74, 1);
     }
 }
