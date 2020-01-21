@@ -2,12 +2,13 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/endgameConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EndgameActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/endgameTextView2"
         android:layout_width="152dp"
         android:layout_height="52dp"
         android:text="Endgame"
@@ -16,17 +17,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/endgameButton3"
         android:layout_width="161dp"
         android:layout_height="69dp"
         android:onClick="opinionButtonPressed"
         android:text="Opinion"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameButton10" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/endgameRadioGroup"
         android:layout_width="597dp"
         android:layout_height="164dp"
         android:layout_marginTop="20dp"
@@ -35,7 +36,7 @@
         tools:layout_editor_absoluteX="2dp">
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/endgameRadioButton2"
             android:layout_width="192dp"
             android:layout_height="114dp"
             android:layout_weight="1"
@@ -43,7 +44,7 @@
             android:textSize="30sp" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/endgameRadioButton3"
             android:layout_width="220dp"
             android:layout_height="105dp"
             android:layout_weight="1"
@@ -51,7 +52,7 @@
             android:textSize="30sp" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/endgameRadioButton4"
             android:layout_width="269dp"
             android:layout_height="93dp"
             android:layout_weight="1"
@@ -60,7 +61,7 @@
     </RadioGroup>
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/endgameSwitch1"
         android:layout_width="156dp"
         android:layout_height="88dp"
         android:checked="false"
@@ -69,11 +70,11 @@
         android:textOff="Robot Broke Down"
         android:textOn="Robot Worked"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/endgameRadioGroup"
         tools:checked="false" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/endgameTextView4"
         android:layout_width="204dp"
         android:layout_height="34dp"
         android:layout_marginStart="160dp"
@@ -81,29 +82,29 @@
         android:text="Robot Broke Down"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/switch1" />
+        app:layout_constraintStart_toStartOf="@+id/endgameSwitch1" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/endgameTextView5"
         android:layout_width="251dp"
         android:layout_height="82dp"
         android:text="Which stage did they finish?"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameSwitch1" />
 
     <RadioGroup
-        android:id="@+id/radioGroup2"
+        android:id="@+id/endgameRadioGroup2"
         android:layout_width="437dp"
         android:layout_height="126dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/endgameTextView5"
         app:layout_constraintVertical_bias="0.604">
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/endgameRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -111,7 +112,7 @@
             android:textSize="30sp" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/endgameRadioButton6"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -119,7 +120,7 @@
             android:textSize="30sp" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/endgameRadioButton7"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -128,7 +129,7 @@
     </RadioGroup>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/endgameEditText"
         android:layout_width="458dp"
         android:layout_height="200dp"
         android:ems="10"
@@ -139,7 +140,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/endgameButton2"
         android:layout_width="161dp"
         android:layout_height="67dp"
         android:onClick="autonButtonPressed"
@@ -149,13 +150,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/endgameButton10"
         android:layout_width="161dp"
         android:layout_height="69dp"
         android:onClick="teleopButtonPressed"
         android:text="Teleop"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameButton2" />
 
 </android.support.constraint.ConstraintLayout>

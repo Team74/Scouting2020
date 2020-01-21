@@ -2,25 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teleopConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TeleopActivity">
-
-    <TextView
-        android:id="@+id/teleopPickUpNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/teleopGuideline2"
-        app:layout_constraintTop_toBottomOf="@+id/teleopPickUpTextView" />
 
     <android.support.constraint.Guideline
         android:id="@+id/teleopGuideline"
@@ -93,7 +78,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopHighGoalPlus"
+        android:onClick="teleopHighGoalPlusButtonPressed"
         android:text="+"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -110,7 +95,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopHighGoalMinus"
+        android:onClick="teleopHighGoalMinusButtonPressed"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -127,7 +112,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopLowGoalMinus"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -144,7 +128,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopLowGoalPlus"
         android:text="+"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -162,7 +145,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopPickUpMinus"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -179,7 +161,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopPickUpPlus"
         android:text="+"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -189,9 +170,12 @@
         app:layout_constraintTop_toTopOf="@+id/teleopGuideline6" />
 
     <TextView
-        android:id="@+id/teleopHighGoalText"
+        android:id="@+id/teleopHighGoalTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="HighGoal"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/teleopGuideline2"
@@ -238,7 +222,7 @@
         app:layout_constraintBottom_toTopOf="@+id/teleopGuideline4"
         app:layout_constraintEnd_toStartOf="@+id/teleopGuideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teleopHighGoalText" />
+        app:layout_constraintTop_toBottomOf="@+id/teleopHighGoalTextView" />
 
     <TextView
         android:id="@+id/teleopLowGoalNumber"
@@ -256,6 +240,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teleopLowGoalTextView" />
 
+    <TextView
+        android:id="@+id/teleopPickUpNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LowGoalNumber"
+        app:layout_constraintTop_toBottomOf="@+id/PickUpTextView" />
+
     <Button
         android:id="@+id/teleopToAutonButton"
         android:layout_width="0dp"
@@ -271,21 +271,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="66dp"
-        app:layout_constraintGuide_percent=".08" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="72dp"
-        app:layout_constraintGuide_percent=".16" />
 
 </android.support.constraint.ConstraintLayout>

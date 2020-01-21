@@ -24,4 +24,8 @@ public class OpinionActivity extends BaseActivity {
         Intent intent = new Intent(this, EndgameActivity.class);
         startActivity(intent);
     }
+    public void exitButtonPressed(View engameButton) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
