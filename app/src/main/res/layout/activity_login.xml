@@ -172,43 +172,42 @@
         android:id="@+id/loginRadioGroup3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/loginGuideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/loginGuideline5"
         app:layout_constraintTop_toTopOf="@+id/loginGuideline3">
+
+        <RadioButton
+            android:id="@+id/loginBlueRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:onClick="blueRadioButtonPressed"
+            android:text="Blue"
+            android:textSize="70sp" />
+
+        <RadioButton
+            android:id="@+id/loginRedRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:onClick="redRadioButtonPressed"
+            android:text="Red"
+            android:textSize="70sp" />
+
     </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/loginRedRadioButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="redRadioButtonPressed"
-        android:text="Red"
-        android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginGuideline7"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline3" />
-
-    <RadioButton
-        android:id="@+id/loginBlueRadioButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="blueRadioButtonPressed"
-        android:text="Blue"
-        android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline4"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline7"
-        app:layout_constraintStart_toStartOf="@+id/loginGuideline5"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline3" />
 
     <Spinner
         android:id="@+id/loginTeamNumSelector"
@@ -233,6 +232,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@android:color/black"
         android:ems="10"
         android:inputType="number"
         android:textSize="50sp"

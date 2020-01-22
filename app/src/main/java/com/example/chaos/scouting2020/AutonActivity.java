@@ -63,11 +63,6 @@ public class AutonActivity extends BaseActivity {
         DisplayPickUpNumber();
     }
 
-    public void autonButtonPressed(View autonButton) {
-        Intent intent = new Intent(this, AutonActivity.class);
-        startActivity(intent);
-    }
-
     public void teleopButtonPressed(View teleopButton) {
         Intent intent = new Intent(this, TeleopActivity.class);
         startActivity(intent);

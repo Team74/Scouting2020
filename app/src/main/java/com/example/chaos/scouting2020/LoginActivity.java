@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,10 +43,10 @@ public class LoginActivity extends BaseActivity {
     }
     public void redRadioButtonPressed(View redRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 237, 28, 36));
+        layout.setBackgroundColor(Color.argb(255, 254, 59, 34));
     }
     public void blueRadioButtonPressed(View blueRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 0, 101, 179));
+        layout.setBackgroundColor(Color.argb(255, 119, 158, 203));
     }
 }

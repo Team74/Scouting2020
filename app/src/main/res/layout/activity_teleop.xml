@@ -7,6 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".TeleopActivity">
 
+    <TextView
+        android:id="@+id/teleopPickUpNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline2"
+        app:layout_constraintTop_toBottomOf="@+id/teleopLowGoalTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
     <android.support.constraint.Guideline
         android:id="@+id/teleopGuideline"
         android:layout_width="wrap_content"
@@ -56,19 +72,13 @@
         android:id="@+id/teleopToEndGameButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:onClick="endgameButtonPressed"
         android:text="Endgame"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
-        app:layout_constraintTop_toTopOf="@+id/teleopGuideline4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/teleopHighGoalPlusButton"
@@ -78,7 +88,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopHighGoalPlusButtonPressed"
+        android:onClick="teleopHighGoalPlus"
         android:text="+"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -95,7 +105,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="teleopHighGoalMinusButtonPressed"
+        android:onClick="teleopHighGoalMinus"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -112,6 +122,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="teleopLowGoalMinus"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -128,6 +139,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="teleopLowGoalPlus"
         android:text="+"
         android:textAllCaps="true"
         android:textSize="24sp"
@@ -145,6 +157,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="teleopPickUpMinus"
         android:text="-"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -161,6 +174,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="teleopPickUpPlus"
         android:text="+"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -240,36 +254,124 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teleopLowGoalTextView" />
 
-    <TextView
-        android:id="@+id/teleopPickUpNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LowGoalNumber"
-        app:layout_constraintTop_toBottomOf="@+id/PickUpTextView" />
-
     <Button
         android:id="@+id/teleopToAutonButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:onClick="autonButtonPressed"
         android:text="Auton"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline4"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="51dp"
+        app:layout_constraintGuide_percent=".02" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="47dp"
+        app:layout_constraintGuide_percent=".09" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="70dp"
+        app:layout_constraintGuide_percent=".16666666667" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="78dp"
+        app:layout_constraintGuide_percent=".24" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="143dp"
+        app:layout_constraintGuide_percent=".26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="161dp"
+        app:layout_constraintGuide_percent=".3366666" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="176dp"
+        app:layout_constraintGuide_percent=".413333" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="189dp"
+        app:layout_constraintGuide_percent=".49" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Teleop"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+    <TextView
+        android:id="@+id/teleopScouter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Scouter Name"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <TextView
+        android:id="@+id/TeleopTNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Team Number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/teleopQRNumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="QR Number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
 </android.support.constraint.ConstraintLayout>
