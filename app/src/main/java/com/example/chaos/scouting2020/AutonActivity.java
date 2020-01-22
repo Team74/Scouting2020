@@ -25,6 +25,11 @@ public class AutonActivity extends BaseActivity {
             LowGoalNumber = entityTeamRoundData.AutonLowScore;
             PickUpNumber = entityTeamRoundData.AutonPickUp;
         }
+        else{
+            HighGoalNumber = 0;
+            LowGoalNumber = 0;
+            PickUpNumber = 0;
+        }
     }
 
     protected void DisplayHighGoalNumber(){
@@ -48,13 +53,13 @@ public class AutonActivity extends BaseActivity {
         db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
                 .allowMainThreadQueries().build();
         teamRound = db.daoTeamRoundData();
+        refresh(1,1);
+        Log.d("testing", Integer.toString(HighGoalNumber));
         DaoScouterName name = db.daoScouterName();
-        entityTeamRoundData = teamRound.getRecord(74,1);
+        entityTeamRoundData = teamRound.getRecord(1,1);
         entityScouterName = new EntityScouterName();
-        //entityTeamRoundData.TeamNumber = 74;
-        //entityTeamRoundData.RoundNumber = 1;
         //teamRound.insert(entityTeamRoundData);
-        //EntityTeamRoundData entityData = teamRound.getRecord(74, 1);
+        EntityTeamRoundData entityData = teamRound.getRecord(1, 1);
         //Log.d("testing", Integer.toString(entityData.TeamNumber));
         setContentView(R.layout.activity_auton);
         //refresh(74, 1);
@@ -117,11 +122,11 @@ public class AutonActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        //teamRound.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, 74, 1);
-    }
-
-    protected void onResume() {
-        super.onResume();
-        //refresh(74, 1);
+        entityTeamRoundData = new EntityTeamRoundData();
+        entityTeamRoundData.TeamNumber = 1;
+        entityTeamRoundData.RoundNumber = 1;
+        teamRound.insert(entityTeamRoundData);
+        teamRound.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, 1, 1);
+        Log.d("testing pause", Integer.toString(teamRound.getRecord(1,1).AutonHighScore));
     }
 }

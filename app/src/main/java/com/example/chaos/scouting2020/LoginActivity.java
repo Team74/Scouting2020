@@ -37,6 +37,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void autonButtonPressed(View autonButton) {
+//        StartUp(1,1);
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }
