@@ -131,115 +131,6 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline50" />
 
     <Button
-        android:id="@+id/opinionShootingButtonRating1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="1 Star"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline10.6"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline8.4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/opinionShootingButtonRating2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="2 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline20.2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline10.6"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline8.4" />
-
-    <Button
-        android:id="@+id/opinionShootingButtonRating3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="3 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline29.8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline20.2"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline8.4"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/opinionShootingButtonRating4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="4 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline39.4"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline29.8"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline8.4" />
-
-    <Button
-        android:id="@+id/opinionShootingButtonRating5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="5 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline39.4"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline8.4" />
-
-    <Button
-        android:id="@+id/opinionClimbingButtonRating1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="1 Star"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline10.6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.6"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/opinionClimbingButtonRating2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="2 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline20.2"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline10.6"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.6" />
-
-    <Button
-        android:id="@+id/opinionClimbingButtonRating3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="3 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline29.8"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline20.2"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.6" />
-
-    <Button
-        android:id="@+id/opinionClimbingButtonRating4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="4 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline39.4"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline29.8"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.6" />
-
-    <Button
-        android:id="@+id/opinionClimbingButtonRating5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="5 Stars"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline39.4"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.6" />
-
-    <Button
         android:id="@+id/opinionWheelButtonRating1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -546,7 +437,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.404" />
+        app:layout_constraintGuide_percent="0.40333334" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuidline41.334"
@@ -673,5 +564,95 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
+        app:layout_constraintTop_toBottomOf="@+id/opinionShootingRatingTextView" >
+
+        <RadioButton
+            android:id="@+id/opinionShootingRatingRadioButton1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1 STAR" />
+
+        <RadioButton
+            android:id="@+id/opinionShootingRatingRadioButton2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="2 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionShootingRatingRadioButton3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="3 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionShootingRatingRadioButton4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="4 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionShootingRatingRadioButton5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="5 STARS" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline21.2"
+        app:layout_constraintBottom_toTopOf="@+id/opinionWheelRatingTextView"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1">
+
+        <RadioButton
+            android:id="@+id/opinionClimbingRatingRadioButton1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1 STAR" />
+
+        <RadioButton
+            android:id="@+id/opinionClimbingRatingRadioButton2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="2 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionClimbingRatingRadioButton3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="3 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionClimbingRatingRadioButton4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="4 STARS" />
+
+        <RadioButton
+            android:id="@+id/opinionClimbingRatingRadioButton5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="5 STARS" />
+    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

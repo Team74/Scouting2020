@@ -131,7 +131,6 @@
         android:id="@+id/autonAutonbutton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:onClick="autonButtonPressed"
         android:text="Auton"
         android:textAlignment="center"
         android:textSize="10sp"
