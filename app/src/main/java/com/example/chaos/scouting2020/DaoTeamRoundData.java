@@ -17,4 +17,7 @@ public interface DaoTeamRoundData {
 
     @Query("UPDATE EntityTeamRoundData SET AutonHighScore = :autonHighScore, AutonLowScore = :autonLowScore, AutonPickUp = :autonPickUp Where TeamNumber = :teamNumber AND RoundNumber = :roundNumber")
     void updateAuton(int autonHighScore, int autonLowScore, int autonPickUp, int teamNumber, int roundNumber);
+
+    @Query("UPDATE Entityteamrounddata SET TeamColor = :teamColor, Scouter = :scouter WHERE TeamNumber = :teamNumber AND RoundNumber = :roundNumber")
+    void updateLogin(int teamColor, String scouter, int teamNumber, int roundNumber);
 }
