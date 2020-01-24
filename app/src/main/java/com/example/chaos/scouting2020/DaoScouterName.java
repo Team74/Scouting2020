@@ -12,5 +12,5 @@ public interface DaoScouterName {
     EntityScouterName getScouters();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertScouter(EntityScouterName entityScouterName);
+    void insert(EntityScouterName entityScouterName);
 }
