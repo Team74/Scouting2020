@@ -17,6 +17,9 @@ public class BaseActivity extends AppCompatActivity {
     protected int HighGoalNumber = 0;
     protected int LowGoalNumber = 0;
     protected int PickUpNumber = 0;
+    protected String TColor = null;
+    protected String Scout = null;
+    protected int TNumber = -1;
 
 
     public void StartUpDb(){
