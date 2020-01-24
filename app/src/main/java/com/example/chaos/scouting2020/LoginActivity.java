@@ -17,6 +17,18 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // set
+        ((ScoutingApplication) this.getApplication()).setSomeVariable("foo");
+
+        // get
+        String s = ((ScoutingApplication) this.getApplication()).getSomeVariable();
+
+        StartUpDb();
+        //AddAllRounds();
+        //AddAllScouters();
+
+
         Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumSelector);
         loginTeamNumSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             public void onNothingSelected(AdapterView<?> parent){
@@ -38,7 +50,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void autonButtonPressed(View autonButton) {
-//        StartUp(1,1);
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }

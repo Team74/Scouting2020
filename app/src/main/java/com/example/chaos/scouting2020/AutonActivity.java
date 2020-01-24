@@ -29,8 +29,6 @@ public class AutonActivity extends BaseActivity {
         setContentView(R.layout.activity_auton);
 
         StartUpDb();
-//        AddAllRounds();
-//        AddAllScouters();
 
         refreshAutonData(74, 1);
         DisplayHighGoalNumber();

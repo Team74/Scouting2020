@@ -11,6 +11,8 @@ public class OpinionActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opinion);
+
+        StartUpDb();
     }
     public void autonButtonPressed(View autonButton) {
         Intent intent = new Intent(this, AutonActivity.class);

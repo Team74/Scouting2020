@@ -7,7 +7,7 @@ import android.os.Bundle;
 public class BaseActivity extends AppCompatActivity {
 
     // database members
-    ScoutingDatabase db;
+    ScoutingDatabase db = null;
     EntityTeamRoundData entityTeamRoundData = null;
     EntityScouterName entityScouterName = null;
     DaoTeamRoundData daoTeamRoundData = null;
@@ -21,23 +21,31 @@ public class BaseActivity extends AppCompatActivity {
 
     public void StartUpDb(){
         // get room (db)
-        db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
-                .allowMainThreadQueries().build();
+        if(db == null){
+            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
+                    .allowMainThreadQueries().build();
+        }
 
         // get data access objects (tables)
         if(daoTeamRoundData == null){
             daoTeamRoundData = db.daoTeamRoundData();
+        }
+        if(daoScouterName == null){
             daoScouterName = db.daoScouterName();
         }
 
         // create entity (record) objects for each table
-        entityTeamRoundData = new EntityTeamRoundData();
-        entityScouterName = new EntityScouterName();
+        if(entityTeamRoundData == null){
+            entityTeamRoundData = new EntityTeamRoundData();
+        }
+        if(entityScouterName == null){
+            entityScouterName = new EntityScouterName();
+        }
     }
 
     protected void refreshAutonData(int teamNumber, int roundNumber){
         entityTeamRoundData = daoTeamRoundData.getRecord(teamNumber, roundNumber);
-        if (entityTeamRoundData != null) {
+        if(entityTeamRoundData != null){
             HighGoalNumber = entityTeamRoundData.AutonHighScore;
             LowGoalNumber = entityTeamRoundData.AutonLowScore;
             PickUpNumber = entityTeamRoundData.AutonPickUp;
@@ -49,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void saveAutonData(int teamNumber, int roundNumber){
-        daoTeamRoundData.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, 74, 1);
+        daoTeamRoundData.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, teamNumber, roundNumber);
     }
 
     public void AddAllRounds() {
