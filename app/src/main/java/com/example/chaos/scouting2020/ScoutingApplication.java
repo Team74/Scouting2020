@@ -1,11 +1,19 @@
 package com.example.chaos.scouting2020;
 
 import android.app.Application;
+import android.provider.Settings;
+import android.widget.Toast;
 import android.arch.persistence.room.Room;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class ScoutingApplication extends Application {
 
-    private String someVariable;
     // database members
     ScoutingDatabase db = null;
     EntityTeamRoundData entityTeamRoundData = null;
@@ -23,16 +31,6 @@ public class ScoutingApplication extends Application {
     protected int AutonHighGoalNumber = 0;
     protected int AutonLowGoalNumber = 0;
     protected int AutonPickUpNumber = 0;
-
-    // Example
-    public String getSomeVariable() {
-        return someVariable;
-    }
-
-    public void setSomeVariable(String someVariable) {
-        this.someVariable = someVariable;
-    }
-    // Example end
 
     // Get functions
     public int getTeamNumber(){
@@ -102,6 +100,7 @@ public class ScoutingApplication extends Application {
         return entityTeamRoundData.WouldPick;
     }
     // Get Functions End
+
     // Set Funstions
     public void setTeamNumber(int teamNumber){
         entityTeamRoundData.TeamNumber = teamNumber;
@@ -167,6 +166,7 @@ public class ScoutingApplication extends Application {
         entityTeamRoundData.WouldPick = wouldPick;
     }
     // Set Functions End
+
     public void StartUpDb(){
         // get room (db)
         if(db == null){
@@ -200,4 +200,75 @@ public class ScoutingApplication extends Application {
     protected void saveAutonData(int teamNumber, int roundNumber){
         daoTeamRoundData.updateAuton(entityTeamRoundData.AutonHighScore, entityTeamRoundData.AutonLowScore, entityTeamRoundData.AutonPickUp, teamNumber, roundNumber);
     }
+
+    // TBD: example of adding round data records
+    public void AddAllRounds() {
+        for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
+            for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
+                entityTeamRoundData.TeamNumber = teamNumber;
+                entityTeamRoundData.RoundNumber = roundNumber;
+                daoTeamRoundData.insert(entityTeamRoundData);
+            }
+        }
+    }
+
+    // TBD: example of adding ScouterNames
+    public void AddAllScouters() {
+        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
+        for (String scouter: scouters) {
+            entityScouterName.ScouterName = scouter;
+            daoScouterName.insert(entityScouterName);
+        }
+    }
+
+    // TBD: example writing to CSV
+    public void exportScouterNames() {
+        try {
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+            String fileName = "ScouterNames-"+androidId+".csv";
+            String filePath = baseDir + File.separator + fileName;
+
+            // we are exporting everything, so recreate each time
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
+
+            // TBD: these names should come from the a select * on the ScouterNames table
+            String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
+            // TBD: for each scouter name in the ScouterNames table
+            for (String scouter: scouters) {
+                String[] csvLine = { scouter };
+                writer.writeNext(csvLine);
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // TBD: example reading from CSV
+    public void importScouterNames() {
+        try {
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+            String fileName = "ScouterNames-"+androidId+".csv";
+            String filePath = baseDir + File.separator + fileName;
+
+            CSVReader reader = new CSVReader(new FileReader(filePath));
+            String[] csvLine;
+            while ((csvLine = reader.readNext()) != null) {
+                // csvLine[] is an array of values parsed from from the CSV line
+                String scouter = csvLine[0];
+                if (!scouter.isEmpty()) {
+                    // TBD: add the scouter to our ScouterNames table
+                    //entityScouterName.ScouterName = scouter;
+                    //daoScouterName.insert(entityScouterName);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error reading CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
