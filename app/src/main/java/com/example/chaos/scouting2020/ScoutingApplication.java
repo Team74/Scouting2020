@@ -188,6 +188,33 @@ public class ScoutingApplication extends Application {
         // TNumber, QRNumber should be set from login screen!
         if(TNumber != -1) {
             entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
+            if(entityTeamRoundData == null){
+                // this shouldn't happen, as the record should be created
+                // during login, but if it does, zero everything out
+                entityTeamRoundData = new EntityTeamRoundData();
+                entityTeamRoundData.TeamNumber = TNumber;
+                entityTeamRoundData.RoundNumber = QRNumber;
+                entityTeamRoundData.Scouter = "Zane";
+                entityTeamRoundData.TeamColor = "Blue";
+                entityTeamRoundData.AutonHighScore = 0;
+                entityTeamRoundData.AutonLowScore = 0;
+                entityTeamRoundData.AutonPickUp = 0;
+                entityTeamRoundData.TeleopHighScore = 0;
+                entityTeamRoundData.TeleopLowScore = 0;
+                entityTeamRoundData.TeleopPickUp = 0;
+                entityTeamRoundData.RotationControl = false;
+                entityTeamRoundData.PositionControl = false;
+                entityTeamRoundData.Climb = "";
+                entityTeamRoundData.BrokeDown = false;
+                entityTeamRoundData.FinalStage = 0;
+                entityTeamRoundData.Notes = "";
+                entityTeamRoundData.RateShooting = 0;
+                entityTeamRoundData.RateClimb = 0;
+                entityTeamRoundData.RateWheel = 0;
+                entityTeamRoundData.RateAuton = 0;
+                entityTeamRoundData.RateDiver = 0;
+                entityTeamRoundData.WouldPick = false;
+            }
         }
     }
 
