@@ -9,17 +9,17 @@ import android.widget.TextView;
 public class AutonActivity extends BaseActivity {
 
     protected void DisplayHighGoalNumber(){
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumber);
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
-        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumber);
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumberTextView);
         LowGoalNumberText.setText("" + LowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
-        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumber);
+        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumberTextView);
         PickUpNumberText.setText("" + PickUpNumber);
     }
 
