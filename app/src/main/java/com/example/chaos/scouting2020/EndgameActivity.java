@@ -29,4 +29,36 @@ public class EndgameActivity extends BaseActivity {
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }
+    //Climbing Buttons
+    public void  didClimbButtonPressed(View didClimbButton) {
+
+    }
+
+    public void didntClimbButtonPressed(View didntClimbButton) {
+
+    }
+
+    public void failedClimbButtonPressed(View failedClimbButton) {
+
+    }
+    //Robot Broke Buttons
+    public void robotBrokeDownButtonPressed(View robotBrokeDownButton) {
+
+    }
+
+    public void robotDidntBreakDownButtonPressed(View robotDidntBreakDownButton) {
+
+    }
+    //Stage Buttons
+    public void stageOnePressed(View stageOneButton) {
+
+    }
+
+    public void stageTwoPressed(View stageTwoButton) {
+
+    }
+
+    public void stageThreePressed(View stageThreeButton) {
+
+    }
 }
