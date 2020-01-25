@@ -6,13 +6,6 @@ import android.os.Bundle;
 
 public class BaseActivity extends AppCompatActivity {
 
-    // database members
-    ScoutingDatabase db = null;
-    EntityTeamRoundData entityTeamRoundData = null;
-    EntityScouterName entityScouterName = null;
-    DaoTeamRoundData daoTeamRoundData = null;
-    DaoScouterName daoScouterName = null;
-
     // scouting data members
     protected int HighGoalNumber = 0;
     protected int LowGoalNumber = 0;
@@ -20,25 +13,5 @@ public class BaseActivity extends AppCompatActivity {
     protected String TColor = null;
     protected String Scout = null;
     protected int TNumber = -1;
-
-
-
-    public void AddAllRounds() {
-        for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
-            for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
-                entityTeamRoundData.TeamNumber = teamNumber;
-                entityTeamRoundData.RoundNumber = roundNumber;
-                daoTeamRoundData.insert(entityTeamRoundData);
-            }
-        }
-    }
-
-    public void AddAllScouters() {
-        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
-        for (String scouter: scouters) {
-            entityScouterName.ScouterName = scouter;
-            daoScouterName.insert(entityScouterName);
-        }
-    }
 
 }

@@ -201,6 +201,26 @@ public class ScoutingApplication extends Application {
         daoTeamRoundData.updateAuton(entityTeamRoundData.AutonHighScore, entityTeamRoundData.AutonLowScore, entityTeamRoundData.AutonPickUp, teamNumber, roundNumber);
     }
 
+    // TBD: example of adding round data records
+    public void AddAllRounds() {
+        for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
+            for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
+                entityTeamRoundData.TeamNumber = teamNumber;
+                entityTeamRoundData.RoundNumber = roundNumber;
+                daoTeamRoundData.insert(entityTeamRoundData);
+            }
+        }
+    }
+
+    // TBD: example of adding ScouterNames
+    public void AddAllScouters() {
+        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
+        for (String scouter: scouters) {
+            entityScouterName.ScouterName = scouter;
+            daoScouterName.insert(entityScouterName);
+        }
+    }
+
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {
