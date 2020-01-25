@@ -34,7 +34,7 @@ public class EntityTeamRoundData {
     public int TeleopLowScore;
 
     @ColumnInfo
-    public int TeleopPickup;
+    public int TeleopPickUp;
 
     @ColumnInfo
     public boolean RotationControl;

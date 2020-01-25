@@ -14,54 +14,14 @@ public class BaseActivity extends AppCompatActivity {
     DaoScouterName daoScouterName = null;
 
     // scouting data members
-    protected int HighGoalNumber = 0;
-    protected int LowGoalNumber = 0;
-    protected int PickUpNumber = 0;
+    protected int AutonHighGoalNumber = 0;
+    protected int AutonLowGoalNumber = 0;
+    protected int AutonPickUpNumber = 0;
     protected String TColor = null;
     protected String Scout = null;
     protected int TNumber = -1;
 
 
-    public void StartUpDb(){
-        // get room (db)
-        if(db == null){
-            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
-                    .allowMainThreadQueries().build();
-        }
-
-        // get data access objects (tables)
-        if(daoTeamRoundData == null){
-            daoTeamRoundData = db.daoTeamRoundData();
-        }
-        if(daoScouterName == null){
-            daoScouterName = db.daoScouterName();
-        }
-
-        // create entity (record) objects for each table
-        if(entityTeamRoundData == null){
-            entityTeamRoundData = new EntityTeamRoundData();
-        }
-        if(entityScouterName == null){
-            entityScouterName = new EntityScouterName();
-        }
-    }
-
-    protected void refreshAutonData(int teamNumber, int roundNumber){
-        entityTeamRoundData = daoTeamRoundData.getRecord(teamNumber, roundNumber);
-        if(entityTeamRoundData != null){
-            HighGoalNumber = entityTeamRoundData.AutonHighScore;
-            LowGoalNumber = entityTeamRoundData.AutonLowScore;
-            PickUpNumber = entityTeamRoundData.AutonPickUp;
-        }else{
-            HighGoalNumber = 0;
-            LowGoalNumber = 0;
-            PickUpNumber = 0;
-        }
-    }
-
-    protected void saveAutonData(int teamNumber, int roundNumber){
-        daoTeamRoundData.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, teamNumber, roundNumber);
-    }
 
     public void AddAllRounds() {
         for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {

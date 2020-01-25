@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity {
         // get
         String s = ((ScoutingApplication) this.getApplication()).getSomeVariable();
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
         //AddAllRounds();
         //AddAllScouters();
 

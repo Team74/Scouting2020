@@ -32,7 +32,7 @@ public class TeleopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
