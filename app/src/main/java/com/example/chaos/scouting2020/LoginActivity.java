@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +23,7 @@ public class LoginActivity extends BaseActivity {
         // get
         String s = ((ScoutingApplication) this.getApplication()).getSomeVariable();
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
         //AddAllRounds();
         //AddAllScouters();
 
@@ -40,7 +38,7 @@ public class LoginActivity extends BaseActivity {
                 Scout = String.valueOf(loginScouterSpinner.getItemAtPosition(position));
             }
         });
-        final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumSelector);
+        final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumberSpinner);
         loginTeamNumSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             public void onNothingSelected(AdapterView<?> parent){
             }
@@ -56,10 +54,12 @@ public class LoginActivity extends BaseActivity {
     public void autonButtonPressed(View autonButton) {
 //        StartUp(1,1);
         EditText QRNumber;
-        QRNumber = (EditText)findViewById(R.id.loginEditText2);
-        Log.d("QRNumber", String.valueOf(QRNumber));
-        Log.d("QRNumber.getText()-----", QRNumber.getText().toString());
-        //int QR = Integer.parseInt(String.valueOf(QRNumber.getText()));
+        QRNumber = (EditText)findViewById(R.id.loginQRNumberEditText);
+        String QRCheck = QRNumber.getText().toString();
+        Log.d("--------Qr check-------", "-----------|" + QRCheck + "|----------");
+        if(QRNumber.getText().toString() != ""){
+            //int QR = Integer.parseInt(String.valueOf(QRNumber.getText()));
+        }
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }

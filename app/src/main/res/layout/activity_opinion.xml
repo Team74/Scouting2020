@@ -14,6 +14,7 @@
         android:layout_height="0dp"
         android:text="Rate the Shooting of This Robot"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline8.4"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
         app:layout_constraintHorizontal_bias="1.0"
@@ -26,6 +27,7 @@
         android:layout_height="0dp"
         android:text="Rate the Climbing of This Robot"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline27.5"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
@@ -37,6 +39,7 @@
         android:layout_height="0dp"
         android:text="Rate the Wheel Spinning of This Robot"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline46.5"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
@@ -48,6 +51,7 @@
         android:layout_height="0dp"
         android:text="Rate the Auton Stage of This Robot"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline66"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
@@ -60,6 +64,7 @@
         android:layout_height="0dp"
         android:text="Rate the Driver of This Robot"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline85.2"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
@@ -71,6 +76,7 @@
         android:layout_height="0dp"
         android:text="QR Number"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline9.334"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -82,6 +88,7 @@
         android:layout_height="0dp"
         android:text="TeamNumber"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline16.667"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -93,6 +100,7 @@
         android:layout_height="0dp"
         android:text="ScouterName"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -108,6 +116,7 @@
         android:layout_marginBottom="8dp"
         android:text="Empty"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
@@ -124,6 +133,7 @@
         android:gravity="fill_vertical"
         android:text="Would You Pick This Robot?"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline75"
@@ -134,19 +144,21 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/opinionNoButton"
+        android:id="@+id/opinionExitButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="No"
+        android:onClick="exitButtonPressed"
+        android:text="Exit"
+        android:textColor="@android:color/black"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" />
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/opinionAutonButton"
@@ -154,6 +166,7 @@
         android:layout_height="0dp"
         android:onClick="autonButtonPressed"
         android:text="Auton"
+        android:textColor="@android:color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline33.667"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,6 +179,7 @@
         android:layout_height="0dp"
         android:onClick="teleopButtonPressed"
         android:text="Teleop"
+        android:textColor="@android:color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuidline41.334"
         app:layout_constraintEnd_toEndOf="parent"
@@ -178,6 +192,7 @@
         android:layout_height="0dp"
         android:onClick="endgameButtonPressed"
         android:text="Endgame"
+        android:textColor="@android:color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizantalGuideline49"
         app:layout_constraintEnd_toEndOf="parent"
@@ -193,6 +208,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Yes"
+        android:textColor="@android:color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
@@ -200,20 +216,20 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" />
 
     <Button
-        android:id="@+id/opinionExitButton"
+        android:id="@+id/opinionNoButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="exitButtonPressed"
-        android:text="Exit"
+        android:text="No"
+        android:textColor="@android:color/black"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" />
 
     <RadioGroup
         android:id="@+id/opinionShootingRadioGroup"
@@ -230,35 +246,50 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 STAR" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="1 STAR"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="2 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="2 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="3 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="4 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="4 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="5 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="5 STARS"
+            android:textColor="@android:color/black" />
     </RadioGroup>
 
     <RadioGroup
@@ -266,47 +297,61 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionWheelRatingTextView"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.5"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.5">
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 STAR" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="1 STAR"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="2 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="2 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="3 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="4 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="4 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="5 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="5 STARS"
+            android:textColor="@android:color/black" />
 
     </RadioGroup>
 
@@ -325,35 +370,50 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 STAR" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="1 STAR"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="2 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="2 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="3 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="4 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="4 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="5 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="5 STARS"
+            android:textColor="@android:color/black" />
 
     </RadioGroup>
 
@@ -372,35 +432,50 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 STAR" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="1 STAR"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="2 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="2 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="3 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="4 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="4 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="5 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="5 STARS"
+            android:textColor="@android:color/black" />
     </RadioGroup>
 
     <RadioGroup
@@ -418,35 +493,50 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 STAR" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="1 STAR"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="2 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="2 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="3 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="4 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="4 STARS"
+            android:textColor="@android:color/black" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="5 STARS" />
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:text="5 STARS"
+            android:textColor="@android:color/black" />
     </RadioGroup>
 
     <android.support.constraint.Guideline

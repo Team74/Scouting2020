@@ -12,7 +12,7 @@ public class EndgameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endgame);
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
     }
 
     public void opinionButtonPressed(View opinionButton) {

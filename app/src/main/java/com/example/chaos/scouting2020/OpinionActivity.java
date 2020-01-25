@@ -12,7 +12,7 @@ public class OpinionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opinion);
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
     }
     public void autonButtonPressed(View autonButton) {
         Intent intent = new Intent(this, AutonActivity.class);

@@ -2,10 +2,8 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class TeleopActivity extends BaseActivity {
@@ -13,17 +11,17 @@ public class TeleopActivity extends BaseActivity {
     protected int LowGoalNumber = 0;
     protected int PickUpNumber = 0;
     protected void DisplayHighGoalNumber() {
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumber);
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumberTextView);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
-        TextView LowGoalNumberText = (TextView) findViewById(R.id.teleopLowGoalNumber);
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.teleopLowGoalNumberTextView);
         LowGoalNumberText.setText("" + LowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
-        TextView PickUpNumberText = (TextView) findViewById(R.id.teleopPickUpNumber);
+        TextView PickUpNumberText = (TextView) findViewById(R.id.teleopPickUpNumberTextView);
         PickUpNumberText.setText("" + PickUpNumber);
     }
 
@@ -32,7 +30,7 @@ public class TeleopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();

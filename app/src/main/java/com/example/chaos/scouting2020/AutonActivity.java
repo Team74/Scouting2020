@@ -9,18 +9,20 @@ import android.widget.TextView;
 public class AutonActivity extends BaseActivity {
 
     protected void DisplayHighGoalNumber(){
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumber);
+
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
         HighGoalNumberText.setText("" + HighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
-        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumber);
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumberTextView);
         LowGoalNumberText.setText("" + LowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
-        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumber);
+        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumberTextView);
         PickUpNumberText.setText("" + PickUpNumber);
+
     }
 
     @Override
@@ -28,9 +30,9 @@ public class AutonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
 
-        StartUpDb();
+        ((ScoutingApplication) this.getApplication()).StartUpDb();
 
-        refreshAutonData(74, 1);
+        ((ScoutingApplication) this.getApplication()).refreshAutonData(74, 1);
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
@@ -48,7 +50,7 @@ public class AutonActivity extends BaseActivity {
     }
 
     public void autonHighGoalPlus(View autonHighGoalPlus) {
-     HighGoalNumber = HighGoalNumber + 1;
+        HighGoalNumber = HighGoalNumber + 1;
      DisplayHighGoalNumber();
     }
 
@@ -85,6 +87,9 @@ public class AutonActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        saveAutonData(74, 1);
+        ((ScoutingApplication) this.getApplication()).setAutonHighScore(HighGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonLowScore(LowGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonPickUp(PickUpNumber);
+        ((ScoutingApplication) this.getApplication()).saveAutonData(74,1);
     }
 }
