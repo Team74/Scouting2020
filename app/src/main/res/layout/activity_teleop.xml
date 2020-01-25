@@ -264,7 +264,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline44" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -275,7 +275,7 @@
         app:layout_constraintGuide_percent=".02" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/endgameHorizontalGuideline66"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -291,7 +291,7 @@
         app:layout_constraintGuide_percent=".16666666667" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/endgameHorizontalGuideline22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -299,7 +299,7 @@
         app:layout_constraintGuide_percent=".24" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
+        android:id="@+id/endgameHorizontalGuideline44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -347,7 +347,7 @@
         android:layout_height="0dp"
         android:text="Scouter Name"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -361,7 +361,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline66" />
 
     <TextView
         android:id="@+id/teleopQRNumber"
@@ -369,9 +369,41 @@
         android:layout_height="0dp"
         android:text="QR Number"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline66"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopGuideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ToggleButton
+        android:id="@+id/teleopRotationControl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Rotation Control"
+        android:textOff="No Rotation Control"
+        android:textOn="Did Rotation Control"
+        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline4"
+        app:layout_constraintEnd_toStartOf="@+id/teleopQRNumber"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Position Control"
+        android:textOff="No Position Control"
+        android:textOn="Did Position Control"
+        app:layout_constraintBottom_toTopOf="@+id/teleopGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/teleopGuideline3"
+        app:layout_constraintStart_toStartOf="@+id/teleopGuideline2"
+        app:layout_constraintTop_toTopOf="@+id/teleopGuideline4" />
 
 </android.support.constraint.ConstraintLayout>

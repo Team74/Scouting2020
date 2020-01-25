@@ -19,6 +19,17 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // set
+        ((ScoutingApplication) this.getApplication()).setSomeVariable("foo");
+
+        // get
+        String s = ((ScoutingApplication) this.getApplication()).getSomeVariable();
+
+        StartUpDb();
+        //AddAllRounds();
+        //AddAllScouters();
+
+
         final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
         loginScouterSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             public void onNothingSelected(AdapterView<?> parent){
