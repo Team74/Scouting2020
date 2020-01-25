@@ -199,38 +199,6 @@
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuidline41.334" />
 
-    <Button
-        android:id="@+id/opinionYesButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Yes"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" />
-
-    <Button
-        android:id="@+id/opinionNoButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="No"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" />
-
     <RadioGroup
         android:id="@+id/opinionShootingRadioGroup"
         android:layout_width="0dp"
@@ -713,5 +681,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.98" />
+
+    <RadioGroup
+        android:id="@+id/opinionPickRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline98"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" >
+
+        <RadioButton
+            android:id="@+id/opinionPickYesRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:text="Yes"
+            android:textAlignment="inherit"
+            android:textSize="90sp" />
+
+        <RadioButton
+            android:id="@+id/opinionPickNoRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:text="No"
+            android:textAlignment="inherit"
+            android:textSize="90sp" />
+    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>
