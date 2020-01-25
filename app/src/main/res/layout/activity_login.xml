@@ -102,7 +102,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#4aff08"
-        android:onClick="autonButtonPressed"
+        android:onClick="startButtonPressed"
         android:text="START"
         android:textAlignment="center"
         android:textColor="@android:color/black"

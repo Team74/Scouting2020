@@ -21,9 +21,10 @@ public class ScoutingApplication extends Application {
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
 
-    // scouting data members
-    protected int TNumber = 74;
-    protected int QRNumber = 1;
+    // primary key data
+    protected int TNumber = -1;
+    protected int QRNumber = -1;
+    protected String ScouterName = "Unknown";
 
     // Get functions
     public int getTeamNumber(){
@@ -96,13 +97,19 @@ public class ScoutingApplication extends Application {
 
     // Set Functions
     public void setTeamNumber(int teamNumber){
+        TNumber = teamNumber;
         entityTeamRoundData.TeamNumber = teamNumber;
     }
     public void setRoundNumber(int roundNumber){
+        QRNumber = roundNumber;
         entityTeamRoundData.RoundNumber = roundNumber;
     }
     public void setScouter(String scouter){
+        ScouterName = scouter;
         entityTeamRoundData.Scouter = scouter;
+    }
+    public void setTeamColor(String color){
+        entityTeamRoundData.TeamColor = color;
     }
     public void setAutonHighScore(int autonHighScore){
         entityTeamRoundData.AutonHighScore = autonHighScore;
@@ -186,41 +193,41 @@ public class ScoutingApplication extends Application {
 
     protected void refreshTeamRoundData(){
         // TNumber, QRNumber should be set from login screen!
-        if(TNumber != -1) {
+        if((entityTeamRoundData != null) && (TNumber != -1)) {
             entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
-            if(entityTeamRoundData == null){
-                // this shouldn't happen, as the record should be created
-                // during login, but if it does, zero everything out
-                entityTeamRoundData = new EntityTeamRoundData();
-                entityTeamRoundData.TeamNumber = TNumber;
-                entityTeamRoundData.RoundNumber = QRNumber;
-                entityTeamRoundData.Scouter = "Zane";
-                entityTeamRoundData.TeamColor = "Blue";
-                entityTeamRoundData.AutonHighScore = 0;
-                entityTeamRoundData.AutonLowScore = 0;
-                entityTeamRoundData.AutonPickUp = 0;
-                entityTeamRoundData.TeleopHighScore = 0;
-                entityTeamRoundData.TeleopLowScore = 0;
-                entityTeamRoundData.TeleopPickUp = 0;
-                entityTeamRoundData.RotationControl = false;
-                entityTeamRoundData.PositionControl = false;
-                entityTeamRoundData.Climb = "";
-                entityTeamRoundData.BrokeDown = false;
-                entityTeamRoundData.FinalStage = 0;
-                entityTeamRoundData.Notes = "";
-                entityTeamRoundData.RateShooting = 0;
-                entityTeamRoundData.RateClimb = 0;
-                entityTeamRoundData.RateWheel = 0;
-                entityTeamRoundData.RateAuton = 0;
-                entityTeamRoundData.RateDiver = 0;
-                entityTeamRoundData.WouldPick = false;
-            }
+        }
+        if(entityTeamRoundData == null){
+            // this shouldn't happen, as the record should be created
+            // during login, but if it does, zero everything out
+            entityTeamRoundData = new EntityTeamRoundData();
+            entityTeamRoundData.TeamNumber = -1;
+            entityTeamRoundData.RoundNumber = -1;
+            entityTeamRoundData.Scouter = "Unknown";
+            entityTeamRoundData.TeamColor = "Blue";
+            entityTeamRoundData.AutonHighScore = 0;
+            entityTeamRoundData.AutonLowScore = 0;
+            entityTeamRoundData.AutonPickUp = 0;
+            entityTeamRoundData.TeleopHighScore = 0;
+            entityTeamRoundData.TeleopLowScore = 0;
+            entityTeamRoundData.TeleopPickUp = 0;
+            entityTeamRoundData.RotationControl = false;
+            entityTeamRoundData.PositionControl = false;
+            entityTeamRoundData.Climb = "";
+            entityTeamRoundData.BrokeDown = false;
+            entityTeamRoundData.FinalStage = 0;
+            entityTeamRoundData.Notes = "";
+            entityTeamRoundData.RateShooting = 0;
+            entityTeamRoundData.RateClimb = 0;
+            entityTeamRoundData.RateWheel = 0;
+            entityTeamRoundData.RateAuton = 0;
+            entityTeamRoundData.RateDiver = 0;
+            entityTeamRoundData.WouldPick = false;
         }
     }
 
     protected void saveTeamRoundData(){
         // TNumber, QRNumber should be set from login screen!
-        if(TNumber != -1) {
+        if((entityTeamRoundData != null) && (TNumber != -1)) {
             // this will insert a new record, or replace the matching record
             daoTeamRoundData.insert(entityTeamRoundData);
         }
