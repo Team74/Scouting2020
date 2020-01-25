@@ -8,20 +8,24 @@ import android.widget.TextView;
 
 public class AutonActivity extends BaseActivity {
 
-    protected void DisplayHighGoalNumber(){
+    //Auton data members
+    protected int AutonHighGoalNumber = 0;
+    protected int AutonLowGoalNumber = 0;
+    protected int AutonPickUpNumber = 0;
 
+    protected void DisplayHighGoalNumber(){
         TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
-        HighGoalNumberText.setText("" + HighGoalNumber);
+        HighGoalNumberText.setText("" + AutonHighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
         TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumberTextView);
-        LowGoalNumberText.setText("" + LowGoalNumber);
+        LowGoalNumberText.setText("" + AutonLowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
         TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumberTextView);
-        PickUpNumberText.setText("" + PickUpNumber);
+        PickUpNumberText.setText("" + AutonPickUpNumber);
 
     }
 
@@ -32,7 +36,12 @@ public class AutonActivity extends BaseActivity {
 
         ((ScoutingApplication) this.getApplication()).StartUpDb();
 
-        ((ScoutingApplication) this.getApplication()).refreshAutonData(74, 1);
+        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+
+        AutonHighGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonHighScore();
+        AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
+        AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
+
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
@@ -50,46 +59,46 @@ public class AutonActivity extends BaseActivity {
     }
 
     public void autonHighGoalPlus(View autonHighGoalPlus) {
-        HighGoalNumber = HighGoalNumber + 1;
-     DisplayHighGoalNumber();
+        AutonHighGoalNumber = AutonHighGoalNumber + 1;
+        DisplayHighGoalNumber();
     }
 
     public void autonHighGoalMinus(View autonHighGoalMinus) {
-        if (HighGoalNumber > 0) {
-            HighGoalNumber = HighGoalNumber - 1;
+        if (AutonHighGoalNumber > 0) {
+            AutonHighGoalNumber = AutonHighGoalNumber - 1;
             DisplayHighGoalNumber();
         }
     }
 
     public void autonLowGoalPlus(View autonLowGoalPlus) {
-        LowGoalNumber = LowGoalNumber + 1;
+        AutonLowGoalNumber = AutonLowGoalNumber + 1;
         DisplayLowGoalNumber();
     }
 
     public void autonLowGoalMinus(View autonLowGoalMinus) {
-        if (LowGoalNumber > 0) {
-            LowGoalNumber = LowGoalNumber - 1;
+        if (AutonLowGoalNumber > 0) {
+            AutonLowGoalNumber = AutonLowGoalNumber - 1;
             DisplayLowGoalNumber();
         }
     }
 
     public void autonPickUpPlus(View autonPickUpPlus) {
-        PickUpNumber = PickUpNumber + 1;
+        AutonPickUpNumber = AutonPickUpNumber + 1;
         DisplayPickUpNumber();
     }
 
     public void autonPickUpMinus(View autonPickUpMinus) {
-        if(PickUpNumber > 0) {
-            PickUpNumber = PickUpNumber - 1;
+        if(AutonPickUpNumber > 0) {
+            AutonPickUpNumber = AutonPickUpNumber - 1;
             DisplayPickUpNumber();
         }
     }
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).setAutonHighScore(HighGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonLowScore(LowGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonPickUp(PickUpNumber);
-        ((ScoutingApplication) this.getApplication()).saveAutonData(74,1);
+        ((ScoutingApplication) this.getApplication()).setAutonHighScore(AutonHighGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonLowScore(AutonLowGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonPickUp(AutonPickUpNumber);
+        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }
 }

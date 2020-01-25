@@ -22,15 +22,8 @@ public class ScoutingApplication extends Application {
     DaoScouterName daoScouterName = null;
 
     // scouting data members
-    // Login data memberes
-    protected String TColor = null;
-    protected String Scout = null;
-    protected int TNumber = -1;
-    protected int QRNumber = 0;
-    //Auton data members
-    protected int AutonHighGoalNumber = 0;
-    protected int AutonLowGoalNumber = 0;
-    protected int AutonPickUpNumber = 0;
+    protected int TNumber = 74;
+    protected int QRNumber = 1;
 
     // Get functions
     public int getTeamNumber(){
@@ -101,7 +94,7 @@ public class ScoutingApplication extends Application {
     }
     // Get Functions End
 
-    // Set Funstions
+    // Set Functions
     public void setTeamNumber(int teamNumber){
         entityTeamRoundData.TeamNumber = teamNumber;
     }
@@ -190,15 +183,20 @@ public class ScoutingApplication extends Application {
             entityScouterName = new EntityScouterName();
         }
     }
-    protected void refreshAutonData(int teamNumber, int roundNumber){
-        if(entityTeamRoundData != null){
-            AutonHighGoalNumber = entityTeamRoundData.AutonHighScore;
-            AutonLowGoalNumber = entityTeamRoundData.AutonLowScore;
-            AutonPickUpNumber = entityTeamRoundData.AutonPickUp;
+
+    protected void refreshTeamRoundData(){
+        // TNumber, QRNumber should be set from login screen!
+        if(TNumber != -1) {
+            entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
         }
     }
-    protected void saveAutonData(int teamNumber, int roundNumber){
-        daoTeamRoundData.updateAuton(entityTeamRoundData.AutonHighScore, entityTeamRoundData.AutonLowScore, entityTeamRoundData.AutonPickUp, teamNumber, roundNumber);
+
+    protected void saveTeamRoundData(){
+        // TNumber, QRNumber should be set from login screen!
+        if(TNumber != -1) {
+            // this will insert a new record, or replace the matching record
+            daoTeamRoundData.insert(entityTeamRoundData);
+        }
     }
 
     // TBD: example of adding round data records
