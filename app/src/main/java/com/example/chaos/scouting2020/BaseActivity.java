@@ -5,17 +5,80 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class BaseActivity extends AppCompatActivity {
-    ScoutingDatabase db;
-    EntityTeamRoundData entityTeamRoundData;
-    EntityScouterName entityScouterName;
-    DaoTeamRoundData teamRound;
-    public void StartUp(int teamNumber, int roundNumber){
-        db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
-                .allowMainThreadQueries().build();
-        if(teamRound.getRecord(teamNumber,roundNumber) == null){
-            teamRound.insert(entityTeamRoundData);
+
+    // database members
+    ScoutingDatabase db = null;
+    EntityTeamRoundData entityTeamRoundData = null;
+    EntityScouterName entityScouterName = null;
+    DaoTeamRoundData daoTeamRoundData = null;
+    DaoScouterName daoScouterName = null;
+
+    // scouting data members
+    protected int HighGoalNumber = 0;
+    protected int LowGoalNumber = 0;
+    protected int PickUpNumber = 0;
+    protected String TColor = null;
+    protected String Scout = null;
+    protected int TNumber = -1;
+
+
+    public void StartUpDb(){
+        // get room (db)
+        if(db == null){
+            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDatabase")
+                    .allowMainThreadQueries().build();
+        }
+
+        // get data access objects (tables)
+        if(daoTeamRoundData == null){
+            daoTeamRoundData = db.daoTeamRoundData();
+        }
+        if(daoScouterName == null){
+            daoScouterName = db.daoScouterName();
+        }
+
+        // create entity (record) objects for each table
+        if(entityTeamRoundData == null){
+            entityTeamRoundData = new EntityTeamRoundData();
+        }
+        if(entityScouterName == null){
+            entityScouterName = new EntityScouterName();
         }
     }
 
+    protected void refreshAutonData(int teamNumber, int roundNumber){
+        entityTeamRoundData = daoTeamRoundData.getRecord(teamNumber, roundNumber);
+        if(entityTeamRoundData != null){
+            HighGoalNumber = entityTeamRoundData.AutonHighScore;
+            LowGoalNumber = entityTeamRoundData.AutonLowScore;
+            PickUpNumber = entityTeamRoundData.AutonPickUp;
+        }else{
+            HighGoalNumber = 0;
+            LowGoalNumber = 0;
+            PickUpNumber = 0;
+        }
+    }
+
+    protected void saveAutonData(int teamNumber, int roundNumber){
+        daoTeamRoundData.updateAuton(HighGoalNumber, LowGoalNumber, PickUpNumber, teamNumber, roundNumber);
+    }
+
+    public void AddAllRounds() {
+        for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
+            for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
+                entityTeamRoundData.TeamNumber = teamNumber;
+                entityTeamRoundData.RoundNumber = roundNumber;
+                daoTeamRoundData.insert(entityTeamRoundData);
+            }
+        }
+    }
+
+    public void AddAllScouters() {
+        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
+        for (String scouter: scouters) {
+            entityScouterName.ScouterName = scouter;
+            daoScouterName.insert(entityScouterName);
+        }
+    }
 
 }
