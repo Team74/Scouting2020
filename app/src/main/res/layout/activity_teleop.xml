@@ -73,10 +73,12 @@
         android:id="@+id/teleopQRNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="QR Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline9"
+        app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline9.334"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline2" />
@@ -85,18 +87,22 @@
         android:id="@+id/TeleopTNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Team Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline16.667"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teleopVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline9" />
+        app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline9.334" />
 
     <TextView
         android:id="@+id/teleopScouterTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Scouter Name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -123,7 +129,9 @@
         android:id="@+id/teleopPickUpNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="0"
         android:textAlignment="center"
@@ -213,6 +221,8 @@
         android:id="@+id/teleopAutonButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="autonButtonPressed"
         android:text="Auton"
         android:textColor="@android:color/black"
@@ -226,6 +236,8 @@
         android:id="@+id/teleopTeleopButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Teleop"
         android:textColor="@android:color/black"
         android:textSize="10sp"
@@ -238,6 +250,8 @@
         android:id="@+id/teleopEndGameButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="endgameButtonPressed"
         android:text="Endgame"
         android:textColor="@android:color/black"
@@ -325,11 +339,11 @@
         app:layout_constraintGuide_percent=".02" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/teleopHorizontalGuideline9"
+        android:id="@+id/teleopHorizontalGuideline9.334"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".09" />
+        app:layout_constraintGuide_percent=".09334" />
 
     <android.support.constraint.Guideline
         android:id="@+id/teleopHorizontalGuideline16.667"

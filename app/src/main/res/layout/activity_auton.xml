@@ -73,10 +73,12 @@
         android:id="@+id/autonQRNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="QR Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline9"
+        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline9.334"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline2" />
@@ -85,18 +87,22 @@
         android:id="@+id/autonTNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Team Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline16.667"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline9" />
+        app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline9.334" />
 
     <TextView
         android:id="@+id/autonScouterTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Scouter Name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -133,7 +139,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline75"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/autonLowGoalNumberTextView"
+        app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline50"
         app:layout_constraintTop_toBottomOf="@+id/autonPickUpTextView" />
 
     <Button
@@ -213,6 +219,8 @@
         android:id="@+id/autonAutonbutton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Auton"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -226,6 +234,8 @@
         android:id="@+id/autonTeleopButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="teleopButtonPressed"
         android:text="Teleop"
         android:textColor="@android:color/black"
@@ -240,6 +250,8 @@
         android:id="@+id/autonEndgameButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="endgameButtonPressed"
         android:text="Endgame"
         android:textAlignment="center"
@@ -294,11 +306,11 @@
         app:layout_constraintGuide_percent=".02" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/autonHorizontalGuideline9"
+        android:id="@+id/autonHorizontalGuideline9.334"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.09334" />
 
     <android.support.constraint.Guideline
         android:id="@+id/autonHorizontalGuideline16.667"
