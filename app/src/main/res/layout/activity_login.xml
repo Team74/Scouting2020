@@ -5,12 +5,10 @@
     android:id="@+id/loginConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:maxWidth="1024px"
-    android:maxHeight="600px"
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/loginTextView"
+        android:id="@+id/loginScouterTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -21,13 +19,13 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline20"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/loginTextView8"
+        android:id="@+id/loginQRNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -38,13 +36,13 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline2"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline40"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline" />
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline20" />
 
     <TextView
-        android:id="@+id/loginTextView9"
+        android:id="@+id/loginTeamNumerTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -55,13 +53,13 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline3"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline60"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline2" />
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline40" />
 
     <TextView
-        android:id="@+id/loginTextView10"
+        android:id="@+id/loginColorTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -72,13 +70,31 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline4"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline80"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline3" />
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline60" />
+
+    <EditText
+        android:id="@+id/loginQRNumberEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@android:color/black"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline20" />
 
     <Button
-        android:id="@+id/loginButton11"
+        android:id="@+id/loginStartButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -89,12 +105,56 @@
         android:onClick="autonButtonPressed"
         android:text="START"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/loginGuideline6"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline70"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="@+id/loginGuideline5"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline4" />
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline80" />
+
+    <RadioGroup
+        android:id="@+id/loginColorRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline60">
+
+        <RadioButton
+            android:id="@+id/loginBlueRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/black"
+            android:buttonTint="@android:color/black"
+            android:onClick="blueRadioButtonPressed"
+            android:text="Blue"
+            android:textColor="@android:color/black"
+            android:textSize="70sp" />
+
+        <RadioButton
+            android:id="@+id/loginRedRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:onClick="redRadioButtonPressed"
+            android:text="Red"
+            android:textColor="@android:color/black"
+            android:textSize="70sp" />
+
+    </RadioGroup>
 
     <Spinner
         android:id="@+id/loginScouterSpinner"
@@ -107,110 +167,14 @@
         android:entries="@array/name_array"
         android:prompt="@string/name_prompt"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.548"
-        app:layout_constraintStart_toEndOf="@+id/loginTextView"
+        app:layout_constraintStart_toEndOf="@+id/loginScouterTextView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="256dp"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="356dp"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="468dp"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="523dp"
-        app:layout_constraintGuide_percent="0.3" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="586dp"
-        app:layout_constraintGuide_percent=".7" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/loginGuideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="613dp"
-        app:layout_constraintGuide_percent=".65" />
-
-    <RadioGroup
-        android:id="@+id/loginRadioGroup3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginGuideline5"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline3">
-
-        <RadioButton
-            android:id="@+id/loginBlueRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="@android:color/black"
-            android:buttonTint="@android:color/black"
-            android:onClick="blueRadioButtonPressed"
-            android:text="Blue"
-            android:textSize="70sp" />
-
-        <RadioButton
-            android:id="@+id/loginRedRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1"
-            android:buttonTint="@android:color/black"
-            android:onClick="redRadioButtonPressed"
-            android:text="Red"
-            android:textSize="70sp" />
-
-    </RadioGroup>
-
     <Spinner
-        android:id="@+id/loginTeamNumSelector"
+        android:id="@+id/loginTeamNumberSpinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -218,27 +182,52 @@
         android:layout_marginBottom="8dp"
         android:entries="@array/teamNum_array"
         android:prompt="@string/teamNum_prompt"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline3"
+        app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline60"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.548"
-        app:layout_constraintStart_toEndOf="@+id/loginGuideline5"
-        app:layout_constraintTop_toTopOf="@id/loginGuideline2" />
+        app:layout_constraintStart_toEndOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintTop_toTopOf="@id/loginHorizontalGuideline40" />
 
-    <EditText
-        android:id="@+id/loginEditText2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@android:color/black"
-        android:ems="10"
-        android:inputType="number"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginGuideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginGuideline5"
-        app:layout_constraintTop_toTopOf="@+id/loginGuideline" />
+    <android.support.constraint.Guideline
+        android:id="@+id/loginHorizontalGuideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/loginHorizontalGuideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/loginHorizontalGuideline60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/loginHorizontalGuideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/loginVerticalGuideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/loginVerticalGuideline70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".7" />
 
 </android.support.constraint.ConstraintLayout>

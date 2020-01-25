@@ -14,9 +14,9 @@ public class BaseActivity extends AppCompatActivity {
     DaoScouterName daoScouterName = null;
 
     // scouting data members
-    protected int AutonHighGoalNumber = 0;
-    protected int AutonLowGoalNumber = 0;
-    protected int AutonPickUpNumber = 0;
+    protected int HighGoalNumber = 0;
+    protected int LowGoalNumber = 0;
+    protected int PickUpNumber = 0;
     protected String TColor = null;
     protected String Scout = null;
     protected int TNumber = -1;

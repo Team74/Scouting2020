@@ -9,18 +9,20 @@ import android.widget.TextView;
 public class AutonActivity extends BaseActivity {
 
     protected void DisplayHighGoalNumber(){
-        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumber);
-        HighGoalNumberText.setText("" + ((ScoutingApplication) this.getApplication()).getAutonHighScore());
+
+        TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
+        HighGoalNumberText.setText("" + HighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
-        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumber);
-        LowGoalNumberText.setText("" + ((ScoutingApplication) this.getApplication()).getAutonLowScore());
+        TextView LowGoalNumberText = (TextView) findViewById(R.id.autonLowGoalNumberTextView);
+        LowGoalNumberText.setText("" + LowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
-        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumber);
-        PickUpNumberText.setText("" + ((ScoutingApplication) this.getApplication()).getAutonPickUp());
+        TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumberTextView);
+        PickUpNumberText.setText("" + PickUpNumber);
+
     }
 
     @Override
@@ -48,46 +50,46 @@ public class AutonActivity extends BaseActivity {
     }
 
     public void autonHighGoalPlus(View autonHighGoalPlus) {
-        AutonHighGoalNumber = AutonHighGoalNumber + 1;
+        HighGoalNumber = HighGoalNumber + 1;
      DisplayHighGoalNumber();
     }
 
     public void autonHighGoalMinus(View autonHighGoalMinus) {
-        if (AutonHighGoalNumber > 0) {
-            AutonHighGoalNumber = AutonHighGoalNumber - 1;
+        if (HighGoalNumber > 0) {
+            HighGoalNumber = HighGoalNumber - 1;
             DisplayHighGoalNumber();
         }
     }
 
     public void autonLowGoalPlus(View autonLowGoalPlus) {
-        AutonLowGoalNumber = AutonLowGoalNumber + 1;
+        LowGoalNumber = LowGoalNumber + 1;
         DisplayLowGoalNumber();
     }
 
     public void autonLowGoalMinus(View autonLowGoalMinus) {
-        if (AutonLowGoalNumber > 0) {
-            AutonLowGoalNumber = AutonLowGoalNumber - 1;
+        if (LowGoalNumber > 0) {
+            LowGoalNumber = LowGoalNumber - 1;
             DisplayLowGoalNumber();
         }
     }
 
     public void autonPickUpPlus(View autonPickUpPlus) {
-        AutonPickUpNumber = AutonPickUpNumber + 1;
+        PickUpNumber = PickUpNumber + 1;
         DisplayPickUpNumber();
     }
 
     public void autonPickUpMinus(View autonPickUpMinus) {
-        if(AutonPickUpNumber > 0) {
-            AutonPickUpNumber = AutonPickUpNumber - 1;
+        if(PickUpNumber > 0) {
+            PickUpNumber = PickUpNumber - 1;
             DisplayPickUpNumber();
         }
     }
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).setAutonHighScore(AutonHighGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonLowScore(AutonLowGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonPickUp(AutonPickUpNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonHighScore(HighGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonLowScore(LowGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonPickUp(PickUpNumber);
         ((ScoutingApplication) this.getApplication()).saveAutonData(74,1);
     }
 }
