@@ -5,36 +5,53 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class TeleopActivity extends BaseActivity {
-    protected int HighGoalNumber = 0;
-    protected int LowGoalNumber = 0;
-    protected int PickUpNumber = 0;
+    protected int TeleopHighGoalNumber = 0;
+    protected int TeleopLowGoalNumber = 0;
+    protected int TeleopPickUpNumber = 0;
+    protected boolean TeleopRotationControl = false;
+    protected boolean TeleopPositionControl = false;
+
     protected void DisplayHighGoalNumber() {
         TextView HighGoalNumberText = (TextView) findViewById(R.id.teleopHighGoalNumberTextView);
-        HighGoalNumberText.setText("" + HighGoalNumber);
+        HighGoalNumberText.setText("" + TeleopHighGoalNumber);
     }
 
     protected void DisplayLowGoalNumber() {
         TextView LowGoalNumberText = (TextView) findViewById(R.id.teleopLowGoalNumberTextView);
-        LowGoalNumberText.setText("" + LowGoalNumber);
+        LowGoalNumberText.setText("" + TeleopLowGoalNumber);
     }
 
     protected void DisplayPickUpNumber() {
         TextView PickUpNumberText = (TextView) findViewById(R.id.teleopPickUpNumberTextView);
-        PickUpNumberText.setText("" + PickUpNumber);
+        PickUpNumberText.setText("" + TeleopPickUpNumber);
     }
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
 
         ((ScoutingApplication) this.getApplication()).StartUpDb();
 
+        TeleopHighGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopHighScore();
+        TeleopLowGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopLowScore();
+        TeleopPickUpNumber = ((ScoutingApplication) this.getApplication()).getTeleopPickUp();
+        TeleopRotationControl = ((ScoutingApplication) this.getApplication()).getRotationControl();
+        TeleopPositionControl = ((ScoutingApplication) this.getApplication()).getPositionControl();
+
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
+
+        ToggleButton RotationControl = (ToggleButton) findViewById(R.id.teleopRotationControlToggleButton);
+        RotationControl.setChecked(TeleopRotationControl);
+
+        ToggleButton PositionControl = (ToggleButton) findViewById(R.id.teleopPositionControlToggleButton);
+        PositionControl.setChecked(TeleopPositionControl);
 
     }
 
@@ -49,39 +66,58 @@ public class TeleopActivity extends BaseActivity {
     }
 
     public void teleopHighGoalPlus(View teleopHighGoalPlus) {
-        HighGoalNumber = HighGoalNumber + 1;
+        TeleopHighGoalNumber = TeleopHighGoalNumber + 1;
         DisplayHighGoalNumber();
     }
 
     public void teleopHighGoalMinus(View teleopHighGoalMinus) {
-        if (HighGoalNumber != 0) {
-            HighGoalNumber = HighGoalNumber - 1;
+        if (TeleopHighGoalNumber > 0) {
+            TeleopHighGoalNumber = TeleopHighGoalNumber - 1;
             DisplayHighGoalNumber();
         }
-
     }
 
     public void teleopLowGoalPlus(View teleopLowGoalPlus) {
-        LowGoalNumber = LowGoalNumber + 1;
+        TeleopLowGoalNumber = TeleopLowGoalNumber + 1;
         DisplayLowGoalNumber();
     }
 
     public void teleopLowGoalMinus(View teleopLowGoalMinus) {
-        if (LowGoalNumber != 0) {
-            LowGoalNumber = LowGoalNumber - 1;
+        if (TeleopLowGoalNumber > 0) {
+            TeleopLowGoalNumber = TeleopLowGoalNumber - 1;
             DisplayLowGoalNumber();
         }
     }
 
     public void teleopPickUpPlus(View teleopPickUpPlus) {
-        PickUpNumber = PickUpNumber + 1;
+        TeleopPickUpNumber = TeleopPickUpNumber + 1;
         DisplayPickUpNumber();
     }
 
     public void teleopPickUpMinus(View teleopPickUpMinus) {
-        if (PickUpNumber != 0) {
-            PickUpNumber = PickUpNumber - 1;
+        if (TeleopPickUpNumber > 0) {
+            TeleopPickUpNumber = TeleopPickUpNumber - 1;
             DisplayPickUpNumber();
         }
+    }
+
+    public void teleopRotationControl(View teleopRotationControl) {
+        TeleopRotationControl = !TeleopRotationControl;
+    }
+
+
+    public void teleopPositionControl(View teleopPositionControl) {
+            TeleopPositionControl = !TeleopPositionControl;
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+        ((ScoutingApplication) this.getApplication()).setTeleopHighScore(TeleopHighGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setTeleopLowScore(TeleopLowGoalNumber);
+        ((ScoutingApplication) this.getApplication()).setTeleopPickUp(TeleopPickUpNumber);
+        ((ScoutingApplication) this.getApplication()).setRotationControl(TeleopRotationControl);
+        ((ScoutingApplication) this.getApplication()).setPositionControl(TeleopPositionControl);
+        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }
 }
