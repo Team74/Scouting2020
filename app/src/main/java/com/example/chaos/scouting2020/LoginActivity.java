@@ -46,9 +46,11 @@ public class LoginActivity extends BaseActivity {
 //        StartUp(1,1);
         EditText QRNumber;
         QRNumber = (EditText)findViewById(R.id.loginEditText2);
-        Log.d("QRNumber", String.valueOf(QRNumber));
-        Log.d("QRNumber.getText()-----", QRNumber.getText().toString());
-        //int QR = Integer.parseInt(String.valueOf(QRNumber.getText()));
+        String QRCheck = QRNumber.getText().toString();
+        Log.d("--------Qr check-------", "-----------|" + QRCheck + "|----------");
+        if(QRNumber.getText().toString() != ""){
+            int QR = Integer.parseInt(String.valueOf(QRNumber.getText()));
+        }
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }
