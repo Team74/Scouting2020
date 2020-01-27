@@ -7,12 +7,21 @@ import android.view.View;
 
 public class EndgameActivity extends BaseActivity {
 
+    // Android can suspend, terminate, destroy *any* activity at *any*
+    // time for a lot reasons (triggering the OnPause), and a subsequent
+    // OnCreate when the activity is restarted.  Member variables like
+    // the ones below will be destroyed and lose any previously saved
+    // values.  Thus, you need to make sure you reload them every time
+    // during your OnCreate from the DB.
+    protected boolean endgameDidClimb = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endgame);
 
-        ((ScoutingApplication) this.getApplication()).StartUpDb();
+        // load any previously collected data for current team/round
+        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
     }
 
     public void opinionButtonPressed(View opinionButton) {
@@ -60,5 +69,11 @@ public class EndgameActivity extends BaseActivity {
 
     public void stageThreePressed(View stageThreeButton) {
 
+    }
+
+    protected void onPause() {
+        super.onPause();
+        // save any updated data for current team/round
+        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }
 }

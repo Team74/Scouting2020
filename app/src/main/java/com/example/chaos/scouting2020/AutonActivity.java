@@ -8,7 +8,12 @@ import android.widget.TextView;
 
 public class AutonActivity extends BaseActivity {
 
-    //Auton data members
+    // Android can suspend, terminate, destroy *any* activity at *any*
+    // time for a lot reasons (triggering the OnPause), and a subsequent
+    // OnCreate when the activity is restarted.  Member variables like
+    // the ones below will be destroyed and lose any previously saved
+    // values.  Thus, you need to make sure you reload them every time
+    // during your OnCreate from the DB.
     protected int AutonHighGoalNumber = 0;
     protected int AutonLowGoalNumber = 0;
     protected int AutonPickUpNumber = 0;
@@ -34,8 +39,7 @@ public class AutonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
 
-        ((ScoutingApplication) this.getApplication()).StartUpDb();
-
+        // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
 
         AutonHighGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonHighScore();
@@ -99,6 +103,7 @@ public class AutonActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).setAutonHighScore(AutonHighGoalNumber);
         ((ScoutingApplication) this.getApplication()).setAutonLowScore(AutonLowGoalNumber);
         ((ScoutingApplication) this.getApplication()).setAutonPickUp(AutonPickUpNumber);
+        // save any updated data for current team/round
         ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }
 }

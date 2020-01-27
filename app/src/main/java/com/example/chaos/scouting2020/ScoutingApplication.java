@@ -8,23 +8,25 @@ import android.arch.persistence.room.Room;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Date;
 
 public class ScoutingApplication extends Application {
 
     // database members
     ScoutingDatabase db = null;
-    EntityTeamRoundData entityTeamRoundData = null;
-    EntityScouterName entityScouterName = null;
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
+    EntityTeamRoundData entityTeamRoundData = null;
+    EntityScouterName entityScouterName = null;
 
     // primary key data
-    protected int TNumber = -1;
-    protected int QRNumber = -1;
-    protected String ScouterName = "Unknown";
+    private int TNumber = -1;
+    private int QRNumber = -1;
 
     // Get functions
     public int getTeamNumber(){
@@ -97,18 +99,21 @@ public class ScoutingApplication extends Application {
 
     // Set Functions
     public void setTeamNumber(int teamNumber){
+        // should only be set from login activity
         TNumber = teamNumber;
         entityTeamRoundData.TeamNumber = teamNumber;
     }
     public void setRoundNumber(int roundNumber){
+        // should only be set from login activity
         QRNumber = roundNumber;
         entityTeamRoundData.RoundNumber = roundNumber;
     }
     public void setScouter(String scouter){
-        ScouterName = scouter;
+        // should only be set from login activity
         entityTeamRoundData.Scouter = scouter;
     }
     public void setTeamColor(String color){
+        // should only be set from login activity
         entityTeamRoundData.TeamColor = color;
     }
     public void setAutonHighScore(int autonHighScore){
@@ -167,13 +172,13 @@ public class ScoutingApplication extends Application {
     }
     // Set Functions End
 
-    public void StartUpDb(){
+    // This is a helper function to setup DB and DAOs.
+    private void StartUpDb(){
         // get room (db)
         if(db == null){
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
                     .allowMainThreadQueries().build();
         }
-
         // get data access objects (tables)
         if(daoTeamRoundData == null){
             daoTeamRoundData = db.daoTeamRoundData();
@@ -181,55 +186,79 @@ public class ScoutingApplication extends Application {
         if(daoScouterName == null){
             daoScouterName = db.daoScouterName();
         }
-
-        // create entity (record) objects for each table
-        if(entityTeamRoundData == null){
-            entityTeamRoundData = new EntityTeamRoundData();
-        }
-        if(entityScouterName == null){
-            entityScouterName = new EntityScouterName();
-        }
     }
 
+    // Create a new TeamRoundData entity structure.
+    // This should only be called from the login activity.
+    // And possibly some of the DB error handlers.
+    protected void newTeamRoundData() {
+        // make sure DB started
+        StartUpDb();
+
+        // create a new empty record.
+        entityTeamRoundData = new EntityTeamRoundData();
+        entityTeamRoundData.TeamNumber = -1;
+        entityTeamRoundData.RoundNumber = -1;
+        entityTeamRoundData.Scouter = "Unknown";
+        entityTeamRoundData.TeamColor = "Blue";
+        entityTeamRoundData.AutonHighScore = 0;
+        entityTeamRoundData.AutonLowScore = 0;
+        entityTeamRoundData.AutonPickUp = 0;
+        entityTeamRoundData.TeleopHighScore = 0;
+        entityTeamRoundData.TeleopLowScore = 0;
+        entityTeamRoundData.TeleopPickUp = 0;
+        entityTeamRoundData.RotationControl = false;
+        entityTeamRoundData.PositionControl = false;
+        entityTeamRoundData.Climb = "";
+        entityTeamRoundData.BrokeDown = false;
+        entityTeamRoundData.FinalStage = 0;
+        entityTeamRoundData.Notes = "";
+        entityTeamRoundData.RateShooting = 0;
+        entityTeamRoundData.RateClimb = 0;
+        entityTeamRoundData.RateWheel = 0;
+        entityTeamRoundData.RateAuton = 0;
+        entityTeamRoundData.RateDiver = 0;
+        entityTeamRoundData.WouldPick = false;
+
+        // reset member variables
+        TNumber = -1;
+        QRNumber = -1;
+    }
+
+    // Based on the current TNumber and QRNumber, load any previous team round data.
+    // This should be called from the OnCreate of all activities except login.
     protected void refreshTeamRoundData(){
-        // TNumber, QRNumber should be set from login screen!
-        if((entityTeamRoundData != null) && (TNumber != -1)) {
+        // make sure DB started
+        StartUpDb();
+
+        // TNumber, QRNumber should be set to valid values from login screen!
+        if((TNumber > 0) && (QRNumber > 0)) {
             entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
         }
         if(entityTeamRoundData == null){
-            // this shouldn't happen, as the record should be created
-            // during login, but if it does, zero everything out
-            entityTeamRoundData = new EntityTeamRoundData();
-            entityTeamRoundData.TeamNumber = -1;
-            entityTeamRoundData.RoundNumber = -1;
-            entityTeamRoundData.Scouter = "Unknown";
-            entityTeamRoundData.TeamColor = "Blue";
-            entityTeamRoundData.AutonHighScore = 0;
-            entityTeamRoundData.AutonLowScore = 0;
-            entityTeamRoundData.AutonPickUp = 0;
-            entityTeamRoundData.TeleopHighScore = 0;
-            entityTeamRoundData.TeleopLowScore = 0;
-            entityTeamRoundData.TeleopPickUp = 0;
-            entityTeamRoundData.RotationControl = false;
-            entityTeamRoundData.PositionControl = false;
-            entityTeamRoundData.Climb = "";
-            entityTeamRoundData.BrokeDown = false;
-            entityTeamRoundData.FinalStage = 0;
-            entityTeamRoundData.Notes = "";
-            entityTeamRoundData.RateShooting = 0;
-            entityTeamRoundData.RateClimb = 0;
-            entityTeamRoundData.RateWheel = 0;
-            entityTeamRoundData.RateAuton = 0;
-            entityTeamRoundData.RateDiver = 0;
-            entityTeamRoundData.WouldPick = false;
+            // This shouldn't happen, as the record should be created during login
+            // but if it does, create an empty record and zero everything out
+            // TBD:  should we send them back to the login activity if this does happen?
+            newTeamRoundData();
         }
     }
 
+    // Save the current team round data record to the DB.
+    // This should be called from the OnPause of *all* activities.
     protected void saveTeamRoundData(){
-        // TNumber, QRNumber should be set from login screen!
-        if((entityTeamRoundData != null) && (TNumber != -1)) {
+        // make sure DB started
+        StartUpDb();
+
+        // TNumber, QRNumber should be set to valid values from login screen!
+        if((entityTeamRoundData != null) && (TNumber > 0) && (QRNumber > 0)) {
             // this will insert a new record, or replace the matching record
             daoTeamRoundData.insert(entityTeamRoundData);
+        } else {
+            // This shouldn't typically happen, as the record should be created during login.
+            // However, as Android can suspend, terminate, destroy *any* activity at *any*
+            // time for a lot reasons (triggering the OnPause), we need to be
+            // prepared that TNumber or QRNumber might not be valid.
+            // TBD:  should we send them back to the login activity if this does happen?
         }
     }
 
@@ -256,9 +285,11 @@ public class ScoutingApplication extends Application {
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-            String fileName = "ScouterNames-"+androidId+".csv";
+            String fileName = curDate+"-ScouterNames-"+androidId+".csv";
             String filePath = baseDir + File.separator + fileName;
 
             // we are exporting everything, so recreate each time

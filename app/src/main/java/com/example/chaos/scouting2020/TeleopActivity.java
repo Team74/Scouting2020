@@ -8,6 +8,13 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class TeleopActivity extends BaseActivity {
+
+    // Android can suspend, terminate, destroy *any* activity at *any*
+    // time for a lot reasons (triggering the OnPause), and a subsequent
+    // OnCreate when the activity is restarted.  Member variables like
+    // the ones below will be destroyed and lose any previously saved
+    // values.  Thus, you need to make sure you reload them every time
+    // during your OnCreate from the DB.
     protected int TeleopHighGoalNumber = 0;
     protected int TeleopLowGoalNumber = 0;
     protected int TeleopPickUpNumber = 0;
@@ -35,7 +42,8 @@ public class TeleopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
 
-        ((ScoutingApplication) this.getApplication()).StartUpDb();
+        // load any previously collected data for current team/round
+        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
 
         TeleopHighGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopHighScore();
         TeleopLowGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopLowScore();
@@ -107,8 +115,7 @@ public class TeleopActivity extends BaseActivity {
 
 
     public void teleopPositionControl(View teleopPositionControl) {
-            TeleopPositionControl = !TeleopPositionControl;
-
+        TeleopPositionControl = !TeleopPositionControl;
     }
 
     protected void onPause() {
@@ -118,6 +125,7 @@ public class TeleopActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).setTeleopPickUp(TeleopPickUpNumber);
         ((ScoutingApplication) this.getApplication()).setRotationControl(TeleopRotationControl);
         ((ScoutingApplication) this.getApplication()).setPositionControl(TeleopPositionControl);
+        // save any updated data for current team/round
         ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }
 }
