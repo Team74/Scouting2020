@@ -28,6 +28,9 @@ public class EntityTeamRoundData {
     public int AutonPickUp;
 
     @ColumnInfo
+    public boolean AutonStartLine;
+
+    @ColumnInfo
     public int TeleopHighScore;
 
     @ColumnInfo

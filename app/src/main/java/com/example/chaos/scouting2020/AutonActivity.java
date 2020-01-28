@@ -17,6 +17,7 @@ public class AutonActivity extends BaseActivity {
     protected int AutonHighGoalNumber = 0;
     protected int AutonLowGoalNumber = 0;
     protected int AutonPickUpNumber = 0;
+    protected boolean AutonStartLineMove = false;
 
     protected void DisplayHighGoalNumber(){
         TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
@@ -45,6 +46,7 @@ public class AutonActivity extends BaseActivity {
         AutonHighGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonHighScore();
         AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
+        AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
@@ -103,6 +105,7 @@ public class AutonActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).setAutonHighScore(AutonHighGoalNumber);
         ((ScoutingApplication) this.getApplication()).setAutonLowScore(AutonLowGoalNumber);
         ((ScoutingApplication) this.getApplication()).setAutonPickUp(AutonPickUpNumber);
+        ((ScoutingApplication) this.getApplication()).setAutonStartLine(AutonStartLineMove);
         // save any updated data for current team/round
         ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
     }

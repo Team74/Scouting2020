@@ -50,6 +50,9 @@ public class ScoutingApplication extends Application {
     public int getAutonPickUp(){
         return entityTeamRoundData.AutonPickUp;
     }
+    public boolean getAutonStartLine(){
+        return entityTeamRoundData.AutonStartLine;
+    }
     public int getTeleopHighScore(){
         return entityTeamRoundData.TeleopHighScore;
     }
@@ -124,6 +127,9 @@ public class ScoutingApplication extends Application {
     }
     public void setAutonPickUp(int autonPickUp){
         entityTeamRoundData.AutonPickUp = autonPickUp;
+    }
+    public void setAutonStartLine(boolean autonStartLine){
+        entityTeamRoundData.AutonStartLine = autonStartLine;
     }
     public void setTeleopHighScore(int teleopHighScore){
         entityTeamRoundData.TeleopHighScore = teleopHighScore;
