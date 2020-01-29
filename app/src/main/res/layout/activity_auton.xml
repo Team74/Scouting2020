@@ -2,9 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/autonConstraintLayout"
+    android:id="@+id/CSVNames"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="CSVNamesButton"
     tools:context=".AutonActivity">
 
     <TextView
@@ -396,5 +397,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="CSVNamesButton"
+        android:text="CSV"
+        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline49"
+        app:layout_constraintEnd_toStartOf="@+id/autonTNumberTextView"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toEndOf="@+id/autonHighGoalNumberTextView"
+        app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline33.667"
+        app:layout_constraintVertical_bias="0.125" />
 
 </android.support.constraint.ConstraintLayout>

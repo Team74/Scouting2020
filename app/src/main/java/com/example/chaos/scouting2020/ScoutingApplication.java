@@ -183,7 +183,11 @@ public class ScoutingApplication extends Application {
         // get room (db)
         if(db == null){
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
-                    .allowMainThreadQueries().build();
+                    .allowMainThreadQueries().fallbackToDestructiveMigration().build();
+
+            // TBD: figure out how to allow for "Destructive Migrations" of the ROOM DB
+            // for when the version changes
+
         }
         // get data access objects (tables)
         if(daoTeamRoundData == null){
@@ -239,7 +243,11 @@ public class ScoutingApplication extends Application {
 
         // TNumber, QRNumber should be set to valid values from login screen!
         if((TNumber > 0) && (QRNumber > 0)) {
-            entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
+            try {
+                entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         if(entityTeamRoundData == null){
             // This shouldn't happen, as the record should be created during login
