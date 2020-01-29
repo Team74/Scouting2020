@@ -19,7 +19,7 @@ public class AutonActivity extends BaseActivity {
     protected int AutonPickUpNumber = 0;
     protected boolean AutonStartLineMove = false;
 
-    protected void DisplayHighGoalNumber(){
+    protected void DisplayHighGoalNumber() {
         TextView HighGoalNumberText = (TextView) findViewById(R.id.autonHighGoalNumberTextView);
         HighGoalNumberText.setText("" + AutonHighGoalNumber);
     }
@@ -47,6 +47,7 @@ public class AutonActivity extends BaseActivity {
         AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
         AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
+
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
@@ -94,10 +95,18 @@ public class AutonActivity extends BaseActivity {
     }
 
     public void autonPickUpMinus(View autonPickUpMinus) {
-        if(AutonPickUpNumber > 0) {
+        if (AutonPickUpNumber > 0) {
             AutonPickUpNumber = AutonPickUpNumber - 1;
             DisplayPickUpNumber();
         }
+    }
+
+    public void autonStartLineYes(View autonStartLineYes) {
+        AutonStartLineMove = true;
+    }
+
+    public void autonStartLineNo(View autonStartLineNo) {
+        AutonStartLineMove = false;
     }
 
     protected void onPause() {

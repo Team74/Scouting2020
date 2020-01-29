@@ -75,7 +75,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="QR Number"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline9.334"
@@ -318,14 +318,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".166666667" />
+        app:layout_constraintGuide_begin="100dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/autonHorizontalGuideline24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".24" />
+        app:layout_constraintGuide_percent="0.49" />
 
     <android.support.constraint.Guideline
         android:id="@+id/autonHorizontalGuideline25"
@@ -396,5 +396,65 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <RadioGroup
+        android:id="@+id/autoStartLineRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/autonVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/autonYesRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:onClick="autonStartLineYes"
+            android:text="Yes"
+            android:textAlignment="inherit"
+            android:textSize="30sp" />
+
+        <RadioButton
+            android:id="@+id/autonNoRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@android:color/black"
+            android:onClick="autonStartLineNo"
+            android:text="No"
+            android:textAlignment="inherit"
+            android:textSize="30sp" />
+    </RadioGroup>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="116dp"
+        app:layout_constraintGuide_percent=".15" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="656dp"
+        app:layout_constraintGuide_percent=".625" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Did the robot leave the starting line?"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/autonVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
