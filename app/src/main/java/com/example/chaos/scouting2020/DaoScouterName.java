@@ -13,4 +13,7 @@ public interface DaoScouterName {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(EntityScouterName entityScouterName);
+
+    @Query("SELECT ScouterName FROM EntityScouterName")
+    String[] getAllScouterNames();
 }

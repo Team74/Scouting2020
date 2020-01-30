@@ -1,6 +1,9 @@
 package com.example.chaos.scouting2020;
 
 import android.app.Application;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.Settings;
 import android.widget.Toast;
 import android.arch.persistence.room.Room;
@@ -247,10 +250,13 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
             } catch (Exception e) {
                 e.printStackTrace();
+                // The record for that TNumber/QRNumber doesn't exist.
+                // entityTeamRoundData will be null and the code below
+                // will create a new empty record.
             }
         }
         if(entityTeamRoundData == null){
-            // This shouldn't happen, as the record should be created during login
+            // This shouldn't normally happen, as the record should be created during login,
             // but if it does, create an empty record and zero everything out
             // TBD:  should we send them back to the login activity if this does happen?
             newTeamRoundData();
@@ -278,6 +284,9 @@ public class ScoutingApplication extends Application {
 
     // TBD: example of adding round data records
     public void AddAllRounds() {
+        if(entityScouterName == null) {
+            newTeamRoundData();
+        }
         for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
             for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
                 entityTeamRoundData.TeamNumber = teamNumber;
@@ -288,8 +297,11 @@ public class ScoutingApplication extends Application {
     }
 
     // TBD: example of adding ScouterNames
-    public void AddAllScouters() {
-        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
+    public void AddAllScouterNames() {
+        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
+        if(entityScouterName == null) {
+            entityScouterName = new EntityScouterName();
+        }
         for (String scouter: scouters) {
             entityScouterName.ScouterName = scouter;
             daoScouterName.insert(entityScouterName);
@@ -299,19 +311,20 @@ public class ScoutingApplication extends Application {
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
+            // TBD: eventually we want to date/time stamp each export
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
+            //String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-            String fileName = curDate+"-ScouterNames-"+androidId+".csv";
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
+            String fileName = "ScouterNames-"+androidId+".csv";
             String filePath = baseDir + File.separator + fileName;
 
             // we are exporting everything, so recreate each time
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
 
-            // TBD: these names should come from the a select * on the ScouterNames table
-            String[] scouters = { "Allen Z.", "Ben Y.", "Clara X." };
-            // TBD: for each scouter name in the ScouterNames table
+            // get all scouters
+            String[] scouters = daoScouterName.getAllScouterNames();
+            // for each scouter name in the ScouterNames table returned via the select
             for (String scouter: scouters) {
                 String[] csvLine = { scouter };
                 writer.writeNext(csvLine);
@@ -327,7 +340,7 @@ public class ScoutingApplication extends Application {
     public void importScouterNames() {
         try {
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String fileName = "ScouterNames-"+androidId+".csv";
             String filePath = baseDir + File.separator + fileName;
 
@@ -337,9 +350,11 @@ public class ScoutingApplication extends Application {
                 // csvLine[] is an array of values parsed from from the CSV line
                 String scouter = csvLine[0];
                 if (!scouter.isEmpty()) {
-                    // TBD: add the scouter to our ScouterNames table
-                    //entityScouterName.ScouterName = scouter;
-                    //daoScouterName.insert(entityScouterName);
+                    if(entityScouterName == null) {
+                        entityScouterName = new EntityScouterName();
+                    }
+                    entityScouterName.ScouterName = scouter;
+                    daoScouterName.insert(entityScouterName);
                 }
             }
         } catch (Exception e) {

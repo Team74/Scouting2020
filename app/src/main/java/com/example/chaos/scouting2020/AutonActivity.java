@@ -33,7 +33,6 @@ public class AutonActivity extends BaseActivity {
     protected void DisplayPickUpNumber() {
         TextView PickUpNumberText = (TextView) findViewById(R.id.autonPickUpNumberTextView);
         PickUpNumberText.setText("" + AutonPickUpNumber);
-
     }
 
     @Override
@@ -49,7 +48,6 @@ public class AutonActivity extends BaseActivity {
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
         AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
 
-
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
@@ -58,7 +56,6 @@ public class AutonActivity extends BaseActivity {
     public void teleopButtonPressed(View teleopButton) {
         Intent intent = new Intent(this, TeleopActivity.class);
         startActivity(intent);
-
     }
 
     public void endgameButtonPressed(View endgameButton) {
@@ -102,7 +99,7 @@ public class AutonActivity extends BaseActivity {
         }
     }
 
-
+    // TBD: temp button for testing csv code
     public void CSVNamesButton(View CSVNamesButton) {
         Log.d("CSV", "Starts");
         ((ScoutingApplication) this.getApplication()).exportScouterNames();

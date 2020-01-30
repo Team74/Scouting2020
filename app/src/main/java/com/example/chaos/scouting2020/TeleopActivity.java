@@ -60,7 +60,6 @@ public class TeleopActivity extends BaseActivity {
 
         ToggleButton PositionControl = (ToggleButton) findViewById(R.id.teleopPositionControlToggleButton);
         PositionControl.setChecked(TeleopPositionControl);
-
     }
 
     public void autonButtonPressed(View autonButton) {
@@ -112,7 +111,6 @@ public class TeleopActivity extends BaseActivity {
     public void teleopRotationControl(View teleopRotationControl) {
         TeleopRotationControl = !TeleopRotationControl;
     }
-
 
     public void teleopPositionControl(View teleopPositionControl) {
         TeleopPositionControl = !TeleopPositionControl;

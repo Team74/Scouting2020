@@ -1,9 +1,7 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -41,13 +39,12 @@ public class EndgameActivity extends BaseActivity {
         EndgameTNumber = ((ScoutingApplication)this.getApplication()).getTeamNumber();
         EndgameScouterName = ((ScoutingApplication)this.getApplication()).getScouterName();
 
-
         RadioButton Climbed = (RadioButton) findViewById(R.id.endgameClimbRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotClimbed") ? true : false);
+        Climbed.setChecked(EndgameClimb.equals("RobotClimbed"));
         Climbed = (RadioButton) findViewById(R.id.endgameDidntRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotDidn'tClimb") ? true : false);
+        Climbed.setChecked(EndgameClimb.equals("RobotDidn'tClimb"));
         Climbed = (RadioButton) findViewById(R.id.endgameFailedRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotFailedToClimb") ? true : false);
+        Climbed.setChecked(EndgameClimb.equals("RobotFailedToClimb"));
 
         RadioButton BrokeDown = (RadioButton) findViewById(R.id.endgameBrokeDownRadioButton);
         BrokeDown.setChecked(EndgameBrokeDown == true);
@@ -72,7 +69,6 @@ public class EndgameActivity extends BaseActivity {
 
         TextView ScouterName = (TextView) findViewById(R.id.endgameScouterTextView);
         ScouterName.setText("Scouter: " + EndgameScouterName);
-
     }
 
     public void opinionButtonPressed(View opinionButton) {
@@ -89,6 +85,7 @@ public class EndgameActivity extends BaseActivity {
         Intent intent = new Intent(this, AutonActivity.class);
         startActivity(intent);
     }
+
     //Climbing Buttons
     public void  didClimbButtonPressed(View didClimbButton) {
         EndgameClimb = "RobotClimbed";
@@ -104,7 +101,6 @@ public class EndgameActivity extends BaseActivity {
     //Robot Broke Buttons
     public void robotBrokeDownButtonPressed(View robotBrokeDownButton) {
         EndgameBrokeDown = true;
-
     }
 
     public void robotDidntBreakDownButtonPressed(View robotDidntBreakDownButton) {
