@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline78.5" />
 
     <TextView
-        android:id="@+id/opinionQRTextView"
+        android:id="@+id/opinionQRNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="QR Number"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline2" />
 
     <TextView
-        android:id="@+id/opinionTTextView"
+        android:id="@+id/opinionTNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="TeamNumber"
@@ -101,7 +101,7 @@
         android:text="ScouterName"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline24"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline16.667" />
@@ -540,7 +540,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".02" />
+        app:layout_constraintGuide_begin="12dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline8.4"
@@ -561,7 +561,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".166666667" />
+        app:layout_constraintGuide_percent=".16" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline21.2"
