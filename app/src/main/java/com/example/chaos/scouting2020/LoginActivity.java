@@ -50,13 +50,13 @@ public class LoginActivity extends BaseActivity {
 
     public void redRadioButtonPressed(View redRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 254, 59, 34));
+        layout.setBackgroundColor(Color.argb(255, 231, 20, 0 ));
         TeamColor = "Red";
     }
 
     public void blueRadioButtonPressed(View blueRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 119, 158, 203));
+        layout.setBackgroundColor(Color.argb(255,53, 121, 220));
         TeamColor = "Blue";
     }
 

@@ -107,7 +107,7 @@
         android:text="Scouter Name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline24"
+        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline16.667" />

@@ -1,9 +1,12 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 
@@ -48,9 +51,20 @@ public class AutonActivity extends BaseActivity {
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
         AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
 
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.CSVNames);
+            layout.setBackgroundColor(Color.argb(255,53, 121, 220));
+        }
+
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
+
+        RadioButton Moved = (RadioButton) findViewById(R.id.autonYesRadioButton);
+        Moved.setChecked(AutonStartLineMove);
+        Moved = (RadioButton) findViewById(R.id.autonNoRadioButton);
+        Moved.setChecked(!AutonStartLineMove);
+
     }
 
     public void teleopButtonPressed(View teleopButton) {
