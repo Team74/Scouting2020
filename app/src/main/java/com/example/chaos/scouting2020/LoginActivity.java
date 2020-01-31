@@ -19,6 +19,11 @@ public class LoginActivity extends BaseActivity {
     protected String TeamColor = "";
 
     @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -52,13 +57,13 @@ public class LoginActivity extends BaseActivity {
 
     public void redRadioButtonPressed(View redRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 254, 59, 34));
+        layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
         TeamColor = "Red";
     }
 
     public void blueRadioButtonPressed(View blueRadioButton) {
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(255, 119, 158, 203));
+        layout.setBackgroundColor(Color.argb(64,53, 121, 220));
         TeamColor = "Blue";
     }
 

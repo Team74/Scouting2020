@@ -1,7 +1,9 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -69,6 +71,16 @@ public class EndgameActivity extends BaseActivity {
 
         TextView ScouterName = (TextView) findViewById(R.id.endgameScouterTextView);
         ScouterName.setText("Scouter: " + EndgameScouterName);
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.endgameConstraintLayout);
+            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
+        }
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.endgameConstraintLayout);
+            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
+        }
     }
 
     public void opinionButtonPressed(View opinionButton) {

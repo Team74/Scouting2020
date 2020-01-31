@@ -2,7 +2,9 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -18,6 +20,9 @@ public class TeleopActivity extends BaseActivity {
     protected int TeleopHighGoalNumber = 0;
     protected int TeleopLowGoalNumber = 0;
     protected int TeleopPickUpNumber = 0;
+    protected int TeleopQRNumber = 0;
+    protected int TeleopTNumber = 0;
+    protected String TeleopScouterName = "";
     protected boolean TeleopRotationControl = false;
     protected boolean TeleopPositionControl = false;
 
@@ -50,16 +55,39 @@ public class TeleopActivity extends BaseActivity {
         TeleopPickUpNumber = ((ScoutingApplication) this.getApplication()).getTeleopPickUp();
         TeleopRotationControl = ((ScoutingApplication) this.getApplication()).getRotationControl();
         TeleopPositionControl = ((ScoutingApplication) this.getApplication()).getPositionControl();
+        TeleopQRNumber = ((ScoutingApplication) this.getApplication()).getRoundNumber();
+        TeleopTNumber = ((ScoutingApplication) this.getApplication()).getTeamNumber();
+        TeleopScouterName = ((ScoutingApplication) this.getApplication()).getScouterName();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.teleopConstraintLayout);
+            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
+        }
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.teleopConstraintLayout);
+            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
+        }
+
 
         ToggleButton RotationControl = (ToggleButton) findViewById(R.id.teleopRotationControlToggleButton);
         RotationControl.setChecked(TeleopRotationControl);
 
         ToggleButton PositionControl = (ToggleButton) findViewById(R.id.teleopPositionControlToggleButton);
         PositionControl.setChecked(TeleopPositionControl);
+
+        TextView QrNumber = (TextView) findViewById(R.id.teleopQRNumberTextView);
+        QrNumber.setText("Round " + Integer.toString(TeleopQRNumber));
+
+        TextView TNumber = (TextView) findViewById(R.id.teleopTNumberTextView);
+        TNumber.setText("Team " + Integer.toString(TeleopTNumber));
+
+        TextView ScouterName = (TextView) findViewById(R.id.teleopScouterTextView);
+        ScouterName.setText("Scouter: " + TeleopScouterName);
     }
 
     public void autonButtonPressed(View autonButton) {

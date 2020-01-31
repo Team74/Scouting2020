@@ -1,9 +1,12 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 
@@ -18,6 +21,9 @@ public class AutonActivity extends BaseActivity {
     protected int AutonHighGoalNumber = 0;
     protected int AutonLowGoalNumber = 0;
     protected int AutonPickUpNumber = 0;
+    protected int AutonQRNumber = 0;
+    protected int AutonTNumber = 0;
+    protected String AutonScouterName = "";
     protected boolean AutonStartLineMove = false;
 
     protected void DisplayHighGoalNumber() {
@@ -47,10 +53,37 @@ public class AutonActivity extends BaseActivity {
         AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
         AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
+        AutonQRNumber = ((ScoutingApplication)this.getApplication()).getRoundNumber();
+        AutonTNumber = ((ScoutingApplication)this.getApplication()).getTeamNumber();
+        AutonScouterName = ((ScoutingApplication)this.getApplication()).getScouterName();
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.CSVNames);
+            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
+        }
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.CSVNames);
+            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
+        }
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
+
+        RadioButton Moved = (RadioButton) findViewById(R.id.autonYesRadioButton);
+        Moved.setChecked(AutonStartLineMove);
+        Moved = (RadioButton) findViewById(R.id.autonNoRadioButton);
+        Moved.setChecked(!AutonStartLineMove);
+
+        TextView TNumber = (TextView) findViewById(R.id.autonTNumberTextView);
+        TNumber.setText("Team " + Integer.toString(AutonTNumber));
+
+        TextView QRNumber = (TextView) findViewById(R.id.autonQRNumberTextView);
+        QRNumber.setText("Round " + Integer.toString(AutonQRNumber));
+
+        TextView ScouterName = (TextView) findViewById(R.id.autonScouterTextView);
+        ScouterName.setText("Scouter: " + AutonScouterName);
     }
 
     public void teleopButtonPressed(View teleopButton) {
