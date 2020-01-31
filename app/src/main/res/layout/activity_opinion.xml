@@ -101,7 +101,7 @@
         android:text="ScouterName"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline24"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline16.667" />
@@ -152,9 +152,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="exitButtonPressed"
-        android:text="Pit Scouting"
+        android:text="Exit"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
@@ -565,7 +565,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".02" />
+        app:layout_constraintGuide_begin="12dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline8.4"
@@ -586,7 +586,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".166666667" />
+        app:layout_constraintGuide_percent=".16" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline21.2"

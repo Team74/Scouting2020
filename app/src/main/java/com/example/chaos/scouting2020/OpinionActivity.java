@@ -15,6 +15,9 @@ public class OpinionActivity extends BaseActivity {
     // values.  Thus, you need to make sure you reload them every time
     // during your OnCreate from the DB.
     protected int opinionSomeValue = 0;
+    protected int OpinionQRNumber = 0;
+    protected int OpinionTNumber = 0;
+    protected String OpinionScouterName = "";
 
     protected int OpinionShootingRating = 0;
     protected int OpinionClimbingRating = 0;
@@ -22,9 +25,6 @@ public class OpinionActivity extends BaseActivity {
     protected int OpinionAutonStageRating = 0;
     protected int OpinionDriverRating = 0;
     protected boolean OpinionWouldPickRobot = true;
-    protected int OpinionQRNumber = 0;
-    protected int OpinionTNumber = 0;
-    protected String OpinionScouterName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +128,7 @@ public class OpinionActivity extends BaseActivity {
         startActivity(intent);
     }
     public void exitButtonPressed(View engameButton) {
-        Intent intent = new Intent(this, PitScoutingActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 

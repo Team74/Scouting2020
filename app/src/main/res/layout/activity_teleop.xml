@@ -84,7 +84,7 @@
         app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline2" />
 
     <TextView
-        android:id="@+id/TeleopTNumberTextView"
+        android:id="@+id/teleopTNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -234,13 +234,14 @@
 
     <Button
         android:id="@+id/teleopTeleopButton"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:enabled="false"
         android:text="Teleop"
-        android:textColor="@android:color/black"
+        android:textColor="#A3000000"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline41.334"
         app:layout_constraintEnd_toEndOf="parent"

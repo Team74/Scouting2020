@@ -109,6 +109,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:clickable="true"
+
+        android:enabled="true"
         android:onClick="autonButtonPressed"
         android:text="Auton"
         android:textColor="@android:color/black"
@@ -152,13 +154,14 @@
 
     <Button
         android:id="@+id/endgameEndgameButton"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:enabled="false"
         android:text="Endgame"
-        android:textColor="@android:color/black"
+        android:textColor="#A3000000"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline49"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,39 +184,39 @@
 
         <RadioButton
             android:id="@+id/endgameClimbRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="didClimbButtonPressed"
-            android:text="Did Climb"
+            android:text="Climb Succesful"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/endgameDidntRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="didntClimbButtonPressed"
-            android:text="Didn't Climb"
+            android:text="Climb Not Attempted"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/endgameFailedRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="failedClimbButtonPressed"
-            android:text="Failed To Climb"
+            android:text="Climb Failed"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
     </RadioGroup>
 
