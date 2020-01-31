@@ -59,7 +59,12 @@ public class AutonActivity extends BaseActivity {
 
         if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
             ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.CSVNames);
-            layout.setBackgroundColor(Color.argb(255,53, 121, 220));
+            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
+        }
+
+        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
+            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.CSVNames);
+            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
         }
 
         DisplayHighGoalNumber();
