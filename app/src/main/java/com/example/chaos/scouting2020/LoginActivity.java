@@ -25,6 +25,7 @@ public class LoginActivity extends BaseActivity {
 
         // start a new team round data record
         ((ScoutingApplication) this.getApplication()).newTeamRoundData();
+        ((ScoutingApplication) this.getApplication()).newScouterName();
 
         final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
         loginScouterSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
@@ -46,6 +47,7 @@ public class LoginActivity extends BaseActivity {
                 TeamNumber = Integer.parseInt(String.valueOf(loginTeamNumSpinner.getItemAtPosition(position)));
             }
         });
+        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
     }
 
     public void redRadioButtonPressed(View redRadioButton) {
@@ -89,6 +91,7 @@ public class LoginActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
+        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).setTeamNumber(TeamNumber);
         ((ScoutingApplication) this.getApplication()).setRoundNumber(RoundNumber);
