@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline78.5" />
 
     <TextView
-        android:id="@+id/opinionQRTextView"
+        android:id="@+id/opinionQRNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="QR Number"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline2" />
 
     <TextView
-        android:id="@+id/opinionTTextView"
+        android:id="@+id/opinionTNumberTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="TeamNumber"
@@ -152,9 +152,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="exitButtonPressed"
-        android:text="Exit"
+        android:text="Pit Scouting"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
@@ -216,6 +216,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="shootingRating1StarPressed"
             android:text="1 STAR"
             android:textColor="@android:color/black" />
 
@@ -226,6 +227,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="shootingRating2StarPressed"
             android:text="2 STARS"
             android:textColor="@android:color/black" />
 
@@ -236,6 +238,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="shootingRating3StarPressed"
             android:text="3 STARS"
             android:textColor="@android:color/black" />
 
@@ -246,6 +249,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="shootingRating4StarPressed"
             android:text="4 STARS"
             android:textColor="@android:color/black" />
 
@@ -256,6 +260,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="shootingRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
     </RadioGroup>
@@ -278,6 +283,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="climbingRating1StarPressed"
             android:text="1 STAR"
             android:textColor="@android:color/black" />
 
@@ -288,6 +294,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="climbingRating2StarPressed"
             android:text="2 STARS"
             android:textColor="@android:color/black" />
 
@@ -298,6 +305,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="climbingRating3StarPressed"
             android:text="3 STARS"
             android:textColor="@android:color/black" />
 
@@ -308,6 +316,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="climbingRating4StarPressed"
             android:text="4 STARS"
             android:textColor="@android:color/black" />
 
@@ -318,6 +327,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="climbingRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
 
@@ -340,6 +350,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="wheelSpinningRating1StarPressed"
             android:text="1 STAR"
             android:textColor="@android:color/black" />
 
@@ -350,6 +361,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="wheelSpinningRating2StarPressed"
             android:text="2 STARS"
             android:textColor="@android:color/black" />
 
@@ -360,6 +372,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="wheelSpinningRating3StarPressed"
             android:text="3 STARS"
             android:textColor="@android:color/black" />
 
@@ -370,6 +383,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="wheelSpinningRating4StarPressed"
             android:text="4 STARS"
             android:textColor="@android:color/black" />
 
@@ -380,6 +394,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="wheelSpinningRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
 
@@ -402,6 +417,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="autonStageRating1StarPressed"
             android:text="1 STAR"
             android:textColor="@android:color/black" />
 
@@ -412,6 +428,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="autonStageRating2StarPressed"
             android:text="2 STARS"
             android:textColor="@android:color/black" />
 
@@ -422,6 +439,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="autonStageRating3StarPressed"
             android:text="3 STARS"
             android:textColor="@android:color/black" />
 
@@ -432,6 +450,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="autonStageRating4StarPressed"
             android:text="4 STARS"
             android:textColor="@android:color/black" />
 
@@ -442,6 +461,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="autonStageRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
     </RadioGroup>
@@ -463,6 +483,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="driverRating1StarPressed"
             android:text="1 STAR"
             android:textColor="@android:color/black" />
 
@@ -473,6 +494,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="driverRating2StarPressed"
             android:text="2 STARS"
             android:textColor="@android:color/black" />
 
@@ -483,6 +505,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="driverRating3StarPressed"
             android:text="3 STARS"
             android:textColor="@android:color/black" />
 
@@ -493,6 +516,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="driverRating4StarPressed"
             android:text="4 STARS"
             android:textColor="@android:color/black" />
 
@@ -503,6 +527,7 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:onClick="driverRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
     </RadioGroup>
@@ -698,6 +723,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:onClick="wouldPickRobotPressed"
             android:text="Yes"
             android:textAlignment="inherit"
             android:textSize="90sp" />
@@ -708,6 +734,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:onClick="wouldNotPickRobotPressed"
             android:text="No"
             android:textAlignment="inherit"
             android:textSize="90sp" />
