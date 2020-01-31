@@ -18,6 +18,9 @@ public class AutonActivity extends BaseActivity {
     protected int AutonHighGoalNumber = 0;
     protected int AutonLowGoalNumber = 0;
     protected int AutonPickUpNumber = 0;
+    protected int AutonQRNumber = 0;
+    protected int AutonTNumber = 0;
+    protected String AutonScouterName = "";
     protected boolean AutonStartLineMove = false;
 
     protected void DisplayHighGoalNumber() {
@@ -47,10 +50,22 @@ public class AutonActivity extends BaseActivity {
         AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
         AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
         AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
+        AutonQRNumber = ((ScoutingApplication)this.getApplication()).getRoundNumber();
+        AutonTNumber = ((ScoutingApplication)this.getApplication()).getTeamNumber();
+        AutonScouterName = ((ScoutingApplication)this.getApplication()).getScouterName();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
         DisplayPickUpNumber();
+
+        TextView TNumber = (TextView) findViewById(R.id.autonTNumberTextView);
+        TNumber.setText("Team " + Integer.toString(AutonTNumber));
+
+        TextView QRNumber = (TextView) findViewById(R.id.autonQRNumberTextView);
+        QRNumber.setText("Round " + Integer.toString(AutonQRNumber));
+
+        TextView ScouterName = (TextView) findViewById(R.id.autonScouterTextView);
+        ScouterName.setText("Scouter: " + AutonScouterName);
     }
 
     public void teleopButtonPressed(View teleopButton) {

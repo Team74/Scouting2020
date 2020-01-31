@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class OpinionActivity extends BaseActivity {
 
@@ -14,6 +15,9 @@ public class OpinionActivity extends BaseActivity {
     // values.  Thus, you need to make sure you reload them every time
     // during your OnCreate from the DB.
     protected int opinionSomeValue = 0;
+    protected int OpinionQRNumber = 0;
+    protected int OpinionTNumber = 0;
+    protected String OpinionScouterName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,20 @@ public class OpinionActivity extends BaseActivity {
 
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+
+        OpinionQRNumber = ((ScoutingApplication) this.getApplication()).getRoundNumber();
+        OpinionTNumber = ((ScoutingApplication) this.getApplication()).getTeamNumber();
+        OpinionScouterName = ((ScoutingApplication) this.getApplication()).getScouterName();
+
+
+        TextView QrNumber = (TextView) findViewById(R.id.opinionQRNumberTextView);
+        QrNumber.setText("Round " + Integer.toString(OpinionQRNumber));
+
+        TextView TNumber = (TextView) findViewById(R.id.opinionTNumberTextView);
+        TNumber.setText("Team " + Integer.toString(OpinionTNumber));
+
+        TextView ScouterName = (TextView) findViewById(R.id.opinionScouterTextView);
+        ScouterName.setText("Scouter: " + OpinionScouterName);
     }
 
     public void autonButtonPressed(View autonButton) {
