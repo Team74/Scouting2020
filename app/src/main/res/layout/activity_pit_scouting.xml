@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PitScoutingActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingHorizontalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingVeritcalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingVeritcalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingHorizontalGuideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingHorizontalGuideline33.667"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33667" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingHorizontalGuideline41.334"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".41334" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pitscoutingHorizontalGuideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.49" />
+
+    <Button
+        android:id="@+id/pitscoutingAutonButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Auton"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/pitscoutingHorizontalGuideline33.667"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pitscoutingVeritcalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/pitscoutingHorizontalGuideline26" />
+
+    <Button
+        android:id="@+id/pitscoutingTeleopButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Teleop"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/pitscoutingHorizontalGuideline41.334"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pitscoutingVeritcalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/pitscoutingHorizontalGuideline33.667" />
+
+    <Button
+        android:id="@+id/pitscoutingEndgameButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Endgame"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/pitscoutingHorizontalGuideline49"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/pitscoutingVeritcalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/pitscoutingHorizontalGuideline41.334" />
+
+</android.support.constraint.ConstraintLayout>
