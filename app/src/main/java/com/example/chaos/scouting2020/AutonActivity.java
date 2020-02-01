@@ -111,13 +111,6 @@ public class AutonActivity extends BaseActivity {
         }
     }
 
-    // TBD: temp button for testing csv code
-    public void CSVNamesButton(View CSVNamesButton) {
-        Log.d("CSV", "Starts");
-        ((ScoutingApplication) this.getApplication()).exportScouterNames();
-        Log.d("CSV", "works");
-    }
-
     public void autonStartLineYes(View autonStartLineYes) {
         AutonStartLineMove = true;
     }

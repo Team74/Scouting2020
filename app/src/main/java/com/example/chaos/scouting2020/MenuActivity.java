@@ -23,7 +23,7 @@ public class MenuActivity extends BaseActivity {
     }
 
     public void DataViewingButtonPressed(View DataViewingButton) {
-        //Intent intent = new Intent(this, DataViewingActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, DataViewingActivity.class);
+        startActivity(intent);
     }
 }

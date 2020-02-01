@@ -382,22 +382,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
 
-    <Button
-        android:id="@+id/csvButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="CSVNamesButton"
-        android:text="CSV"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline42"
-        app:layout_constraintEnd_toEndOf="@+id/autonVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@+id/autonHorizontalGuideline34" />
-
     <TextView
         android:id="@+id/autonStartLineTextView"
         android:layout_width="0dp"

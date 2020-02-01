@@ -315,6 +315,8 @@ public class ScoutingApplication extends Application {
 
     // TBD: example of adding round data records
     public void AddAllRounds() {
+        // make sure DB started
+        StartUpDb();
         if(entityScouterName == null) {
             newTeamRoundData();
         }
@@ -328,6 +330,8 @@ public class ScoutingApplication extends Application {
     }
 
     public void AddScouterName(String scouterName){
+        // make sure DB started
+        StartUpDb();
         if(entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
@@ -337,11 +341,15 @@ public class ScoutingApplication extends Application {
 
     // This returns the scouter names as a list which is needed for spinner
     public List<String> GetAllScouterNamesAsList() {
+        // make sure DB started
+        StartUpDb();
         return daoScouterName.getAllScouterNamesAsList();
     }
 
     // TBD: example of adding ScouterNames
     public void AddAllScouterNames() {
+        // make sure DB started
+        StartUpDb();
         String[] scouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
         if(entityScouterName == null) {
             entityScouterName = new EntityScouterName();
@@ -353,6 +361,9 @@ public class ScoutingApplication extends Application {
     }
 
     public List<String> GetAllTeamNumbersAsList() {
+        // make sure DB started
+        StartUpDb();
+
         int[] teamNumbers = daoTeamData.getAllTeamNumbers();
         List<String> teamNumbersAsStrings = new ArrayList<String>();
 
