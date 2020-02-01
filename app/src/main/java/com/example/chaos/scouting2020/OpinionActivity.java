@@ -17,11 +17,6 @@ public class OpinionActivity extends BaseActivity {
     // the ones below will be destroyed and lose any previously saved
     // values.  Thus, you need to make sure you reload them every time
     // during your OnCreate from the DB.
-    protected int opinionSomeValue = 0;
-    protected int OpinionQRNumber = 0;
-    protected int OpinionTNumber = 0;
-    protected String OpinionScouterName = "";
-
     protected int OpinionShootingRating = 0;
     protected int OpinionClimbingRating = 0;
     protected int OpinionWheelSpinningRating = 0;
@@ -37,15 +32,16 @@ public class OpinionActivity extends BaseActivity {
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
 
+        // update display with common items
+        UpdateCommonLayoutItems(R.id.opinionTNumberTextView, R.id.opinionQRNumberTextView, R.id.opinionScouterTextView, R.id.opinionConstraintLayout);
+
+        // update display with specific items for this activity
         OpinionShootingRating = ((ScoutingApplication) this.getApplication()).getRateShooting();
         OpinionClimbingRating = ((ScoutingApplication) this.getApplication()).getRateClimb();
         OpinionWheelSpinningRating = ((ScoutingApplication) this.getApplication()).getRateWheel();
         OpinionAutonStageRating = ((ScoutingApplication) this.getApplication()).getRateAuton();
         OpinionDriverRating = ((ScoutingApplication) this.getApplication()).getRateDiver();
         OpinionWouldPickRobot = ((ScoutingApplication) this.getApplication()).getWouldPick();
-        OpinionQRNumber = ((ScoutingApplication)this.getApplication()).getRoundNumber();
-        OpinionTNumber = ((ScoutingApplication)this.getApplication()).getTeamNumber();
-        OpinionScouterName = ((ScoutingApplication)this.getApplication()).getScouterName();
 
         RadioButton Shooting = (RadioButton) findViewById(R.id.opinionShootingRatingRadioButton1);
         Shooting.setChecked(OpinionShootingRating == 1);
@@ -106,25 +102,6 @@ public class OpinionActivity extends BaseActivity {
         WouldPick.setChecked(OpinionWouldPickRobot == true);
         WouldPick = (RadioButton) findViewById(R.id.opinionPickNoRadioButton);
         WouldPick.setChecked(OpinionWouldPickRobot == false);
-
-        TextView QRNumber = (TextView) findViewById(R.id.opinionQRNumberTextView);
-        QRNumber.setText("Round " + Integer.toString(OpinionQRNumber));
-
-        TextView TNumber = (TextView) findViewById(R.id.opinionTNumberTextView);
-        TNumber.setText("Team " + Integer.toString(OpinionTNumber));
-
-        TextView ScouterName = (TextView) findViewById(R.id.opinionScouterTextView);
-        ScouterName.setText("Scouter: " + OpinionScouterName);
-
-        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
-            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.opinionConstraintLayout);
-            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
-        }
-
-        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
-            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.opinionConstraintLayout);
-            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
-        }
     }
 
     public void autonButtonPressed(View autonButton) {

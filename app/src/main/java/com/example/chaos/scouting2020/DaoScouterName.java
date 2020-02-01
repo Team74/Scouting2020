@@ -6,6 +6,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface DaoScouterName {
     @Query("SELECT * FROM EntityScouterName LIMIT 1")
@@ -16,4 +18,8 @@ public interface DaoScouterName {
 
     @Query("SELECT ScouterName FROM EntityScouterName")
     String[] getAllScouterNames();
+
+    // This returns the scouter names as a list which is needed for spinner
+    @Query("SELECT ScouterName FROM EntityScouterName")
+    List<String> getAllScouterNamesAsList();
 }

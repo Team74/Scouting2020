@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class LoginActivity extends BaseActivity {
 
@@ -30,8 +33,21 @@ public class LoginActivity extends BaseActivity {
 
         // start a new team round data record
         ((ScoutingApplication) this.getApplication()).newTeamRoundData();
-        ((ScoutingApplication) this.getApplication()).newScouterName();
 
+        // TBD: these are example calls that should be removed in final app
+        ((ScoutingApplication) this.getApplication()).newScouterName();
+        //((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
+        ((ScoutingApplication) this.getApplication()).AddAllScouterNames();
+
+        // use DB to populate scouter name selection spinner
+        List<String> scouters = ((ScoutingApplication) this.getApplication()).GetAllScouterNamesAsList();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, scouters);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = (Spinner) findViewById(R.id.loginScouterSpinner);
+        sItems.setAdapter(adapter);
+
+        // set the text size of the scouter name selection spinner
         final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
         loginScouterSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             public void onNothingSelected(AdapterView<?> parent){
@@ -42,6 +58,10 @@ public class LoginActivity extends BaseActivity {
                 ScouterName = String.valueOf(loginScouterSpinner.getItemAtPosition(position));
             }
         });
+
+        // TBD: use DB to populate scouter name selection spinner
+
+        // set the text size of the team number selection spinner
         final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumberSpinner);
         loginTeamNumSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
             public void onNothingSelected(AdapterView<?> parent){
@@ -52,19 +72,16 @@ public class LoginActivity extends BaseActivity {
                 TeamNumber = Integer.parseInt(String.valueOf(loginTeamNumSpinner.getItemAtPosition(position)));
             }
         });
-        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
     }
 
     public void redRadioButtonPressed(View redRadioButton) {
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
         TeamColor = "Red";
+        SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void blueRadioButtonPressed(View blueRadioButton) {
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(64,53, 121, 220));
         TeamColor = "Blue";
+        SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void startButtonPressed(View startButton) {
@@ -85,7 +102,7 @@ public class LoginActivity extends BaseActivity {
             && ((TeamColor == "Blue") || (TeamColor == "Red"))
             && (!ScouterName.isEmpty())) {
 
-            // we have valid login fields, switch to the first activity: auton
+            // all login fields are valid, switch to the first activity: auton
             Intent intent = new Intent(this, AutonActivity.class);
             startActivity(intent);
 

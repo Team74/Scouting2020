@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Date;
+import java.util.List;
 
 public class ScoutingApplication extends Application {
 
@@ -268,6 +269,11 @@ public class ScoutingApplication extends Application {
         }
         entityScouterName.ScouterName = scouterName;
         daoScouterName.insert(entityScouterName);
+    }
+
+    // This returns the scouter names as a list which is needed for spinner
+    public List<String> GetAllScouterNamesAsList() {
+        return daoScouterName.getAllScouterNamesAsList();
     }
 
     // TBD: example of adding ScouterNames
