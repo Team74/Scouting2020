@@ -67,7 +67,13 @@ public class LoginActivity extends BaseActivity {
         ScouterName = spinnerScouter.getSelectedItem().toString();
 
         Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.loginTeamNumberSpinner);
-        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+        try {
+            TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+        } catch (Exception e) {
+            // some sort of error converting TeamNumber to int
+            e.printStackTrace();
+            TeamNumber = -1;
+        }
 
         EditText QRNumberEditText = (EditText) findViewById(R.id.loginQRNumberEditText);
         try {
@@ -75,11 +81,6 @@ public class LoginActivity extends BaseActivity {
         } catch (Exception e) {
             // some sort of error converting RoundNumber to int
             e.printStackTrace();
-            RoundNumber = -1;
-        }
-
-        if ((RoundNumber<1) && (RoundNumber>99)) {
-            Toast.makeText(this, "RoundNumber should be positive integer less than 100", Toast.LENGTH_SHORT).show();
             RoundNumber = -1;
         }
 
@@ -94,7 +95,13 @@ public class LoginActivity extends BaseActivity {
             startActivity(intent);
 
         } else {
-            Toast.makeText(this, "All login fields not set", Toast.LENGTH_SHORT).show();
+            if ((RoundNumber<1) || (RoundNumber>99)) {
+                Toast.makeText(this, "RoundNumber should be positive integer less than 100", Toast.LENGTH_SHORT).show();
+            } else if ((TeamColor != "Blue") && (TeamColor != "Red")) {
+                Toast.makeText(this, "TeamColor should be red or blue", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "All login fields not set", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
