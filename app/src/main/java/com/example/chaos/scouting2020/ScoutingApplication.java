@@ -12,6 +12,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
@@ -25,8 +26,10 @@ public class ScoutingApplication extends Application {
     ScoutingDatabase db = null;
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
+    DaoTeamNames daoTeamNames = null;
     EntityTeamRoundData entityTeamRoundData = null;
     EntityScouterName entityScouterName = null;
+    EntityTeamNames entityTeamNames = null;
 
     // primary key data
     private int TNumber = -1;
@@ -160,6 +163,9 @@ public class ScoutingApplication extends Application {
         if(daoScouterName == null){
             daoScouterName = db.daoScouterName();
         }
+        if(daoTeamNames == null){
+            daoTeamNames = db.daoTeamNames();
+        }
     }
 
     // Create a new TeamRoundData entity structure.
@@ -285,6 +291,31 @@ public class ScoutingApplication extends Application {
         for (String scouter: scouters) {
             entityScouterName.ScouterName = scouter;
             daoScouterName.insert(entityScouterName);
+        }
+    }
+
+    public List<String> GetAllTeamNumbersAsList() {
+        int[] teamNumbers = daoTeamNames.getAllTeamNumbers();
+        List<String> teamNumbersAsStrings = new ArrayList<String>();
+
+        for( int teamNumber : teamNumbers)
+        {
+            String teamNumberAsString = Integer.toString(teamNumber);
+            teamNumbersAsStrings.add(teamNumberAsString);
+        }
+
+        return teamNumbersAsStrings;
+    }
+
+    public void AddAllTeamNumbers() {
+        int[] teamNumbers = {1, 74, 56, 5565, 88};
+        if (entityTeamNames == null) {
+            entityTeamNames = new EntityTeamNames();
+        }
+        for (int teamNumber : teamNumbers) {
+            entityTeamNames.TeamNumber = teamNumber;
+            entityTeamNames.TeamName = "foo";
+            daoTeamNames.insert(entityTeamNames);
         }
     }
 

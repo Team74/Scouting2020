@@ -36,16 +36,17 @@ public class LoginActivity extends BaseActivity {
 
         // TBD: these are example calls that should be removed in final app
         ((ScoutingApplication) this.getApplication()).newScouterName();
-        //((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
+        ((ScoutingApplication) this.getApplication()).AddScouterName("Matthew");
         ((ScoutingApplication) this.getApplication()).AddAllScouterNames();
+        ((ScoutingApplication) this.getApplication()).AddAllTeamNumbers();
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = ((ScoutingApplication) this.getApplication()).GetAllScouterNamesAsList();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapterScouter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, scouters);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner sItems = (Spinner) findViewById(R.id.loginScouterSpinner);
-        sItems.setAdapter(adapter);
+        adapterScouter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner scouterItems = (Spinner) findViewById(R.id.loginScouterSpinner);
+        scouterItems.setAdapter(adapterScouter);
 
         // set the text size of the scouter name selection spinner
         final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
@@ -59,7 +60,13 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        // TBD: use DB to populate scouter name selection spinner
+        // use DB to populate team number selection spinner
+        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).GetAllTeamNumbersAsList();
+        ArrayAdapter<String> adapterTeamNumber = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, teamNumbers);
+        adapterTeamNumber.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner teamNumberItems = (Spinner) findViewById(R.id.loginTeamNumberSpinner);
+        teamNumberItems.setAdapter(adapterTeamNumber);
 
         // set the text size of the team number selection spinner
         final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumberSpinner);
