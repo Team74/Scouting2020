@@ -4,17 +4,16 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
-
-import java.util.List;
 
 @Dao
-public interface DaoTeamNames {
+public interface DaoTeamData {
+    @Query("SELECT * FROM EntityTeamData WHERE TeamNumber = :teamNumber LIMIT 1")
+    EntityTeamData getRecord(int teamNumber);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(EntityTeamNames entityTeamNames);
+    void insert(EntityTeamData entityTeamData);
 
-    // This returns the scouter names as a list which is needed for spinner
-    @Query("SELECT TeamNumber FROM EntityTeamNames")
+    // This returns the team numbers as an array of ints
+    @Query("SELECT TeamNumber FROM EntityTeamData")
     int[] getAllTeamNumbers();
 }

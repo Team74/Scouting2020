@@ -81,10 +81,16 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
+    public void MenuButtonPressed(View MenuButton) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
     public void redRadioButtonPressed(View redRadioButton) {
         TeamColor = "Red";
         SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
+
 
     public void blueRadioButtonPressed(View blueRadioButton) {
         TeamColor = "Blue";

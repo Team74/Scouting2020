@@ -26,10 +26,10 @@ public class ScoutingApplication extends Application {
     ScoutingDatabase db = null;
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
-    DaoTeamNames daoTeamNames = null;
+    DaoTeamData daoTeamData = null;
     EntityTeamRoundData entityTeamRoundData = null;
     EntityScouterName entityScouterName = null;
-    EntityTeamNames entityTeamNames = null;
+    EntityTeamData entityTeamData = null;
 
     // primary key data
     private int TNumber = -1;
@@ -163,8 +163,8 @@ public class ScoutingApplication extends Application {
         if(daoScouterName == null){
             daoScouterName = db.daoScouterName();
         }
-        if(daoTeamNames == null){
-            daoTeamNames = db.daoTeamNames();
+        if(daoTeamData == null){
+            daoTeamData = db.daoTeamData();
         }
     }
 
@@ -206,9 +206,27 @@ public class ScoutingApplication extends Application {
     }
 
     protected void newScouterName(){
+        // make sure DB started
         StartUpDb();
+
+        // create a new empty record.
         entityScouterName = new EntityScouterName();
         entityScouterName.ScouterName = "";
+    }
+
+    // Create a new TeamData entity structure.
+    protected void newTeamData() {
+        // make sure DB started
+        StartUpDb();
+
+        // create a new empty record.
+        entityTeamData = new EntityTeamData();
+        entityTeamData.TeamNumber = -1;
+        entityTeamData.TeamName = "";
+        entityTeamData.RobotWeight = -1;
+
+        // reset member variables
+        TNumber = -1;
     }
 
     // Based on the current TNumber and QRNumber, load any previous team round data.
@@ -246,6 +264,46 @@ public class ScoutingApplication extends Application {
         if((entityTeamRoundData != null) && (TNumber > 0) && (QRNumber > 0)) {
             // this will insert a new record, or replace the matching record
             daoTeamRoundData.insert(entityTeamRoundData);
+        } else {
+            // This shouldn't typically happen, as the record should be created during login.
+            // However, as Android can suspend, terminate, destroy *any* activity at *any*
+            // time for a lot reasons (triggering the OnPause), we need to be
+            // prepared that TNumber or QRNumber might not be valid.
+            // TBD:  should we send them back to the login activity if this does happen?
+        }
+    }
+
+    // based on the current TNumber, load any previous team round data.
+    protected void refreshTeamData(){
+        // make sure DB started
+        StartUpDb();
+
+        // TNumber should be set to valid values
+        if(TNumber > 0) {
+            try {
+                entityTeamData = daoTeamData.getRecord(TNumber);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // The record for that TNumber doesn't exist.
+                // entityTeamData will be null and the code below
+                // will create a new empty record.
+            }
+        }
+        if(entityTeamData == null){
+            // This shouldn't EVER happen, as the team data record should be created
+            // BEFORE the event.  If it does, create an empty record and zero everything out
+            newTeamData();
+        }
+    }
+
+    // Save the current team data record to the DB.
+    protected void saveTeamData(){
+        // make sure DB started
+        StartUpDb();
+
+        if((entityTeamData != null) && (TNumber > 0)) {
+            // this will insert a new record, or replace the matching record
+            daoTeamData.insert(entityTeamData);
         } else {
             // This shouldn't typically happen, as the record should be created during login.
             // However, as Android can suspend, terminate, destroy *any* activity at *any*
@@ -295,7 +353,7 @@ public class ScoutingApplication extends Application {
     }
 
     public List<String> GetAllTeamNumbersAsList() {
-        int[] teamNumbers = daoTeamNames.getAllTeamNumbers();
+        int[] teamNumbers = daoTeamData.getAllTeamNumbers();
         List<String> teamNumbersAsStrings = new ArrayList<String>();
 
         for( int teamNumber : teamNumbers)
@@ -309,13 +367,14 @@ public class ScoutingApplication extends Application {
 
     public void AddAllTeamNumbers() {
         int[] teamNumbers = {1, 74, 56, 5565, 88};
-        if (entityTeamNames == null) {
-            entityTeamNames = new EntityTeamNames();
+        if (entityTeamData == null) {
+            entityTeamData = new EntityTeamData();
         }
         for (int teamNumber : teamNumbers) {
-            entityTeamNames.TeamNumber = teamNumber;
-            entityTeamNames.TeamName = "foo";
-            daoTeamNames.insert(entityTeamNames);
+            entityTeamData.TeamNumber = teamNumber;
+            entityTeamData.TeamName = "foo";
+            entityTeamData.RobotWeight = 123;
+            daoTeamData.insert(entityTeamData);
         }
     }
 

@@ -5,11 +5,15 @@ import android.arch.persistence.room.Entity;
 import android.support.annotation.NonNull;
 
 @Entity(primaryKeys = {"TeamNumber"})
-public class EntityTeamNames {
+public class EntityTeamData {
 
     @ColumnInfo
     public int TeamNumber;
 
     @ColumnInfo
     @NonNull String TeamName;
+
+    @ColumnInfo
+    public int RobotWeight;
+
 }
