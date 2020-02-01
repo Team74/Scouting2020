@@ -35,50 +35,16 @@ public class LoginActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).newTeamRoundData();
 
         // TBD: these are example calls that should be removed in final app
-        ((ScoutingApplication) this.getApplication()).newScouterName();
-        ((ScoutingApplication) this.getApplication()).AddScouterName("Matthew");
         ((ScoutingApplication) this.getApplication()).AddAllScouterNames();
         ((ScoutingApplication) this.getApplication()).AddAllTeamNumbers();
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = ((ScoutingApplication) this.getApplication()).GetAllScouterNamesAsList();
-        ArrayAdapter<String> adapterScouter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, scouters);
-        adapterScouter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner scouterItems = (Spinner) findViewById(R.id.loginScouterSpinner);
-        scouterItems.setAdapter(adapterScouter);
-
-        // set the text size of the scouter name selection spinner
-        final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
-        loginScouterSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent){
-            }
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView)parentView.getChildAt(0)).setTextSize(70);
-                ScouterName = String.valueOf(loginScouterSpinner.getItemAtPosition(position));
-            }
-        });
+        AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 70);
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).GetAllTeamNumbersAsList();
-        ArrayAdapter<String> adapterTeamNumber = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, teamNumbers);
-        adapterTeamNumber.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner teamNumberItems = (Spinner) findViewById(R.id.loginTeamNumberSpinner);
-        teamNumberItems.setAdapter(adapterTeamNumber);
-
-        // set the text size of the team number selection spinner
-        final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumberSpinner);
-        loginTeamNumSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent){
-            }
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView)parentView.getChildAt(0)).setTextSize(70);
-                TeamNumber = Integer.parseInt(String.valueOf(loginTeamNumSpinner.getItemAtPosition(position)));
-            }
-        });
+        AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 70);
     }
 
     public void MenuButtonPressed(View MenuButton) {
@@ -91,27 +57,35 @@ public class LoginActivity extends BaseActivity {
         SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
-
     public void blueRadioButtonPressed(View blueRadioButton) {
         TeamColor = "Blue";
         SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void startButtonPressed(View startButton) {
-        // TeamNumber, ScouterName, and TeamColor should have been set on change above
+        Spinner spinnerScouter = (Spinner) findViewById(R.id.loginScouterSpinner);
+        ScouterName = spinnerScouter.getSelectedItem().toString();
+
+        Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.loginTeamNumberSpinner);
+        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+
         EditText QRNumberEditText = (EditText) findViewById(R.id.loginQRNumberEditText);
         try {
             RoundNumber = Integer.parseInt(QRNumberEditText.getText().toString());
         } catch (Exception e) {
             // some sort of error converting RoundNumber to int
             e.printStackTrace();
-            Toast.makeText(this, "RoundNumber should be positive integer", Toast.LENGTH_SHORT).show();
+            RoundNumber = -1;
+        }
+
+        if ((RoundNumber<1) && (RoundNumber>99)) {
+            Toast.makeText(this, "RoundNumber should be positive integer less than 100", Toast.LENGTH_SHORT).show();
             RoundNumber = -1;
         }
 
         // don't allow switching away if any invalid values
         if(    (TeamNumber>0)
-            && (RoundNumber>0)
+            && ((RoundNumber>0) && (RoundNumber<100))
             && ((TeamColor == "Blue") || (TeamColor == "Red"))
             && (!ScouterName.isEmpty())) {
 
@@ -126,7 +100,6 @@ public class LoginActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).setTeamNumber(TeamNumber);
         ((ScoutingApplication) this.getApplication()).setRoundNumber(RoundNumber);
