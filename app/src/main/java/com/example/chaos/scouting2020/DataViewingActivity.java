@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class DataViewingActivity extends AppCompatActivity {
+public class DataViewingActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

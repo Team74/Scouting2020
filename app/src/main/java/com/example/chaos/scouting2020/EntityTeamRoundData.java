@@ -12,6 +12,7 @@ public class EntityTeamRoundData {
     @ColumnInfo
     public int RoundNumber;
 
+    // who was the scouter that entered this data
     @ColumnInfo
     public String Scouter;
 

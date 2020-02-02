@@ -23,7 +23,6 @@ import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -33,7 +32,7 @@ public class ScoutingApplication extends Application {
     private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
     private int[] sampleTeamNumbers = {1, 74, 56, 5565, 88};
 
-    // database members
+    // database members. these are mostly created by startUpDb()
     ScoutingDatabase db = null;
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
@@ -220,7 +219,7 @@ public class ScoutingApplication extends Application {
         entityTeamRoundData.RateDiver = 0;
         entityTeamRoundData.WouldPick = false;
 
-        // reset member variables
+        // reset member variables for primary key
         TeamNumber = -1;
         RoundNumber = -1;
     }
@@ -244,9 +243,10 @@ public class ScoutingApplication extends Application {
         entityTeamData = new EntityTeamData();
         entityTeamData.TeamNumber = -1;
         entityTeamData.TeamName = "";
+        entityTeamData.Scouter = "Unknown";
         entityTeamData.RobotWeight = -1;
 
-        // reset member variables
+        // reset member variable for primary key
         TeamNumber = -1;
     }
 
@@ -387,7 +387,6 @@ public class ScoutingApplication extends Application {
             }
         }
         // now add random team numbers until we have 40
-        // there's a risk of some duplicates, but it's ok
         while (teamNumbers.size() < 40) {
             int teamNumber = r.nextInt(8000) + 1; // 1-8000
             if (!teamNumbers.contains(teamNumber)) {
@@ -399,8 +398,9 @@ public class ScoutingApplication extends Application {
         int j = 0; // index of team number
         for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
             for(int i = 0; i < 6; i++ ) {
+                // get team number for this loop
                 int teamNumber = teamNumbers.get(j);
-                // go to the next team number
+                // and go to the next team number for next loop
                 j++;
                 if (j>=teamNumbers.size()) j=0;
 
@@ -447,10 +447,13 @@ public class ScoutingApplication extends Application {
         if (entityTeamData == null) {
             entityTeamData = new EntityTeamData();
         }
+        // we're going to generate some random ints
+        Random r = new Random();
         for (int teamNumber : sampleTeamNumbers) {
             entityTeamData.TeamNumber = teamNumber;
             entityTeamData.TeamName = "foo";
-            entityTeamData.RobotWeight = 123;
+            entityTeamData.Scouter = sampleScouters[r.nextInt(sampleScouters.length)];
+            entityTeamData.RobotWeight = r.nextInt(90) + 30; // 30-120
             daoTeamData.insert(entityTeamData);
         }
     }
@@ -486,6 +489,9 @@ public class ScoutingApplication extends Application {
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {
+            // make sure DB started
+            startUpDb();
+
             // TBD: eventually we want to date/time stamp each export
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
@@ -515,6 +521,9 @@ public class ScoutingApplication extends Application {
     // TBD: example reading from CSV
     public void importScouterNames() {
         try {
+            // make sure DB started
+            startUpDb();
+
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String fileName = "ScouterNames-"+androidId+".csv";
