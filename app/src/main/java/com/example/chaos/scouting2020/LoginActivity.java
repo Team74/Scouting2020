@@ -34,16 +34,12 @@ public class LoginActivity extends BaseActivity {
         // start a new team round data record
         ((ScoutingApplication) this.getApplication()).newTeamRoundData();
 
-        // TBD: these are example calls that should be removed in final app
-        ((ScoutingApplication) this.getApplication()).AddAllScouterNames();
-        ((ScoutingApplication) this.getApplication()).AddAllTeamNumbers();
-
         // use DB to populate scouter name selection spinner
-        List<String> scouters = ((ScoutingApplication) this.getApplication()).GetAllScouterNamesAsList();
+        List<String> scouters = ((ScoutingApplication) this.getApplication()).getAllScouterNamesAsList();
         AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 70);
 
         // use DB to populate team number selection spinner
-        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).GetAllTeamNumbersAsList();
+        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 70);
     }
 

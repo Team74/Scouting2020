@@ -46,7 +46,7 @@ public class EntityTeamRoundData {
     public boolean PositionControl;
 
     @ColumnInfo
-    public String Climb;
+    public int Climb;  // 1=climb successful, 2=climb not attempted, 3=climb failed
 
     @ColumnInfo
     public boolean BrokeDown;

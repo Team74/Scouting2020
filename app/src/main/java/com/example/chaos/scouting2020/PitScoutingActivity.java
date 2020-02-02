@@ -30,11 +30,11 @@ public class PitScoutingActivity extends BaseActivity {
         // update display with specific items for this activity
 
         // use DB to populate scouter name selection spinner
-        List<String> scouters = ((ScoutingApplication) this.getApplication()).GetAllScouterNamesAsList();
+        List<String> scouters = ((ScoutingApplication) this.getApplication()).getAllScouterNamesAsList();
         AddStringsToSpinner(R.id.pitScoutingScouterSpinner, scouters, 36);
 
         // use DB to populate team number selection spinner
-        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).GetAllTeamNumbersAsList();
+        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.pitScoutingTeamNumberSpinner, teamNumbers, 36);
 
         List<String> driveTypes = Arrays.asList("Tank","Mecanum","Omni","Swerve","Other");

@@ -47,9 +47,9 @@ public class BaseActivity extends AppCompatActivity {
         SetLayoutBackgroundColor(layoutId, teamColor);
     }
 
-    // add strings to spinner
+    // add strings to spinner and set font size
     protected void AddStringsToSpinner(int spinnerViewId, List<String> stringList, final int fontSize) {
-        if (spinnerViewId > 0) {
+        if (spinnerViewId != 0) {
             ArrayAdapter<String> adapterScouter = new ArrayAdapter<String>(
                     this, android.R.layout.simple_spinner_item, stringList);
             adapterScouter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

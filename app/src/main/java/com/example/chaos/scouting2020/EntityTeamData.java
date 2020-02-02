@@ -11,9 +11,16 @@ public class EntityTeamData {
     public int TeamNumber;
 
     @ColumnInfo
-    @NonNull String TeamName;
+    @NonNull
+    public String TeamName;
 
     @ColumnInfo
     public int RobotWeight;
+
+    @ColumnInfo
+    public String RobotDriveBaseType;
+
+    @ColumnInfo
+    public String RobotNotes;
 
 }

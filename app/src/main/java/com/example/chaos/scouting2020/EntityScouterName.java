@@ -7,5 +7,6 @@ import android.support.annotation.NonNull;
 @Entity(primaryKeys = {"ScouterName"})
 public class EntityScouterName {
     @ColumnInfo
-    @NonNull String ScouterName;
+    @NonNull
+    public String ScouterName;
 }
