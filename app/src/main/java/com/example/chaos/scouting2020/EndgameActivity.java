@@ -17,13 +17,10 @@ public class EndgameActivity extends BaseActivity {
     // the ones below will be destroyed and lose any previously saved
     // values.  Thus, you need to make sure you reload them every time
     // during your OnCreate from the DB.
-    protected String EndgameClimb = "";
+    protected int EndgameClimb = 0;
     protected boolean EndgameBrokeDown = false;
     protected int EndgameFinalStage = 0;
     protected String EndgameNotes = "";
-    protected int EndgameQRNumber = 0;
-    protected int EndgameTNumber = 0;
-    protected String EndgameScouterName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +30,21 @@ public class EndgameActivity extends BaseActivity {
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
 
+        // update display with common items
+        UpdateCommonLayoutItems(R.id.endgameTNumberTextView, R.id.endgameQRNumberTextView, R.id.endgameScouterTextView, R.id.endgameConstraintLayout);
+
+        // update display with specific items for this activity
         EndgameClimb = ((ScoutingApplication)this.getApplication()).getClimb();
         EndgameBrokeDown = ((ScoutingApplication) this.getApplication()).getBrokeDown();
         EndgameFinalStage = ((ScoutingApplication) this.getApplication()).getFinalStage();
         EndgameNotes = ((ScoutingApplication)this.getApplication()).getNotes();
-        EndgameQRNumber = ((ScoutingApplication)this.getApplication()).getRoundNumber();
-        EndgameTNumber = ((ScoutingApplication)this.getApplication()).getTeamNumber();
-        EndgameScouterName = ((ScoutingApplication)this.getApplication()).getScouterName();
 
         RadioButton Climbed = (RadioButton) findViewById(R.id.endgameClimbRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotClimbed"));
+        Climbed.setChecked(EndgameClimb == 1);  // 1=climb successful
         Climbed = (RadioButton) findViewById(R.id.endgameDidntRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotDidn'tClimb"));
+        Climbed.setChecked(EndgameClimb == 2);  // 2=climb not attempted
         Climbed = (RadioButton) findViewById(R.id.endgameFailedRadioButton);
-        Climbed.setChecked(EndgameClimb.equals("RobotFailedToClimb"));
+        Climbed.setChecked(EndgameClimb == 3);  // 3=climb failed
 
         RadioButton BrokeDown = (RadioButton) findViewById(R.id.endgameBrokeDownRadioButton);
         BrokeDown.setChecked(EndgameBrokeDown == true);
@@ -62,25 +60,6 @@ public class EndgameActivity extends BaseActivity {
 
         EditText Notes = (EditText) findViewById(R.id.endgameNotesEditText);
         Notes.setText(EndgameNotes);
-
-        TextView QRNumber = (TextView) findViewById(R.id.endgameQRNumberTextView);
-        QRNumber.setText("Round " + Integer.toString(EndgameQRNumber));
-
-        TextView TNumber = (TextView) findViewById(R.id.endgameTNumberTextView);
-        TNumber.setText("Team " + Integer.toString(EndgameTNumber));
-
-        TextView ScouterName = (TextView) findViewById(R.id.endgameScouterTextView);
-        ScouterName.setText("Scouter: " + EndgameScouterName);
-
-        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Blue")) {
-            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.endgameConstraintLayout);
-            layout.setBackgroundColor(Color.argb(64,53, 121, 220));
-        }
-
-        if (((ScoutingApplication) this.getApplication()).getTeamColor().equals("Red")) {
-            ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.endgameConstraintLayout);
-            layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
-        }
     }
 
     public void opinionButtonPressed(View opinionButton) {
@@ -100,15 +79,15 @@ public class EndgameActivity extends BaseActivity {
 
     //Climbing Buttons
     public void  didClimbButtonPressed(View didClimbButton) {
-        EndgameClimb = "RobotClimbed";
+        EndgameClimb = 1; // 1=climb successful
     }
 
     public void didntClimbButtonPressed(View didntClimbButton) {
-        EndgameClimb = "RobotDidn'tClimb";
+        EndgameClimb = 2; // 2=climb not attempted
     }
 
     public void failedClimbButtonPressed(View failedClimbButton) {
-        EndgameClimb = "RobotFailedToClimb";
+        EndgameClimb = 3; // 3=climb failed
     }
     //Robot Broke Buttons
     public void robotBrokeDownButtonPressed(View robotBrokeDownButton) {

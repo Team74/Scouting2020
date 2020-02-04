@@ -15,9 +15,7 @@ public interface DaoTeamRoundData {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(EntityTeamRoundData entityTeamRoundData);
 
-    @Query("UPDATE EntityTeamRoundData SET AutonHighScore = :autonHighScore, AutonLowScore = :autonLowScore, AutonPickUp = :autonPickUp Where TeamNumber = :teamNumber AND RoundNumber = :roundNumber")
-    void updateAuton(int autonHighScore, int autonLowScore, int autonPickUp, int teamNumber, int roundNumber);
-
-    @Query("UPDATE Entityteamrounddata SET TeamColor = :teamColor, Scouter = :scouter WHERE TeamNumber = :teamNumber AND RoundNumber = :roundNumber")
-    void updateLogin(int teamColor, String scouter, int teamNumber, int roundNumber);
+    // This returns the list of all unique team numbers in the round data
+    @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData")
+    List<Integer> getAllTeamNumbersAsList();
 }

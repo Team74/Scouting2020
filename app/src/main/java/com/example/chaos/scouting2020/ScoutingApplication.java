@@ -1,9 +1,15 @@
 package com.example.chaos.scouting2020;
 
 import android.app.Application;
+import android.app.DownloadManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.widget.Toast;
 import android.arch.persistence.room.Room;
@@ -12,24 +18,32 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class ScoutingApplication extends Application {
 
-    // database members
+    // private sample data
+    private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
+    private int[] sampleTeamNumbers = {1, 74, 56, 5565, 88};
+
+    // database members. these are mostly created by startUpDb()
     ScoutingDatabase db = null;
     DaoTeamRoundData daoTeamRoundData = null;
     DaoScouterName daoScouterName = null;
+    DaoTeamData daoTeamData = null;
     EntityTeamRoundData entityTeamRoundData = null;
     EntityScouterName entityScouterName = null;
+    EntityTeamData entityTeamData = null;
 
     // primary key data
-    private int TNumber = -1;
-    private int QRNumber = -1;
+    private int TeamNumber = -1;
+    private int RoundNumber = -1;
 
     // Get functions
     public int getTeamNumber(){
@@ -71,7 +85,7 @@ public class ScoutingApplication extends Application {
     public boolean getPositionControl(){
         return entityTeamRoundData.PositionControl;
     }
-    public String getClimb(){
+    public int getClimb(){
         return entityTeamRoundData.Climb;
     }
     public boolean getBrokeDown(){
@@ -106,12 +120,12 @@ public class ScoutingApplication extends Application {
     // Set Functions
     public void setTeamNumber(int teamNumber){
         // should only be set from login activity
-        TNumber = teamNumber;
+        TeamNumber = teamNumber;
         entityTeamRoundData.TeamNumber = teamNumber;
     }
     public void setRoundNumber(int roundNumber){
         // should only be set from login activity
-        QRNumber = roundNumber;
+        RoundNumber = roundNumber;
         entityTeamRoundData.RoundNumber = roundNumber;
     }
     public void setScouter(String scouter){
@@ -131,7 +145,7 @@ public class ScoutingApplication extends Application {
     public void setTeleopPickUp(int teleopPickUp){ entityTeamRoundData.TeleopPickUp = teleopPickUp; }
     public void setRotationControl(boolean rotationControl){ entityTeamRoundData.RotationControl = rotationControl; }
     public void setPositionControl(boolean positionControl){ entityTeamRoundData.PositionControl = positionControl; }
-    public void setClimb(String climb){ entityTeamRoundData.Climb = climb; }
+    public void setClimb(int climb){ entityTeamRoundData.Climb = climb; }
     public void setBrokeDown(boolean brokeDown){ entityTeamRoundData.BrokeDown = brokeDown; }
     public void setFinalStage(int finalStage){ entityTeamRoundData.FinalStage = finalStage; }
     public void setNotes(String notes){ entityTeamRoundData.Notes = notes; }
@@ -144,12 +158,12 @@ public class ScoutingApplication extends Application {
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
-    private void StartUpDb(){
+    private void startUpDb(){
         // get room (db)
         if(db == null){
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
                     .allowMainThreadQueries().fallbackToDestructiveMigration().build();
-            // TBD: figure out how to allow for "Destructive Migrations" of the ROOM DB
+            // TBD: figure out how to allow for "Non-destructive Migrations" of the ROOM DB
             // for when the version changes
         }
         // get data access objects (tables)
@@ -158,6 +172,18 @@ public class ScoutingApplication extends Application {
         }
         if(daoScouterName == null){
             daoScouterName = db.daoScouterName();
+            // TBD: this is an example call that should be removed in final app.
+            // it's just here to make sure there's some sample scouter data in the DB.
+            addSampleScouterNames();
+        }
+        if(daoTeamData == null){
+            daoTeamData = db.daoTeamData();
+            // TBD: this is an example call that should be removed in final app.
+            // it's just here to make sure there's some sample team data in the DB.
+            addSampleTeamNumbers();
+            // TBD: this is an example call that should be removed in final app.
+            // it's just here to make sure there's some sample team round data in the DB.
+            //ddSampleTeamRoundData();
         }
     }
 
@@ -166,7 +192,7 @@ public class ScoutingApplication extends Application {
     // And possibly some of the DB error handlers.
     protected void newTeamRoundData() {
         // make sure DB started
-        StartUpDb();
+        startUpDb();
 
         // create a new empty record.
         entityTeamRoundData = new EntityTeamRoundData();
@@ -182,7 +208,7 @@ public class ScoutingApplication extends Application {
         entityTeamRoundData.TeleopPickUp = 0;
         entityTeamRoundData.RotationControl = false;
         entityTeamRoundData.PositionControl = false;
-        entityTeamRoundData.Climb = "";
+        entityTeamRoundData.Climb = 0;
         entityTeamRoundData.BrokeDown = false;
         entityTeamRoundData.FinalStage = 0;
         entityTeamRoundData.Notes = "";
@@ -193,30 +219,50 @@ public class ScoutingApplication extends Application {
         entityTeamRoundData.RateDiver = 0;
         entityTeamRoundData.WouldPick = false;
 
-        // reset member variables
-        TNumber = -1;
-        QRNumber = -1;
+        // reset member variables for primary key
+        TeamNumber = -1;
+        RoundNumber = -1;
     }
 
+    // Create a new ScouterName entity structure.
     protected void newScouterName(){
-        StartUpDb();
+        // make sure DB started
+        startUpDb();
+
+        // create a new empty record.
         entityScouterName = new EntityScouterName();
         entityScouterName.ScouterName = "";
     }
 
-    // Based on the current TNumber and QRNumber, load any previous team round data.
-    // This should be called from the OnCreate of all activities except login.
+    // Create a new TeamData entity structure.
+    protected void newTeamData() {
+        // make sure DB started
+        startUpDb();
+
+        // create a new empty record.
+        entityTeamData = new EntityTeamData();
+        entityTeamData.TeamNumber = -1;
+        entityTeamData.TeamName = "";
+        entityTeamData.Scouter = "Unknown";
+        entityTeamData.RobotWeight = -1;
+
+        // reset member variable for primary key
+        TeamNumber = -1;
+    }
+
+    // Based on the current TeamNumber and RoundNumber, load any previous team round data.
+    // This should be called from the OnCreate of all match scouting activities except login.
     protected void refreshTeamRoundData(){
         // make sure DB started
-        StartUpDb();
+        startUpDb();
 
-        // TNumber, QRNumber should be set to valid values from login screen!
-        if((TNumber > 0) && (QRNumber > 0)) {
+        // TeamNumber, RoundNumber should be set to valid values from login screen!
+        if((TeamNumber > 0) && (RoundNumber > 0)) {
             try {
-                entityTeamRoundData = daoTeamRoundData.getRecord(TNumber, QRNumber);
+                entityTeamRoundData = daoTeamRoundData.getRecord(TeamNumber, RoundNumber);
             } catch (Exception e) {
                 e.printStackTrace();
-                // The record for that TNumber/QRNumber doesn't exist.
+                // The record for that TeamNumber/RoundNumber doesn't exist.
                 // entityTeamRoundData will be null and the code below
                 // will create a new empty record.
             }
@@ -230,39 +276,67 @@ public class ScoutingApplication extends Application {
     }
 
     // Save the current team round data record to the DB.
-    // This should be called from the OnPause of *all* activities.
+    // This should be called from the OnPause of *all* match scouting activities.
     protected void saveTeamRoundData(){
         // make sure DB started
-        StartUpDb();
+        startUpDb();
 
-        // TNumber, QRNumber should be set to valid values from login screen!
-        if((entityTeamRoundData != null) && (TNumber > 0) && (QRNumber > 0)) {
+        // TeamNumber, RoundNumber should be set to valid values from login activity screen!
+        if((entityTeamRoundData != null) && (TeamNumber > 0) && (RoundNumber > 0)) {
             // this will insert a new record, or replace the matching record
             daoTeamRoundData.insert(entityTeamRoundData);
         } else {
             // This shouldn't typically happen, as the record should be created during login.
             // However, as Android can suspend, terminate, destroy *any* activity at *any*
             // time for a lot reasons (triggering the OnPause), we need to be
-            // prepared that TNumber or QRNumber might not be valid.
+            // prepared that TeamNumber or RoundNumber might not be valid.
             // TBD:  should we send them back to the login activity if this does happen?
         }
     }
 
-    // TBD: example of adding round data records
-    public void AddAllRounds() {
-        if(entityScouterName == null) {
-            newTeamRoundData();
-        }
-        for(int teamNumber = 1; teamNumber < 75; teamNumber++ ) {
-            for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
-                entityTeamRoundData.TeamNumber = teamNumber;
-                entityTeamRoundData.RoundNumber = roundNumber;
-                daoTeamRoundData.insert(entityTeamRoundData);
+    // based on the current TeamNumber, load any previous team data.
+    protected void refreshTeamData(){
+        // make sure DB started
+        startUpDb();
+
+        // TeamNumber should be set to valid values
+        if(TeamNumber > 0) {
+            try {
+                entityTeamData = daoTeamData.getRecord(TeamNumber);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // The record for that TeamNumber doesn't exist.
+                // entityTeamData will be null and the code below
+                // will create a new empty record.
             }
+        }
+        if(entityTeamData == null){
+            // This shouldn't EVER happen, as the team data record should be created
+            // BEFORE the event.  If it does, create an empty record and zero everything out
+            newTeamData();
         }
     }
 
-    public void AddScouterName(String scouterName){
+    // Save the current team data record to the DB.
+    protected void saveTeamData(){
+        // make sure DB started
+        startUpDb();
+
+        if((entityTeamData != null) && (TeamNumber > 0)) {
+            // this will insert a new record, or replace the matching record
+            daoTeamData.insert(entityTeamData);
+        } else {
+            // This shouldn't typically happen, as the record should be created during login.
+            // However, as Android can suspend, terminate, destroy *any* activity at *any*
+            // time for a lot reasons (triggering the OnPause), we need to be
+            // prepared that TeamNumber or RoundNumber might not be valid.
+            // TBD:  should we send them back to the login activity if this does happen?
+        }
+    }
+
+    public void addScouterName(String scouterName){
+        // make sure DB started
+        startUpDb();
         if(entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
@@ -270,27 +344,160 @@ public class ScoutingApplication extends Application {
         daoScouterName.insert(entityScouterName);
     }
 
+    // This returns the scouter names as a list which is needed for spinner
+    public List<String> getAllScouterNamesAsList() {
+        // make sure DB started
+        startUpDb();
+        return daoScouterName.getAllScouterNamesAsList();
+    }
+
+    public List<String> getAllTeamNumbersAsList() {
+        // make sure DB started
+        startUpDb();
+
+        int[] teamNumbers = daoTeamData.getAllTeamNumbers();
+        List<String> teamNumbersAsStrings = new ArrayList<String>();
+
+        for( int teamNumber : teamNumbers)
+        {
+            String teamNumberAsString = Integer.toString(teamNumber);
+            teamNumbersAsStrings.add(teamNumberAsString);
+        }
+
+        return teamNumbersAsStrings;
+    }
+
+    // TBD: example of adding round data records
+    private void addSampleTeamRoundData() {
+        if(entityTeamRoundData == null) {
+            newTeamRoundData();
+        }
+
+        // we're going to generate some random ints
+        Random r = new Random();
+
+        // create a list of 40 random team numbers.
+        // first get any team numbers that exist in the
+        // current round data
+        List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
+        // include any numbers in our sampleTeamNumbers array not already in list
+        for (int teamNumber : sampleTeamNumbers) {
+            if (!teamNumbers.contains(teamNumber)) {
+                teamNumbers.add(teamNumber);
+            }
+        }
+        // now add random team numbers until we have 40
+        while (teamNumbers.size() < 40) {
+            int teamNumber = r.nextInt(8000) + 1; // 1-8000
+            if (!teamNumbers.contains(teamNumber)) {
+                teamNumbers.add(teamNumber);
+            }
+        }
+
+        // a typical event has 60 rounds with 6 teams per round
+        int j = 0; // index of team number
+        for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
+            for(int i = 0; i < 6; i++ ) {
+                // get team number for this loop
+                int teamNumber = teamNumbers.get(j);
+                // and go to the next team number for next loop
+                j++;
+                if (j>=teamNumbers.size()) j=0;
+
+                entityTeamRoundData.TeamNumber = teamNumber;
+                entityTeamRoundData.RoundNumber = roundNumber;
+                entityTeamRoundData.Scouter = sampleScouters[r.nextInt(sampleScouters.length)];
+                entityTeamRoundData.TeamColor = (i<3) ? "Blue" : "Red"; // 3 blue, 3 red
+                entityTeamRoundData.AutonHighScore = r.nextInt(3) + 1; // 1-3
+                entityTeamRoundData.AutonLowScore = r.nextInt(3) + 1; // 1-3
+                entityTeamRoundData.AutonPickUp = r.nextInt(3) + 1; // 1-3
+                entityTeamRoundData.TeleopHighScore = r.nextInt(15) + 1; // 1-15
+                entityTeamRoundData.TeleopLowScore = r.nextInt(15) + 1; // 1-15
+                entityTeamRoundData.TeleopPickUp = r.nextInt(15) + 1; // 1-15
+                entityTeamRoundData.RotationControl = (r.nextInt(2)==0) ? false : true;
+                entityTeamRoundData.PositionControl = (r.nextInt(2)==0) ? false : true;
+                entityTeamRoundData.Climb = r.nextInt(3) + 1; // 1-3
+                entityTeamRoundData.BrokeDown = (r.nextInt(2)==0) ? false : true;
+                entityTeamRoundData.FinalStage = r.nextInt(3) + 1; // 1-3
+                entityTeamRoundData.Notes = "";
+                entityTeamRoundData.RateShooting = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.RateClimb = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.RateWheel = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.RateAuton = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.RateDiver = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.WouldPick = (r.nextInt(2)==0) ? false : true;
+                daoTeamRoundData.insert(entityTeamRoundData);
+            }
+        }
+    }
+
     // TBD: example of adding ScouterNames
-    public void AddAllScouterNames() {
-        String[] scouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
+    private void addSampleScouterNames() {
         if(entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
-        for (String scouter: scouters) {
+        for (String scouter: sampleScouters) {
             entityScouterName.ScouterName = scouter;
             daoScouterName.insert(entityScouterName);
+        }
+    }
+
+    // TBD: example of adding team data
+    private void addSampleTeamNumbers() {
+        if (entityTeamData == null) {
+            entityTeamData = new EntityTeamData();
+        }
+        // we're going to generate some random ints
+        Random r = new Random();
+        for (int teamNumber : sampleTeamNumbers) {
+            entityTeamData.TeamNumber = teamNumber;
+            entityTeamData.TeamName = "foo";
+            entityTeamData.Scouter = sampleScouters[r.nextInt(sampleScouters.length)];
+            entityTeamData.RobotWeight = r.nextInt(90) + 30; // 30-120
+            daoTeamData.insert(entityTeamData);
+        }
+    }
+
+    // TBD: files created programatically in downloads folder may not
+    // appear immediately to other system utilities.  This sends out
+    // a notification to the system about it.
+    private void makeCreatedFileVisibleInDownloads(String downloadFilename) {
+        File downloadFile = new File(downloadFilename);
+        String mimeType = "text/csv";
+        if (false) { // (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // You can add more columns.. Complete list of columns can be found at
+            // https://developer.android.com/reference/android/provider/MediaStore.Downloads
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.TITLE, downloadFile.getName());
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, downloadFile.getName());
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
+            contentValues.put(MediaStore.MediaColumns.SIZE, downloadFile.length());
+            // If you downloaded to a specific folder inside "Downloads" folder
+            //contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + File.separator + "Temp");
+            // Insert into the database
+            ContentResolver database = getContentResolver();
+            //database.insert(MediaStore.MediaColumns.EXTERNAL_CONTENT_URI, contentValues);
+        } else {
+            DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+            if (downloadManager != null) {
+                downloadManager.addCompletedDownload(downloadFilename, downloadFilename, true,
+                        mimeType, downloadFile.getAbsolutePath(), downloadFile.length(), true);
+            }
         }
     }
 
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {
+            // make sure DB started
+            startUpDb();
+
             // TBD: eventually we want to date/time stamp each export
-            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
-            //String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
+            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String fileName = "ScouterNames-"+androidId+".csv";
+            String fileName = curDate + "-ScouterNames-"+androidId+".csv";
             String filePath = baseDir + File.separator + fileName;
 
             // we are exporting everything, so recreate each time
@@ -304,6 +511,7 @@ public class ScoutingApplication extends Application {
                 writer.writeNext(csvLine);
             }
             writer.close();
+            makeCreatedFileVisibleInDownloads(filePath);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
@@ -313,6 +521,9 @@ public class ScoutingApplication extends Application {
     // TBD: example reading from CSV
     public void importScouterNames() {
         try {
+            // make sure DB started
+            startUpDb();
+
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String fileName = "ScouterNames-"+androidId+".csv";

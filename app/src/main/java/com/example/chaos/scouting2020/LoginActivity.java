@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class LoginActivity extends BaseActivity {
 
@@ -30,73 +33,76 @@ public class LoginActivity extends BaseActivity {
 
         // start a new team round data record
         ((ScoutingApplication) this.getApplication()).newTeamRoundData();
-        ((ScoutingApplication) this.getApplication()).newScouterName();
 
-        final Spinner loginScouterSpinner = (Spinner) this.findViewById(R.id.loginScouterSpinner);
-        loginScouterSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent){
-            }
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView)parentView.getChildAt(0)).setTextSize(70);
-                ScouterName = String.valueOf(loginScouterSpinner.getItemAtPosition(position));
-            }
-        });
-        final Spinner loginTeamNumSpinner = (Spinner) this.findViewById(R.id.loginTeamNumberSpinner);
-        loginTeamNumSpinner.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent){
-            }
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView)parentView.getChildAt(0)).setTextSize(70);
-                TeamNumber = Integer.parseInt(String.valueOf(loginTeamNumSpinner.getItemAtPosition(position)));
-            }
-        });
-        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
+        // use DB to populate scouter name selection spinner
+        List<String> scouters = ((ScoutingApplication) this.getApplication()).getAllScouterNamesAsList();
+        AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 70);
+
+        // use DB to populate team number selection spinner
+        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).getAllTeamNumbersAsList();
+        AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 70);
+    }
+
+    public void MenuButtonPressed(View MenuButton) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     public void redRadioButtonPressed(View redRadioButton) {
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(64, 231, 20, 0 ));
         TeamColor = "Red";
+        SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void blueRadioButtonPressed(View blueRadioButton) {
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.loginConstraintLayout);
-        layout.setBackgroundColor(Color.argb(64,53, 121, 220));
         TeamColor = "Blue";
+        SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void startButtonPressed(View startButton) {
-        // TeamNumber, ScouterName, and TeamColor should have been set on change above
+        Spinner spinnerScouter = (Spinner) findViewById(R.id.loginScouterSpinner);
+        ScouterName = spinnerScouter.getSelectedItem().toString();
+
+        Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.loginTeamNumberSpinner);
+        try {
+            TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+        } catch (Exception e) {
+            // some sort of error converting TeamNumber to int
+            e.printStackTrace();
+            TeamNumber = -1;
+        }
+
         EditText QRNumberEditText = (EditText) findViewById(R.id.loginQRNumberEditText);
         try {
             RoundNumber = Integer.parseInt(QRNumberEditText.getText().toString());
         } catch (Exception e) {
             // some sort of error converting RoundNumber to int
             e.printStackTrace();
-            Toast.makeText(this, "RoundNumber should be positive integer", Toast.LENGTH_SHORT).show();
             RoundNumber = -1;
         }
 
         // don't allow switching away if any invalid values
         if(    (TeamNumber>0)
-            && (RoundNumber>0)
+            && ((RoundNumber>0) && (RoundNumber<100))
             && ((TeamColor == "Blue") || (TeamColor == "Red"))
             && (!ScouterName.isEmpty())) {
 
-            // we have valid login fields, switch to the first activity: auton
+            // all login fields are valid, switch to the first activity: auton
             Intent intent = new Intent(this, AutonActivity.class);
             startActivity(intent);
 
         } else {
-            Toast.makeText(this, "All login fields not set", Toast.LENGTH_SHORT).show();
+            if ((RoundNumber<1) || (RoundNumber>99)) {
+                Toast.makeText(this, "RoundNumber should be positive integer less than 100", Toast.LENGTH_SHORT).show();
+            } else if ((TeamColor != "Blue") && (TeamColor != "Red")) {
+                Toast.makeText(this, "TeamColor should be red or blue", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "All login fields not set", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).AddScouterName("Gareau");
         // load any previously collected data for current team/round
         ((ScoutingApplication) this.getApplication()).setTeamNumber(TeamNumber);
         ((ScoutingApplication) this.getApplication()).setRoundNumber(RoundNumber);

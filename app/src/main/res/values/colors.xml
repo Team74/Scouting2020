@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorDarkPastelBlue">#779ECB</color>
     <color name="BlueBackground">#3579DC</color>
+    <color name="RedBackground">#E71400</color>
 </resources>

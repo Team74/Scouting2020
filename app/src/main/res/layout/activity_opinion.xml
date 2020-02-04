@@ -5,208 +5,123 @@
     android:id="@+id/opinionConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OpinionActivity"
-    tools:layout_editor_absoluteY="73dp">
-
-    <TextView
-        android:id="@+id/opinionShootingRatingTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Rate the Shooting of This Robot"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline8.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline2" />
-
-    <TextView
-        android:id="@+id/opinionClimbingRatingTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Rate the Climbing of This Robot"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline27.5"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline21.2" />
-
-    <TextView
-        android:id="@+id/opinionWheelRatingTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Rate the Wheel Spinning of This Robot"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline46.5"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline40.4" />
-
-    <TextView
-        android:id="@+id/opinionAutonRatingTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Rate the Auton Stage of This Robot"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline66"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline59.5" />
-
-    <TextView
-        android:id="@+id/opinionDriverRatingTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Rate the Driver of This Robot"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline85.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline78.5" />
+    tools:context=".OpinionActivity">
 
     <TextView
         android:id="@+id/opinionQRNumberTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="QR Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline9.334"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline2" />
 
     <TextView
         android:id="@+id/opinionTNumberTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="TeamNumber"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Team Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline16.667"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline9.334" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline10" />
 
     <TextView
         android:id="@+id/opinionScouterTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="ScouterName"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Scouter Name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline16.667" />
-
-    <TextView
-        android:id="@+id/opinionEmptyTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Empty"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline25" />
-
-    <TextView
-        android:id="@+id/opinionWouldYouPickTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="fill_vertical"
-        android:text="Would You Pick This Robot?"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline75"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline50"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/opinionExitButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="exitButtonPressed"
-        android:text="Exit"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline25"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline18" />
 
     <Button
         android:id="@+id/opinionAutonButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="autonButtonPressed"
         android:text="Auton"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline33.667"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline26" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline26" />
 
     <Button
         android:id="@+id/opinionTeleopButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="teleopButtonPressed"
         android:text="Teleop"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuidline41.334"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline42"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline33.667" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline34" />
 
     <Button
         android:id="@+id/opinionEndgameButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:onClick="endgameButtonPressed"
         android:text="Endgame"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizantalGuideline49"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuidline41.334" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline42" />
+
+    <TextView
+        android:id="@+id/opinionShootingRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate the Shooting of This Robot"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline10"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline2" />
 
     <RadioGroup
         android:id="@+id/opinionShootingRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline21.2"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
+        app:layout_constraintBottom_toBottomOf="@+id/opinionHorizontalGuideline18"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opinionShootingRatingTextView">
 
         <RadioButton
@@ -265,16 +180,32 @@
             android:textColor="@android:color/black" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/opinionClimbingRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate the Climbing of This Robot"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline18" />
+
     <RadioGroup
         android:id="@+id/opinionClimbingRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline40.4"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline27.5">
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline34"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionClimbingRatingTextView">
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton1"
@@ -330,18 +261,34 @@
             android:onClick="climbingRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
-
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/opinionWheelRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate the Wheel Spinning of This Robot"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline42"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline34" />
 
     <RadioGroup
         android:id="@+id/opinionWheelRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline59.5"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline46.5">
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionWheelRatingTextView">
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton1"
@@ -397,18 +344,34 @@
             android:onClick="wheelSpinningRating5StarPressed"
             android:text="5 STARS"
             android:textColor="@android:color/black" />
-
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/opinionAutonRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate the Auton Stage of This Robot"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline58"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline50" />
 
     <RadioGroup
         android:id="@+id/opinionAutonRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline78.5"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline66">
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline66"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionAutonRatingTextView">
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton1"
@@ -466,15 +429,32 @@
             android:textColor="@android:color/black" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/opinionDriverRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Rate the Driver of This Robot"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline74"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline66" />
+
     <RadioGroup
         android:id="@+id/opinionDriverRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline98"
-        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline49"
-        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline85.2">
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline82"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opinionDriverRatingTextView">
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton1"
@@ -532,190 +512,34 @@
             android:textColor="@android:color/black" />
     </RadioGroup>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionVerticalGuideline1"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/opinionWouldYouPickTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.01" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionVerticalGuideline50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionVerticalGuideline49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.49" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionVerticalGuideline75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="12dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline8.4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.084" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline9.334"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.093333334" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline16.667"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".16" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline21.2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.212" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".24" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".26" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline27.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.275" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline33.667"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".336666667" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline40.4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40333334" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuidline41.334"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".413333334" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline46.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.465" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizantalGuideline49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".49" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline59.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.595" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline66"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".75" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline78.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.785" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline85.2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.852" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline98"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="fill_vertical"
+        android:text="Would You Pick This Robot?"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline74"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline50" />
 
     <RadioGroup
         android:id="@+id/opinionPickRadioGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline98"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="@+id/opinionHorizontalGuideline75" >
+        app:layout_constraintTop_toBottomOf="@+id/opinionWouldYouPickTextView" >
 
         <RadioButton
             android:id="@+id/opinionPickYesRadioButton"
@@ -726,7 +550,7 @@
             android:onClick="wouldPickRobotPressed"
             android:text="Yes"
             android:textAlignment="inherit"
-            android:textSize="90sp" />
+            android:textSize="48sp" />
 
         <RadioButton
             android:id="@+id/opinionPickNoRadioButton"
@@ -737,7 +561,152 @@
             android:onClick="wouldNotPickRobotPressed"
             android:text="No"
             android:textAlignment="inherit"
-            android:textSize="90sp" />
+            android:textSize="48sp" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/opinionExitButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="exitButtonPressed"
+        android:text="Exit"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline2" />
+
+    <TextView
+        android:id="@+id/opinionEmptyTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Empty"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
+        app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline74"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline82"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.82" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionHorizontalGuideline98"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionVerticalGuideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/opinionVerticalGuideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,81 +8,122 @@
     tools:context=".EndgameActivity">
 
     <TextView
-        android:id="@+id/endgameStageTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_vertical"
-        android:text="Which stage did they finish?"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline75"
-        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuidline50"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline50" />
-
-    <TextView
         android:id="@+id/endgameQRNumberTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="QR Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline9.334"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline2" />
 
     <TextView
         android:id="@+id/endgameTNumberTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="Team Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline16.667"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline9.334" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline10" />
 
     <TextView
         android:id="@+id/endgameScouterTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="Scouter Name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline24"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline16.667" />
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline18" />
+
+    <Button
+        android:id="@+id/endgameAutonButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="autonButtonPressed"
+        android:text="Auton"
+        android:textColor="@android:color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline34"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline26" />
+
+    <Button
+        android:id="@+id/endgameTeleopButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="teleopButtonPressed"
+        android:text="Teleop"
+        android:textColor="@android:color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline42"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline34" />
+
+    <Button
+        android:id="@+id/endgameEndgameButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:enabled="false"
+        android:shadowColor="#000000"
+        android:text="Endgame"
+        android:textAlignment="center"
+        android:textColor="#A3000000"
+        android:textSize="10sp"
+        android:theme="@style/Widget.AppCompat.Button.Colored"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline42" />
+
+    <Button
+        android:id="@+id/endgameOpinionButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="opinionButtonPressed"
+        android:text="Opinion"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline26"
+        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline2" />
 
     <TextView
         android:id="@+id/endgameNotesTextView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="Notes About the Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuidline50"
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
         app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline50" />
 
     <EditText
@@ -98,76 +139,10 @@
         android:inputType="text"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline98"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuidline50"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline50" />
-
-    <Button
-        android:id="@+id/endgameAutonButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:clickable="true"
-
-        android:enabled="true"
-        android:onClick="autonButtonPressed"
-        android:text="Auton"
-        android:textColor="@android:color/black"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline33.667"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline26" />
-
-    <Button
-        android:id="@+id/endgameOpinionButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="opinionButtonPressed"
-        android:text="Opinion"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline25"
-        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuidline50"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/endgameTeleopButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="teleopButtonPressed"
-        android:text="Teleop"
-        android:textColor="@android:color/black"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline41.334"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline33.667" />
-
-    <Button
-        android:id="@+id/endgameEndgameButton"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:enabled="false"
-        android:text="Endgame"
-        android:textColor="#A3000000"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline49"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline41.334" />
+        app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
+        app:layout_constraintTop_toBottomOf="@+id/endgameNotesTextView" />
 
     <RadioGroup
         android:id="@+id/endgameClimbingRadioGroup"
@@ -178,10 +153,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline25"
-        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuidline50"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline26"
+        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/endgameHorizontalGuideline2">
 
         <RadioButton
             android:id="@+id/endgameClimbRadioButton"
@@ -191,7 +166,7 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="didClimbButtonPressed"
-            android:text="Climb Succesful"
+            android:text="Climb Successful"
             android:textColor="@android:color/black"
             android:textSize="25sp" />
 
@@ -218,7 +193,6 @@
             android:text="Climb Failed"
             android:textColor="@android:color/black"
             android:textSize="25sp" />
-
     </RadioGroup>
 
     <RadioGroup
@@ -231,9 +205,9 @@
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline50"
-        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuidline50"
+        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline25">
+        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline26">
 
         <RadioButton
             android:id="@+id/endgameBrokeDownRadioButton"
@@ -251,7 +225,7 @@
             android:id="@+id/endgameDidntBreakDownRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1 "
+            android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="robotDidntBreakDownButtonPressed"
@@ -259,6 +233,21 @@
             android:textColor="@android:color/black"
             android:textSize="30sp" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/endgameStageTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Which stage did they finish?"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline74"
+        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline50" />
 
     <RadioGroup
         android:id="@+id/endgameStageRadioGroup"
@@ -269,10 +258,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuidline50"
+        app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline98"
+        app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/endgameHorizontalGuideline75">
+        app:layout_constraintTop_toBottomOf="@+id/endgameStageTextView">
 
         <RadioButton
             android:id="@+id/endgameStage1RadioButton"
@@ -316,90 +305,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".02" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline9.334"
+        android:id="@+id/endgameHorizontalGuideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".09334" />
+        app:layout_constraintGuide_percent="0.10" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline16.667"
+        android:id="@+id/endgameHorizontalGuideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".16667" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".24" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <android.support.constraint.Guideline
         android:id="@+id/endgameHorizontalGuideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".26" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline33.667"
+        android:id="@+id/endgameHorizontalGuideline34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".33667" />
+        app:layout_constraintGuide_percent="0.34" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline41.334"
+        android:id="@+id/endgameHorizontalGuideline42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".41334" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".49" />
+        app:layout_constraintGuide_percent="0.42" />
 
     <android.support.constraint.Guideline
         android:id="@+id/endgameHorizontalGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameHorizontalGuideline75"
+        android:id="@+id/endgameHorizontalGuideline74"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".75" />
+        app:layout_constraintGuide_percent="0.74" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/endgameVerticalGuidline50"
+        android:id="@+id/endgameHorizontalGuideline98"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/endgameVerticalGuideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
+        app:layout_constraintGuide_percent="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/endgameVerticalGuideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <android.support.constraint.Guideline
         android:id="@+id/endgameVerticalGuideline75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".75" />
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>

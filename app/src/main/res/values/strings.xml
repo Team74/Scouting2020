@@ -5,27 +5,4 @@
     <string name="name_prompt">Select Your Name</string>
     <string name="teamNum_prompt">Select The Team#</string>
 
-    <string-array name="name_array">
-        <item>Zane</item>
-        <item>Matthew</item>
-        <item>Jaewoo</item>
-        <item>Jacob</item>
-        <item>Dillan</item>
-        <item>Tim</item>
-        <item>Shane</item>
-        <item>Ben</item>
-    </string-array>
-
-    <string-array name="teamNum_array">
-        <item>74</item>
-        <item>344</item>
-        <item>3248</item>
-        <item>5783</item>
-        <item>5573</item>
-        <item>535</item>
-        <item>107</item>
-        <item>84</item>
-    </string-array>
-
-
 </resources>
