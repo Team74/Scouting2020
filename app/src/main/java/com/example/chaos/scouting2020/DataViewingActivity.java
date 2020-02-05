@@ -25,4 +25,9 @@ public class DataViewingActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).exportScouterNames();
         Log.d("CSV", "works");
     }
+
+    public void matchReportButtonPressed(View matchReportButtonPressed) {
+        Intent intent = new Intent(this, MatchReportActivity.class);
+        startActivity(intent);
+    }
 }

@@ -156,7 +156,6 @@ public class ScoutingApplication extends Application {
     public void setRateDiver(int rateDiver){ entityTeamRoundData.RateDiver = rateDiver; }
     public void setWouldPick(boolean wouldPick){ entityTeamRoundData.WouldPick = wouldPick; }
     // Set Functions End
-
     // This is a helper function to setup DB and DAOs.
     private void startUpDb(){
         // get room (db)
@@ -183,7 +182,7 @@ public class ScoutingApplication extends Application {
             addSampleTeamNumbers();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
-            //ddSampleTeamRoundData();
+            addSampleTeamRoundData();
         }
     }
 

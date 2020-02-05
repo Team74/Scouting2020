@@ -29,4 +29,13 @@
         android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/matchReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match Report"
+        android:onClick="matchReportButtonPressed"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="155dp" />
 </android.support.constraint.ConstraintLayout>

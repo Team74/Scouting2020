@@ -18,4 +18,12 @@ public interface DaoTeamRoundData {
     // This returns the list of all unique team numbers in the round data
     @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData")
     List<Integer> getAllTeamNumbersAsList();
+
+    static class MatchReportData {
+        int TeamNumber;
+        float AvgTeleopHighScore;
+    }
+
+    @Query("SELECT TeamNumber, AVG(TeleopHighScore) AS AvgTeleopHighScore FROM EntityTeamRoundData GROUP BY TeamNumber")
+    MatchReportData[] getMatchReportData();
 }
