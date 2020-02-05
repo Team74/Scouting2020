@@ -486,6 +486,123 @@ public class ScoutingApplication extends Application {
         }
     }
 
+    public void exportTeamRounndData(){
+        try{
+            // starts up the data base
+            startUpDb();
+            //Makes the filepath
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
+            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
+            String filePath =baseDir + File.separator + curDate + "TeamRoundData" + androidId + ".csv";
+            //
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
+            //
+            EntityTeamRoundData[] teamRoundDatas = daoTeamRoundData.getAllTeamRoundData();
+            //
+            for (EntityTeamRoundData teamRoundData: teamRoundDatas){
+                String[] csvLine = {
+                        Integer.toString(teamRoundData.TeamNumber),
+                        Integer.toString(teamRoundData.RoundNumber),
+                        teamRoundData.Scouter,
+                        teamRoundData.TeamColor,
+                        Integer.toString(teamRoundData.AutonHighScore),
+                        Integer.toString(teamRoundData.AutonLowScore),
+                        Integer.toString(teamRoundData.AutonPickUp),
+                        Boolean.toString(teamRoundData.AutonStartLine),
+                        Integer.toString(teamRoundData.TeleopHighScore),
+                        Integer.toString(teamRoundData.TeleopLowScore),
+                        Integer.toString(teamRoundData.TeleopPickUp),
+                        Boolean.toString(teamRoundData.RotationControl),
+                        Boolean.toString(teamRoundData.PositionControl),
+                        Integer.toString(teamRoundData.Climb),
+                        Boolean.toString(teamRoundData.BrokeDown),
+                        Integer.toString(teamRoundData.FinalStage),
+                        teamRoundData.Notes,
+                        Integer.toString(teamRoundData.RateClimb),
+                        Integer.toString(teamRoundData.RateWheel),
+                        Integer.toString(teamRoundData.RateAuton),
+                        Integer.toString(teamRoundData.RateDiver),
+                        Boolean.toString(teamRoundData.WouldPick),
+                };
+                writer.writeNext(csvLine);
+            }
+            writer.close();
+            makeCreatedFileVisibleInDownloads(filePath);
+        } catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void importTeamRoundData(){
+        try{
+            startUpDb();
+
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
+            String filePath = baseDir + File.separator + "TeamRoundData-"+androidId+".csv";
+            //
+            CSVReader reader = new CSVReader(new FileReader(filePath));
+            String[] csvLine;
+            entityTeamRoundData = new EntityTeamRoundData();
+            while ((csvLine = reader.readNext()) != null){
+                int teamNumber = Integer.valueOf(csvLine[0]);
+                int roundNumber = Integer.valueOf(csvLine[1]);
+                String scouter = csvLine[2];
+                String teamColor = csvLine[3];
+                int autonHighScore = Integer.valueOf(csvLine[4]);
+                int autonLowScore = Integer.valueOf(csvLine[5]);
+                int autonPickUp = Integer.valueOf(csvLine[6]);
+                boolean autonStartLine = Boolean.valueOf(csvLine[7]);
+                int teleopHighScore = Integer.valueOf(csvLine[8]);
+                int teleopLowScore = Integer.valueOf(csvLine[9]);
+                int teleopPickUp = Integer.valueOf(csvLine[10]);
+                boolean rotationControl = Boolean.valueOf(csvLine[11]);
+                boolean positionControl = Boolean.valueOf(csvLine[12]);
+                int climb = Integer.valueOf(csvLine[13]);
+                boolean brokeDown = Boolean.valueOf(csvLine[14]);
+                int finalStage = Integer.valueOf(csvLine[15]);
+                String notes = csvLine[16];
+                int rateShooting = Integer.valueOf(csvLine[17]);
+                int rateClimb = Integer.valueOf(csvLine[18]);
+                int rateWheel = Integer.valueOf(csvLine[19]);
+                int rateAuton = Integer.valueOf(csvLine[20]);
+                int rateDiver = Integer.valueOf(csvLine[21]);
+                boolean wouldPick = Boolean.valueOf(csvLine[22]);
+                //
+                entityTeamRoundData.TeamNumber = teamNumber;
+                entityTeamRoundData.RoundNumber = roundNumber;
+                entityTeamRoundData.Scouter = scouter;
+                entityTeamRoundData.TeamColor = teamColor;
+                entityTeamRoundData.AutonHighScore = autonHighScore;
+                entityTeamRoundData.AutonLowScore = autonLowScore;
+                entityTeamRoundData.AutonPickUp = autonPickUp;
+                entityTeamRoundData.AutonStartLine = autonStartLine;
+                entityTeamRoundData.TeleopHighScore = teleopHighScore;
+                entityTeamRoundData.TeleopLowScore = teleopLowScore;
+                entityTeamRoundData.TeleopPickUp = teleopPickUp;
+                entityTeamRoundData.RotationControl = rotationControl;
+                entityTeamRoundData.PositionControl = positionControl;
+                entityTeamRoundData.Climb = climb;
+                entityTeamRoundData.BrokeDown = brokeDown;
+                entityTeamRoundData.FinalStage = finalStage;
+                entityTeamRoundData.Notes = notes;
+                entityTeamRoundData.RateShooting = rateShooting;
+                entityTeamRoundData.RateClimb = rateClimb;
+                entityTeamRoundData.RateWheel = rateWheel;
+                entityTeamRoundData.RateAuton = rateAuton;
+                entityTeamRoundData.RateDiver = rateDiver;
+                entityTeamRoundData.WouldPick = wouldPick;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, "Error reading CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     // TBD: example writing to CSV
     public void exportScouterNames() {
         try {

@@ -25,4 +25,8 @@ public class DataViewingActivity extends BaseActivity {
         ((ScoutingApplication) this.getApplication()).exportScouterNames();
         Log.d("CSV", "works");
     }
+
+    public void CSVTeamRoundDataButtonPressed(View TeamRoundDatacsv){
+        ((ScoutingApplication) this.getApplication()).exportTeamRounndData();
+    }
 }

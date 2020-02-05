@@ -18,4 +18,7 @@ public interface DaoTeamRoundData {
     // This returns the list of all unique team numbers in the round data
     @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData")
     List<Integer> getAllTeamNumbersAsList();
+
+    @Query("SELECT * FROM EntityTeamRoundData")
+    EntityTeamRoundData[] getAllTeamRoundData();
 }
