@@ -26,7 +26,12 @@ public class DataViewingActivity extends BaseActivity {
         Log.d("CSV", "works");
     }
 
-    public void CSVTeamRoundDataButtonPressed(View TeamRoundDatacsv){
+    public void CSVTeamRoundDataButtonPressed(View TeamRoundDatacsv) {
         ((ScoutingApplication) this.getApplication()).exportTeamRounndData();
+    }
+    public void matchReportButtonPressed(View matchReportButtonPressed) {
+        Intent intent = new Intent(this, MatchReportActivity.class);
+        startActivity(intent);
+
     }
 }

@@ -21,4 +21,12 @@ public interface DaoTeamRoundData {
 
     @Query("SELECT * FROM EntityTeamRoundData")
     EntityTeamRoundData[] getAllTeamRoundData();
+    static class MatchReportData {
+        int TeamNumber;
+        float AvgTeleopHighScore;
+    }
+
+    @Query("SELECT TeamNumber, AVG(TeleopHighScore) AS AvgTeleopHighScore FROM EntityTeamRoundData GROUP BY TeamNumber")
+    MatchReportData[] getMatchReportData();
+
 }
