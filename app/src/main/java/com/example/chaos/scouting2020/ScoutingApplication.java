@@ -115,6 +115,12 @@ public class ScoutingApplication extends Application {
     public boolean getWouldPick(){
         return entityTeamRoundData.WouldPick;
     }
+    public boolean getShootingLocation1() { return entityTeamData.ShootingLocation1; }
+    public boolean getShootingLocation2() { return entityTeamData.ShootingLocation2; }
+    public boolean getShootingLocation3() { return entityTeamData.ShootingLocation3; }
+    public boolean getStartLocationLeft() { return entityTeamData.StartLocationLeft; }
+    public boolean getStartLocationCenter() { return entityTeamData.StartLocationCenter; }
+    public boolean getStartLocationRight() { return entityTeamData.StartLocationRight; }
     // Get Functions End
 
     // Set Functions
@@ -155,6 +161,12 @@ public class ScoutingApplication extends Application {
     public void setRateAuton(int rateAuton){ entityTeamRoundData.RateAuton = rateAuton; }
     public void setRateDiver(int rateDiver){ entityTeamRoundData.RateDiver = rateDiver; }
     public void setWouldPick(boolean wouldPick){ entityTeamRoundData.WouldPick = wouldPick; }
+    public void setShootingLocation1(boolean shootingLocation1){ entityTeamData.ShootingLocation1 = shootingLocation1; }
+    public void setShootingLocation2(boolean shootingLocation2){ entityTeamData.ShootingLocation2 = shootingLocation2; }
+    public void setShootingLocation3(boolean shootingLocation3){ entityTeamData.ShootingLocation3 = shootingLocation3; }
+    public void setStartLocationLeft(boolean startLocationLeft){ entityTeamData.StartLocationLeft = startLocationLeft; }
+    public void setStartLocationCenter(boolean startLocationCenter){ entityTeamData.StartLocationCenter = startLocationCenter; }
+    public void setStartLocationRight(boolean startLocationRight){ entityTeamData.StartLocationRight = startLocationRight; }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
@@ -245,6 +257,12 @@ public class ScoutingApplication extends Application {
         entityTeamData.TeamName = "";
         entityTeamData.Scouter = "Unknown";
         entityTeamData.RobotWeight = -1;
+        entityTeamData.ShootingLocation1 = false;
+        entityTeamData.ShootingLocation2 = false;
+        entityTeamData.ShootingLocation3 = false;
+        entityTeamData.StartLocationLeft = false;
+        entityTeamData.StartLocationCenter = false;
+        entityTeamData.StartLocationRight = false;
 
         // reset member variable for primary key
         TeamNumber = -1;
