@@ -16,6 +16,8 @@ import java.util.List;
 
 public class LoginActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     protected int TeamNumber = -1;
     protected int RoundNumber = -1;
     protected String ScouterName = "";
@@ -31,19 +33,22 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // start a new team round data record
-        ((ScoutingApplication) this.getApplication()).newTeamRoundData();
+        App.newTeamRoundData();
 
         // use DB to populate scouter name selection spinner
-        List<String> scouters = ((ScoutingApplication) this.getApplication()).getAllScouterNamesAsList();
+        List<String> scouters = App.getAllScouterNamesAsList();
         AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 70);
 
         // use DB to populate team number selection spinner
-        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).getAllTeamNumbersAsList();
+        List<String> teamNumbers = App.getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 70);
     }
 
-    public void MenuButtonPressed(View MenuButton) {
+    public void menuButtonPressed(View menuButton) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
@@ -103,16 +108,23 @@ public class LoginActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        // load any previously collected data for current team/round
-        ((ScoutingApplication) this.getApplication()).setTeamNumber(TeamNumber);
-        ((ScoutingApplication) this.getApplication()).setRoundNumber(RoundNumber);
-        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
-        // update data for current team round
-        ((ScoutingApplication) this.getApplication()).setTeamNumber(TeamNumber);
-        ((ScoutingApplication) this.getApplication()).setRoundNumber(RoundNumber);
-        ((ScoutingApplication) this.getApplication()).setScouter(ScouterName);
-        ((ScoutingApplication) this.getApplication()).setTeamColor(TeamColor);
-        // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
+
+        // only save team round on exit if valid
+        if(    (TeamNumber>0)
+                && ((RoundNumber>0) && (RoundNumber<100))
+                && ((TeamColor == "Blue") || (TeamColor == "Red"))
+                && (!ScouterName.isEmpty())) {
+            // load any previously collected data for current team/round
+            App.setTeamNumber(TeamNumber);
+            App.setRoundNumber(RoundNumber);
+            App.refreshTeamRoundData();
+            // update data for current team round
+            App.setTeamNumber(TeamNumber);
+            App.setRoundNumber(RoundNumber);
+            App.setScouter(ScouterName);
+            App.setTeamColor(TeamColor);
+            // save any updated data for current team/round
+            App.saveTeamRoundData();
+        }
     }
 }

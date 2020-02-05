@@ -8,30 +8,35 @@ import android.view.View;
 
 public class DataViewingActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_viewing);
+
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
     }
 
-    public void MenuButtonPressed(View MenuButton) {
+    public void menuButtonPressed(View menuButton) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
 
     // TBD: temp button for testing csv code
-    public void CSVNamesButton(View CSVNamesButton) {
+    public void exportScouterNamesButtonPressed(View exportScouterNamesButton) {
         Log.d("CSV", "Starts");
-        ((ScoutingApplication) this.getApplication()).exportScouterNames();
+        App.exportScouterNames();
         Log.d("CSV", "works");
     }
 
-    public void CSVTeamRoundDataButtonPressed(View TeamRoundDatacsv) {
-        ((ScoutingApplication) this.getApplication()).exportTeamRounndData();
+    public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
+        App.exportTeamRoundData();
     }
-    public void matchReportButtonPressed(View matchReportButtonPressed) {
+
+    public void matchReportButtonPressed(View matchReportButton) {
         Intent intent = new Intent(this, MatchReportActivity.class);
         startActivity(intent);
-
     }
 }

@@ -13,6 +13,8 @@ import java.util.List;
 
 public class PitScoutingActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     protected String ScouterName = "";
     protected int TeamNumber = -1;
     protected String DriveType = "";
@@ -28,12 +30,15 @@ public class PitScoutingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit_scouting);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // use DB to populate scouter name selection spinner
-        List<String> scouters = ((ScoutingApplication) this.getApplication()).getAllScouterNamesAsList();
+        List<String> scouters = App.getAllScouterNamesAsList();
         AddStringsToSpinner(R.id.pitScoutingScouterSpinner, scouters, 36);
 
         // use DB to populate team number selection spinner
-        List<String> teamNumbers = ((ScoutingApplication) this.getApplication()).getAllTeamNumbersAsList();
+        List<String> teamNumbers = App.getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.pitScoutingTeamNumberSpinner, teamNumbers, 36);
 
         List<String> driveTypes = Arrays.asList("Tank","Mecanum","Omni","Swerve","Other");
@@ -46,17 +51,24 @@ public class PitScoutingActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 ((TextView) parentView.getChildAt(0)).setTextSize(36);
-
                 // load any previously collected data for current team
-                //((ScoutingApplication) this.getApplication()).refreshTeamData();
+                try {
+                    Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
+                    TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+                    App.setTeamNumber(TeamNumber);
+                    App.refreshTeamData();
+                } catch (Exception e) {
+                    // some sort of error converting TeamNumber to int
+                    e.printStackTrace();
+                    TeamNumber = -1;
+                }
 
                 // update display with specific items for this activity
-
             }
         });
     }
 
-    public void MenuButtonPressed(View MenuButton) {
+    public void menuButtonPressed(View menuButton) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
@@ -94,15 +106,15 @@ public class PitScoutingActivity extends BaseActivity {
         Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
         TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
 
-        ((ScoutingApplication) this.getApplication()).setShootingLocation1(PitScoutingShootingLocation1);
-        ((ScoutingApplication) this.getApplication()).setShootingLocation2(PitScoutingShootingLocation2);
-        ((ScoutingApplication) this.getApplication()).setShootingLocation3(PitScoutingShootingLocation3);
-        ((ScoutingApplication) this.getApplication()).setStartLocationLeft(PitScoutingStartLocationLeft);
-        ((ScoutingApplication) this.getApplication()).setStartLocationCenter(PitScoutingStartLocationCenter);
-        ((ScoutingApplication) this.getApplication()).setStartLocationRight(PitScoutingStartLocationRight);
+        App.setShootingLocation1(PitScoutingShootingLocation1);
+        App.setShootingLocation2(PitScoutingShootingLocation2);
+        App.setShootingLocation3(PitScoutingShootingLocation3);
+        App.setStartLocationLeft(PitScoutingStartLocationLeft);
+        App.setStartLocationCenter(PitScoutingStartLocationCenter);
+        App.setStartLocationRight(PitScoutingStartLocationRight);
 
         // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).saveTeamData();
+        App.saveTeamData();
     }
 }
 

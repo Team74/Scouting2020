@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class OpinionActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     // Android can suspend, terminate, destroy *any* activity at *any*
     // time for a lot reasons (triggering the OnPause), and a subsequent
     // OnCreate when the activity is restarted.  Member variables like
@@ -29,19 +31,22 @@ public class OpinionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opinion);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // load any previously collected data for current team/round
-        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+        App.refreshTeamRoundData();
 
         // update display with common items
         UpdateCommonLayoutItems(R.id.opinionTNumberTextView, R.id.opinionQRNumberTextView, R.id.opinionScouterTextView, R.id.opinionConstraintLayout);
 
         // update display with specific items for this activity
-        OpinionShootingRating = ((ScoutingApplication) this.getApplication()).getRateShooting();
-        OpinionClimbingRating = ((ScoutingApplication) this.getApplication()).getRateClimb();
-        OpinionWheelSpinningRating = ((ScoutingApplication) this.getApplication()).getRateWheel();
-        OpinionAutonStageRating = ((ScoutingApplication) this.getApplication()).getRateAuton();
-        OpinionDriverRating = ((ScoutingApplication) this.getApplication()).getRateDiver();
-        OpinionWouldPickRobot = ((ScoutingApplication) this.getApplication()).getWouldPick();
+        OpinionShootingRating = App.getRateShooting();
+        OpinionClimbingRating = App.getRateClimb();
+        OpinionWheelSpinningRating = App.getRateWheel();
+        OpinionAutonStageRating = App.getRateAuton();
+        OpinionDriverRating = App.getRateDiver();
+        OpinionWouldPickRobot = App.getWouldPick();
 
         RadioButton Shooting = (RadioButton) findViewById(R.id.opinionShootingRatingRadioButton1);
         Shooting.setChecked(OpinionShootingRating == 1);
@@ -238,13 +243,13 @@ public class OpinionActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).setRateShooting(OpinionShootingRating);
-        ((ScoutingApplication) this.getApplication()).setRateClimb(OpinionClimbingRating);
-        ((ScoutingApplication) this.getApplication()).setRateWheel(OpinionWheelSpinningRating);
-        ((ScoutingApplication) this.getApplication()).setRateAuton(OpinionAutonStageRating);
-        ((ScoutingApplication) this.getApplication()).setRateDiver(OpinionDriverRating);
-        ((ScoutingApplication) this.getApplication()).setWouldPick(OpinionWouldPickRobot);
-        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
+        App.setRateShooting(OpinionShootingRating);
+        App.setRateClimb(OpinionClimbingRating);
+        App.setRateWheel(OpinionWheelSpinningRating);
+        App.setRateAuton(OpinionAutonStageRating);
+        App.setRateDiver(OpinionDriverRating);
+        App.setWouldPick(OpinionWouldPickRobot);
+        App.saveTeamRoundData();
     }
 
 }

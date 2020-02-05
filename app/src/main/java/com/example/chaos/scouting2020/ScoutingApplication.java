@@ -394,16 +394,15 @@ public class ScoutingApplication extends Application {
         Random r = new Random();
 
         // create a list of 40 random team numbers.
-        // first get any team numbers that exist in the
-        // current round data
+        // first get any team numbers that exist in the current round data
         List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
-        // include any numbers in our sampleTeamNumbers array not already in list
+        // then include any numbers in our sampleTeamNumbers array not already in list
         for (int teamNumber : sampleTeamNumbers) {
             if (!teamNumbers.contains(teamNumber)) {
                 teamNumbers.add(teamNumber);
             }
         }
-        // now add random team numbers until we have 40
+        // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
             int teamNumber = r.nextInt(8000) + 1; // 1-8000
             if (!teamNumbers.contains(teamNumber)) {
@@ -503,7 +502,7 @@ public class ScoutingApplication extends Application {
         }
     }
 
-    public void exportTeamRounndData(){
+    public void exportTeamRoundData(){
         try{
             // starts up the data base
             startUpDb();

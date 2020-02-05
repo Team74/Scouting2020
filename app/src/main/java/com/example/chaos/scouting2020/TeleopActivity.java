@@ -11,6 +11,8 @@ import android.widget.ToggleButton;
 
 public class TeleopActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     // Android can suspend, terminate, destroy *any* activity at *any*
     // time for a lot reasons (triggering the OnPause), and a subsequent
     // OnCreate when the activity is restarted.  Member variables like
@@ -39,23 +41,25 @@ public class TeleopActivity extends BaseActivity {
     }
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // load any previously collected data for current team/round
-        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+        App.refreshTeamRoundData();
 
         // update display with common items
         UpdateCommonLayoutItems(R.id.teleopTNumberTextView, R.id.teleopQRNumberTextView, R.id.teleopScouterTextView, R.id.teleopConstraintLayout);
 
         // update display with specific items for this activity
-        TeleopHighGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopHighScore();
-        TeleopLowGoalNumber = ((ScoutingApplication) this.getApplication()).getTeleopLowScore();
-        TeleopPickUpNumber = ((ScoutingApplication) this.getApplication()).getTeleopPickUp();
-        TeleopRotationControl = ((ScoutingApplication) this.getApplication()).getRotationControl();
-        TeleopPositionControl = ((ScoutingApplication) this.getApplication()).getPositionControl();
+        TeleopHighGoalNumber = App.getTeleopHighScore();
+        TeleopLowGoalNumber = App.getTeleopLowScore();
+        TeleopPickUpNumber = App.getTeleopPickUp();
+        TeleopRotationControl = App.getRotationControl();
+        TeleopPositionControl = App.getPositionControl();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
@@ -124,12 +128,12 @@ public class TeleopActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).setTeleopHighScore(TeleopHighGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setTeleopLowScore(TeleopLowGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setTeleopPickUp(TeleopPickUpNumber);
-        ((ScoutingApplication) this.getApplication()).setRotationControl(TeleopRotationControl);
-        ((ScoutingApplication) this.getApplication()).setPositionControl(TeleopPositionControl);
+        App.setTeleopHighScore(TeleopHighGoalNumber);
+        App.setTeleopLowScore(TeleopLowGoalNumber);
+        App.setTeleopPickUp(TeleopPickUpNumber);
+        App.setRotationControl(TeleopRotationControl);
+        App.setPositionControl(TeleopPositionControl);
         // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
+        App.saveTeamRoundData();
     }
 }

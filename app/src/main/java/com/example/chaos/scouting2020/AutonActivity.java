@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class AutonActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     // Android can suspend, terminate, destroy *any* activity at *any*
     // time for a lot reasons (triggering the OnPause), and a subsequent
     // OnCreate when the activity is restarted.  Member variables like
@@ -43,17 +45,20 @@ public class AutonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auton);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // load any previously collected data for current team/round
-        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+        App.refreshTeamRoundData();
 
         // update display with common items
         UpdateCommonLayoutItems(R.id.autonTNumberTextView, R.id.autonQRNumberTextView, R.id.autonScouterTextView, R.id.autonConstraintLayout);
 
         // update display with specific items for this activity
-        AutonHighGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonHighScore();
-        AutonLowGoalNumber = ((ScoutingApplication) this.getApplication()).getAutonLowScore();
-        AutonPickUpNumber = ((ScoutingApplication) this.getApplication()).getAutonPickUp();
-        AutonStartLineMove = ((ScoutingApplication) this.getApplication()).getAutonStartLine();
+        AutonHighGoalNumber = App.getAutonHighScore();
+        AutonLowGoalNumber = App.getAutonLowScore();
+        AutonPickUpNumber = App.getAutonPickUp();
+        AutonStartLineMove = App.getAutonStartLine();
 
         DisplayHighGoalNumber();
         DisplayLowGoalNumber();
@@ -121,11 +126,11 @@ public class AutonActivity extends BaseActivity {
 
     protected void onPause() {
         super.onPause();
-        ((ScoutingApplication) this.getApplication()).setAutonHighScore(AutonHighGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonLowScore(AutonLowGoalNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonPickUp(AutonPickUpNumber);
-        ((ScoutingApplication) this.getApplication()).setAutonStartLine(AutonStartLineMove);
+        App.setAutonHighScore(AutonHighGoalNumber);
+        App.setAutonLowScore(AutonLowGoalNumber);
+        App.setAutonPickUp(AutonPickUpNumber);
+        App.setAutonStartLine(AutonStartLineMove);
         // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
+        App.saveTeamRoundData();
     }
 }

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class EndgameActivity extends BaseActivity {
 
+    protected ScoutingApplication App;
+
     // Android can suspend, terminate, destroy *any* activity at *any*
     // time for a lot reasons (triggering the OnPause), and a subsequent
     // OnCreate when the activity is restarted.  Member variables like
@@ -27,17 +29,20 @@ public class EndgameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endgame);
 
+        // get a handle to our global app state
+        App = (ScoutingApplication) this.getApplication();
+
         // load any previously collected data for current team/round
-        ((ScoutingApplication) this.getApplication()).refreshTeamRoundData();
+        App.refreshTeamRoundData();
 
         // update display with common items
         UpdateCommonLayoutItems(R.id.endgameTNumberTextView, R.id.endgameQRNumberTextView, R.id.endgameScouterTextView, R.id.endgameConstraintLayout);
 
         // update display with specific items for this activity
-        EndgameClimb = ((ScoutingApplication)this.getApplication()).getClimb();
-        EndgameBrokeDown = ((ScoutingApplication) this.getApplication()).getBrokeDown();
-        EndgameFinalStage = ((ScoutingApplication) this.getApplication()).getFinalStage();
-        EndgameNotes = ((ScoutingApplication)this.getApplication()).getNotes();
+        EndgameClimb = App.getClimb();
+        EndgameBrokeDown = App.getBrokeDown();
+        EndgameFinalStage = App.getFinalStage();
+        EndgameNotes = App.getNotes();
 
         RadioButton Climbed = (RadioButton) findViewById(R.id.endgameClimbRadioButton);
         Climbed.setChecked(EndgameClimb == 1);  // 1=climb successful
@@ -116,10 +121,10 @@ public class EndgameActivity extends BaseActivity {
         EditText Notes = (EditText) findViewById(R.id.endgameNotesEditText);
         EndgameNotes = Notes.getText().toString();
         // save any updated data for current team/round
-        ((ScoutingApplication) this.getApplication()).setClimb(EndgameClimb);
-        ((ScoutingApplication) this.getApplication()).setBrokeDown(EndgameBrokeDown);
-        ((ScoutingApplication) this.getApplication()).setFinalStage(EndgameFinalStage);
-        ((ScoutingApplication) this.getApplication()).setNotes(EndgameNotes);
-        ((ScoutingApplication) this.getApplication()).saveTeamRoundData();
+        App.setClimb(EndgameClimb);
+        App.setBrokeDown(EndgameBrokeDown);
+        App.setFinalStage(EndgameFinalStage);
+        App.setNotes(EndgameNotes);
+        App.saveTeamRoundData();
     }
 }

@@ -1,11 +1,14 @@
 package com.example.chaos.scouting2020;
 
+import android.arch.persistence.db.SupportSQLiteQuery;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.RawQuery;
 
 import java.util.List;
+import java.util.Objects;
 
 @Dao
 public interface DaoTeamRoundData {
@@ -21,12 +24,18 @@ public interface DaoTeamRoundData {
 
     @Query("SELECT * FROM EntityTeamRoundData")
     EntityTeamRoundData[] getAllTeamRoundData();
-    static class MatchReportData {
+
+    class MatchReportData {
         int TeamNumber;
+        int CountRounds;
         float AvgTeleopHighScore;
+        float AvgTeleopLowScore;
+        int NumSuccessfulClimbs;
+        float PercentClimbs;
+        float PercentBreakdowns;
+        float PercentStage2;
+        float PercentStage3;
     }
-
-    @Query("SELECT TeamNumber, AVG(TeleopHighScore) AS AvgTeleopHighScore FROM EntityTeamRoundData GROUP BY TeamNumber")
-    MatchReportData[] getMatchReportData();
-
+    @RawQuery
+    MatchReportData[] getMatchReportDataRaw(SupportSQLiteQuery rawQuery);
 }
