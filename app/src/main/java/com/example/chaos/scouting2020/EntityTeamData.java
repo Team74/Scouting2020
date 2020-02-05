@@ -27,4 +27,22 @@ public class EntityTeamData {
     @ColumnInfo
     public String RobotNotes;
 
+    @ColumnInfo
+    public boolean ShootingLocation1;
+
+    @ColumnInfo
+    public boolean ShootingLocation2;
+
+    @ColumnInfo
+    public boolean ShootingLocation3;
+
+    @ColumnInfo
+    public boolean StartLocationLeft;
+
+    @ColumnInfo
+    public boolean StartLocationCenter;
+
+    @ColumnInfo
+    public boolean StartLocationRight;
+
 }
