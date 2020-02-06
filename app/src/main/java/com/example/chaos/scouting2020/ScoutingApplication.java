@@ -205,6 +205,13 @@ public class ScoutingApplication extends Application {
         }
     }
 
+    public DaoTeamRoundData getDaoTeamRoundData() {
+        // make sure DB started
+        startUpDb();
+
+        return daoTeamRoundData;
+    }
+
     // Create a new TeamRoundData entity structure.
     // This should only be called from the login activity.
     // And possibly some of the DB error handlers.

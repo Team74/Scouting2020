@@ -2,17 +2,29 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.room.Room;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class BaseActivity extends AppCompatActivity {
+
+    // These are used for sorting report tables
+    protected boolean ReportSortAsc = true;
+    protected int ReportSortColumn = 0;
+    public interface ReportUpdateCommand
+    {
+        public void update();
+    }
 
     // set layout background color
     protected void SetLayoutBackgroundColor(int layoutId, String teamColor) {
@@ -68,5 +80,87 @@ public class BaseActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    // add heading strings to specified table.  used for reports.
+    protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand) {
+        // get handle to table
+        TableLayout table = (TableLayout)findViewById(tableId);
+        table.removeAllViews();
+
+        // create a common layout param group for all of our rows
+        TableRow.LayoutParams lpRow = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, headerStrings.length);
+        TableRow.LayoutParams lpItem = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 1);
+
+        // create a header row
+        TableRow hdr = new TableRow(this);
+        hdr.setLayoutParams(lpRow);
+        hdr.setBackgroundResource(R.color.colorWhiteBackground);
+
+        // add each heading string to our header row
+        for(int i = 0; i < headerStrings.length; i++) {
+            final int headingIndex = i; // needs to be final for onClick
+            String heading = headerStrings[headingIndex];
+            TextView hdrView = new TextView(this);
+            hdrView.setLayoutParams(lpItem);
+            hdrView.setText(heading);
+            // make the column heading we are sorting on italic
+            hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
+            hdrView.setPadding(2, 0, 2, 0);
+            hdrView.setGravity(Gravity.CENTER);
+            // set an onclick handler for each header so we can update the sort when clicked
+            hdrView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if(ReportSortColumn == headingIndex) {
+                        // reverse the current sort order
+                        ReportSortAsc = !ReportSortAsc;
+                    } else {
+                        // set sort column to new index
+                        ReportSortColumn = headingIndex;
+                        ReportSortAsc = true;
+                    }
+                    // redisplay the entire table
+                    reportUpdateCommand.update();
+                }
+            });
+            hdr.addView(hdrView);
+        }
+        // add the data row to the table
+        table.addView(hdr);
+    }
+
+    // add data strings to specified table.  used for reports.
+    protected void AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
+        // get handle to table
+        TableLayout table = (TableLayout)findViewById(tableId);
+        int rowNumber = table.getChildCount();
+
+        // create a common layout param group for all of our rows and items
+        TableRow.LayoutParams lpRow = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, dataStrings.length);
+        TableRow.LayoutParams lpItem = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 1);
+
+        // create a new row to hold our data values
+        TableRow row = new TableRow(this);
+        row.setLayoutParams(lpRow);
+
+        // alternate the color of each row
+        if((rowNumber % 2) == 0) {
+            row.setBackgroundResource(R.color.colorBlueBackground);
+        } else {
+            row.setBackgroundResource(R.color.colorRedBackground);
+        }
+
+        // add each data string as an item to our row
+        for(String dataString : dataStrings) {
+            TextView dataView = new TextView(this);
+            dataView.setLayoutParams(lpItem);
+            dataView.setText(dataString);
+            dataView.setPadding(2, 0, 2, 0);
+            dataView.setGravity(Gravity.CENTER);
+            row.addView(dataView);
+        }
+
+        // add the data row to the end of the table
+        table.addView(row);
     }
 }
