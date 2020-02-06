@@ -19,9 +19,11 @@ public class BaseActivity extends AppCompatActivity {
         if(layoutId != 0) {
             ConstraintLayout layout = (ConstraintLayout) findViewById(layoutId);
             if (teamColor.equals("Blue")) {
-                layout.setBackgroundColor(Color.argb(64, 53, 121, 220));
+                // layout.setBackgroundColor(Color.argb(64, 53, 121, 220));
+                layout.setBackgroundColor(getResources().getColor(R.color.colorBlueBackground));
             } else if (teamColor.equals("Red")) {
-                layout.setBackgroundColor(Color.argb(64, 255, 50, 30));
+                // layout.setBackgroundColor(Color.argb(64, 255, 50, 30));
+                layout.setBackgroundColor(getResources().getColor(R.color.colorRedBackground));
             }
         }
     }

@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorDarkPastelBlue">#779ECB</color>
-    <color name="BlueBackground">#3579DC</color>
-    <color name="RedBackground">#E71400</color>
+    <color name="colorBlueBackground">#AEC6DF</color>
+    <color name="colorRedBackground">#FFCCCB</color>
 </resources>

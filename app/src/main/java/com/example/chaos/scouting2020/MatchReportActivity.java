@@ -2,7 +2,9 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.arch.persistence.room.Room;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -28,17 +30,20 @@ public class MatchReportActivity extends BaseActivity {
         // as well as the names in the query SELECT below.
         // You also need to provide conversions for the columns to strings down
         // below where the data values are added to the table.
-        String columns[] = { "TeamNumber", "CountRounds", "AvgTeleopHighScore", "AvgTeleopLowScore", "NumSuccessfulClimbs", "PercentClimbs", "PercentBreakdowns", "PercentStage2", "PercentStage3" };
-        String headings[] = { "Team #", "# Rounds", "HG Match Avg" , "LG Match Avg", "# of SUCC climbs", "Climb %", "Breakdowm %", "Stage 2 %", "Stage 3 %" };
+        String columns[] = { "TeamNumber", "NumRounds", "AvgHighScore", "AvgLowScore", "NumSuccessfulClimbs", "NumFailedClimbs", "PercentClimbs", "PercentBreakdowns", "PercentStage2", "PercentStage3" };
+        String headings[] = { "Team #", "# Rounds", "HG Round Avg" , "LG Round Avg", "# Succ Climbs", "# Failed Climbs", "Climb %", "Breakdown %", "Stage 2 %", "Stage 3 %" };
         String query = "SELECT TeamNumber,"
-                + " COUNT(RoundNumber) AS CountRounds,"
-                + " AVG(TeleopHighScore) AS AvgTeleopHighScore,"
-                + " AVG(TeleopLowScore) AS AvgTeleopLowScore,"
-                + " SUM(CASE WHEN Climb = 1 THEN 1 ELSE 0 END) AS NumSuccessfulClimbs,"
-                // PercentClimbs = num successful climbs / num attempted climbs
+                + " COUNT(RoundNumber) AS NumRounds,"
+                + " (AVG(AutonHighScore) + AVG(TeleopHighScore)) / 2.0 AS AvgHighScore,"
+                + " (AVG(AutonLowScore) + AVG(TeleopLowScore)) / 2.0 AS AvgLowScore,"
                 // num successful climbs = SUM(Climb = 1)
-                // num attempted climbs = SUM(Climb = 1) + SUM(Climb = 3)
-                + " SUM(CASE WHEN Climb = 1 THEN 1 ELSE 0 END) / SUM(CASE WHEN Climb = 1 OR Climb = 3 THEN 1 ELSE 0 END) AS PercentClimbs,"
+                + " SUM(CASE WHEN Climb = 1 THEN 1 ELSE 0 END) AS NumSuccessfulClimbs,"
+                // num failed climbs = SUM(Climb = 3)
+                + " SUM(CASE WHEN Climb = 3 THEN 1 ELSE 0 END) AS NumFailedClimbs,"
+                // PercentClimbs = num successful climbs / num attempted climbs
+                // num attempted climbs = num successful climbs + num failed climbs
+                // note the use of decimal values to get a float result
+                + " SUM(CASE WHEN Climb = 1 THEN 1.0 ELSE 0.0 END) / SUM(CASE WHEN Climb = 1 OR Climb = 3 THEN 1.0 ELSE 0.0 END) AS PercentClimbs,"
                 + " AVG(BrokeDown) AS PercentBreakdowns," // true=1, false=0
                 + " AVG(CASE WHEN FinalStage = 2 THEN 1 ELSE 0 END) AS PercentStage2,"
                 + " AVG(CASE WHEN FinalStage = 3 THEN 1 ELSE 0 END) AS PercentStage3"
@@ -48,18 +53,22 @@ public class MatchReportActivity extends BaseActivity {
         DaoTeamRoundData.MatchReportData dataRows[] = daoTeamRoundData.getMatchReportDataRaw(new SimpleSQLiteQuery(query));
 
         // create a common layout param group for all of our rows
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1);
+        TableRow.LayoutParams lpRow = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, headings.length);
+        TableRow.LayoutParams lpItem = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 1);
 
         // create a header row
         TableRow hdr = new TableRow(this);
-        hdr.setLayoutParams(lp);
+        hdr.setLayoutParams(lpRow);
 
         // add each heading string to our header row
         for(int i = 0; i < headings.length; i++) {
             final int headingIndex = i; // needs to be final for onClick
             String heading = headings[headingIndex];
             TextView hdrView = new TextView(this);
+            hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
+            hdrView.setPadding(4, 0, 4, 0);
+            hdrView.setGravity(Gravity.CENTER);
             // set an onclick handler for each header so we can update the sort when clicked
             hdrView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -77,8 +86,8 @@ public class MatchReportActivity extends BaseActivity {
             });
             hdr.addView(hdrView);
         }
+        // add the data row to the table
         table.addView(hdr, 0);
-        // TBD: we should set header row color gray?
 
         // create a data row for each record returned from DB
         for(int i = 0; i < dataRows.length; i++) {
@@ -87,31 +96,39 @@ public class MatchReportActivity extends BaseActivity {
 
             // create a new row to hold our data values
             TableRow row = new TableRow(this);
-            row.setLayoutParams(lp);
-            // TBD: we should alternate data row color blue/red
+            row.setLayoutParams(lpRow);
+            // add table row
+            if((i % 2) == 0) {
+                row.setBackgroundResource(R.color.colorBlueBackground);
+            } else {
+                row.setBackgroundResource(R.color.colorRedBackground);
+            }
 
             // add each data value to an array of strings
             String[] values = {
-                    // TBD: can we use format() to limit decimal places in float?
                     Integer.toString(dataRow.TeamNumber),
-                    Integer.toString(dataRow.CountRounds),
-                    Float.toString(dataRow.AvgTeleopHighScore),
-                    Float.toString(dataRow.AvgTeleopLowScore),
+                    Integer.toString(dataRow.NumRounds),
+                    String.format ("%.3f", dataRow.AvgHighScore),
+                    String.format ("%.3f", dataRow.AvgLowScore),
                     Integer.toString(dataRow.NumSuccessfulClimbs),
-                    Float.toString(dataRow.PercentClimbs),
-                    Float.toString(dataRow.PercentBreakdowns),
-                    Float.toString(dataRow.PercentStage2),
-                    Float.toString(dataRow.PercentStage3)
+                    Integer.toString(dataRow.NumFailedClimbs),
+                    String.format ("%.3f", dataRow.PercentClimbs),
+                    String.format ("%.3f", dataRow.PercentBreakdowns),
+                    String.format ("%.3f", dataRow.PercentStage2),
+                    String.format ("%.3f", dataRow.PercentStage3)
             };
 
             // add each data string to our row
             for(String value : values) {
-                TextView textview1 = new TextView(this);
-                textview1.setText(value);
-                row.addView(textview1);
+                TextView dataView = new TextView(this);
+                dataView.setLayoutParams(lpItem);
+                dataView.setText(value);
+                dataView.setPadding(4, 0, 4, 0);
+                dataView.setGravity(Gravity.CENTER);
+                row.addView(dataView);
             }
 
-            // add the row to the table
+            // add the data row to the table
             table.addView(row, i+1); // +1 to be after hdr
         }
 
@@ -139,6 +156,7 @@ public class MatchReportActivity extends BaseActivity {
             daoTeamRoundData = db.daoTeamRoundData();
         }
 
+        // display the report table for the first time
         UpdateMatchReportTable();
     }
 }

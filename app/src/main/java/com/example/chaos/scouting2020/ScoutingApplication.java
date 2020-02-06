@@ -45,76 +45,79 @@ public class ScoutingApplication extends Application {
     private int TeamNumber = -1;
     private int RoundNumber = -1;
 
-    // Get functions
-    public int getTeamNumber(){
+    // Get Functions
+    // Get Functions for Team Round Data
+    public int getTeamNumber() {
         return entityTeamRoundData.TeamNumber;
     }
-    public int getRoundNumber(){
+    public int getRoundNumber() {
         return entityTeamRoundData.RoundNumber;
     }
-    public String getScouterName(){
+    public String getScouterName() {
         return entityTeamRoundData.Scouter;
     }
-    public String getTeamColor(){
+    public String getTeamColor() {
         return entityTeamRoundData.TeamColor;
     }
-    public int getAutonHighScore(){
+    public int getAutonHighScore() {
         return entityTeamRoundData.AutonHighScore;
     }
-    public int getAutonLowScore(){
+    public int getAutonLowScore() {
         return entityTeamRoundData.AutonLowScore;
     }
-    public int getAutonPickUp(){
+    public int getAutonPickUp() {
         return entityTeamRoundData.AutonPickUp;
     }
-    public boolean getAutonStartLine(){
+    public boolean getAutonStartLine() {
         return entityTeamRoundData.AutonStartLine;
     }
-    public int getTeleopHighScore(){
+    public int getTeleopHighScore() {
         return entityTeamRoundData.TeleopHighScore;
     }
-    public int getTeleopLowScore(){
+    public int getTeleopLowScore() {
         return entityTeamRoundData.TeleopLowScore;
     }
-    public int getTeleopPickUp(){
+    public int getTeleopPickUp() {
         return entityTeamRoundData.TeleopPickUp;
     }
-    public boolean getRotationControl(){
+    public boolean getRotationControl() {
         return entityTeamRoundData.RotationControl;
     }
-    public boolean getPositionControl(){
+    public boolean getPositionControl() {
         return entityTeamRoundData.PositionControl;
     }
-    public int getClimb(){
+    public int getClimb() {
         return entityTeamRoundData.Climb;
     }
-    public boolean getBrokeDown(){
+    public boolean getBrokeDown() {
         return entityTeamRoundData.BrokeDown;
     }
-    public int getFinalStage(){
+    public int getFinalStage() {
         return entityTeamRoundData.FinalStage;
     }
-    public String getNotes(){
+    public String getNotes() {
         return entityTeamRoundData.Notes;
     }
-    public int getRateShooting(){
+    public int getRateShooting() {
         return entityTeamRoundData.RateShooting;
     }
-    public int getRateClimb(){
+    public int getRateClimb() {
         return entityTeamRoundData.RateClimb;
     }
-    public int getRateWheel(){
+    public int getRateWheel() {
         return entityTeamRoundData.RateWheel;
     }
-    public int getRateAuton(){
+    public int getRateAuton() {
         return entityTeamRoundData.RateAuton;
     }
-    public int getRateDiver(){
+    public int getRateDiver() {
         return entityTeamRoundData.RateDiver;
     }
-    public boolean getWouldPick(){
+    public boolean getWouldPick() {
         return entityTeamRoundData.WouldPick;
     }
+    // Get Functions for Team Data
+    public String getRobotDriveBaseType() { return entityTeamData.RobotDriveBaseType; }
     public boolean getShootingLocation1() { return entityTeamData.ShootingLocation1; }
     public boolean getShootingLocation2() { return entityTeamData.ShootingLocation2; }
     public boolean getShootingLocation3() { return entityTeamData.ShootingLocation3; }
@@ -124,70 +127,74 @@ public class ScoutingApplication extends Application {
     // Get Functions End
 
     // Set Functions
-    public void setTeamNumber(int teamNumber){
+    // Set Functions for Team Round Data
+    public void setTeamNumber(int teamNumber) {
         // should only be set from login activity
         TeamNumber = teamNumber;
         entityTeamRoundData.TeamNumber = teamNumber;
     }
-    public void setRoundNumber(int roundNumber){
+    public void setRoundNumber(int roundNumber) {
         // should only be set from login activity
         RoundNumber = roundNumber;
         entityTeamRoundData.RoundNumber = roundNumber;
     }
-    public void setScouter(String scouter){
+    public void setScouter(String scouter) {
         // should only be set from login activity
         entityTeamRoundData.Scouter = scouter;
     }
-    public void setTeamColor(String color){
+    public void setTeamColor(String color) {
         // should only be set from login activity
         entityTeamRoundData.TeamColor = color;
     }
-    public void setAutonHighScore(int autonHighScore){ entityTeamRoundData.AutonHighScore = autonHighScore; }
-    public void setAutonLowScore(int autonLowScore){ entityTeamRoundData.AutonLowScore = autonLowScore; }
-    public void setAutonPickUp(int autonPickUp){ entityTeamRoundData.AutonPickUp = autonPickUp; }
-    public void setAutonStartLine(boolean autonStartLine){ entityTeamRoundData.AutonStartLine = autonStartLine; }
-    public void setTeleopHighScore(int teleopHighScore){ entityTeamRoundData.TeleopHighScore = teleopHighScore; }
-    public void setTeleopLowScore(int teleopLowScore){ entityTeamRoundData.TeleopLowScore = teleopLowScore; }
-    public void setTeleopPickUp(int teleopPickUp){ entityTeamRoundData.TeleopPickUp = teleopPickUp; }
-    public void setRotationControl(boolean rotationControl){ entityTeamRoundData.RotationControl = rotationControl; }
-    public void setPositionControl(boolean positionControl){ entityTeamRoundData.PositionControl = positionControl; }
-    public void setClimb(int climb){ entityTeamRoundData.Climb = climb; }
-    public void setBrokeDown(boolean brokeDown){ entityTeamRoundData.BrokeDown = brokeDown; }
-    public void setFinalStage(int finalStage){ entityTeamRoundData.FinalStage = finalStage; }
-    public void setNotes(String notes){ entityTeamRoundData.Notes = notes; }
-    public void setRateShooting(int rateShooting){ entityTeamRoundData.RateShooting = rateShooting; }
-    public void setRateClimb(int rateClimb){ entityTeamRoundData.RateClimb = rateClimb; }
-    public void setRateWheel(int rateWheel){ entityTeamRoundData.RateWheel = rateWheel; }
-    public void setRateAuton(int rateAuton){ entityTeamRoundData.RateAuton = rateAuton; }
-    public void setRateDiver(int rateDiver){ entityTeamRoundData.RateDiver = rateDiver; }
-    public void setWouldPick(boolean wouldPick){ entityTeamRoundData.WouldPick = wouldPick; }
-    public void setShootingLocation1(boolean shootingLocation1){ entityTeamData.ShootingLocation1 = shootingLocation1; }
-    public void setShootingLocation2(boolean shootingLocation2){ entityTeamData.ShootingLocation2 = shootingLocation2; }
-    public void setShootingLocation3(boolean shootingLocation3){ entityTeamData.ShootingLocation3 = shootingLocation3; }
-    public void setStartLocationLeft(boolean startLocationLeft){ entityTeamData.StartLocationLeft = startLocationLeft; }
-    public void setStartLocationCenter(boolean startLocationCenter){ entityTeamData.StartLocationCenter = startLocationCenter; }
-    public void setStartLocationRight(boolean startLocationRight){ entityTeamData.StartLocationRight = startLocationRight; }
+    public void setAutonHighScore(int autonHighScore) { entityTeamRoundData.AutonHighScore = autonHighScore; }
+    public void setAutonLowScore(int autonLowScore) { entityTeamRoundData.AutonLowScore = autonLowScore; }
+    public void setAutonPickUp(int autonPickUp) { entityTeamRoundData.AutonPickUp = autonPickUp; }
+    public void setAutonStartLine(boolean autonStartLine) { entityTeamRoundData.AutonStartLine = autonStartLine; }
+    public void setTeleopHighScore(int teleopHighScore) { entityTeamRoundData.TeleopHighScore = teleopHighScore; }
+    public void setTeleopLowScore(int teleopLowScore) { entityTeamRoundData.TeleopLowScore = teleopLowScore; }
+    public void setTeleopPickUp(int teleopPickUp) { entityTeamRoundData.TeleopPickUp = teleopPickUp; }
+    public void setRotationControl(boolean rotationControl) { entityTeamRoundData.RotationControl = rotationControl; }
+    public void setPositionControl(boolean positionControl) { entityTeamRoundData.PositionControl = positionControl; }
+    public void setClimb(int climb) { entityTeamRoundData.Climb = climb; }
+    public void setBrokeDown(boolean brokeDown) { entityTeamRoundData.BrokeDown = brokeDown; }
+    public void setFinalStage(int finalStage) { entityTeamRoundData.FinalStage = finalStage; }
+    public void setNotes(String notes) { entityTeamRoundData.Notes = notes; }
+    public void setRateShooting(int rateShooting) { entityTeamRoundData.RateShooting = rateShooting; }
+    public void setRateClimb(int rateClimb) { entityTeamRoundData.RateClimb = rateClimb; }
+    public void setRateWheel(int rateWheel) { entityTeamRoundData.RateWheel = rateWheel; }
+    public void setRateAuton(int rateAuton) { entityTeamRoundData.RateAuton = rateAuton; }
+    public void setRateDiver(int rateDiver) { entityTeamRoundData.RateDiver = rateDiver; }
+    public void setWouldPick(boolean wouldPick) { entityTeamRoundData.WouldPick = wouldPick; }
+    // Set Functions for Team Data
+    public void setRobotDriveBaseType(String robotDriveBaseType) { entityTeamData.RobotDriveBaseType = robotDriveBaseType; }
+    public void setShootingLocation1(boolean shootingLocation1) { entityTeamData.ShootingLocation1 = shootingLocation1; }
+    public void setShootingLocation2(boolean shootingLocation2) { entityTeamData.ShootingLocation2 = shootingLocation2; }
+    public void setShootingLocation3(boolean shootingLocation3) { entityTeamData.ShootingLocation3 = shootingLocation3; }
+    public void setStartLocationLeft(boolean startLocationLeft) { entityTeamData.StartLocationLeft = startLocationLeft; }
+    public void setStartLocationCenter(boolean startLocationCenter) { entityTeamData.StartLocationCenter = startLocationCenter; }
+    public void setStartLocationRight(boolean startLocationRight) { entityTeamData.StartLocationRight = startLocationRight; }
     // Set Functions End
+
     // This is a helper function to setup DB and DAOs.
-    private void startUpDb(){
+    private void startUpDb() {
         // get room (db)
-        if(db == null){
+        if(db == null) {
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
                     .allowMainThreadQueries().fallbackToDestructiveMigration().build();
             // TBD: figure out how to allow for "Non-destructive Migrations" of the ROOM DB
             // for when the version changes
         }
         // get data access objects (tables)
-        if(daoTeamRoundData == null){
+        if(daoTeamRoundData == null) {
             daoTeamRoundData = db.daoTeamRoundData();
         }
-        if(daoScouterName == null){
+        if(daoScouterName == null) {
             daoScouterName = db.daoScouterName();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample scouter data in the DB.
             addSampleScouterNames();
         }
-        if(daoTeamData == null){
+        if(daoTeamData == null) {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
@@ -236,7 +243,7 @@ public class ScoutingApplication extends Application {
     }
 
     // Create a new ScouterName entity structure.
-    protected void newScouterName(){
+    protected void newScouterName() {
         // make sure DB started
         startUpDb();
 
@@ -269,7 +276,7 @@ public class ScoutingApplication extends Application {
 
     // Based on the current TeamNumber and RoundNumber, load any previous team round data.
     // This should be called from the OnCreate of all match scouting activities except login.
-    protected void refreshTeamRoundData(){
+    protected void refreshTeamRoundData() {
         // make sure DB started
         startUpDb();
 
@@ -284,7 +291,7 @@ public class ScoutingApplication extends Application {
                 // will create a new empty record.
             }
         }
-        if(entityTeamRoundData == null){
+        if(entityTeamRoundData == null) {
             // This shouldn't normally happen, as the record should be created during login,
             // but if it does, create an empty record and zero everything out
             // TBD:  should we send them back to the login activity if this does happen?
@@ -294,7 +301,7 @@ public class ScoutingApplication extends Application {
 
     // Save the current team round data record to the DB.
     // This should be called from the OnPause of *all* match scouting activities.
-    protected void saveTeamRoundData(){
+    protected void saveTeamRoundData() {
         // make sure DB started
         startUpDb();
 
@@ -312,7 +319,7 @@ public class ScoutingApplication extends Application {
     }
 
     // based on the current TeamNumber, load any previous team data.
-    protected void refreshTeamData(){
+    protected void refreshTeamData() {
         // make sure DB started
         startUpDb();
 
@@ -327,7 +334,7 @@ public class ScoutingApplication extends Application {
                 // will create a new empty record.
             }
         }
-        if(entityTeamData == null){
+        if(entityTeamData == null) {
             // This shouldn't EVER happen, as the team data record should be created
             // BEFORE the event.  If it does, create an empty record and zero everything out
             newTeamData();
@@ -335,7 +342,7 @@ public class ScoutingApplication extends Application {
     }
 
     // Save the current team data record to the DB.
-    protected void saveTeamData(){
+    protected void saveTeamData() {
         // make sure DB started
         startUpDb();
 
@@ -351,7 +358,7 @@ public class ScoutingApplication extends Application {
         }
     }
 
-    public void addScouterName(String scouterName){
+    public void addScouterName(String scouterName) {
         // make sure DB started
         startUpDb();
         if(entityScouterName == null) {
@@ -398,14 +405,14 @@ public class ScoutingApplication extends Application {
         List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
         // then include any numbers in our sampleTeamNumbers array not already in list
         for (int teamNumber : sampleTeamNumbers) {
-            if (!teamNumbers.contains(teamNumber)) {
+            if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
         }
         // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
             int teamNumber = r.nextInt(8000) + 1; // 1-8000
-            if (!teamNumbers.contains(teamNumber)) {
+            if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
         }
@@ -428,12 +435,12 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData.AutonLowScore = r.nextInt(3) + 1; // 1-3
                 entityTeamRoundData.AutonPickUp = r.nextInt(3) + 1; // 1-3
                 entityTeamRoundData.TeleopHighScore = r.nextInt(15) + 1; // 1-15
-                entityTeamRoundData.TeleopLowScore = r.nextInt(15) + 1; // 1-15
-                entityTeamRoundData.TeleopPickUp = r.nextInt(15) + 1; // 1-15
+                entityTeamRoundData.TeleopLowScore = r.nextInt(10) + 1; // 1-15
+                entityTeamRoundData.TeleopPickUp = r.nextInt(20) + 1; // 1-15
                 entityTeamRoundData.RotationControl = (r.nextInt(2)==0) ? false : true;
                 entityTeamRoundData.PositionControl = (r.nextInt(2)==0) ? false : true;
                 entityTeamRoundData.Climb = r.nextInt(3) + 1; // 1-3
-                entityTeamRoundData.BrokeDown = (r.nextInt(2)==0) ? false : true;
+                entityTeamRoundData.BrokeDown = (r.nextInt(15)==0) ? true : false;  // 1 in 15
                 entityTeamRoundData.FinalStage = r.nextInt(3) + 1; // 1-3
                 entityTeamRoundData.Notes = "";
                 entityTeamRoundData.RateShooting = r.nextInt(5) + 1; // 1-5
@@ -502,7 +509,7 @@ public class ScoutingApplication extends Application {
         }
     }
 
-    public void exportTeamRoundData(){
+    public void exportTeamRoundData() {
         try{
             // starts up the data base
             startUpDb();
@@ -517,7 +524,7 @@ public class ScoutingApplication extends Application {
             //
             EntityTeamRoundData[] teamRoundDatas = daoTeamRoundData.getAllTeamRoundData();
             //
-            for (EntityTeamRoundData teamRoundData: teamRoundDatas){
+            for (EntityTeamRoundData teamRoundData: teamRoundDatas) {
                 String[] csvLine = {
                         Integer.toString(teamRoundData.TeamNumber),
                         Integer.toString(teamRoundData.RoundNumber),
@@ -546,13 +553,13 @@ public class ScoutingApplication extends Application {
             }
             writer.close();
             makeCreatedFileVisibleInDownloads(filePath);
-        } catch(Exception e){
+        } catch(Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void importTeamRoundData(){
+    public void importTeamRoundData() {
         try{
             startUpDb();
 
@@ -563,7 +570,7 @@ public class ScoutingApplication extends Application {
             CSVReader reader = new CSVReader(new FileReader(filePath));
             String[] csvLine;
             entityTeamRoundData = new EntityTeamRoundData();
-            while ((csvLine = reader.readNext()) != null){
+            while ((csvLine = reader.readNext()) != null) {
                 int teamNumber = Integer.valueOf(csvLine[0]);
                 int roundNumber = Integer.valueOf(csvLine[1]);
                 String scouter = csvLine[2];
@@ -612,7 +619,7 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData.RateDiver = rateDiver;
                 entityTeamRoundData.WouldPick = wouldPick;
             }
-        }catch(Exception e){
+        }catch(Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error reading CSV file", Toast.LENGTH_SHORT).show();
         }

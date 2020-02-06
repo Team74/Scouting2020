@@ -14,6 +14,6 @@ public interface DaoTeamData {
     void insert(EntityTeamData entityTeamData);
 
     // This returns the team numbers as an array of ints
-    @Query("SELECT TeamNumber FROM EntityTeamData")
+    @Query("SELECT TeamNumber FROM EntityTeamData ORDER BY TeamNumber ASC")
     int[] getAllTeamNumbers();
 }

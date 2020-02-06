@@ -17,13 +17,24 @@ public class PitScoutingActivity extends BaseActivity {
 
     protected String ScouterName = "";
     protected int TeamNumber = -1;
-    protected String DriveType = "";
+    protected String RobotDriveBaseType = "";
     protected boolean PitScoutingShootingLocation1 = false;
     protected boolean PitScoutingShootingLocation2 = false;
     protected boolean PitScoutingShootingLocation3 = false;
     protected boolean PitScoutingStartLocationLeft = false;
     protected boolean PitScoutingStartLocationCenter = false;
     protected boolean PitScoutingStartLocationRight = false;
+
+    protected void UpdatePitScoutingFields() {
+        // since the TeamNumber changed, we need to refresh the
+        // team data record...
+        App.setTeamNumber(TeamNumber);
+        App.refreshTeamData();
+
+        // update all the fields on the screen here
+        RobotDriveBaseType = App.getRobotDriveBaseType();
+        // TBD update drive base type spinner
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +58,7 @@ public class PitScoutingActivity extends BaseActivity {
         // create a handler to update the page when ever team number changes
         Spinner spinnerItems = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
         spinnerItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onNothingSelected(AdapterView<?> parent) { };
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 ((TextView) parentView.getChildAt(0)).setTextSize(36);
@@ -55,17 +66,19 @@ public class PitScoutingActivity extends BaseActivity {
                 try {
                     Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
                     TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
-                    App.setTeamNumber(TeamNumber);
-                    App.refreshTeamData();
                 } catch (Exception e) {
                     // some sort of error converting TeamNumber to int
                     e.printStackTrace();
                     TeamNumber = -1;
                 }
 
-                // update display with specific items for this activity
+                // ... and update display with specific items for this activity
+                UpdatePitScoutingFields();
             }
         });
+
+        // Update fields for first time
+        UpdatePitScoutingFields();
     }
 
     public void menuButtonPressed(View menuButton) {
@@ -106,6 +119,10 @@ public class PitScoutingActivity extends BaseActivity {
         Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
         TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
 
+        Spinner spinnerRobotDriveBaseType = (Spinner) findViewById(R.id.pitScoutingDriveBaseSpinner);
+        RobotDriveBaseType = spinnerRobotDriveBaseType.getSelectedItem().toString();
+
+        App.setRobotDriveBaseType(RobotDriveBaseType);
         App.setShootingLocation1(PitScoutingShootingLocation1);
         App.setShootingLocation2(PitScoutingShootingLocation2);
         App.setShootingLocation3(PitScoutingShootingLocation3);

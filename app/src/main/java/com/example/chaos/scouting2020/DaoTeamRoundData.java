@@ -19,7 +19,7 @@ public interface DaoTeamRoundData {
     void insert(EntityTeamRoundData entityTeamRoundData);
 
     // This returns the list of all unique team numbers in the round data
-    @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData")
+    @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData ORDER BY TeamNumber ASC")
     List<Integer> getAllTeamNumbersAsList();
 
     @Query("SELECT * FROM EntityTeamRoundData")
@@ -27,15 +27,17 @@ public interface DaoTeamRoundData {
 
     class MatchReportData {
         int TeamNumber;
-        int CountRounds;
-        float AvgTeleopHighScore;
-        float AvgTeleopLowScore;
+        int NumRounds;
+        float AvgHighScore;
+        float AvgLowScore;
         int NumSuccessfulClimbs;
+        int NumFailedClimbs;
         float PercentClimbs;
         float PercentBreakdowns;
         float PercentStage2;
         float PercentStage3;
     }
+    // NOTE: a custom query string must be provided that returns the above class
     @RawQuery
     MatchReportData[] getMatchReportDataRaw(SupportSQLiteQuery rawQuery);
 }
