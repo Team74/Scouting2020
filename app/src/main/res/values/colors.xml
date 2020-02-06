@@ -6,4 +6,5 @@
     <color name="colorDarkPastelBlue">#779ECB</color>
     <color name="colorBlueBackground">#AEC6DF</color>
     <color name="colorRedBackground">#FFCCCB</color>
+    <color name="colorWhiteBackground">#FFFFFF</color>
 </resources>

@@ -2,7 +2,7 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.arch.persistence.room.Room;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -59,6 +59,7 @@ public class MatchReportActivity extends BaseActivity {
         // create a header row
         TableRow hdr = new TableRow(this);
         hdr.setLayoutParams(lpRow);
+        hdr.setBackgroundResource(R.color.colorWhiteBackground);
 
         // add each heading string to our header row
         for(int i = 0; i < headings.length; i++) {
@@ -67,7 +68,8 @@ public class MatchReportActivity extends BaseActivity {
             TextView hdrView = new TextView(this);
             hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
-            hdrView.setPadding(4, 0, 4, 0);
+            hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
+            hdrView.setPadding(2, 0, 2, 0);
             hdrView.setGravity(Gravity.CENTER);
             // set an onclick handler for each header so we can update the sort when clicked
             hdrView.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +125,7 @@ public class MatchReportActivity extends BaseActivity {
                 TextView dataView = new TextView(this);
                 dataView.setLayoutParams(lpItem);
                 dataView.setText(value);
-                dataView.setPadding(4, 0, 4, 0);
+                dataView.setPadding(2, 0, 2, 0);
                 dataView.setGravity(Gravity.CENTER);
                 row.addView(dataView);
             }
