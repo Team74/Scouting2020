@@ -52,11 +52,9 @@ public class PitScoutingActivity extends BaseActivity {
         TextView WeightEditText = (EditText) findViewById(R.id.pitScoutingWeightEditText);
         WeightEditText.setText("" + PitScoutingRobotWeight);
 
-
         //TBD update notes textView
         TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingNotesEditText);
         NotesEditText.setText("" + PitScoutingNotes);
-
 
         // TBD update shooting position toggleButtons
         ToggleButton ShootingLocation1 = (ToggleButton) findViewById(R.id.pitScoutingSafeZoneShootingToggleButton);
@@ -78,8 +76,6 @@ public class PitScoutingActivity extends BaseActivity {
 
         ToggleButton StartLocationRight = (ToggleButton) findViewById(R.id.pitScoutingRightStartToggleButton);
         StartLocationRight.setChecked(PitScoutingStartLocationRight);
-
-
     }
 
     @Override
@@ -89,6 +85,10 @@ public class PitScoutingActivity extends BaseActivity {
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
+
+        // make sure db is inited
+        App.newTeamRoundData();
+        App.newTeamData();
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = App.getAllScouterNamesAsList();
