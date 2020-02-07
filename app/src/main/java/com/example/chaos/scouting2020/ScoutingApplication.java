@@ -202,10 +202,10 @@ public class ScoutingApplication extends Application {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
-            addSampleTeamNumbers();
+            //addSampleTeamNumbers();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
-            addSampleTeamRoundData();
+            //addSampleTeamRoundData();
         }
     }
 
@@ -531,7 +531,7 @@ public class ScoutingApplication extends Application {
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String filePath =baseDir + File.separator + curDate + "TeamRoundData" + androidId + ".csv";
+            String filePath =baseDir + File.separator + "TeamRoundData" + androidId + ".csv";
             //
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
             //
@@ -631,6 +631,8 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData.RateAuton = rateAuton;
                 entityTeamRoundData.RateDriver = rateDriver;
                 entityTeamRoundData.WouldPick = wouldPick;
+                //
+                daoTeamRoundData.insert(entityTeamRoundData);
             }
         }catch(Exception e) {
             e.printStackTrace();

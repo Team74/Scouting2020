@@ -31,8 +31,23 @@ public class DataViewingActivity extends BaseActivity {
         Log.d("CSV", "works");
     }
 
+    public void importScouterNamesButtonPressed(View importScouterNamesButton){
+        App.importScouterNames();
+    }
+
     public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
         App.exportTeamRoundData();
+    }
+
+    public void importButtonPressed(View importButton) {
+        Intent intent = new Intent()
+                .setType("*/*")
+                .setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
+    }
+
+    public void importTeamRoundDataButtonPressed(View importTeamRoundDataButton){
+        App.importTeamRoundData();
     }
 
     public void matchReportButtonPressed(View matchReportButton) {
