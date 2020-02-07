@@ -31,8 +31,16 @@ public class DataViewingActivity extends BaseActivity {
         Log.d("CSV", "works");
     }
 
+    public void importScouterNamesButtonPressed(View importScouterNamesButton){
+        App.importScouterNames();
+    }
+
     public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
         App.exportTeamRoundData();
+    }
+
+    public void importTeamRoundDataButtonPressed(View importTeamRoundDataButton){
+        App.importTeamRoundData();
     }
 
     public void matchReportButtonPressed(View matchReportButton) {
