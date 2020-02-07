@@ -110,8 +110,8 @@ public class ScoutingApplication extends Application {
     public int getRateAuton() {
         return entityTeamRoundData.RateAuton;
     }
-    public int getRateDiver() {
-        return entityTeamRoundData.RateDiver;
+    public int getRateDriver() {
+        return entityTeamRoundData.RateDriver;
     }
     public boolean getWouldPick() {
         return entityTeamRoundData.WouldPick;
@@ -124,6 +124,8 @@ public class ScoutingApplication extends Application {
     public boolean getStartLocationLeft() { return entityTeamData.StartLocationLeft; }
     public boolean getStartLocationCenter() { return entityTeamData.StartLocationCenter; }
     public boolean getStartLocationRight() { return entityTeamData.StartLocationRight; }
+    public int getRobotWeight() { return entityTeamData.RobotWeight; }
+    public String getPitScoutingNotes() { return entityTeamData.PitScoutingNotes; }
     // Get Functions End
 
     // Set Functions
@@ -163,7 +165,7 @@ public class ScoutingApplication extends Application {
     public void setRateClimb(int rateClimb) { entityTeamRoundData.RateClimb = rateClimb; }
     public void setRateWheel(int rateWheel) { entityTeamRoundData.RateWheel = rateWheel; }
     public void setRateAuton(int rateAuton) { entityTeamRoundData.RateAuton = rateAuton; }
-    public void setRateDiver(int rateDiver) { entityTeamRoundData.RateDiver = rateDiver; }
+    public void setRateDriver(int rateDriver) { entityTeamRoundData.RateDriver = rateDriver; }
     public void setWouldPick(boolean wouldPick) { entityTeamRoundData.WouldPick = wouldPick; }
     // Set Functions for Team Data
     public void setRobotDriveBaseType(String robotDriveBaseType) { entityTeamData.RobotDriveBaseType = robotDriveBaseType; }
@@ -173,6 +175,8 @@ public class ScoutingApplication extends Application {
     public void setStartLocationLeft(boolean startLocationLeft) { entityTeamData.StartLocationLeft = startLocationLeft; }
     public void setStartLocationCenter(boolean startLocationCenter) { entityTeamData.StartLocationCenter = startLocationCenter; }
     public void setStartLocationRight(boolean startLocationRight) { entityTeamData.StartLocationRight = startLocationRight; }
+    public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
+    public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
@@ -241,7 +245,7 @@ public class ScoutingApplication extends Application {
         entityTeamRoundData.RateClimb = 0;
         entityTeamRoundData.RateWheel = 0;
         entityTeamRoundData.RateAuton = 0;
-        entityTeamRoundData.RateDiver = 0;
+        entityTeamRoundData.RateDriver = 0;
         entityTeamRoundData.WouldPick = false;
 
         // reset member variables for primary key
@@ -276,6 +280,8 @@ public class ScoutingApplication extends Application {
         entityTeamData.StartLocationLeft = false;
         entityTeamData.StartLocationCenter = false;
         entityTeamData.StartLocationRight = false;
+        entityTeamData.PitScoutingNotes = "";
+        entityTeamData.RobotDriveBaseType = "Tank";
 
         // reset member variable for primary key
         TeamNumber = -1;
@@ -454,7 +460,7 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData.RateClimb = r.nextInt(5) + 1; // 1-5
                 entityTeamRoundData.RateWheel = r.nextInt(5) + 1; // 1-5
                 entityTeamRoundData.RateAuton = r.nextInt(5) + 1; // 1-5
-                entityTeamRoundData.RateDiver = r.nextInt(5) + 1; // 1-5
+                entityTeamRoundData.RateDriver = r.nextInt(5) + 1; // 1-5
                 entityTeamRoundData.WouldPick = (r.nextInt(2)==0) ? false : true;
                 daoTeamRoundData.insert(entityTeamRoundData);
             }
@@ -553,7 +559,7 @@ public class ScoutingApplication extends Application {
                         Integer.toString(teamRoundData.RateClimb),
                         Integer.toString(teamRoundData.RateWheel),
                         Integer.toString(teamRoundData.RateAuton),
-                        Integer.toString(teamRoundData.RateDiver),
+                        Integer.toString(teamRoundData.RateDriver),
                         Boolean.toString(teamRoundData.WouldPick),
                 };
                 writer.writeNext(csvLine);
@@ -599,7 +605,7 @@ public class ScoutingApplication extends Application {
                 int rateClimb = Integer.valueOf(csvLine[18]);
                 int rateWheel = Integer.valueOf(csvLine[19]);
                 int rateAuton = Integer.valueOf(csvLine[20]);
-                int rateDiver = Integer.valueOf(csvLine[21]);
+                int rateDriver = Integer.valueOf(csvLine[21]);
                 boolean wouldPick = Boolean.valueOf(csvLine[22]);
                 //
                 entityTeamRoundData.TeamNumber = teamNumber;
@@ -623,7 +629,7 @@ public class ScoutingApplication extends Application {
                 entityTeamRoundData.RateClimb = rateClimb;
                 entityTeamRoundData.RateWheel = rateWheel;
                 entityTeamRoundData.RateAuton = rateAuton;
-                entityTeamRoundData.RateDiver = rateDiver;
+                entityTeamRoundData.RateDriver = rateDriver;
                 entityTeamRoundData.WouldPick = wouldPick;
             }
         }catch(Exception e) {

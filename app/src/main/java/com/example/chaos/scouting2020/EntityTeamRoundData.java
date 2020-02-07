@@ -71,7 +71,7 @@ public class EntityTeamRoundData {
     public int RateAuton;
 
     @ColumnInfo
-    public int RateDiver;
+    public int RateDriver;
 
     @ColumnInfo
     public boolean WouldPick;

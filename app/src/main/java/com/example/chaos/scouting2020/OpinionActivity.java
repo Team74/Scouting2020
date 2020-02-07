@@ -45,7 +45,7 @@ public class OpinionActivity extends BaseActivity {
         OpinionClimbingRating = App.getRateClimb();
         OpinionWheelSpinningRating = App.getRateWheel();
         OpinionAutonStageRating = App.getRateAuton();
-        OpinionDriverRating = App.getRateDiver();
+        OpinionDriverRating = App.getRateDriver();
         OpinionWouldPickRobot = App.getWouldPick();
 
         RadioButton Shooting = (RadioButton) findViewById(R.id.opinionShootingRatingRadioButton1);
@@ -247,7 +247,7 @@ public class OpinionActivity extends BaseActivity {
         App.setRateClimb(OpinionClimbingRating);
         App.setRateWheel(OpinionWheelSpinningRating);
         App.setRateAuton(OpinionAutonStageRating);
-        App.setRateDiver(OpinionDriverRating);
+        App.setRateDriver(OpinionDriverRating);
         App.setWouldPick(OpinionWouldPickRobot);
         App.saveTeamRoundData();
     }

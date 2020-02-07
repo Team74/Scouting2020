@@ -39,4 +39,9 @@ public class DataViewingActivity extends BaseActivity {
         Intent intent = new Intent(this, MatchReportActivity.class);
         startActivity(intent);
     }
+
+    public void opinionReportButtonPressed(View opinionReportButton) {
+        Intent intent = new Intent(this, OpinionReportActivity.class);
+        startActivity(intent);
+    }
 }

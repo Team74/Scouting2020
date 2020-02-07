@@ -25,7 +25,7 @@ public class EntityTeamData {
     public String RobotDriveBaseType;
 
     @ColumnInfo
-    public String RobotNotes;
+    public String PitScoutingNotes;
 
     @ColumnInfo
     public boolean ShootingLocation1;

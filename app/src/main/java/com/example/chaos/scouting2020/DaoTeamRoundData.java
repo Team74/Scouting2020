@@ -40,4 +40,18 @@ public interface DaoTeamRoundData {
     // NOTE: a custom query string must be provided that returns the above class
     @RawQuery
     MatchReportData[] getMatchReportDataRaw(SupportSQLiteQuery rawQuery);
+
+    class OpinionReportData {
+        int TeamNumber;
+        float AvgShootingOpinion;
+        float AvgClimbingOpinion;
+        float AvgSpinningOpinion;
+        float AvgAutonOpinion;
+        float AvgDriverOpinion;
+        float AvgWouldPickOpinion;
+        float AvgStarOpinion;
+    }
+    // NOTE: a custom query string must be provided that returns the above class
+    @RawQuery
+    OpinionReportData[] getOpinionReportDataRaw(SupportSQLiteQuery rawQuery);
 }

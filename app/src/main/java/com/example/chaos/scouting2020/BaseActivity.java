@@ -19,7 +19,7 @@ import java.util.List;
 public class BaseActivity extends AppCompatActivity {
 
     // These are used for sorting report tables
-    protected boolean ReportSortAsc = true;
+    protected boolean ReportSortAsc = false;
     protected int ReportSortColumn = 0;
     public interface ReportUpdateCommand
     {
@@ -117,7 +117,7 @@ public class BaseActivity extends AppCompatActivity {
                     } else {
                         // set sort column to new index
                         ReportSortColumn = headingIndex;
-                        ReportSortAsc = true;
+                        ReportSortAsc = false;
                     }
                     // redisplay the entire table
                     reportUpdateCommand.update();
@@ -162,5 +162,16 @@ public class BaseActivity extends AppCompatActivity {
 
         // add the data row to the end of the table
         table.addView(row);
+    }
+
+    //set a spinners value
+    protected void SetSpinnerByValue(int spinnerId, String value) {
+        Spinner spinner = (Spinner) findViewById(spinnerId);
+        for (int i=0; i<spinner.getCount(); i++){
+            if (spinner.getItemAtPosition(i).toString().equals(value)) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
     }
 }

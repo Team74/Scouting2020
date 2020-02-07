@@ -1,14 +1,8 @@
 package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
-import android.arch.persistence.room.Room;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+
 
 public class MatchReportActivity extends BaseActivity {
 

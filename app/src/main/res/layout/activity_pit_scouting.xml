@@ -5,6 +5,8 @@
     android:id="@+id/pitscoutingConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".PitScoutingActivity">
 
     <android.support.constraint.Guideline
@@ -65,6 +67,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="resetButtonPressed"
         android:text="Reset"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,8 +126,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline20"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline50"
-        app:layout_constraintStart_toEndOf="@+id/pitScoutingScouterTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline15"
+        app:layout_constraintTop_toTopOf="parent"></Spinner>
 
     <TextView
         android:id="@+id/pitScoutingTeamNumberTextView"
@@ -173,7 +176,7 @@
         app:layout_constraintGuide_percent=".60" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/pitScoutingWeightEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -321,7 +324,7 @@
         app:layout_constraintTop_toTopOf="@+id/pitScoutingHorizontalGuideline40" />
 
     <ToggleButton
-        android:id="@+id/pitScoutingSafeZoneShootingTogglebutton"
+        android:id="@+id/pitScoutingSafeZoneShootingToggleButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -338,7 +341,7 @@
         app:layout_constraintTop_toTopOf="@+id/pitScoutingHorizontalGuideline25" />
 
     <ToggleButton
-        android:id="@+id/pitScoutingAutonLineShootingtoggleButton"
+        android:id="@+id/pitScoutingAutonLineShootingToggleButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
