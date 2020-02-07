@@ -15,7 +15,6 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/exportTeamRoundDataButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,11 +25,22 @@
         android:onClick="exportTeamRoundDataButtonPressed"
         android:text="Export Team Round Data To CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/matchReportButton"
-        app:layout_constraintEnd_toStartOf="@+id/importScouterNamesButton"
-        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintBottom_toTopOf="@+id/importButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportScouterNamesButton" />
+
+    <Button
+        android:id="@+id/importButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="importButtonPressed"
+        android:text="Import CSV"
+        app:layout_constraintBottom_toTopOf="@+id/matchReportButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
 
     <Button
         android:id="@+id/matchReportButton"
@@ -42,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
+        app:layout_constraintTop_toBottomOf="@+id/importButton" />
 
     <Button
         android:id="@+id/dataViewingMenubutton"
@@ -55,29 +65,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/matchReportButton" />
-
-    <Button
-        android:id="@+id/importScouterNamesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="importScouterNamesButtonPressed"
-        android:text="IMPORT sCOUTER nAMES TO csv"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.339"
-        app:layout_constraintStart_toEndOf="@+id/exportScouterNamesButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
-
-    <Button
-        android:id="@+id/importTeamRoundDataButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="importTeamRoundDataButtonPressed"
-        android:text="IMPORT TEAM ROUND DATA TO CSV"
-        app:layout_constraintBottom_toTopOf="@+id/matchReportButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/exportScouterNamesButton"
-        app:layout_constraintTop_toBottomOf="@+id/importScouterNamesButton" />
 
 </android.support.constraint.ConstraintLayout>
