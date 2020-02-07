@@ -11,3 +11,22 @@ another line of code 2
 another line of code 3
 
 the last line of code
+
+
+   public void importButtonPressed(View importButton) {
+        Intent intent = new Intent()
+                .setType("*/*")
+                .setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 123 && resultCode == RESULT_OK) {
+            Uri selectedfile = data.getData(); //The uri with the location of the file
+
+            // TBD.  get the path from the URI and pass that to your import function
+            App.importTeamRoundData();
+        }
+    }
