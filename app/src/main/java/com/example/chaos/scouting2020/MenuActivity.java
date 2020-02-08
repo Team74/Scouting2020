@@ -15,6 +15,9 @@ public class MenuActivity extends BaseActivity {
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
+
+        // make sure DB started
+        App.startUpDb();
     }
 
     public void matchScoutingButtonPressed(View matchScoutingButton) {

@@ -180,7 +180,7 @@ public class ScoutingApplication extends Application {
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
-    private void startUpDb() {
+    public void startUpDb() {
         // get room (db)
         if(db == null) {
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
@@ -202,10 +202,10 @@ public class ScoutingApplication extends Application {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
-            //addSampleTeamNumbers();
+            addSampleTeamNumbers();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
-            //addSampleTeamRoundData();
+            addSampleTeamRoundData();
         }
     }
 
@@ -494,7 +494,7 @@ public class ScoutingApplication extends Application {
         }
     }
 
-    // TBD: files created programatically in downloads folder may not
+    // files created programatically in downloads folder may not
     // appear immediately to other system utilities.  This sends out
     // a notification to the system about it.
     private void makeCreatedFileVisibleInDownloads(String downloadFilename) {
@@ -522,23 +522,56 @@ public class ScoutingApplication extends Application {
         }
     }
 
+    // export EntityTeamRoundData to CSV
     public void exportTeamRoundData() {
         try{
-            // starts up the data base
+            // make sure DB started
             startUpDb();
-            //Makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
+
+            // makes the filepath
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String filePath =baseDir + File.separator + "TeamRoundData" + androidId + ".csv";
-            //
+            String filePath = baseDir + File.separator + curDate + "-TeamRoundData-" + androidId + ".csv";
+
+            // creates file and attaches CSV writer to it
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
-            //
+
+            // write a header record to the CSV file to aid in importing into Tableau
+            String[] csvHeaderLine = {
+                    "TeamNumber",
+                    "RoundNumber",
+                    "Scouter",
+                    "TeamColor",
+                    "AutonHighScore",
+                    "AutonLowScore",
+                    "AutonPickUp",
+                    "AutonStartLine",
+                    "TeleopHighScore",
+                    "TeleopLowScore",
+                    "TeleopPickUp",
+                    "RotationControl",
+                    "PositionControl",
+                    "Climb",
+                    "BrokeDown",
+                    "FinalStage",
+                    "Notes",
+                    "RateShooting",
+                    "RateClimb",
+                    "RateWheel",
+                    "RateAuton",
+                    "RateDriver",
+                    "WouldPick"
+            };
+            writer.writeNext(csvHeaderLine);
+
+            // get all the team round data
             EntityTeamRoundData[] teamRoundDatas = daoTeamRoundData.getAllTeamRoundData();
-            //
+
+            // for each record returned from the DB, write a line to the CSV file
             for (EntityTeamRoundData teamRoundData: teamRoundDatas) {
-                String[] csvLine = {
+                String[] csvDataLine = {
                         Integer.toString(teamRoundData.TeamNumber),
                         Integer.toString(teamRoundData.RoundNumber),
                         teamRoundData.Scouter,
@@ -556,150 +589,275 @@ public class ScoutingApplication extends Application {
                         Boolean.toString(teamRoundData.BrokeDown),
                         Integer.toString(teamRoundData.FinalStage),
                         teamRoundData.Notes,
+                        Integer.toString(teamRoundData.RateShooting),
                         Integer.toString(teamRoundData.RateClimb),
                         Integer.toString(teamRoundData.RateWheel),
                         Integer.toString(teamRoundData.RateAuton),
                         Integer.toString(teamRoundData.RateDriver),
                         Boolean.toString(teamRoundData.WouldPick),
                 };
-                writer.writeNext(csvLine);
+                // write the CSV record to the file
+                writer.writeNext(csvDataLine);
             }
+            // close the CSV file and "publish" it to the system
             writer.close();
             makeCreatedFileVisibleInDownloads(filePath);
+            Toast.makeText(this, "TeamRoundData CSV file successfully exported", Toast.LENGTH_SHORT).show();
         } catch(Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error creating TeamRoundData CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void importTeamRoundData() {
+    // import from CSV into EntityTeamRoundData
+    public void importTeamRoundData(String filePath) {
         try{
+            // make sure DB started
             startUpDb();
 
-            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String filePath = baseDir + File.separator + "TeamRoundData-"+androidId+".csv";
-            //
+            // open the file and attach a CSV reader to it
             CSVReader reader = new CSVReader(new FileReader(filePath));
+
+            // create a CSV and DB record that we will fill in
             String[] csvLine;
             entityTeamRoundData = new EntityTeamRoundData();
+
+            // for each record returned from the CSV file, add a record to DB
             while ((csvLine = reader.readNext()) != null) {
-                int teamNumber = Integer.valueOf(csvLine[0]);
-                int roundNumber = Integer.valueOf(csvLine[1]);
-                String scouter = csvLine[2];
-                String teamColor = csvLine[3];
-                int autonHighScore = Integer.valueOf(csvLine[4]);
-                int autonLowScore = Integer.valueOf(csvLine[5]);
-                int autonPickUp = Integer.valueOf(csvLine[6]);
-                boolean autonStartLine = Boolean.valueOf(csvLine[7]);
-                int teleopHighScore = Integer.valueOf(csvLine[8]);
-                int teleopLowScore = Integer.valueOf(csvLine[9]);
-                int teleopPickUp = Integer.valueOf(csvLine[10]);
-                boolean rotationControl = Boolean.valueOf(csvLine[11]);
-                boolean positionControl = Boolean.valueOf(csvLine[12]);
-                int climb = Integer.valueOf(csvLine[13]);
-                boolean brokeDown = Boolean.valueOf(csvLine[14]);
-                int finalStage = Integer.valueOf(csvLine[15]);
-                String notes = csvLine[16];
-                int rateShooting = Integer.valueOf(csvLine[17]);
-                int rateClimb = Integer.valueOf(csvLine[18]);
-                int rateWheel = Integer.valueOf(csvLine[19]);
-                int rateAuton = Integer.valueOf(csvLine[20]);
-                int rateDriver = Integer.valueOf(csvLine[21]);
-                boolean wouldPick = Boolean.valueOf(csvLine[22]);
-                //
-                entityTeamRoundData.TeamNumber = teamNumber;
-                entityTeamRoundData.RoundNumber = roundNumber;
-                entityTeamRoundData.Scouter = scouter;
-                entityTeamRoundData.TeamColor = teamColor;
-                entityTeamRoundData.AutonHighScore = autonHighScore;
-                entityTeamRoundData.AutonLowScore = autonLowScore;
-                entityTeamRoundData.AutonPickUp = autonPickUp;
-                entityTeamRoundData.AutonStartLine = autonStartLine;
-                entityTeamRoundData.TeleopHighScore = teleopHighScore;
-                entityTeamRoundData.TeleopLowScore = teleopLowScore;
-                entityTeamRoundData.TeleopPickUp = teleopPickUp;
-                entityTeamRoundData.RotationControl = rotationControl;
-                entityTeamRoundData.PositionControl = positionControl;
-                entityTeamRoundData.Climb = climb;
-                entityTeamRoundData.BrokeDown = brokeDown;
-                entityTeamRoundData.FinalStage = finalStage;
-                entityTeamRoundData.Notes = notes;
-                entityTeamRoundData.RateShooting = rateShooting;
-                entityTeamRoundData.RateClimb = rateClimb;
-                entityTeamRoundData.RateWheel = rateWheel;
-                entityTeamRoundData.RateAuton = rateAuton;
-                entityTeamRoundData.RateDriver = rateDriver;
-                entityTeamRoundData.WouldPick = wouldPick;
-                //
-                daoTeamRoundData.insert(entityTeamRoundData);
+
+                // check for the CSV header row and skip it
+                if(csvLine[0].equals("TeamNumber")) {
+                    continue;
+                }
+
+                // convert all the data strings to the appropriate DB type
+                entityTeamRoundData.TeamNumber = Integer.valueOf(csvLine[0]);
+                entityTeamRoundData.RoundNumber = Integer.valueOf(csvLine[1]);
+                entityTeamRoundData.Scouter = csvLine[2];
+                entityTeamRoundData.TeamColor = csvLine[3];
+                entityTeamRoundData.AutonHighScore = Integer.valueOf(csvLine[4]);
+                entityTeamRoundData.AutonLowScore = Integer.valueOf(csvLine[5]);
+                entityTeamRoundData.AutonPickUp = Integer.valueOf(csvLine[6]);
+                entityTeamRoundData.AutonStartLine = Boolean.valueOf(csvLine[7]);
+                entityTeamRoundData.TeleopHighScore = Integer.valueOf(csvLine[8]);
+                entityTeamRoundData.TeleopLowScore = Integer.valueOf(csvLine[9]);
+                entityTeamRoundData.TeleopPickUp = Integer.valueOf(csvLine[10]);
+                entityTeamRoundData.RotationControl = Boolean.valueOf(csvLine[11]);
+                entityTeamRoundData.PositionControl = Boolean.valueOf(csvLine[12]);
+                entityTeamRoundData.Climb = Integer.valueOf(csvLine[13]);
+                entityTeamRoundData.BrokeDown = Boolean.valueOf(csvLine[14]);
+                entityTeamRoundData.FinalStage = Integer.valueOf(csvLine[15]);
+                entityTeamRoundData.Notes = csvLine[16];
+                entityTeamRoundData.RateShooting = Integer.valueOf(csvLine[17]);
+                entityTeamRoundData.RateClimb = Integer.valueOf(csvLine[18]);
+                entityTeamRoundData.RateWheel = Integer.valueOf(csvLine[19]);
+                entityTeamRoundData.RateAuton = Integer.valueOf(csvLine[20]);
+                entityTeamRoundData.RateDriver = Integer.valueOf(csvLine[21]);
+                entityTeamRoundData.WouldPick = Boolean.valueOf(csvLine[22]);
+
+                // if it's a valid record...
+                // are the other things would we NOT want in the DB?
+                if(   (TeamNumber>0)
+                        && ((RoundNumber>0) && (RoundNumber<100))) {
+                    // ...add the team round data record to the DB
+                    daoTeamRoundData.insert(entityTeamRoundData);
+                }
             }
+            Toast.makeText(this, "TeamRoundData CSV file successfully imported", Toast.LENGTH_SHORT).show();
+
         }catch(Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error reading CSV file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error reading TeamRoundData CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 
-
-    // TBD: example writing to CSV
+    // export EntityScouterName to CSV
     public void exportScouterNames() {
         try {
             // make sure DB started
             startUpDb();
 
-            // TBD: eventually we want to date/time stamp each export
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmm");
+            // makes the filepath
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String fileName = curDate + "-ScouterNames-"+androidId+".csv";
-            String filePath = baseDir + File.separator + fileName;
+            String filePath = baseDir + File.separator + curDate + "-ScouterNames-" + androidId + ".csv";
 
-            // we are exporting everything, so recreate each time
+            // creates file and attaches CSV writer to it
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
 
-            // get all scouters
+            // write a header record to the CSV file to aid in importing into Tableau
+            String[] csvHeaderLine = {
+                    "ScouterName"
+            };
+            writer.writeNext(csvHeaderLine);
+
+            // get all scouters from the DB
             String[] scouters = daoScouterName.getAllScouterNames();
-            // for each scouter name in the ScouterNames table returned via the select
+
+            // for each record returned from the DB, write a line to the CSV file
             for (String scouter: scouters) {
-                String[] csvLine = { scouter };
-                writer.writeNext(csvLine);
+                String[] csvDataLine = { scouter };
+                // write the CSV record to the file
+                writer.writeNext(csvDataLine);
             }
+
+            // close the CSV file and "publish" it to the system
             writer.close();
             makeCreatedFileVisibleInDownloads(filePath);
+            Toast.makeText(this, "ScouterNames CSV file successfully exported", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error creating CSV file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error creating ScouterNames CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // TBD: example reading from CSV
-    public void importScouterNames() {
+    // import from CSV into EntityScouterName
+    public void importScouterNames(String filePath) {
         try {
             // make sure DB started
             startUpDb();
 
-            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-            String fileName = "ScouterNames-"+androidId+".csv";
-            String filePath = baseDir + File.separator + fileName;
-
+            // open the file and attach a CSV reader to it
             CSVReader reader = new CSVReader(new FileReader(filePath));
+
+            // create a CSV and DB record that we will fill in
             String[] csvLine;
+            entityScouterName = new EntityScouterName();
+
+            // for each record returned from the CSV file, add a record to DB
             while ((csvLine = reader.readNext()) != null) {
-                // csvLine[] is an array of values parsed from from the CSV line
-                String scouter = csvLine[0];
-                if (!scouter.isEmpty()) {
-                    if(entityScouterName == null) {
-                        entityScouterName = new EntityScouterName();
-                    }
-                    entityScouterName.ScouterName = scouter;
+
+                // check for the CSV header row and skip it
+                if(csvLine[0].equals("ScouterName")) {
+                    continue;
+                }
+
+                // convert all the data strings to the appropriate DB type
+                entityScouterName.ScouterName = csvLine[0];
+
+                // if it's a valid record
+                if (!entityScouterName.ScouterName.isEmpty()) {
+                    // add the team round data record to the DB
                     daoScouterName.insert(entityScouterName);
                 }
             }
+            Toast.makeText(this, "ScouterNames CSV file successfully imported", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error reading CSV file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error reading ScouterNames CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // export EntityTeamData to CSV
+    public void exportTeamData() {
+        try{
+            // make sure DB started
+            startUpDb();
+
+            // makes the filepath
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
+            String filePath = baseDir + File.separator + curDate + "-TeamData-" + androidId + ".csv";
+
+            // creates file and attaches CSV writer to it
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
+
+            // write a header record to the CSV file to aid in importing into Tableau
+            String[] csvHeaderLine = {
+                "TeamNumber",
+                "TeamName",
+                "Scouter",
+                "RobotWeight",
+                "RobotDriveBaseType",
+                "PitScoutingNotes",
+                "ShootingLocation1",
+                "ShootingLocation2",
+                "ShootingLocation3",
+                "StartLocationLeft",
+                "StartLocationCenter",
+                "StartLocationRight"
+            };
+            writer.writeNext(csvHeaderLine);
+
+            // get all the team round data
+            EntityTeamData[] TeamDatas = daoTeamData.getAllTeamData();
+
+            // for each record returned from the DB, write a line to the CSV file
+            for (EntityTeamData TeamData: TeamDatas) {
+                String[] csvDataLine = {
+                        Integer.toString(TeamData.TeamNumber),
+                        TeamData.TeamName,
+                        TeamData.Scouter,
+                        Integer.toString(TeamData.RobotWeight),
+                        Boolean.toString(TeamData.ShootingLocation1),
+                        Boolean.toString(TeamData.ShootingLocation2),
+                        Boolean.toString(TeamData.ShootingLocation3),
+                        Boolean.toString(TeamData.StartLocationLeft),
+                        Boolean.toString(TeamData.StartLocationCenter),
+                        Boolean.toString(TeamData.StartLocationRight),
+                };
+                // write the CSV record to the file
+                writer.writeNext(csvDataLine);
+            }
+            // close the CSV file and "publish" it to the system
+            writer.close();
+            makeCreatedFileVisibleInDownloads(filePath);
+            Toast.makeText(this, "TeamData CSV file successfully exported", Toast.LENGTH_SHORT).show();
+        } catch(Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error creating TeamData CSV file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // import from CSV into EntityTeamData
+    public void importTeamData(String filePath) {
+        try{
+            // make sure DB started
+            startUpDb();
+
+            // open the file and attach a CSV reader to it
+            CSVReader reader = new CSVReader(new FileReader(filePath));
+
+            // create a CSV and DB record that we will fill in
+            String[] csvLine;
+            entityTeamData = new EntityTeamData();
+
+            // for each record returned from the CSV file, add a record to DB
+            while ((csvLine = reader.readNext()) != null) {
+
+                // check for the CSV header row and skip it
+                if(csvLine[0].equals("TeamNumber")) {
+                    continue;
+                }
+
+                // convert all the data strings to the appropriate DB type
+                entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
+                entityTeamData.TeamName = Integer.valueOf(csvLine[1]);
+                entityTeamData.Scouter = csvLine[2];
+                entityTeamData.RobotWeight = csvLine[3];
+                entityTeamData.ShootingLocation1 = Boolean.valueOf(csvLine[4]);
+                entityTeamData.ShootingLocation2 = Boolean.valueOf(csvLine[5]);
+                entityTeamData.ShootingLocation3 = Boolean.valueOf(csvLine[6]);
+                entityTeamData.StartLocationLeft = Boolean.valueOf(csvLine[7]);
+                entityTeamData.StartLocationCenter = Boolean.valueOf(csvLine[8]);
+                entityTeamData.StartLocationRight = Boolean.valueOf(csvLine[9]);
+
+                // if it's a valid record...
+                // are the other things would we NOT want in the DB?
+                if(TeamNumber>0) {
+                    // ...add the team round data record to the DB
+                    daoTeamData.insert(entityTeamData);
+                }
+            }
+            Toast.makeText(this, "TeamData CSV file successfully imported", Toast.LENGTH_SHORT).show();
+
+        }catch(Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error reading TeamData CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,10 +1,16 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class DataViewingActivity extends BaseActivity {
 
@@ -31,23 +37,59 @@ public class DataViewingActivity extends BaseActivity {
         Log.d("CSV", "works");
     }
 
-    public void importScouterNamesButtonPressed(View importScouterNamesButton){
-        App.importScouterNames();
-    }
-
     public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
         App.exportTeamRoundData();
     }
 
     public void importButtonPressed(View importButton) {
-        Intent intent = new Intent()
-                .setType("*/*")
-                .setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select a file"), 123);
+        Intent intent = new Intent().setType("*/*").setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select a CSV file"), 123);
     }
 
-    public void importTeamRoundDataButtonPressed(View importTeamRoundDataButton){
-        App.importTeamRoundData();
+    // URI are wierd!  this code was copied from online example.
+    // I don't understand it, but it works.
+    private String getFileNameFromUri(Uri uri) {
+        String result = null;
+        String scheme = uri.getScheme();
+        if (scheme.equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        } else if (scheme.equals("file")) {
+            result = uri.getLastPathSegment();
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 123 && resultCode == RESULT_OK) {
+            // the uri with the location of the file
+            Uri selectedfile = data.getData();
+            String filePath = getFileNameFromUri(selectedfile);
+
+            // check the file type and call the appropriate import function
+            if(filePath.contains("-ScouterNames-")) {
+                App.importScouterNames(filePath);
+            } else if(filePath.contains("-TeamRoundData-")) {
+                App.importTeamRoundData(filePath);
+            } else {
+                Toast.makeText(this, "Unsupported CSV file", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public void matchReportButtonPressed(View matchReportButton) {
