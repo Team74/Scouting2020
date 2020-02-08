@@ -1,5 +1,6 @@
 package com.example.chaos.scouting2020;
 
+import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.arch.persistence.db.SupportSQLiteQuery;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -24,6 +25,7 @@ public interface DaoTeamRoundData {
 
     @Query("SELECT * FROM EntityTeamRoundData")
     EntityTeamRoundData[] getAllTeamRoundData();
+
 
     class MatchReportData {
         int TeamNumber;
@@ -54,4 +56,33 @@ public interface DaoTeamRoundData {
     // NOTE: a custom query string must be provided that returns the above class
     @RawQuery
     OpinionReportData[] getOpinionReportDataRaw(SupportSQLiteQuery rawQuery);
+
+    class TeamRoundDataReportData {
+        int TeamNumber;
+        int RoundNumber;
+        String Scouter;
+        String TeamColor;
+        int AutonHighScore;
+        int AutonLowScore;
+        int AutonPickUp;
+        boolean AutonStartLine;
+        int TeleopHighScore;
+        int TeleopLowScore;
+        int TeleopPickUp;
+        boolean RotationControl;
+        boolean PositionControl;
+        int Climb;
+        boolean BrokeDown;
+        int FinalStage;
+        String Notes;
+        int RateShooting;
+        int RateClimb;
+        int RateWheel;
+        int RateAuton;
+        int RateDriver;
+        boolean WouldPick;
+    }
+
+    @RawQuery
+    TeamRoundDataReportData[] getTeamRoundDataReportDataRaw(SimpleSQLiteQuery simpleSQLiteQuery);
 }

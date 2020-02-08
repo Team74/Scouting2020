@@ -202,10 +202,10 @@ public class ScoutingApplication extends Application {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
-            //addSampleTeamNumbers();
+            addSampleTeamNumbers();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
-            //addSampleTeamRoundData();
+            addSampleTeamRoundData();
         }
     }
 

@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpinionReportActivity"></activity>
+        <activity android:name=".Test"></activity>
+        <activity android:name=".TeamRoundDataReportActivity" />
+        <activity android:name=".OpinionReportActivity" />
         <activity android:name=".MatchReportActivity" />
         <activity android:name=".DataViewingActivity" />
         <activity android:name=".LoginActivity" />
