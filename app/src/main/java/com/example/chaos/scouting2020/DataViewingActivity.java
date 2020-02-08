@@ -101,4 +101,14 @@ public class DataViewingActivity extends BaseActivity {
         Intent intent = new Intent(this, OpinionReportActivity.class);
         startActivity(intent);
     }
+
+    public void teamRoundDataButtonPressed(View teamRoundDataReportButton) {
+        Intent intent = new Intent(this, TeamRoundDataReportActivity.class);
+        startActivity(intent);
+    }
+
+    public void pitScoutingReportButtonPressed(View pitScoutingReportButton) {
+        Intent intent = new Intent(this, PitScoutingReportActivity.class);
+        startActivity(intent);
+    }
 }

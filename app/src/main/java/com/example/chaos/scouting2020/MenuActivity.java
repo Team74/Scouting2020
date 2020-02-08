@@ -30,6 +30,11 @@ public class MenuActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    public void pitScoutingMainButtonPressed(View pitScoutingMainButton) {
+        Intent intent = new Intent(this, PitScoutingMainActivity.class);
+        startActivity(intent);
+    }
+
     public void dataViewingButtonPressed(View dataViewingButton) {
         Intent intent = new Intent(this, DataViewingActivity.class);
         startActivity(intent);

@@ -16,7 +16,7 @@ public class PitScoutingActivity extends BaseActivity {
 
     protected ScoutingApplication App;
 
-    protected String ScouterName = "";
+    protected String PitScouterName = "";
     protected int TeamNumber = -1;
     protected int PitScoutingRobotWeight = -1;
     protected String RobotDriveBaseType = "";
@@ -44,19 +44,24 @@ public class PitScoutingActivity extends BaseActivity {
         PitScoutingStartLocationRight = App.getStartLocationRight();
         PitScoutingRobotWeight = App.getRobotWeight();
         PitScoutingNotes = App.getPitScoutingNotes();
+        PitScouterName = App.getPitScouter();
 
-        // TBD update drive base type spinner
+        // Update drive base type spinner
         SetSpinnerByValue(R.id.pitScoutingDriveBaseSpinner, RobotDriveBaseType);
+
+        // Update scouter spinner
+        // Update drive base type spinner
+        SetSpinnerByValue(R.id.pitScoutingScouterSpinner, PitScouterName);
 
         // Update weight textView
         TextView WeightEditText = (EditText) findViewById(R.id.pitScoutingWeightEditText);
         WeightEditText.setText("" + PitScoutingRobotWeight);
 
-        //TBD update notes textView
+        // Update notes textView
         TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingNotesEditText);
         NotesEditText.setText("" + PitScoutingNotes);
 
-        // TBD update shooting position toggleButtons
+        // Update shooting position toggleButtons
         ToggleButton ShootingLocation1 = (ToggleButton) findViewById(R.id.pitScoutingSafeZoneShootingToggleButton);
         ShootingLocation1.setChecked(PitScoutingShootingLocation1);
 
@@ -66,7 +71,7 @@ public class PitScoutingActivity extends BaseActivity {
         ToggleButton ShootingLocation3 = (ToggleButton) findViewById(R.id.pitScoutingBehindGeneratorShootingToggleButton);
         ShootingLocation3.setChecked(PitScoutingShootingLocation3);
 
-        // TBD update start position toggleButtons
+        // Update start position toggleButtons
 
         ToggleButton StartLocationLeft = (ToggleButton) findViewById(R.id.pitScoutingLeftStartToggleButton);
         StartLocationLeft.setChecked(PitScoutingStartLocationLeft);
@@ -164,6 +169,9 @@ public class PitScoutingActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
 
+        EditText Notes = (EditText) findViewById(R.id.pitScoutingNotesEditText);
+        PitScoutingNotes = Notes.getText().toString();
+
         EditText QRNumberEditText = (EditText) findViewById(R.id.pitScoutingWeightEditText);
         try {
             PitScoutingRobotWeight = Integer.parseInt(QRNumberEditText.getText().toString());
@@ -174,7 +182,7 @@ public class PitScoutingActivity extends BaseActivity {
         }
 
         Spinner spinnerScouter = (Spinner) findViewById(R.id.pitScoutingScouterSpinner);
-        ScouterName = spinnerScouter.getSelectedItem().toString();
+        PitScouterName = spinnerScouter.getSelectedItem().toString();
 
         Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
         TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
@@ -190,6 +198,8 @@ public class PitScoutingActivity extends BaseActivity {
         App.setStartLocationCenter(PitScoutingStartLocationCenter);
         App.setStartLocationRight(PitScoutingStartLocationRight);
         App.setRobotWeight(PitScoutingRobotWeight);
+        App.setPitScoutingNotes(PitScoutingNotes);
+        App.setPitScouter(PitScouterName);
 
         // save any updated data for current team/round
         App.saveTeamData();
