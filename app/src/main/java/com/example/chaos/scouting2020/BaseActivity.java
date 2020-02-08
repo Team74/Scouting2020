@@ -21,6 +21,7 @@ public class BaseActivity extends AppCompatActivity {
     // These are used for sorting report tables
     protected boolean ReportSortAsc = false;
     protected int ReportSortColumn = 0;
+    protected String Activity = "";
     public interface ReportUpdateCommand
     {
         public void update();
@@ -104,6 +105,7 @@ public class BaseActivity extends AppCompatActivity {
             TextView hdrView = new TextView(this);
             hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
+            hdrView.setTextSize(0,10);
             // make the column heading we are sorting on italic
             hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
             hdrView.setPadding(2, 0, 2, 0);
