@@ -827,7 +827,7 @@ public class ScoutingApplication extends Application {
                 String[] csvDataLine = {
                         Integer.toString(TeamData.TeamNumber),
                         TeamData.TeamName,
-                        TeamData.Scouter,
+                        TeamData.PitScouter,
                         Integer.toString(TeamData.RobotWeight),
                         Boolean.toString(TeamData.ShootingLocation1),
                         Boolean.toString(TeamData.ShootingLocation2),
@@ -872,9 +872,9 @@ public class ScoutingApplication extends Application {
 
                 // convert all the data strings to the appropriate DB type
                 entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
-                entityTeamData.TeamName = Integer.valueOf(csvLine[1]);
-                entityTeamData.Scouter = csvLine[2];
-                entityTeamData.RobotWeight = csvLine[3];
+                entityTeamData.TeamName = csvLine[1];
+                entityTeamData.PitScouter = csvLine[2];
+                entityTeamData.RobotWeight = Integer.valueOf(csvLine[3]);
                 entityTeamData.ShootingLocation1 = Boolean.valueOf(csvLine[4]);
                 entityTeamData.ShootingLocation2 = Boolean.valueOf(csvLine[5]);
                 entityTeamData.ShootingLocation3 = Boolean.valueOf(csvLine[6]);

@@ -19,6 +19,9 @@ public interface DaoTeamData {
     @Query("SELECT TeamNumber FROM EntityTeamData ORDER BY TeamNumber ASC")
     int[] getAllTeamNumbers();
 
+    @Query("SELECT * FROM EntityTeamData")
+    EntityTeamData[] getAllTeamData();
+
     class PitScoutingReportData {
         int TeamNumber;
         String PitScouter;
