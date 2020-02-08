@@ -32,13 +32,15 @@ public class DataViewingActivity extends BaseActivity {
 
     // TBD: temp button for testing csv code
     public void exportScouterNamesButtonPressed(View exportScouterNamesButton) {
-        Log.d("CSV", "Starts");
         App.exportScouterNames();
-        Log.d("CSV", "works");
     }
 
     public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
         App.exportTeamRoundData();
+    }
+
+    public void exportTeamDataButtonPressed(View exportTeamDataButton) {
+        App.exportTeamData();
     }
 
     public void importButtonPressed(View importButton) {
@@ -86,6 +88,8 @@ public class DataViewingActivity extends BaseActivity {
                 App.importScouterNames(filePath);
             } else if(filePath.contains("-TeamRoundData-")) {
                 App.importTeamRoundData(filePath);
+            } else if(filePath.contains("-TeamData-")) {
+                App.importTeamData(filePath);
             } else {
                 Toast.makeText(this, "Unsupported CSV file", Toast.LENGTH_SHORT).show();
             }

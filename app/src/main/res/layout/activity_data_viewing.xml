@@ -25,10 +25,22 @@
         android:onClick="exportTeamRoundDataButtonPressed"
         android:text="Export Team Round Data To CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/importButton"
+        app:layout_constraintBottom_toTopOf="@+id/exportTeamDataButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportScouterNamesButton" />
+
+    <Button
+        android:id="@+id/exportTeamDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exportTeamDataButtonPressed"
+        android:text="Export Team Data To CSV"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/importButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
 
     <Button
         android:id="@+id/importButton"
@@ -40,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@+id/matchReportButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamDataButton" />
 
     <Button
         android:id="@+id/matchReportButton"
