@@ -19,6 +19,7 @@ import com.opencsv.CSVWriter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
@@ -30,6 +31,7 @@ public class ScoutingApplication extends Application {
 
     // private sample data
     private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
+    private String[] sampleDriveBases = { "Tank","Mecanum","Omni","Swerve","Other" };
     private int[] sampleTeamNumbers = {1, 74, 56, 5565, 88};
 
     // database members. these are mostly created by startUpDb()
@@ -126,6 +128,7 @@ public class ScoutingApplication extends Application {
     public boolean getStartLocationRight() { return entityTeamData.StartLocationRight; }
     public int getRobotWeight() { return entityTeamData.RobotWeight; }
     public String getPitScoutingNotes() { return entityTeamData.PitScoutingNotes; }
+    public String getPitScouter() { return entityTeamData.PitScouter; }
     // Get Functions End
 
     // Set Functions
@@ -177,6 +180,7 @@ public class ScoutingApplication extends Application {
     public void setStartLocationRight(boolean startLocationRight) { entityTeamData.StartLocationRight = startLocationRight; }
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
+    public void setPitScouter(String pitScouter) { entityTeamData.PitScouter = pitScouter; }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
@@ -214,6 +218,13 @@ public class ScoutingApplication extends Application {
         startUpDb();
 
         return daoTeamRoundData;
+    }
+
+    public DaoTeamData getDaoTeamData() {
+        // make sure DB started
+        startUpDb();
+
+        return daoTeamData;
     }
 
     // Create a new TeamRoundData entity structure.
@@ -272,7 +283,7 @@ public class ScoutingApplication extends Application {
         entityTeamData = new EntityTeamData();
         entityTeamData.TeamNumber = -1;
         entityTeamData.TeamName = "";
-        entityTeamData.Scouter = "Unknown";
+        entityTeamData.PitScouter = "";
         entityTeamData.RobotWeight = -1;
         entityTeamData.ShootingLocation1 = false;
         entityTeamData.ShootingLocation2 = false;
@@ -485,11 +496,36 @@ public class ScoutingApplication extends Application {
         }
         // we're going to generate some random ints
         Random r = new Random();
+
+        // create a list of 40 random team numbers.
+        // first get any team numbers that exist in the current round data
+        List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
+        // then include any numbers in our sampleTeamNumbers array not already in list
         for (int teamNumber : sampleTeamNumbers) {
+            if (!teamNumbers.contains(teamNumber)) { // no dupes!
+                teamNumbers.add(teamNumber);
+            }
+        }
+        // lastly, add random team numbers until we have 40
+        while (teamNumbers.size() < 40) {
+            int teamNumber = r.nextInt(8000) + 1; // 1-8000
+            if (!teamNumbers.contains(teamNumber)) { // no dupes!
+                teamNumbers.add(teamNumber);
+            }
+        }
+
+        for (int teamNumber : teamNumbers) {
+            entityTeamData.RobotWeight = r.nextInt(60) + 60;
             entityTeamData.TeamNumber = teamNumber;
             entityTeamData.TeamName = "foo";
-            entityTeamData.Scouter = sampleScouters[r.nextInt(sampleScouters.length)];
-            entityTeamData.RobotWeight = r.nextInt(90) + 30; // 30-120
+            entityTeamData.PitScouter = sampleScouters[r.nextInt(sampleScouters.length)];
+            entityTeamData.ShootingLocation1 = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.ShootingLocation2 = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.ShootingLocation3 = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.StartLocationLeft = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.StartLocationCenter = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.StartLocationRight = (r.nextInt(2)==0) ? false : true;
+            entityTeamData.RobotDriveBaseType = sampleDriveBases[r.nextInt(sampleDriveBases.length)];
             daoTeamData.insert(entityTeamData);
         }
     }

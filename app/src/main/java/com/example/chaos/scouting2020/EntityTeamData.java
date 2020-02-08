@@ -16,7 +16,7 @@ public class EntityTeamData {
 
     // who was the scouter that entered this data
     @ColumnInfo
-    public String Scouter;
+    public String PitScouter;
 
     @ColumnInfo
     public int RobotWeight;
