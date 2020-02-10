@@ -31,7 +31,7 @@ public class ScoutingApplication extends Application {
 
     // private sample data
     private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
-    private String[] sampleDriveBases = { "Tank","Mecanum","Omni","Swerve","Other" };
+    private String[] sampleDriveBases = { "Tank", "Mecanum", "Omni", "Swerve", "Other" };
     private int[] sampleTeamNumbers = {1, 74, 56, 5565, 88};
 
     // database members. these are mostly created by startUpDb()
@@ -536,30 +536,15 @@ public class ScoutingApplication extends Application {
     private void makeCreatedFileVisibleInDownloads(String downloadFilename) {
         File downloadFile = new File(downloadFilename);
         String mimeType = "text/csv";
-        if (false) { // (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // You can add more columns.. Complete list of columns can be found at
-            // https://developer.android.com/reference/android/provider/MediaStore.Downloads
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.TITLE, downloadFile.getName());
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, downloadFile.getName());
-            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
-            contentValues.put(MediaStore.MediaColumns.SIZE, downloadFile.length());
-            // If you downloaded to a specific folder inside "Downloads" folder
-            //contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + File.separator + "Temp");
-            // Insert into the database
-            ContentResolver database = getContentResolver();
-            //database.insert(MediaStore.MediaColumns.EXTERNAL_CONTENT_URI, contentValues);
-        } else {
-            DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            if (downloadManager != null) {
-                downloadManager.addCompletedDownload(downloadFilename, downloadFilename, true,
-                        mimeType, downloadFile.getAbsolutePath(), downloadFile.length(), true);
-            }
+        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        if (downloadManager != null) {
+            downloadManager.addCompletedDownload(downloadFile.getName(), downloadFilename, true,
+                    mimeType, downloadFile.getAbsolutePath(), downloadFile.length(), true);
         }
     }
 
     // export EntityTeamRoundData to CSV
-    public void exportTeamRoundData() {
+    public void exportTeamRoundData(String baseDir) {
         try{
             // make sure DB started
             startUpDb();
@@ -568,7 +553,6 @@ public class ScoutingApplication extends Application {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String filePath = baseDir + File.separator + curDate + "-TeamRoundData-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
@@ -708,7 +692,7 @@ public class ScoutingApplication extends Application {
     }
 
     // export EntityScouterName to CSV
-    public void exportScouterNames() {
+    public void exportScouterNames(String baseDir) {
         try {
             // make sure DB started
             startUpDb();
@@ -717,7 +701,6 @@ public class ScoutingApplication extends Application {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String filePath = baseDir + File.separator + curDate + "-ScouterNames-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
@@ -782,12 +765,13 @@ public class ScoutingApplication extends Application {
             Toast.makeText(this, "ScouterNames CSV file successfully imported", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error reading ScouterNames CSV file", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Error reading ScouterNames CSV file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error " + filePath + " " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     // export EntityTeamData to CSV
-    public void exportTeamData() {
+    public void exportTeamData(String baseDir) {
         try{
             // make sure DB started
             startUpDb();
@@ -796,7 +780,6 @@ public class ScoutingApplication extends Application {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
             String filePath = baseDir + File.separator + curDate + "-TeamData-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
