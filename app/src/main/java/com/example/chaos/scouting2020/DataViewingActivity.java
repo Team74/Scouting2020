@@ -7,15 +7,11 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.provider.OpenableColumns;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
-import java.net.URI;
 
 public class DataViewingActivity extends BaseActivity {
 
@@ -30,27 +26,37 @@ public class DataViewingActivity extends BaseActivity {
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 
-        // Get default export location
+        // Get default CSV export location (the system download directory)
         BaseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
 
         // check to see if a USB OTG device is mounted.
-        // if it is, use it for exports.
-        StorageManager storageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
+        // if it is, use it for CSV exports.
         try {
+            // get handle to storage manager
+            StorageManager storageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
+            // get a list of all the mount points (volumes)
             String[] volumes = (String[]) storageManager.getClass()
-                    .getMethod("getVolumePaths", new Class[0])
-                    .invoke(storageManager, new Object[0]);
-            for(int i=0; i<volumes.length; i++) {
-                // These are some of the possible volumes we've seen on the Fire tablets:
-                // "/storage/emulated/0" -- this is the built in one from emulated from flash
-                // "/storage/sdcard1" -- this is the one if you an actual SD card
-                // "/storage/usbotg" -- this is the if you use on USB OTG drive
-                if(   volumes[i].toUpperCase().contains("USB")
-                   && volumes[i].toUpperCase().contains("OTG")) {
-                    // Using a HACK to see if it's mounted -- checking if it has space
-                    File externalFile = new File(volumes[i]);
-                    if (externalFile.getTotalSpace() > 0) {
-                        BaseDir = volumes[i];
+                                                        .getMethod("getVolumePaths")
+                                                        .invoke(storageManager);
+            // These are some of the possible volumes we've seen on the Fire tablets:
+            // "/storage/emulated/0" -- this is the built in one emulated from flash
+            // "/storage/sdcard1" -- this is the one if you use an actual SD card
+            // "/storage/usbotg" -- this is the one if you use an USB OTG drive
+            for(String volume : volumes) {
+                // if it's a USB OTG volume
+                if(   volume.toUpperCase().contains("USB")
+                   && volume.toUpperCase().contains("OTG")) {
+                    // check to see if it's mounted
+                    Boolean mounted = (Boolean) storageManager.getClass()
+                                                              .getMethod("getVolumeState", String.class)
+                                                              .invoke(storageManager, volume)
+                                                              .toString()
+                                                              .equalsIgnoreCase(Environment.MEDIA_MOUNTED);
+                    // if it's mounted...
+                    if (mounted) {
+                        // ... use it as the base directory for our CSV exports
+                        BaseDir = volume;
+                        break;
                     }
                 }
             }
@@ -80,54 +86,38 @@ public class DataViewingActivity extends BaseActivity {
     }
 
     public void importButtonPressed(View importButton) {
-        Intent intent = new Intent().setType("*/*").setAction(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent().setType("text/*").setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivityForResult(Intent.createChooser(intent, "Select a CSV file"), 123);
-    }
-
-    // URI are weird!  this code was copied from online example.
-    // I don't understand it, but it works.
-    private String getFileNameFromUri(Uri uri) {
-        String result = null;
-        String scheme = uri.getScheme();
-        if (scheme.equals("content")) {
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-            try {
-                if (cursor != null && cursor.moveToFirst()) {
-                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                }
-            } finally {
-                cursor.close();
-            }
-        } else if (scheme.equals("file")) {
-            result = uri.getLastPathSegment();
-        }
-        if (result == null) {
-            result = uri.getPath();
-            int cut = result.lastIndexOf('/');
-            if (cut != -1) {
-                result = result.substring(cut + 1);
-            }
-        }
-        return result;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 123 && resultCode == RESULT_OK) {
+        if ((requestCode == 123) && (resultCode == RESULT_OK)) {
             // the uri with the location of the file
-            Uri selectedfile = data.getData();
-            String filePath = getFileNameFromUri(selectedfile);
+            Uri selectedFileUri = data.getData();
 
-            // check the file type and call the appropriate import function
-            if(filePath.contains("-ScouterNames-")) {
-                App.importScouterNames(filePath);
-            } else if(filePath.contains("-TeamRoundData-")) {
-                App.importTeamRoundData(filePath);
-            } else if(filePath.contains("-TeamData-")) {
-                App.importTeamData(filePath);
-            } else {
-                Toast.makeText(this, "Unsupported CSV file", Toast.LENGTH_SHORT).show();
+            // as an Android security feature, URIs limit the scope of information you
+            // can retrieve from the file, and all "path" information is abstracted
+            // so we have to jump through some hoops to get things like the file name.
+            Cursor cursor = getContentResolver().query(selectedFileUri, null, null, null, null);
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    // note the display name is not a path to the file
+                    // and can not be used for file operations
+                    String displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                    // check the file type and call the appropriate import function
+                    if (displayName.contains("ScouterNames-")) {
+                        App.importScouterNames(selectedFileUri);
+                    } else if (displayName.contains("TeamRoundData-")) {
+                        App.importTeamRoundData(selectedFileUri);
+                    } else if (displayName.contains("TeamData-")) {
+                        App.importTeamData(selectedFileUri);
+                    } else {
+                        Toast.makeText(this, "Unsupported CSV file", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                cursor.close();
             }
         }
     }

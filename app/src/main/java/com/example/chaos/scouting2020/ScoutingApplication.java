@@ -2,14 +2,8 @@ package com.example.chaos.scouting2020;
 
 import android.app.Application;
 import android.app.DownloadManager;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.widget.Toast;
 import android.arch.persistence.room.Room;
@@ -19,7 +13,6 @@ import com.opencsv.CSVWriter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.io.File;
 import java.io.FileReader;
@@ -630,13 +623,20 @@ public class ScoutingApplication extends Application {
     }
 
     // import from CSV into EntityTeamRoundData
-    public void importTeamRoundData(String filePath) {
+    public void importTeamRoundData(Uri teamRoundDataUri) {
         try{
             // make sure DB started
             startUpDb();
 
+            // attach a file reader to the uri
+            FileReader fileReader = new FileReader(
+                this.getContentResolver()
+                    .openFileDescriptor(teamRoundDataUri, "r")
+                    .getFileDescriptor()
+            );
+
             // open the file and attach a CSV reader to it
-            CSVReader reader = new CSVReader(new FileReader(filePath));
+            CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in
             String[] csvLine;
@@ -683,8 +683,9 @@ public class ScoutingApplication extends Application {
                     daoTeamRoundData.insert(entityTeamRoundData);
                 }
             }
+            // close the CSV file
+            reader.close();
             Toast.makeText(this, "TeamRoundData CSV file successfully imported", Toast.LENGTH_SHORT).show();
-
         }catch(Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error reading TeamRoundData CSV file", Toast.LENGTH_SHORT).show();
@@ -733,13 +734,20 @@ public class ScoutingApplication extends Application {
     }
 
     // import from CSV into EntityScouterName
-    public void importScouterNames(String filePath) {
+    public void importScouterNames(Uri scouterNamesUri) {
         try {
             // make sure DB started
             startUpDb();
 
+            // attach a file reader to the uri
+            FileReader fileReader = new FileReader(
+                    this.getContentResolver()
+                            .openFileDescriptor(scouterNamesUri, "r")
+                            .getFileDescriptor()
+            );
+
             // open the file and attach a CSV reader to it
-            CSVReader reader = new CSVReader(new FileReader(filePath));
+            CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in
             String[] csvLine;
@@ -762,11 +770,12 @@ public class ScoutingApplication extends Application {
                     daoScouterName.insert(entityScouterName);
                 }
             }
+            // close the CSV file
+            reader.close();
             Toast.makeText(this, "ScouterNames CSV file successfully imported", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
-            // Toast.makeText(this, "Error reading ScouterNames CSV file", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Error " + filePath + " " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error reading ScouterNames CSV file", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -833,13 +842,20 @@ public class ScoutingApplication extends Application {
     }
 
     // import from CSV into EntityTeamData
-    public void importTeamData(String filePath) {
+    public void importTeamData(Uri teamDataUri) {
         try{
             // make sure DB started
             startUpDb();
 
+            // attach a file reader to the uri
+            FileReader fileReader = new FileReader(
+                    this.getContentResolver()
+                            .openFileDescriptor(teamDataUri, "r")
+                            .getFileDescriptor()
+            );
+
             // open the file and attach a CSV reader to it
-            CSVReader reader = new CSVReader(new FileReader(filePath));
+            CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in
             String[] csvLine;
@@ -872,8 +888,9 @@ public class ScoutingApplication extends Application {
                     daoTeamData.insert(entityTeamData);
                 }
             }
+            // close the CSV file
+            reader.close();
             Toast.makeText(this, "TeamData CSV file successfully imported", Toast.LENGTH_SHORT).show();
-
         }catch(Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error reading TeamData CSV file", Toast.LENGTH_SHORT).show();
