@@ -58,8 +58,10 @@ public class BaseActivity extends AppCompatActivity {
             TextView ScouterName = (TextView) findViewById(scouterNameViewId);
             ScouterName.setText("Scouter: " + scouterName);
         }
-        String teamColor = ((ScoutingApplication) this.getApplication()).getTeamColor();
-        SetLayoutBackgroundColor(layoutId, teamColor);
+        if(layoutId != 0) {
+            String teamColor = ((ScoutingApplication) this.getApplication()).getTeamColor();
+            SetLayoutBackgroundColor(layoutId, teamColor);
+        }
     }
 
     // add strings to spinner and set font size

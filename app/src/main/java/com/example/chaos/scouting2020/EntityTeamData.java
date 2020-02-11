@@ -45,4 +45,6 @@ public class EntityTeamData {
     @ColumnInfo
     public boolean StartLocationRight;
 
+    @ColumnInfo
+    public String AutonNotes;
 }

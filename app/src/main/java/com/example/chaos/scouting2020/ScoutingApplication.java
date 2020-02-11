@@ -39,6 +39,7 @@ public class ScoutingApplication extends Application {
     // primary key data
     private int TeamNumber = -1;
     private int RoundNumber = -1;
+    private String ScouterName = "";
 
     // Get Functions
     // Get Functions for Team Round Data
@@ -122,6 +123,7 @@ public class ScoutingApplication extends Application {
     public int getRobotWeight() { return entityTeamData.RobotWeight; }
     public String getPitScoutingNotes() { return entityTeamData.PitScoutingNotes; }
     public String getPitScouter() { return entityTeamData.PitScouter; }
+    public String getPitScoutingAutonNotes() { return entityTeamData.AutonNotes; }
     // Get Functions End
 
     // Set Functions
@@ -139,6 +141,7 @@ public class ScoutingApplication extends Application {
     public void setScouter(String scouter) {
         // should only be set from login activity
         entityTeamRoundData.Scouter = scouter;
+        ScouterName = scouter;
     }
     public void setTeamColor(String color) {
         // should only be set from login activity
@@ -173,7 +176,11 @@ public class ScoutingApplication extends Application {
     public void setStartLocationRight(boolean startLocationRight) { entityTeamData.StartLocationRight = startLocationRight; }
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
-    public void setPitScouter(String pitScouter) { entityTeamData.PitScouter = pitScouter; }
+    public void setAutonNotes(String autonNotes) { entityTeamData.AutonNotes = autonNotes; }
+    public void setPitScouter(String pitScouter) {
+        entityTeamData.PitScouter = pitScouter;
+        ScouterName = pitScouter;
+    }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
@@ -286,6 +293,7 @@ public class ScoutingApplication extends Application {
         entityTeamData.StartLocationRight = false;
         entityTeamData.PitScoutingNotes = "";
         entityTeamData.RobotDriveBaseType = "Tank";
+        entityTeamData.AutonNotes = "";
 
         // reset member variable for primary key
         TeamNumber = -1;
