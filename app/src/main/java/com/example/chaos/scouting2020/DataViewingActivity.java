@@ -86,7 +86,7 @@ public class DataViewingActivity extends BaseActivity {
     }
 
     public void importButtonPressed(View importButton) {
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("text/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(Intent.createChooser(intent, "Select a CSV file"), 123);
