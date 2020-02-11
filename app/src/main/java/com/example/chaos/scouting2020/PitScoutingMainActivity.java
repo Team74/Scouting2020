@@ -1,14 +1,12 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,54 +21,63 @@ public class PitScoutingMainActivity extends BaseActivity {
     protected String RobotDriveBaseType = "";
     protected String PitScoutingMainNotes = "";
 
-    protected void UpdatePitScoutingFields() {
+    // this should be called onPause and when ever the team number has changed
+    protected void SavePitScoutingFields() {
 
-        EditText Notes = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
-        PitScoutingMainNotes = Notes.getText().toString();
-
-        EditText QRNumberEditText = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
-        try {
-            PitScoutingMainRobotWeight = Integer.parseInt(QRNumberEditText.getText().toString());
-        } catch (Exception e) {
-            // some sort of error converting RoundNumber to int
-            e.printStackTrace();
-            PitScoutingMainRobotWeight = -1;
-        }
-
+        // get all fields from screen EXCEPT team number
         Spinner spinnerScouter = (Spinner) findViewById(R.id.pitScoutingMainScouterSpinner);
         PitScouterName = spinnerScouter.getSelectedItem().toString();
-
-        Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
-        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
 
         Spinner spinnerRobotDriveBaseType = (Spinner) findViewById(R.id.pitScoutingMainDriveBaseSpinner);
         RobotDriveBaseType = spinnerRobotDriveBaseType.getSelectedItem().toString();
 
+        EditText Notes = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
+        PitScoutingMainNotes = Notes.getText().toString();
+
+        EditText editTextWeight = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
+        try {
+            PitScoutingMainRobotWeight = Integer.parseInt(editTextWeight.getText().toString());
+        } catch (Exception e) {
+            // some sort of error converting weight to int
+            e.printStackTrace();
+            PitScoutingMainRobotWeight = -1;
+        }
+
+        // update the current DB record
+        // note that if team number spinner just changed, we are using the
+        // previous team number value here
+        App.setPitTeamNumber(TeamNumber);
+        App.setPitScouter(PitScouterName);
         App.setRobotDriveBaseType(RobotDriveBaseType);
         App.setRobotWeight(PitScoutingMainRobotWeight);
         App.setPitScoutingNotes(PitScoutingMainNotes);
-        App.setPitScouter(PitScouterName);
 
-        // save any updated data for current team/round
+        // save any updated data for previous team
         App.saveTeamData();
+    }
+
+    // this should be called onCreate and when ever the team number has changed
+    protected void UpdatePitScoutingFields() {
+        // get the new team number from the spinner
+        Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
+        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
 
         // since the TeamNumber changed, we need to refresh the
         // team data record...
-        App.setTeamNumber(TeamNumber);
+        App.setPitTeamNumber(TeamNumber);
         App.refreshTeamData();
 
         // update all the fields on the screen here
+        PitScouterName = App.getPitScouter();
         RobotDriveBaseType = App.getRobotDriveBaseType();
         PitScoutingMainRobotWeight = App.getRobotWeight();
         PitScoutingMainNotes = App.getPitScoutingNotes();
-        PitScouterName = App.getPitScouter();
+
+        // Update scouter spinner
+        SetSpinnerByValue(R.id.pitScoutingMainScouterSpinner, PitScouterName);
 
         // Update drive base type spinner
         SetSpinnerByValue(R.id.pitScoutingMainDriveBaseSpinner, RobotDriveBaseType);
-
-        // Update scouter spinner
-        // Update drive base type spinner
-        SetSpinnerByValue(R.id.pitScoutingMainScouterSpinner, PitScouterName);
 
         // Update weight textView
         TextView WeightEditText = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
@@ -78,7 +85,7 @@ public class PitScoutingMainActivity extends BaseActivity {
 
         // Update notes textView
         TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
-        NotesEditText.setText(""+PitScoutingMainNotes);
+        NotesEditText.setText(PitScoutingMainNotes);
     }
 
     @Override
@@ -90,18 +97,18 @@ public class PitScoutingMainActivity extends BaseActivity {
         App = (ScoutingApplication) this.getApplication();
 
         // make sure db is inited
-        App.newTeamRoundData();
         App.newTeamData();
-
-        // use DB to populate scouter name selection spinner
-        List<String> scouters = App.getAllScouterNamesAsList();
-        AddStringsToSpinner(R.id.pitScoutingMainScouterSpinner, scouters, 36);
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.pitScoutingMainTeamNumberSpinner, teamNumbers, 36);
 
-        List<String> driveTypes = Arrays.asList("Tank","Mecanum","Omni","Swerve","Other");
+        // use DB to populate scouter name selection spinner
+        List<String> scouters = App.getAllScouterNamesAsList();
+        AddStringsToSpinner(R.id.pitScoutingMainScouterSpinner, scouters, 36);
+
+        // drive base types are not in DB, they are hard coded
+        List<String> driveTypes = Arrays.asList(App.getSampleDriveBases());
         AddStringsToSpinner(R.id.pitScoutingMainDriveBaseSpinner, driveTypes, 36);
 
         // create a handler to update the page when ever team number changes
@@ -111,17 +118,9 @@ public class PitScoutingMainActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 ((TextView) parentView.getChildAt(0)).setTextSize(36);
-                // load any previously collected data for current team
-                try {
-                    Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
-                    TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
-                } catch (Exception e) {
-                    // some sort of error converting TeamNumber to int
-                    e.printStackTrace();
-                    TeamNumber = -1;
-                }
-
-                // ... and update display with specific items for this activity
+                // save the record for the current team number
+                SavePitScoutingFields();
+                // ... and update display with specific items for this activity for new team number
                 UpdatePitScoutingFields();
             }
         });
@@ -148,34 +147,7 @@ public class PitScoutingMainActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
 
-        EditText Notes = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
-        PitScoutingMainNotes = Notes.getText().toString();
-
-        EditText QRNumberEditText = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
-        try {
-            PitScoutingMainRobotWeight = Integer.parseInt(QRNumberEditText.getText().toString());
-        } catch (Exception e) {
-            // some sort of error converting RoundNumber to int
-            e.printStackTrace();
-            PitScoutingMainRobotWeight = -1;
-        }
-
-        Spinner spinnerScouter = (Spinner) findViewById(R.id.pitScoutingMainScouterSpinner);
-        PitScouterName = spinnerScouter.getSelectedItem().toString();
-
-        Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
-        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
-
-        Spinner spinnerRobotDriveBaseType = (Spinner) findViewById(R.id.pitScoutingMainDriveBaseSpinner);
-        RobotDriveBaseType = spinnerRobotDriveBaseType.getSelectedItem().toString();
-
-        App.setRobotDriveBaseType(RobotDriveBaseType);
-        App.setRobotWeight(PitScoutingMainRobotWeight);
-        App.setPitScoutingNotes(PitScoutingMainNotes);
-        App.setPitScouter(PitScouterName);
-        App.setTeamNumber(TeamNumber);
-
-        // save any updated data for current team/round
-        App.saveTeamData();
+        // exiting activity, save the record under the current team number
+        SavePitScoutingFields();
     }
 }

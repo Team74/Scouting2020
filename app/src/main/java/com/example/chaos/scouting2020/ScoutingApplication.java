@@ -39,9 +39,18 @@ public class ScoutingApplication extends Application {
     // primary key data
     private int TeamNumber = -1;
     private int RoundNumber = -1;
-    private String ScouterName = "";
 
     // Get Functions
+    // Get functions for sample data
+    public String[] getSampleScouters() {
+        return sampleScouters;
+    }
+    public String[] getSampleDriveBases() {
+        return sampleDriveBases;
+    }
+    public int[] getSampleTeamNumbers() {
+        return sampleTeamNumbers;
+    }
     // Get Functions for Team Round Data
     public int getTeamNumber() {
         return entityTeamRoundData.TeamNumber;
@@ -141,7 +150,6 @@ public class ScoutingApplication extends Application {
     public void setScouter(String scouter) {
         // should only be set from login activity
         entityTeamRoundData.Scouter = scouter;
-        ScouterName = scouter;
     }
     public void setTeamColor(String color) {
         // should only be set from login activity
@@ -167,6 +175,12 @@ public class ScoutingApplication extends Application {
     public void setRateDriver(int rateDriver) { entityTeamRoundData.RateDriver = rateDriver; }
     public void setWouldPick(boolean wouldPick) { entityTeamRoundData.WouldPick = wouldPick; }
     // Set Functions for Team Data
+    public void setPitTeamNumber(int teamNumber) {
+        // should only be set from login activity
+        TeamNumber = teamNumber;
+        entityTeamData.TeamNumber = teamNumber;
+    }
+    public void setPitScouter(String pitScouter) { entityTeamData.PitScouter = pitScouter; }
     public void setRobotDriveBaseType(String robotDriveBaseType) { entityTeamData.RobotDriveBaseType = robotDriveBaseType; }
     public void setShootingLocation1(boolean shootingLocation1) { entityTeamData.ShootingLocation1 = shootingLocation1; }
     public void setShootingLocation2(boolean shootingLocation2) { entityTeamData.ShootingLocation2 = shootingLocation2; }
@@ -177,10 +191,6 @@ public class ScoutingApplication extends Application {
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
     public void setAutonNotes(String autonNotes) { entityTeamData.AutonNotes = autonNotes; }
-    public void setPitScouter(String pitScouter) {
-        entityTeamData.PitScouter = pitScouter;
-        ScouterName = pitScouter;
-    }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.

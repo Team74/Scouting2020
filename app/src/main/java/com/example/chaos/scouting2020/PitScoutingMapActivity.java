@@ -38,10 +38,7 @@ public class PitScoutingMapActivity extends BaseActivity {
 
         // update notes text view
         TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingMapAutonNotesEditText);
-        NotesEditText.setText(""+AutonNotes);
-
-
-        //
+        NotesEditText.setText(AutonNotes);
     }
 
     public void pitScoutingMainButtonPressed(View pitScoutingMainButton) {
@@ -58,6 +55,5 @@ public class PitScoutingMapActivity extends BaseActivity {
         App.setAutonNotes(AutonNotes);
 
         App.saveTeamData();
-
     }
 }
