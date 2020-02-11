@@ -628,14 +628,14 @@ public class ScoutingApplication extends Application {
             // make sure DB started
             startUpDb();
 
-            // attach a file reader to the uri
+            // open file and attach a file reader to the uri
             FileReader fileReader = new FileReader(
                 this.getContentResolver()
                     .openFileDescriptor(teamRoundDataUri, "r")
                     .getFileDescriptor()
             );
 
-            // open the file and attach a CSV reader to it
+            // now attach a CSV reader to file reader
             CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in
@@ -739,14 +739,14 @@ public class ScoutingApplication extends Application {
             // make sure DB started
             startUpDb();
 
-            // attach a file reader to the uri
+            // open file and attach a file reader to the uri
             FileReader fileReader = new FileReader(
                     this.getContentResolver()
                             .openFileDescriptor(scouterNamesUri, "r")
                             .getFileDescriptor()
             );
 
-            // open the file and attach a CSV reader to it
+            // now attach a CSV reader to file reader
             CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in
@@ -847,14 +847,14 @@ public class ScoutingApplication extends Application {
             // make sure DB started
             startUpDb();
 
-            // attach a file reader to the uri
+            // open file and attach a file reader to the uri
             FileReader fileReader = new FileReader(
                     this.getContentResolver()
                             .openFileDescriptor(teamDataUri, "r")
                             .getFileDescriptor()
             );
 
-            // open the file and attach a CSV reader to it
+            // now attach a CSV reader to file reader
             CSVReader reader = new CSVReader(fileReader);
 
             // create a CSV and DB record that we will fill in

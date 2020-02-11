@@ -6,37 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".TeamRoundDataReportActivity">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="249dp"
-        app:layout_constraintGuide_percent=".98" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="42dp"
-        app:layout_constraintGuide_percent=".02" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="453dp"
-        app:layout_constraintGuide_percent=".98" />
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline2"
-        app:layout_constraintEnd_toEndOf="@id/guideline4"
-        app:layout_constraintStart_toStartOf="@id/guideline3"
-        app:layout_constraintTop_toBottomOf="@id/guideline" >
+        app:layout_constraintBottom_toTopOf="@+id/teamRoundDataReportHorizontalGuideline99"
+        app:layout_constraintEnd_toEndOf="@+id/teamRoundDataReportVerticalGuideline99"
+        app:layout_constraintStart_toStartOf="@+id/teamRoundDataReportVerticalGuideline1"
+        app:layout_constraintTop_toBottomOf="@+id/teamRoundDataReportHorizontalGuideline1" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,10 +32,31 @@
     </ScrollView>
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/teamRoundDataReportHorizontalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".02" />
+        app:layout_constraintGuide_percent="0.01" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/teamRoundDataReportHorizontalGuideline99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/teamRoundDataReportVerticalGuideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/teamRoundDataReportVerticalGuideline99"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
 
 </android.support.constraint.ConstraintLayout>

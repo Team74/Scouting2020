@@ -9,10 +9,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/pitScoutingReportHorizontalGuideline98"
-        app:layout_constraintEnd_toEndOf="@+id/pitScoutingReportVerticalGuideline98"
-        app:layout_constraintStart_toStartOf="@+id/pitScoutingReportVerticalGuideline2"
-        app:layout_constraintTop_toBottomOf="@+id/pitScoutingReportHorizontalGuideline2" >
+        app:layout_constraintBottom_toTopOf="@+id/pitScoutingReportHorizontalGuideline99"
+        app:layout_constraintEnd_toEndOf="@+id/pitScoutingReportVerticalGuideline99"
+        app:layout_constraintStart_toStartOf="@+id/pitScoutingReportVerticalGuideline1"
+        app:layout_constraintTop_toBottomOf="@+id/pitScoutingReportHorizontalGuideline1" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,31 +32,31 @@
     </ScrollView>
 
     <android.support.constraint.Guideline
-        android:id="@+id/pitScoutingReportHorizontalGuideline2"
+        android:id="@+id/pitScoutingReportHorizontalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/pitScoutingReportHorizontalGuideline98"
+        android:id="@+id/pitScoutingReportHorizontalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/pitScoutingReportVerticalGuideline2"
+        android:id="@+id/pitScoutingReportVerticalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/pitScoutingReportVerticalGuideline98"
+        android:id="@+id/pitScoutingReportVerticalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
 </android.support.constraint.ConstraintLayout>

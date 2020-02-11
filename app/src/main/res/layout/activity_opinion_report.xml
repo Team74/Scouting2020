@@ -9,10 +9,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/opinionReportHorizontalGuideline98"
-        app:layout_constraintEnd_toEndOf="@+id/opinionReportVerticalGuideline98"
-        app:layout_constraintStart_toStartOf="@+id/opinionReportVerticalGuideline2"
-        app:layout_constraintTop_toBottomOf="@+id/opinionReportHorizontalGuideline2" >
+        app:layout_constraintBottom_toTopOf="@+id/opinionReportHorizontalGuideline99"
+        app:layout_constraintEnd_toEndOf="@+id/opinionReportVerticalGuideline99"
+        app:layout_constraintStart_toStartOf="@+id/opinionReportVerticalGuideline1"
+        app:layout_constraintTop_toBottomOf="@+id/opinionReportHorizontalGuideline1" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,31 +32,31 @@
     </ScrollView>
 
     <android.support.constraint.Guideline
-        android:id="@+id/opinionReportHorizontalGuideline2"
+        android:id="@+id/opinionReportHorizontalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/opinionReportHorizontalGuideline98"
+        android:id="@+id/opinionReportHorizontalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/opinionReportVerticalGuideline2"
+        android:id="@+id/opinionReportVerticalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/opinionReportVerticalGuideline98"
+        android:id="@+id/opinionReportVerticalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
 </android.support.constraint.ConstraintLayout>

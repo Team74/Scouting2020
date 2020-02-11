@@ -9,10 +9,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/matchReportHorizontalGuideline98"
-        app:layout_constraintEnd_toEndOf="@+id/matchReportVerticalGuideline98"
-        app:layout_constraintStart_toStartOf="@+id/matchReportVerticalGuideline2"
-        app:layout_constraintTop_toBottomOf="@+id/matchReportHorizontalGuideline2" >
+        app:layout_constraintBottom_toTopOf="@+id/matchReportHorizontalGuideline99"
+        app:layout_constraintEnd_toEndOf="@+id/matchReportVerticalGuideline99"
+        app:layout_constraintStart_toStartOf="@+id/matchReportVerticalGuideline1"
+        app:layout_constraintTop_toBottomOf="@+id/matchReportHorizontalGuideline1" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,31 +32,31 @@
     </ScrollView>
 
     <android.support.constraint.Guideline
-        android:id="@+id/matchReportHorizontalGuideline2"
+        android:id="@+id/matchReportHorizontalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/matchReportHorizontalGuideline98"
+        android:id="@+id/matchReportHorizontalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/matchReportVerticalGuideline2"
+        android:id="@+id/matchReportVerticalGuideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/matchReportVerticalGuideline98"
+        android:id="@+id/matchReportVerticalGuideline99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.99" />
 
 </android.support.constraint.ConstraintLayout>
