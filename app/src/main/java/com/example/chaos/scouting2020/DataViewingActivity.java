@@ -72,25 +72,6 @@ public class DataViewingActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    // TBD: temp button for testing csv code
-    public void exportScouterNamesButtonPressed(View exportScouterNamesButton) {
-        App.exportScouterNames(BaseDir);
-    }
-
-    public void exportTeamRoundDataButtonPressed(View exportTeamRoundDataButton) {
-        App.exportTeamRoundData(BaseDir);
-    }
-
-    public void exportTeamDataButtonPressed(View exportTeamDataButton) {
-        App.exportTeamData(BaseDir);
-    }
-
-    public void importButtonPressed(View importButton) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("text/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(Intent.createChooser(intent, "Select a CSV file"), 123);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

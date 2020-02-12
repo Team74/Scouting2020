@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity">
+
+    <Button
+        android:id="@+id/exportScouterNamesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exportScouterNamesButtonPressed"
+        android:text="Export Scouter Names To CSV"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/exportTeamRoundDataButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exportTeamRoundDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exportTeamRoundDataButtonPressed"
+        android:text="Export Team Round Data To CSV"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/exportTeamDataButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exportScouterNamesButton" />
+
+    <Button
+        android:id="@+id/exportTeamDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exportTeamDataButtonPressed"
+        android:text="Export Team Data To CSV"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/importButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
+
+    <Button
+        android:id="@+id/importButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="importButtonPressed"
+        android:text="Import CSV"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/dataViewingMenubutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamDataButton" />
+
+    <Button
+        android:id="@+id/dataViewingMenubutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="menuButtonPressed"
+        android:text="menu"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/importButton" />
+</android.support.constraint.ConstraintLayout>
