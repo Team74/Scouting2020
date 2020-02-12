@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportFiltersActivity extends AppCompatActivity {
+public class ReportFiltersActivity extends BaseActivity {
 
     protected ScoutingApplication App;
     protected DaoTeamData daoTeamData = null;
@@ -27,21 +27,16 @@ public class ReportFiltersActivity extends AppCompatActivity {
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 
-        // intialize list to an empty list
+        // get a handle to the current list of filtered team numbers
         FilteredTeamNumberList = App.getFilteredTeamNumberList();
-        if (FilteredTeamNumberList == null) {
-            FilteredTeamNumberList = new ArrayList<Integer>();
-        }
 
         // get data access objects (tables)
-        if(daoTeamData == null){
-            daoTeamData = App.getDaoTeamData();
-        }
+        daoTeamData = App.getDaoTeamData();
 
         // get all the data for all the teams
         EntityTeamData[] teamData = daoTeamData.getAllTeamData();
 
-        // get handle to table
+        // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(R.id.reportFiltersTable);
 
         // create a common layout param group for all of our rows and items
@@ -52,10 +47,10 @@ public class ReportFiltersActivity extends AppCompatActivity {
         TableRow hdr = new TableRow(this);
         hdr.setLayoutParams(lpRow);
 
-        // alternate the color of each row
+        // set the background color of the header row
         hdr.setBackgroundResource(R.color.colorWhiteBackground);
 
-        // add text view for team number header to row
+        // add text view for team name header to row
         TextView hdrNameView = new TextView(this);
         hdrNameView.setLayoutParams(lpItem);
         hdrNameView.setText("Team Name");
@@ -79,19 +74,16 @@ public class ReportFiltersActivity extends AppCompatActivity {
         hdrBoxview.setGravity(Gravity.CENTER);
         hdr.addView(hdrBoxview);
 
-        // add the data row to the end of the table
+        // add the header row to the table (it will be the first row)
         table.addView(hdr);
 
         // loop over team numbers
         for(EntityTeamData team : teamData) {
-
-            final Integer TeamNumber = new Integer(team.TeamNumber);
-
             // create a new row to hold our data values
             TableRow row = new TableRow(this);
             row.setLayoutParams(lpRow);
 
-            // alternate the color of each row
+            // alternate the background color of each row
             int rowNumber = table.getChildCount();
             if ((rowNumber % 2) == 0) {
                 row.setBackgroundResource(R.color.colorBlueBackground);
@@ -116,21 +108,22 @@ public class ReportFiltersActivity extends AppCompatActivity {
             row.addView(dataNumberView);
 
             // add check box to row
+            final Integer TeamNumber = new Integer(team.TeamNumber);
             CheckBox dataBox = new CheckBox(this);
             dataBox.setLayoutParams(lpItem);
             dataBox.setChecked(FilteredTeamNumberList.contains(TeamNumber));
             dataBox.setPadding(2, 0, 2, 0);
             dataBox.setGravity(Gravity.END);
             dataBox.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    CheckBox dataBox = (CheckBox) v;
+                public void onClick(View view) {
+                    CheckBox dataBox = (CheckBox) view;
                     if (dataBox.isChecked()) {
-                        // add int TeamNumber to list of filtered numbers
+                        // add Integer TeamNumber to list of filtered numbers
                         if (!FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
                             FilteredTeamNumberList.add(TeamNumber);
                         }
                     } else {
-                        // remove int TeamNumber from list of filtered numbers
+                        // remove Integer TeamNumber from list of filtered numbers
                         while (FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
                             FilteredTeamNumberList.remove(TeamNumber);
                         }
@@ -142,12 +135,5 @@ public class ReportFiltersActivity extends AppCompatActivity {
             // add the data row to the end of the table
             table.addView(row);
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        App.setFilteredTeamNumberList(FilteredTeamNumberList);
     }
 }

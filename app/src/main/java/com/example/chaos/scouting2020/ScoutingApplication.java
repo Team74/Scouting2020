@@ -14,28 +14,29 @@ import com.opencsv.CSVWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.List;
-import java.util.Random;
 
 public class ScoutingApplication extends Application {
 
     // private sample data
     private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
     private String[] sampleDriveBases = { "Tank", "Mecanum", "Omni", "Swerve", "Other" };
-    private int[] sampleTeamNumbers = {1, 74, 56, 5565, 88};
+    private int[] sampleTeamNumbers = { 1, 74, 56, 88, 5565 };
 
     // database members. these are mostly created by startUpDb()
-    ScoutingDatabase db = null;
-    DaoTeamRoundData daoTeamRoundData = null;
-    DaoScouterName daoScouterName = null;
-    DaoTeamData daoTeamData = null;
-    EntityTeamRoundData entityTeamRoundData = null;
-    EntityScouterName entityScouterName = null;
-    EntityTeamData entityTeamData = null;
+    protected ScoutingDatabase db = null;
+    protected DaoTeamRoundData daoTeamRoundData = null;
+    protected DaoScouterName daoScouterName = null;
+    protected DaoTeamData daoTeamData = null;
+    protected EntityTeamRoundData entityTeamRoundData = null;
+    protected EntityScouterName entityScouterName = null;
+    protected EntityTeamData entityTeamData = null;
 
+    // list of filtered teams for reports
     protected List<Integer> FilteredTeamNumberList = null;
 
     // primary key data
@@ -136,7 +137,14 @@ public class ScoutingApplication extends Application {
     public String getPitScoutingNotes() { return entityTeamData.PitScoutingNotes; }
     public String getPitScouter() { return entityTeamData.PitScouter; }
     public String getPitScoutingAutonNotes() { return entityTeamData.AutonNotes; }
-    public List getFilteredTeamNumberList() { return FilteredTeamNumberList; }
+    // Get function for report variables
+    public List getFilteredTeamNumberList() {
+        if (FilteredTeamNumberList == null) {
+            // intialize list to an empty list
+            FilteredTeamNumberList = new ArrayList<Integer>();
+        }
+        return FilteredTeamNumberList;
+    }
     // Get Functions End
 
     // Set Functions
@@ -195,14 +203,13 @@ public class ScoutingApplication extends Application {
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
     public void setAutonNotes(String autonNotes) { entityTeamData.AutonNotes = autonNotes; }
-    public void setFilteredTeamNumberList(List<Integer> filteredTeamNumberList) { FilteredTeamNumberList = filteredTeamNumberList; }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.
     public void startUpDb() {
         // get room (db)
         if(db == null) {
-            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb")
+            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb2")
                     .allowMainThreadQueries().fallbackToDestructiveMigration().build();
             // TBD: figure out how to allow for "Non-destructive Migrations" of the ROOM DB
             // for when the version changes
@@ -210,6 +217,9 @@ public class ScoutingApplication extends Application {
         // get data access objects (tables)
         if(daoTeamRoundData == null) {
             daoTeamRoundData = db.daoTeamRoundData();
+            // TBD: this is an example call that should be removed in final app.
+            // it's just here to make sure there's some sample team round data in the DB.
+            addSampleTeamRoundData();
         }
         if(daoScouterName == null) {
             daoScouterName = db.daoScouterName();
@@ -221,10 +231,7 @@ public class ScoutingApplication extends Application {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
-            addSampleTeamNumbers();
-            // TBD: this is an example call that should be removed in final app.
-            // it's just here to make sure there's some sample team round data in the DB.
-            addSampleTeamRoundData();
+            addSampleTeamData();
         }
     }
 
@@ -421,7 +428,6 @@ public class ScoutingApplication extends Application {
 
         int[] teamNumbers = daoTeamData.getAllTeamNumbers();
         List<String> teamNumbersAsStrings = new ArrayList<String>();
-
         for( int teamNumber : teamNumbers)
         {
             String teamNumberAsString = Integer.toString(teamNumber);
@@ -440,18 +446,23 @@ public class ScoutingApplication extends Application {
         // we're going to generate some random ints
         Random r = new Random();
 
-        // create a list of 40 random team numbers.
-        // first get any team numbers that exist in the current round data
-        List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
+        // create a list of 40 team numbers.
+        List<Integer> teamNumbers = new ArrayList<Integer>();
+        // first get any team numbers that exist in the current team data
+        int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
+        for( int current : currentTeamNumbers) {
+            teamNumbers.add(new Integer(current));
+        }
         // then include any numbers in our sampleTeamNumbers array not already in list
-        for (int teamNumber : sampleTeamNumbers) {
-            if (!teamNumbers.contains(teamNumber)) { // no dupes!
+        for (int sample : sampleTeamNumbers) {
+            Integer teamNumber = new Integer(sample);
+            if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
             }
         }
         // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
-            int teamNumber = r.nextInt(8000) + 1; // 1-8000
+            Integer teamNumber = new Integer(r.nextInt(8000) + 1); // 1-8000
             if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
@@ -506,42 +517,59 @@ public class ScoutingApplication extends Application {
     }
 
     // TBD: example of adding team data
-    private void addSampleTeamNumbers() {
+    private void addSampleTeamData() {
         if (entityTeamData == null) {
             entityTeamData = new EntityTeamData();
         }
+
         // we're going to generate some random ints
         Random r = new Random();
 
-        // create a list of 40 random team numbers.
-        // first get any team numbers that exist in the current round data
-        List<Integer> teamNumbers = daoTeamRoundData.getAllTeamNumbersAsList();
+        // create a list of 40 team numbers.
+        List<Integer> teamNumbers = new ArrayList<Integer>();
+        // first get any team numbers that exist in the current team data
+        int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
+        for( int current : currentTeamNumbers) {
+            teamNumbers.add(new Integer(current));
+        }
         // then include any numbers in our sampleTeamNumbers array not already in list
-        for (int teamNumber : sampleTeamNumbers) {
-            if (!teamNumbers.contains(teamNumber)) { // no dupes!
+        for (int sample : sampleTeamNumbers) {
+            Integer teamNumber = new Integer(sample);
+            if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
             }
         }
         // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
-            int teamNumber = r.nextInt(8000) + 1; // 1-8000
+            Integer teamNumber = new Integer(r.nextInt(8000) + 1); // 1-8000
             if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
         }
 
         for (int teamNumber : teamNumbers) {
-            entityTeamData.RobotWeight = r.nextInt(60) + 60;
+            // generate a random team name
+            String[] name0 = { "", "The ", "Fighting ", "Soaring ", "Byting " };
+            String[] name1 = { "", "Techo-", "Robo-", "Electro-", "Mechanical ", "Lightning ", "Gigga-", "Steel " };
+            String[] name2 = { "Ants", "Bees", "Cats", "Dogs", "Eagles", "Fish", "Bots", "Gears", "Pistons" };
+            String[] name3 = { "", " Team", " Group", " Squad" };
+            String teamName = name0[r.nextInt(r.nextInt(name0.length)+1)]
+                            + name1[r.nextInt(name1.length)]
+                            + name2[r.nextInt(name2.length)]
+                            + name3[r.nextInt(r.nextInt(r.nextInt(name3.length)+1)+1)];
+
             entityTeamData.TeamNumber = teamNumber;
-            entityTeamData.TeamName = "foo";
+            entityTeamData.TeamName = teamName;
             entityTeamData.PitScouter = sampleScouters[r.nextInt(sampleScouters.length)];
+            entityTeamData.RobotWeight = r.nextInt(60) + 60;
+            entityTeamData.RobotDriveBaseType = sampleDriveBases[r.nextInt(sampleDriveBases.length)];
+            entityTeamData.PitScoutingNotes = "";
             entityTeamData.ShootingLocation1 = (r.nextInt(2)==0) ? false : true;
             entityTeamData.ShootingLocation2 = (r.nextInt(2)==0) ? false : true;
             entityTeamData.ShootingLocation3 = (r.nextInt(2)==0) ? false : true;
             entityTeamData.StartLocationLeft = (r.nextInt(2)==0) ? false : true;
             entityTeamData.StartLocationCenter = (r.nextInt(2)==0) ? false : true;
             entityTeamData.StartLocationRight = (r.nextInt(2)==0) ? false : true;
-            entityTeamData.RobotDriveBaseType = sampleDriveBases[r.nextInt(sampleDriveBases.length)];
             daoTeamData.insert(entityTeamData);
         }
     }

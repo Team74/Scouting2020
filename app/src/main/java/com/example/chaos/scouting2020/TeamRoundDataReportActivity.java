@@ -12,14 +12,11 @@ public class TeamRoundDataReportActivity extends BaseActivity {
     protected ScoutingApplication App;
     protected DaoTeamRoundData daoTeamRoundData = null;
 
-    protected List<Integer> FilteredTeamNumberList;
-
-
     public class UpdateTeamRoundDataReportTable implements ReportUpdateCommand {
 
         public void update() {
             // get all the data records from the DB
-            // NOTE: columns should match those in the OpinionReportData class in DaoTeamRoundData
+            // NOTE: columns should match those in the TeamRoundDataReportData class in DaoTeamRoundData
             // as well as the names in the query SELECT below.
             // You also need to provide conversions for the columns to strings down
             // below where the data values are added to the table.
@@ -50,6 +47,7 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " RateDriver,"
                     + " WouldPick"
                     + " FROM EntityTeamRoundData"
+                    + " WHERE TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamRoundData.TeamRoundDataReportData dataRecords[] = daoTeamRoundData.getTeamRoundDataReportDataRaw(new SimpleSQLiteQuery(query));
 
@@ -59,38 +57,35 @@ public class TeamRoundDataReportActivity extends BaseActivity {
             // create a data row for each data record returned from DB
             for (DaoTeamRoundData.TeamRoundDataReportData dataRecord : dataRecords) {
 
-                if(!FilteredTeamNumberList.contains(dataRecord.TeamNumber)) {
-                    // add each data value to an array of strings
-                    String[] values = {
-                            Integer.toString(dataRecord.TeamNumber),
-                            Integer.toString(dataRecord.RoundNumber),
-                            (dataRecord.Scouter),
-                            (dataRecord.TeamColor),
-                            Integer.toString(dataRecord.AutonHighScore),
-                            Integer.toString(dataRecord.AutonLowScore),
-                            Integer.toString(dataRecord.AutonPickUp),
-                            Boolean.toString(dataRecord.AutonStartLine),
-                            Integer.toString(dataRecord.TeleopHighScore),
-                            Integer.toString(dataRecord.TeleopLowScore),
-                            Integer.toString(dataRecord.TeleopPickUp),
-                            Boolean.toString(dataRecord.RotationControl),
-                            Boolean.toString(dataRecord.PositionControl),
-                            Integer.toString(dataRecord.Climb),
-                            Boolean.toString(dataRecord.BrokeDown),
-                            Integer.toString(dataRecord.FinalStage),
-                            (dataRecord.Notes),
-                            Integer.toString(dataRecord.RateShooting),
-                            Integer.toString(dataRecord.RateClimb),
-                            Integer.toString(dataRecord.RateWheel),
-                            Integer.toString(dataRecord.RateAuton),
-                            Integer.toString(dataRecord.RateDriver),
-                            Boolean.toString(dataRecord.WouldPick),
+                // add each data value to an array of strings
+                String[] values = {
+                        Integer.toString(dataRecord.TeamNumber),
+                        Integer.toString(dataRecord.RoundNumber),
+                        dataRecord.Scouter,
+                        dataRecord.TeamColor,
+                        Integer.toString(dataRecord.AutonHighScore),
+                        Integer.toString(dataRecord.AutonLowScore),
+                        Integer.toString(dataRecord.AutonPickUp),
+                        Boolean.toString(dataRecord.AutonStartLine),
+                        Integer.toString(dataRecord.TeleopHighScore),
+                        Integer.toString(dataRecord.TeleopLowScore),
+                        Integer.toString(dataRecord.TeleopPickUp),
+                        Boolean.toString(dataRecord.RotationControl),
+                        Boolean.toString(dataRecord.PositionControl),
+                        Integer.toString(dataRecord.Climb),
+                        Boolean.toString(dataRecord.BrokeDown),
+                        Integer.toString(dataRecord.FinalStage),
+                        dataRecord.Notes,
+                        Integer.toString(dataRecord.RateShooting),
+                        Integer.toString(dataRecord.RateClimb),
+                        Integer.toString(dataRecord.RateWheel),
+                        Integer.toString(dataRecord.RateAuton),
+                        Integer.toString(dataRecord.RateDriver),
+                        Boolean.toString(dataRecord.WouldPick),
+                };
 
-                    };
-
-                    // add the data strings as a row to our table
-                    AddDataStringsAsRowToReportTable(R.id.teamRoundDataReportTable, values);
-                }
+                // add the data strings as a row to our table
+                AddDataStringsAsRowToReportTable(R.id.teamRoundDataReportTable, values);
             }
         }
     }
@@ -104,13 +99,13 @@ public class TeamRoundDataReportActivity extends BaseActivity {
         App = (ScoutingApplication) this.getApplication();
 
         // get data access objects (tables)
-        if(daoTeamRoundData == null){
-            daoTeamRoundData = App.getDaoTeamRoundData();
-        }
+        daoTeamRoundData = App.getDaoTeamRoundData();
 
-        FilteredTeamNumberList = App.getFilteredTeamNumberList();
-        if (FilteredTeamNumberList == null) {
-            FilteredTeamNumberList = new ArrayList<Integer>();
+        // get the list of filtered team numbers
+        List<Integer> filteredTeamNumberList = App.getFilteredTeamNumberList();
+        ReportFilteredTeamNumberStringList = "0";
+        for(Integer filteredTeamNumber : filteredTeamNumberList) {
+            ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
 
         // display the report table for the first time

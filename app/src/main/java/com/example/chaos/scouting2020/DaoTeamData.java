@@ -15,8 +15,8 @@ public interface DaoTeamData {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(EntityTeamData entityTeamData);
 
-    // This returns the team numbers as an array of ints
-    @Query("SELECT TeamNumber FROM EntityTeamData ORDER BY TeamNumber ASC")
+    // This returns all the unique team numbers as an array of ints
+    @Query("SELECT DISTINCT TeamNumber FROM EntityTeamData ORDER BY TeamNumber ASC")
     int[] getAllTeamNumbers();
 
     @Query("SELECT * FROM EntityTeamData")

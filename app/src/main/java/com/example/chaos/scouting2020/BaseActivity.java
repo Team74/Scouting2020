@@ -18,10 +18,11 @@ import java.util.List;
 
 public class BaseActivity extends AppCompatActivity {
 
-    // These are used for sorting report tables
-    protected boolean ReportSortAsc = false;
+    // These are used for sorting and filtering report tables
+    protected String ReportFilteredTeamNumberStringList = "0";
+    protected boolean ReportSortAsc = true;
     protected int ReportSortColumn = 0;
-    protected String Activity = "";
+    // This interface is used for updating the sorting of a report when a heading is clicked
     public interface ReportUpdateCommand
     {
         public void update();
@@ -87,7 +88,7 @@ public class BaseActivity extends AppCompatActivity {
 
     // add heading strings to specified table.  used for reports.
     protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand) {
-        // get handle to table
+        // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         table.removeAllViews();
 
@@ -121,7 +122,9 @@ public class BaseActivity extends AppCompatActivity {
                     } else {
                         // set sort column to new index
                         ReportSortColumn = headingIndex;
-                        ReportSortAsc = false;
+                        // the first time a heading is clicked, default to descending
+                        // except for index 0, which tends to be TeamNumber
+                        ReportSortAsc = (headingIndex == 0);
                     }
                     // redisplay the entire table
                     reportUpdateCommand.update();
@@ -129,13 +132,13 @@ public class BaseActivity extends AppCompatActivity {
             });
             hdr.addView(hdrView);
         }
-        // add the data row to the table
+        // add the header row to the table (it will be the first row)
         table.addView(hdr);
     }
 
     // add data strings to specified table.  used for reports.
     protected void AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
-        // get handle to table
+        // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         int rowNumber = table.getChildCount();
 
@@ -147,7 +150,7 @@ public class BaseActivity extends AppCompatActivity {
         TableRow row = new TableRow(this);
         row.setLayoutParams(lpRow);
 
-        // alternate the color of each row
+        // alternate the background color of each row
         if((rowNumber % 2) == 0) {
             row.setBackgroundResource(R.color.colorBlueBackground);
         } else {

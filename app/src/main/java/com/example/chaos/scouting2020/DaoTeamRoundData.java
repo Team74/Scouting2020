@@ -9,7 +9,6 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.RawQuery;
 
 import java.util.List;
-import java.util.Objects;
 
 @Dao
 public interface DaoTeamRoundData {
@@ -19,13 +18,8 @@ public interface DaoTeamRoundData {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(EntityTeamRoundData entityTeamRoundData);
 
-    // This returns the list of all unique team numbers in the round data
-    @Query("SELECT DISTINCT TeamNumber FROM EntityTeamRoundData ORDER BY TeamNumber ASC")
-    List<Integer> getAllTeamNumbersAsList();
-
     @Query("SELECT * FROM EntityTeamRoundData")
     EntityTeamRoundData[] getAllTeamRoundData();
-
 
     class MatchReportData {
         int TeamNumber;
@@ -82,7 +76,7 @@ public interface DaoTeamRoundData {
         int RateDriver;
         boolean WouldPick;
     }
-
+    // NOTE: a custom query string must be provided that returns the above class
     @RawQuery
     TeamRoundDataReportData[] getTeamRoundDataReportDataRaw(SimpleSQLiteQuery simpleSQLiteQuery);
 }

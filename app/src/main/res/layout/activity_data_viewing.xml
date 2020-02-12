@@ -7,34 +7,46 @@
     tools:context=".DataViewingActivity">
 
     <Button
-        android:id="@+id/matchReportButton"
+        android:id="@+id/dataViewingReportFilterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="matchReportButtonPressed"
-        android:text="Match Report"
+        android:onClick="dataViewingReportFiltersButtonPressed"
+        android:text="Report Filters"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/dataViewingOpinionReportButton"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMatchReportButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/dataViewingMatchReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="dataViewingMatchReportButtonPressed"
+        android:text="Match Report"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingOpinionReportButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataViewingReportFilterButton" />
+
+    <Button
         android:id="@+id/dataViewingOpinionReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="opinionReportButtonPressed"
+        android:onClick="dataViewingOpinionReportButtonPressed"
         android:text="Opinion report"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/teamRoundDataReportButton"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingTeamRoundDataReportButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchReportButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dataViewingMatchReportButton" />
 
     <Button
-        android:id="@+id/teamRoundDataReportButton"
+        android:id="@+id/dataViewingTeamRoundDataReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="teamRoundDataButtonPressed"
+        android:onClick="dataViewingTeamRoundDataReportButtonPressed"
         android:text="Team Round Data Report"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/dataViewingPitScoutingReportButton"
@@ -46,34 +58,24 @@
         android:id="@+id/dataViewingPitScoutingReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="pitScoutingReportButtonPressed"
+        android:onClick="dataViewingPitScoutingReportButtonPressed"
         android:text="Pit Scouting Report"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamRoundDataReportButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dataViewingTeamRoundDataReportButton" />
 
     <Button
-        android:id="@+id/dataViewingMenubutton"
+        android:id="@+id/dataViewingMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="menuButtonPressed"
-        android:text="menu"
+        android:onClick="dataViewingMenuButtonPressed"
+        android:text="Menu"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataViewingPitScoutingReportButton" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="reportFiltersButtonPressed"
-        android:text="ReportFilters"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="184dp" />
-
 
 </android.support.constraint.ConstraintLayout>

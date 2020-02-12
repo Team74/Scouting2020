@@ -3,6 +3,8 @@ package com.example.chaos.scouting2020;
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
 
+import java.util.List;
+
 public class PitScoutingReportActivity extends BaseActivity {
 
     protected ScoutingApplication App;
@@ -31,6 +33,7 @@ public class PitScoutingReportActivity extends BaseActivity {
                     + " StartLocationRight,"
                     + " RobotDriveBaseType"
                     + " FROM EntityTeamData"
+                    + " WHERE TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamData.PitScoutingReportData dataRecords[] = daoTeamData.getPitScoutingReportDataRaw(new SimpleSQLiteQuery(query));
 
@@ -68,8 +71,13 @@ public class PitScoutingReportActivity extends BaseActivity {
         App = (ScoutingApplication) this.getApplication();
 
         // get data access objects (tables)
-        if(daoTeamData == null){
-            daoTeamData = App.getDaoTeamData();
+        daoTeamData = App.getDaoTeamData();
+
+        // get the list of filtered team numbers
+        List<Integer> filteredTeamNumberList = App.getFilteredTeamNumberList();
+        ReportFilteredTeamNumberStringList = "0";
+        for(Integer filteredTeamNumber : filteredTeamNumberList) {
+            ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
 
         // display the report table for the first time
