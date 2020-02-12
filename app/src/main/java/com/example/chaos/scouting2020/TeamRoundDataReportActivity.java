@@ -4,11 +4,16 @@ import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeamRoundDataReportActivity extends BaseActivity {
 
     protected ScoutingApplication App;
-
     protected DaoTeamRoundData daoTeamRoundData = null;
+
+    protected List<Integer> FilteredTeamNumberList;
+
 
     public class UpdateTeamRoundDataReportTable implements ReportUpdateCommand {
 
@@ -21,7 +26,6 @@ public class TeamRoundDataReportActivity extends BaseActivity {
             String columns[] = {"TeamNumber", "RoundNumber", "Scouter", "TeamColor", "AutonHighScore", "AutonLowScore", "AutonPickUp", "AutonStartLine", "TeleopHighScore", "TeleopLowScore", "TeleopPickUp", "RotationControl", "PositionControl", "Climb", "BrokeDown", "FinalStage", "Notes", "RateShooting", "RateClimb", "RateWheel", "RateAuton", "RateDriver", "WouldPick"};
             String headings[] = {"Team #", "Round Number", "Scouter", "Team Color", "Auton High Score", "Auton Low Score", "Auton Pick Up", "Auton Start Line", "Teleop High Score", "Teleop Low Score", "Teleop Pick Up", "Rotation Control", "Position Control", "Climbed", "Broke Down", "Final Stage", "Notes", "Rate Shooting", "Rate Climb", "Rate Wheel", "Rate Auton", "Rate Driver", "Would Pick"};
             String query = "SELECT "
-
                     + " TeamNumber,"
                     + " RoundNumber,"
                     + " Scouter,"
@@ -46,7 +50,6 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " RateDriver,"
                     + " WouldPick"
                     + " FROM EntityTeamRoundData"
-                    + " GROUP BY TeamNumber"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamRoundData.TeamRoundDataReportData dataRecords[] = daoTeamRoundData.getTeamRoundDataReportDataRaw(new SimpleSQLiteQuery(query));
 
@@ -55,36 +58,39 @@ public class TeamRoundDataReportActivity extends BaseActivity {
 
             // create a data row for each data record returned from DB
             for (DaoTeamRoundData.TeamRoundDataReportData dataRecord : dataRecords) {
-                // add each data value to an array of strings
-                String[] values = {
-                        Integer.toString(dataRecord.TeamNumber),
-                        Integer.toString(dataRecord.RoundNumber),
-                        (dataRecord.Scouter),
-                        (dataRecord.TeamColor),
-                        Integer.toString(dataRecord.AutonHighScore),
-                        Integer.toString(dataRecord.AutonLowScore),
-                        Integer.toString(dataRecord.AutonPickUp),
-                        Boolean.toString(dataRecord.AutonStartLine),
-                        Integer.toString(dataRecord.TeleopHighScore),
-                        Integer.toString(dataRecord.TeleopLowScore),
-                        Integer.toString(dataRecord.TeleopPickUp),
-                        Boolean.toString(dataRecord.RotationControl),
-                        Boolean.toString(dataRecord.PositionControl),
-                        Integer.toString(dataRecord.Climb),
-                        Boolean.toString(dataRecord.BrokeDown),
-                        Integer.toString(dataRecord.FinalStage),
-                        (dataRecord.Notes),
-                        Integer.toString(dataRecord.RateShooting),
-                        Integer.toString(dataRecord.RateClimb),
-                        Integer.toString(dataRecord.RateWheel),
-                        Integer.toString(dataRecord.RateAuton),
-                        Integer.toString(dataRecord.RateDriver),
-                        Boolean.toString(dataRecord.WouldPick),
 
-                };
+                if(!FilteredTeamNumberList.contains(dataRecord.TeamNumber)) {
+                    // add each data value to an array of strings
+                    String[] values = {
+                            Integer.toString(dataRecord.TeamNumber),
+                            Integer.toString(dataRecord.RoundNumber),
+                            (dataRecord.Scouter),
+                            (dataRecord.TeamColor),
+                            Integer.toString(dataRecord.AutonHighScore),
+                            Integer.toString(dataRecord.AutonLowScore),
+                            Integer.toString(dataRecord.AutonPickUp),
+                            Boolean.toString(dataRecord.AutonStartLine),
+                            Integer.toString(dataRecord.TeleopHighScore),
+                            Integer.toString(dataRecord.TeleopLowScore),
+                            Integer.toString(dataRecord.TeleopPickUp),
+                            Boolean.toString(dataRecord.RotationControl),
+                            Boolean.toString(dataRecord.PositionControl),
+                            Integer.toString(dataRecord.Climb),
+                            Boolean.toString(dataRecord.BrokeDown),
+                            Integer.toString(dataRecord.FinalStage),
+                            (dataRecord.Notes),
+                            Integer.toString(dataRecord.RateShooting),
+                            Integer.toString(dataRecord.RateClimb),
+                            Integer.toString(dataRecord.RateWheel),
+                            Integer.toString(dataRecord.RateAuton),
+                            Integer.toString(dataRecord.RateDriver),
+                            Boolean.toString(dataRecord.WouldPick),
 
-                // add the data strings as a row to our table
-                AddDataStringsAsRowToReportTable(R.id.teamRoundDataReportTable, values);
+                    };
+
+                    // add the data strings as a row to our table
+                    AddDataStringsAsRowToReportTable(R.id.teamRoundDataReportTable, values);
+                }
             }
         }
     }
@@ -100,6 +106,11 @@ public class TeamRoundDataReportActivity extends BaseActivity {
         // get data access objects (tables)
         if(daoTeamRoundData == null){
             daoTeamRoundData = App.getDaoTeamRoundData();
+        }
+
+        FilteredTeamNumberList = App.getFilteredTeamNumberList();
+        if (FilteredTeamNumberList == null) {
+            FilteredTeamNumberList = new ArrayList<Integer>();
         }
 
         // display the report table for the first time

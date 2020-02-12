@@ -36,6 +36,8 @@ public class ScoutingApplication extends Application {
     EntityScouterName entityScouterName = null;
     EntityTeamData entityTeamData = null;
 
+    protected List<Integer> FilteredTeamNumberList = null;
+
     // primary key data
     private int TeamNumber = -1;
     private int RoundNumber = -1;
@@ -134,6 +136,7 @@ public class ScoutingApplication extends Application {
     public String getPitScoutingNotes() { return entityTeamData.PitScoutingNotes; }
     public String getPitScouter() { return entityTeamData.PitScouter; }
     public String getPitScoutingAutonNotes() { return entityTeamData.AutonNotes; }
+    public List getFilteredTeamNumberList() { return FilteredTeamNumberList; }
     // Get Functions End
 
     // Set Functions
@@ -192,6 +195,7 @@ public class ScoutingApplication extends Application {
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
     public void setAutonNotes(String autonNotes) { entityTeamData.AutonNotes = autonNotes; }
+    public void setFilteredTeamNumberList(List<Integer> filteredTeamNumberList) { FilteredTeamNumberList = filteredTeamNumberList; }
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.

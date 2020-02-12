@@ -10,8 +10,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/reportFiltersHorizontalGuideline99"
-        app:layout_constraintEnd_toEndOf="@+id/reportFiltersVerticalGuideline99"
-        app:layout_constraintStart_toStartOf="@+id/reportFiltersVerticalGuideline1"
+        app:layout_constraintEnd_toEndOf="@+id/reportFiltersVerticalGuideline75"
+        app:layout_constraintStart_toStartOf="@+id/reportFiltersVerticalGuideline25"
         app:layout_constraintTop_toBottomOf="@+id/reportFiltersHorizontalGuideline1" >
 
         <LinearLayout
@@ -21,7 +21,7 @@
 
             <TableLayout
                 android:id="@+id/reportFiltersTable"
-                android:layout_width="match_parent"
+                android:layout_width="500dp"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,17 +46,17 @@
         app:layout_constraintGuide_percent="0.99" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/reportFiltersVerticalGuideline1"
+        android:id="@+id/reportFiltersVerticalGuideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.01" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/reportFiltersVerticalGuideline99"
+        android:id="@+id/reportFiltersVerticalGuideline75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.99" />
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>
