@@ -114,5 +114,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataViewingPitScoutingReportButton" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="reportFiltersButtonPressed"
+        android:text="ReportFilters"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="259dp" />
+
 
 </android.support.constraint.ConstraintLayout>

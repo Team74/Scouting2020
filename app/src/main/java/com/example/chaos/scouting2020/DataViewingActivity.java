@@ -143,4 +143,9 @@ public class DataViewingActivity extends BaseActivity {
         Intent intent = new Intent(this, PitScoutingReportActivity.class);
         startActivity(intent);
     }
+
+    public void reportFiltersButtonPressed(View pitScoutingReportButton) {
+        Intent intent = new Intent(this, ReportFiltersActivity.class);
+        startActivity(intent);
+    }
 }

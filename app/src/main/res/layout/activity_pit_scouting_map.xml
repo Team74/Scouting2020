@@ -50,10 +50,11 @@
         app:srcCompat="@drawable/pit_scouting_map2" />
 
     <ToggleButton
-        android:id="@+id/toggleButton7"
+        android:id="@+id/pitScoutingMapSafeZoneShootingToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:alpha=".5"
+        android:onClick="pitScoutingShootingLocation1"
         android:text="Shooting"
         android:textOff="Shooting"
         android:textOn="Shooting"
@@ -177,10 +178,11 @@
         app:layout_constraintGuide_percent=".3333" />
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/pitScoutingRightStartToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha=".5"
+        android:onClick="pitScoutingStartLocationRight"
         android:text="ToggleButton"
         android:textOff="Start"
         android:textOn="Start"
@@ -190,10 +192,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <ToggleButton
-        android:id="@+id/toggleButton2"
+        android:id="@+id/pitScoutingCenterStartToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha=".5"
+        android:onClick="pitScoutingStartLocationCenter"
         android:text="ToggleButton"
         android:textOff="Start"
         android:textOn="Start"
@@ -203,10 +206,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <ToggleButton
-        android:id="@+id/toggleButton3"
+        android:id="@+id/pitScoutingLeftStartToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha=".5"
+        android:onClick="pitScoutingStartLocationLeft"
         android:text="ToggleButton"
         android:textOff="Start"
         android:textOn="Start"
@@ -216,10 +220,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <ToggleButton
-        android:id="@+id/toggleButton4"
+        android:id="@+id/pitScoutingBehindGeneratorShootingToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:alpha=".5"
+        android:onClick="pitScoutingShootingLocation3"
         android:text="ToggleButton"
         android:textOff="Shooting"
         android:textOn="shooting"
@@ -237,10 +242,11 @@
         app:layout_constraintGuide_percent=".8" />
 
     <ToggleButton
-        android:id="@+id/toggleButton6"
+        android:id="@+id/pitScoutingAutonLineShootingToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:alpha=".5"
+        android:onClick="pitScoutingShootingLocation2"
         android:text="Shooting"
         android:textOff="Shooting"
         android:textOn="Shooting"

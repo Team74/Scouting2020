@@ -97,11 +97,16 @@ public class PitScoutingMainActivity extends BaseActivity {
         App = (ScoutingApplication) this.getApplication();
 
         // make sure db is inited
-        App.newTeamData();
+        App.refreshTeamData();
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.pitScoutingMainTeamNumberSpinner, teamNumbers, 36);
+
+        TeamNumber = App.getPitTeamNumber();
+        if (TeamNumber > 0) {
+            SetSpinnerByValue(R.id.pitScoutingMainTeamNumberSpinner, "" + TeamNumber);
+        }
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = App.getAllScouterNamesAsList();
