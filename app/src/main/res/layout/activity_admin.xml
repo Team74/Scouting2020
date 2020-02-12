@@ -49,7 +49,7 @@
         android:onClick="importButtonPressed"
         android:text="Import CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/dataViewingMenubutton"
+        app:layout_constraintBottom_toTopOf="@+id/addScouterName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportTeamDataButton" />
@@ -58,11 +58,34 @@
         android:id="@+id/dataViewingMenubutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:onClick="menuButtonPressed"
         android:text="menu"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addScouterName" />
+
+    <Button
+        android:id="@+id/addScouterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
+        app:layout_constraintEnd_toStartOf="@+id/addScouterNameEditText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/importButton" />
+
+    <TextView
+        android:id="@+id/addScouterNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toEndOf="@+id/addScouterName"
+        app:layout_constraintTop_toBottomOf="@+id/importButton" />
+
 </android.support.constraint.ConstraintLayout>

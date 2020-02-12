@@ -122,6 +122,7 @@ public class ScoutingApplication extends Application {
         return entityTeamRoundData.WouldPick;
     }
     // Get Functions for Team Data
+    public int getPitTeamNumber() { return entityTeamData.TeamNumber; }
     public String getRobotDriveBaseType() { return entityTeamData.RobotDriveBaseType; }
     public boolean getShootingLocation1() { return entityTeamData.ShootingLocation1; }
     public boolean getShootingLocation2() { return entityTeamData.ShootingLocation2; }

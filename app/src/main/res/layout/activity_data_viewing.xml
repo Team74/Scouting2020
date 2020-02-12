@@ -7,50 +7,6 @@
     tools:context=".DataViewingActivity">
 
     <Button
-        android:id="@+id/exportScouterNamesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="exportScouterNamesButtonPressed"
-        android:text="Export Scouter Names To CSV"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/exportTeamRoundDataButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/exportTeamRoundDataButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="exportTeamRoundDataButtonPressed"
-        android:text="Export Team Round Data To CSV"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/exportTeamDataButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportScouterNamesButton" />
-
-    <Button
-        android:id="@+id/exportTeamDataButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="exportTeamDataButtonPressed"
-        android:text="Export Team Data To CSV"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/importButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
-
-    <Button
-        android:id="@+id/importButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="importButtonPressed"
-        android:text="Import CSV"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportTeamDataButton" />
-
-    <Button
         android:id="@+id/matchReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +49,7 @@
         android:onClick="pitScoutingReportButtonPressed"
         android:text="Pit Scouting Report"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dataViewingMenubutton"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teamRoundDataReportButton" />
@@ -109,6 +65,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataViewingPitScoutingReportButton" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="reportFiltersButtonPressed"
+        android:text="ReportFilters"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="184dp" />
 
 
 </android.support.constraint.ConstraintLayout>

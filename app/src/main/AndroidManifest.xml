@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".ReportFiltersActivity"></activity>
         <activity android:name=".TeamRoundDataReportActivity" />
         <activity android:name=".PitScoutingMapActivity" />
         <activity android:name=".PitScoutingMainActivity" />
