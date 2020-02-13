@@ -24,7 +24,7 @@ public class ScoutingApplication extends Application {
 
     // private sample data
     private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
-    private String[] sampleDriveBases = { "Tank", "Mecanum", "Omni", "Swerve", "Other" };
+    private String[] sampleDriveBases = { "Other", "Tank", "Mecanum", "Omni", "Swerve" };
     private int[] sampleTeamNumbers = { 1, 74, 56, 88, 5565 };
 
     // database members. these are mostly created by startUpDb()
@@ -188,7 +188,6 @@ public class ScoutingApplication extends Application {
     public void setWouldPick(boolean wouldPick) { entityTeamRoundData.WouldPick = wouldPick; }
     // Set Functions for Team Data
     public void setPitTeamNumber(int teamNumber) {
-        // should only be set from login activity
         TeamNumber = teamNumber;
         entityTeamData.TeamNumber = teamNumber;
     }
@@ -208,26 +207,26 @@ public class ScoutingApplication extends Application {
     // This is a helper function to setup DB and DAOs.
     public void startUpDb() {
         // get room (db)
-        if(db == null) {
+        if (db == null) {
             db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb2")
                     .allowMainThreadQueries().fallbackToDestructiveMigration().build();
             // TBD: figure out how to allow for "Non-destructive Migrations" of the ROOM DB
             // for when the version changes
         }
         // get data access objects (tables)
-        if(daoTeamRoundData == null) {
+        if (daoTeamRoundData == null) {
             daoTeamRoundData = db.daoTeamRoundData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
             addSampleTeamRoundData();
         }
-        if(daoScouterName == null) {
+        if (daoScouterName == null) {
             daoScouterName = db.daoScouterName();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample scouter data in the DB.
             addSampleScouterNames();
         }
-        if(daoTeamData == null) {
+        if (daoTeamData == null) {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
@@ -314,7 +313,7 @@ public class ScoutingApplication extends Application {
         entityTeamData.StartLocationCenter = false;
         entityTeamData.StartLocationRight = false;
         entityTeamData.PitScoutingNotes = "";
-        entityTeamData.RobotDriveBaseType = "Tank";
+        entityTeamData.RobotDriveBaseType = sampleDriveBases[0];
         entityTeamData.AutonNotes = "";
 
         // reset member variable for primary key
@@ -328,7 +327,7 @@ public class ScoutingApplication extends Application {
         startUpDb();
 
         // TeamNumber, RoundNumber should be set to valid values from login screen!
-        if((TeamNumber > 0) && (RoundNumber > 0)) {
+        if ((TeamNumber > 0) && (RoundNumber > 0)) {
             try {
                 entityTeamRoundData = daoTeamRoundData.getRecord(TeamNumber, RoundNumber);
             } catch (Exception e) {
@@ -338,7 +337,7 @@ public class ScoutingApplication extends Application {
                 // will create a new empty record.
             }
         }
-        if(entityTeamRoundData == null) {
+        if (entityTeamRoundData == null) {
             // This shouldn't normally happen, as the record should be created during login,
             // but if it does, create an empty record and zero everything out
             // TBD:  should we send them back to the login activity if this does happen?
@@ -353,7 +352,7 @@ public class ScoutingApplication extends Application {
         startUpDb();
 
         // TeamNumber, RoundNumber should be set to valid values from login activity screen!
-        if((entityTeamRoundData != null) && (TeamNumber > 0) && (RoundNumber > 0)) {
+        if ((entityTeamRoundData != null) && (TeamNumber > 0) && (RoundNumber > 0)) {
             // this will insert a new record, or replace the matching record
             daoTeamRoundData.insert(entityTeamRoundData);
         } else {
@@ -371,7 +370,7 @@ public class ScoutingApplication extends Application {
         startUpDb();
 
         // TeamNumber should be set to valid values
-        if(TeamNumber > 0) {
+        if (TeamNumber > 0) {
             try {
                 entityTeamData = daoTeamData.getRecord(TeamNumber);
             } catch (Exception e) {
@@ -381,7 +380,7 @@ public class ScoutingApplication extends Application {
                 // will create a new empty record.
             }
         }
-        if(entityTeamData == null) {
+        if (entityTeamData == null) {
             // This shouldn't EVER happen, as the team data record should be created
             // BEFORE the event.  If it does, create an empty record and zero everything out
             newTeamData();
@@ -393,7 +392,7 @@ public class ScoutingApplication extends Application {
         // make sure DB started
         startUpDb();
 
-        if((entityTeamData != null) && (TeamNumber > 0)) {
+        if ((entityTeamData != null) && (TeamNumber > 0)) {
             // this will insert a new record, or replace the matching record
             daoTeamData.insert(entityTeamData);
         } else {
@@ -408,7 +407,7 @@ public class ScoutingApplication extends Application {
     public void addScouterName(String scouterName) {
         // make sure DB started
         startUpDb();
-        if(entityScouterName == null) {
+        if (entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
         entityScouterName.ScouterName = scouterName;
@@ -428,7 +427,7 @@ public class ScoutingApplication extends Application {
 
         int[] teamNumbers = daoTeamData.getAllTeamNumbers();
         List<String> teamNumbersAsStrings = new ArrayList<String>();
-        for( int teamNumber : teamNumbers)
+        for (int teamNumber : teamNumbers)
         {
             String teamNumberAsString = Integer.toString(teamNumber);
             teamNumbersAsStrings.add(teamNumberAsString);
@@ -439,7 +438,7 @@ public class ScoutingApplication extends Application {
 
     // TBD: example of adding round data records
     private void addSampleTeamRoundData() {
-        if(entityTeamRoundData == null) {
+        if (entityTeamRoundData == null) {
             newTeamRoundData();
         }
 
@@ -450,7 +449,7 @@ public class ScoutingApplication extends Application {
         List<Integer> teamNumbers = new ArrayList<Integer>();
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
-        for( int current : currentTeamNumbers) {
+        for (int current : currentTeamNumbers) {
             teamNumbers.add(new Integer(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
@@ -470,8 +469,8 @@ public class ScoutingApplication extends Application {
 
         // a typical event has 60 rounds with 6 teams per round
         int j = 0; // index of team number
-        for(int roundNumber = 1; roundNumber < 61; roundNumber++ ) {
-            for(int i = 0; i < 6; i++ ) {
+        for (int roundNumber = 1; roundNumber < 61; roundNumber++) {
+            for (int i = 0; i < 6; i++) {
                 // get team number for this loop
                 int teamNumber = teamNumbers.get(j);
                 // and go to the next team number for next loop
@@ -507,7 +506,7 @@ public class ScoutingApplication extends Application {
 
     // TBD: example of adding ScouterNames
     private void addSampleScouterNames() {
-        if(entityScouterName == null) {
+        if (entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
         for (String scouter: sampleScouters) {
@@ -529,7 +528,7 @@ public class ScoutingApplication extends Application {
         List<Integer> teamNumbers = new ArrayList<Integer>();
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
-        for( int current : currentTeamNumbers) {
+        for (int current : currentTeamNumbers) {
             teamNumbers.add(new Integer(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
@@ -549,14 +548,19 @@ public class ScoutingApplication extends Application {
 
         for (int teamNumber : teamNumbers) {
             // generate a random team name
-            String[] name0 = { "", "The ", "Fighting ", "Soaring ", "Byting " };
-            String[] name1 = { "", "Techo-", "Robo-", "Electro-", "Mechanical ", "Lightning ", "Gigga-", "Steel " };
-            String[] name2 = { "Ants", "Bees", "Cats", "Dogs", "Eagles", "Fish", "Bots", "Gears", "Pistons" };
-            String[] name3 = { "", " Team", " Group", " Squad" };
-            String teamName = name0[r.nextInt(r.nextInt(name0.length)+1)]
-                            + name1[r.nextInt(name1.length)]
+            String[] name0 = { "", "The " };
+            String[] name1 = { "Fighting ", "Flying ", "Byting ", "Blazing ", "Amazing ", "Soaring " };
+            String[] name2 = { "", "Techo-", "Robo-", "Electro-", "Mechanical ", "Lightning ", "Gigga-", "Steel ", "Iron ", "Wired-", "Cyber " };
+            String[] name3 = { "Ants", "Bees", "Cats", "Dogs", "Eagles", "Fish", "Bots", "Gears", "Pistons", "Wrenches", "Cogs", "Inventors" };
+            String[] name4 = { "", " Team", " Group", " Squad", " Crew", " Force", " Alliance", " Club" };
+            String teamName = name0[r.nextInt(r.nextInt(name0.length)+1)] // skew toward front of name0 list
+                            + ((r.nextInt(4) < 3) ? "" : name1[r.nextInt(name1.length)]) // 25% chance of having something from name1 list
                             + name2[r.nextInt(name2.length)]
-                            + name3[r.nextInt(r.nextInt(r.nextInt(name3.length)+1)+1)];
+                            + name3[r.nextInt(name3.length)]
+                            + name4[r.nextInt(r.nextInt(r.nextInt(name4.length)+1)+1)];  // really skew toward front of name4 list
+            if (teamNumber == 74) { teamName = "Team C.H.A.O.S."; }
+            // TBD: it's just sample data, but still might be good to check for duplicate names
+            // and generate a new one
 
             entityTeamData.TeamNumber = teamNumber;
             entityTeamData.TeamName = teamName;
@@ -589,7 +593,7 @@ public class ScoutingApplication extends Application {
 
     // export EntityTeamRoundData to CSV
     public void exportTeamRoundData(String baseDir) {
-        try{
+        try {
             // make sure DB started
             startUpDb();
 
@@ -667,7 +671,7 @@ public class ScoutingApplication extends Application {
             writer.close();
             makeCreatedFileVisibleInDownloads(filePath);
             Toast.makeText(this, "TeamRoundData CSV file successfully exported", Toast.LENGTH_SHORT).show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error creating TeamRoundData CSV file", Toast.LENGTH_SHORT).show();
         }
@@ -675,7 +679,7 @@ public class ScoutingApplication extends Application {
 
     // import from CSV into EntityTeamRoundData
     public void importTeamRoundData(Uri teamRoundDataUri) {
-        try{
+        try {
             // make sure DB started
             startUpDb();
 
@@ -697,7 +701,7 @@ public class ScoutingApplication extends Application {
             while ((csvLine = reader.readNext()) != null) {
 
                 // check for the CSV header row and skip it
-                if(csvLine[0].equals("TeamNumber")) {
+                if (csvLine[0].equals("TeamNumber")) {
                     continue;
                 }
 
@@ -728,8 +732,8 @@ public class ScoutingApplication extends Application {
 
                 // if it's a valid record...
                 // are the other things would we NOT want in the DB?
-                if(   (TeamNumber>0)
-                        && ((RoundNumber>0) && (RoundNumber<100))) {
+                if (   (TeamNumber>0)
+                    && ((RoundNumber>0) && (RoundNumber<100))) {
                     // ...add the team round data record to the DB
                     daoTeamRoundData.insert(entityTeamRoundData);
                 }
@@ -737,7 +741,7 @@ public class ScoutingApplication extends Application {
             // close the CSV file
             reader.close();
             Toast.makeText(this, "TeamRoundData CSV file successfully imported", Toast.LENGTH_SHORT).show();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error reading TeamRoundData CSV file", Toast.LENGTH_SHORT).show();
         }
@@ -808,7 +812,7 @@ public class ScoutingApplication extends Application {
             while ((csvLine = reader.readNext()) != null) {
 
                 // check for the CSV header row and skip it
-                if(csvLine[0].equals("ScouterName")) {
+                if (csvLine[0].equals("ScouterName")) {
                     continue;
                 }
 
@@ -832,7 +836,7 @@ public class ScoutingApplication extends Application {
 
     // export EntityTeamData to CSV
     public void exportTeamData(String baseDir) {
-        try{
+        try {
             // make sure DB started
             startUpDb();
 
@@ -886,7 +890,7 @@ public class ScoutingApplication extends Application {
             writer.close();
             makeCreatedFileVisibleInDownloads(filePath);
             Toast.makeText(this, "TeamData CSV file successfully exported", Toast.LENGTH_SHORT).show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error creating TeamData CSV file", Toast.LENGTH_SHORT).show();
         }
@@ -894,7 +898,7 @@ public class ScoutingApplication extends Application {
 
     // import from CSV into EntityTeamData
     public void importTeamData(Uri teamDataUri) {
-        try{
+        try {
             // make sure DB started
             startUpDb();
 
@@ -916,7 +920,7 @@ public class ScoutingApplication extends Application {
             while ((csvLine = reader.readNext()) != null) {
 
                 // check for the CSV header row and skip it
-                if(csvLine[0].equals("TeamNumber")) {
+                if (csvLine[0].equals("TeamNumber")) {
                     continue;
                 }
 
@@ -933,16 +937,16 @@ public class ScoutingApplication extends Application {
                 entityTeamData.StartLocationRight = Boolean.valueOf(csvLine[9]);
 
                 // if it's a valid record...
-                // are the other things would we NOT want in the DB?
-                if(TeamNumber>0) {
-                    // ...add the team round data record to the DB
+                // TBD: are there other things would we NOT want in the DB?
+                if (TeamNumber>0) {
+                    // ...add the team data record to the DB
                     daoTeamData.insert(entityTeamData);
                 }
             }
             // close the CSV file
             reader.close();
             Toast.makeText(this, "TeamData CSV file successfully imported", Toast.LENGTH_SHORT).show();
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error reading TeamData CSV file", Toast.LENGTH_SHORT).show();
         }
