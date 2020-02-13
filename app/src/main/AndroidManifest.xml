@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminActivity"></activity>
-        <activity android:name=".ReportFiltersActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".ReportFiltersActivity" />
         <activity android:name=".TeamRoundDataReportActivity" />
         <activity android:name=".PitScoutingMapActivity" />
         <activity android:name=".PitScoutingMainActivity" />

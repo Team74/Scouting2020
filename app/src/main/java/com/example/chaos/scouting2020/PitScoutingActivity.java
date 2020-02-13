@@ -109,7 +109,7 @@ public class PitScoutingActivity extends BaseActivity {
         // create a handler to update the page when ever team number changes
         Spinner spinnerItems = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
         spinnerItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onNothingSelected(AdapterView<?> parent) { };
+            public void onNothingSelected(AdapterView<?> parent) { }
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 ((TextView) parentView.getChildAt(0)).setTextSize(36);

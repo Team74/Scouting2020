@@ -129,7 +129,7 @@
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline65"
-        app:layout_constraintTop_toTopOf="parent"></Spinner>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pitScoutingTeamNumberTextView"
@@ -185,7 +185,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -228,6 +227,7 @@
 
     <TextView
         android:id="@+id/pitScoutingWeightTextView"
+        android:labelFor="@+id/pitScoutingWeightEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Weight (lbs)"
@@ -273,6 +273,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline25"
         app:layout_constraintStart_toStartOf="parent"
@@ -280,6 +281,7 @@
 
     <TextView
         android:id="@+id/textView6"
+        android:labelFor="@+id/pitScoutingNotesEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Notes"

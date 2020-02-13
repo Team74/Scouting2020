@@ -1,15 +1,10 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -88,7 +83,7 @@ public class LoginActivity extends BaseActivity {
         // don't allow switching away if any invalid values
         if(    (TeamNumber>0)
             && ((RoundNumber>0) && (RoundNumber<100))
-            && ((TeamColor == "Blue") || (TeamColor == "Red"))
+            && ((TeamColor.equals("Blue")) || (TeamColor.equals("Red")))
             && (!ScouterName.isEmpty())) {
 
             // all login fields are valid, switch to the first activity: auton
@@ -98,7 +93,7 @@ public class LoginActivity extends BaseActivity {
         } else {
             if ((RoundNumber<1) || (RoundNumber>99)) {
                 Toast.makeText(this, "RoundNumber should be positive integer less than 100", Toast.LENGTH_SHORT).show();
-            } else if ((TeamColor != "Blue") && (TeamColor != "Red")) {
+            } else if ((!TeamColor.equals("Blue")) && (!TeamColor.equals("Red"))) {
                 Toast.makeText(this, "TeamColor should be red or blue", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "All login fields not set", Toast.LENGTH_SHORT).show();
@@ -112,7 +107,7 @@ public class LoginActivity extends BaseActivity {
         // only save team round on exit if valid
         if(    (TeamNumber>0)
                 && ((RoundNumber>0) && (RoundNumber<100))
-                && ((TeamColor == "Blue") || (TeamColor == "Red"))
+                && ((TeamColor.equals("Blue")) || (TeamColor.equals("Red")))
                 && (!ScouterName.isEmpty())) {
             // load any previously collected data for current team/round
             App.setTeamNumber(TeamNumber);

@@ -1,7 +1,5 @@
 package com.example.chaos.scouting2020;
 
-import android.arch.persistence.room.Room;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
     // This interface is used for updating the sorting of a report when a heading is clicked
     public interface ReportUpdateCommand
     {
-        public void update();
+        void update();
     }
 
     // set layout background color
@@ -47,12 +45,12 @@ public class BaseActivity extends AppCompatActivity {
         if(teamNumberViewId != 0) {
             int teamNumber = ((ScoutingApplication) this.getApplication()).getTeamNumber();
             TextView TNumber = (TextView) findViewById(teamNumberViewId);
-            TNumber.setText("Team: " + Integer.toString(teamNumber));
+            TNumber.setText("Team: " + teamNumber);
         }
         if(roundNumberViewId != 0) {
             int roundNumber = ((ScoutingApplication) this.getApplication()).getRoundNumber();
             TextView QRNumber = (TextView) findViewById(roundNumberViewId);
-            QRNumber.setText("Round: " + Integer.toString(roundNumber));
+            QRNumber.setText("Round: " + roundNumber);
         }
         if(scouterNameViewId != 0) {
             String scouterName = ((ScoutingApplication) this.getApplication()).getScouterName();
@@ -108,7 +106,7 @@ public class BaseActivity extends AppCompatActivity {
             TextView hdrView = new TextView(this);
             hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
-            hdrView.setTextSize(0,10);
+            hdrView.setTextSize(12);
             // make the column heading we are sorting on italic
             hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
             hdrView.setPadding(2, 0, 2, 0);

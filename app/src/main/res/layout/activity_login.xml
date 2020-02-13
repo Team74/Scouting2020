@@ -28,6 +28,7 @@
 
     <TextView
         android:id="@+id/loginQRNumberTextView"
+        android:labelFor="@+id/loginQRNumberEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -86,10 +87,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@android:color/black"
-        android:ems="10"
-        android:hapticFeedbackEnabled="true"
         android:inputType="number"
-        android:soundEffectsEnabled="false"
         android:textColor="@android:color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline40"

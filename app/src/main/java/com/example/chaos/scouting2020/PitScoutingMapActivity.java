@@ -1,7 +1,6 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -37,7 +36,7 @@ public class PitScoutingMapActivity extends BaseActivity {
         // update display with common items
         int teamNumber = App.getPitTeamNumber();
         TextView TNumber = (TextView) findViewById(R.id.pitScoutingMapTeamNumberTextView);
-        TNumber.setText("Team: " + Integer.toString(teamNumber));
+        TNumber.setText("Team: " + teamNumber);
 
         String scouterName = App.getPitScouter();
         TextView ScouterName = (TextView) findViewById(R.id.pitScoutingMapScouterTextView);

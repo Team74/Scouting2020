@@ -2,9 +2,7 @@
 package com.example.chaos.scouting2020;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;

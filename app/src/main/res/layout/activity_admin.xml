@@ -71,9 +71,11 @@
 
     <EditText
         android:id="@+id/adminAddScouterNameEditText"
+        android:hint="New Scouter Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="new scouter name here"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/adminAddScouterNameButton"

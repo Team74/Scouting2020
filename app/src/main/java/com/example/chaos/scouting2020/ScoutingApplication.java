@@ -23,9 +23,9 @@ import java.io.FileWriter;
 public class ScoutingApplication extends Application {
 
     // private sample data
-    private String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
-    private String[] sampleDriveBases = { "Other", "Tank", "Mecanum", "Omni", "Swerve" };
-    private int[] sampleTeamNumbers = { 1, 74, 56, 88, 5565 };
+    private final String[] sampleScouters = { "Allen Z.", "Ben Y.", "Clara X.", "Dan W.", "Ed V." };
+    private final String[] sampleDriveBases = { "Other", "Tank", "Mecanum", "Omni", "Swerve" };
+    private final int[] sampleTeamNumbers = { 1, 74, 56, 88, 5565 };
 
     // database members. these are mostly created by startUpDb()
     protected ScoutingDatabase db = null;
@@ -450,18 +450,18 @@ public class ScoutingApplication extends Application {
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
         for (int current : currentTeamNumbers) {
-            teamNumbers.add(new Integer(current));
+            teamNumbers.add(Integer.valueOf(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
         for (int sample : sampleTeamNumbers) {
-            Integer teamNumber = new Integer(sample);
+            Integer teamNumber = Integer.valueOf(sample);
             if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
             }
         }
         // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
-            Integer teamNumber = new Integer(r.nextInt(8000) + 1); // 1-8000
+            Integer teamNumber = Integer.valueOf(r.nextInt(8000) + 1); // 1-8000
             if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
@@ -529,18 +529,18 @@ public class ScoutingApplication extends Application {
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
         for (int current : currentTeamNumbers) {
-            teamNumbers.add(new Integer(current));
+            teamNumbers.add(Integer.valueOf(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
         for (int sample : sampleTeamNumbers) {
-            Integer teamNumber = new Integer(sample);
+            Integer teamNumber = Integer.valueOf(sample);
             if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
             }
         }
         // lastly, add random team numbers until we have 40
         while (teamNumbers.size() < 40) {
-            Integer teamNumber = new Integer(r.nextInt(8000) + 1); // 1-8000
+            Integer teamNumber = Integer.valueOf(r.nextInt(8000) + 1); // 1-8000
             if (!teamNumbers.contains(teamNumber)) { // no dupes!
                 teamNumbers.add(teamNumber);
             }
