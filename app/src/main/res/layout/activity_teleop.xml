@@ -149,6 +149,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopHighGoalMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -167,6 +168,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopHighGoalPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -185,6 +187,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopLowGoalMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -203,6 +206,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopLowGoalPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -221,6 +225,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopPickUpMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -239,6 +244,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="teleopPickUpPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -345,7 +351,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/teleopHorizontalGuideline74"
@@ -373,7 +379,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/teleopVerticalGuideline75"

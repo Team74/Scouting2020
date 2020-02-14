@@ -36,11 +36,11 @@ public class LoginActivity extends BaseActivity {
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = App.getAllScouterNamesAsList();
-        AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 70);
+        AddStringsToSpinner(R.id.loginScouterSpinner, scouters, 64);
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
-        AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 70);
+        AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 64);
     }
 
     public void menuButtonPressed(View menuButton) {
@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity {
         }
 
         // don't allow switching away if any invalid values
-        if(    (TeamNumber>0)
+        if (    (TeamNumber>0)
             && ((RoundNumber>0) && (RoundNumber<100))
             && ((TeamColor.equals("Blue")) || (TeamColor.equals("Red")))
             && (!ScouterName.isEmpty())) {
@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity {
         super.onPause();
 
         // only save team round on exit if valid
-        if(    (TeamNumber>0)
+        if (    (TeamNumber>0)
                 && ((RoundNumber>0) && (RoundNumber<100))
                 && ((TeamColor.equals("Blue")) || (TeamColor.equals("Red")))
                 && (!ScouterName.isEmpty())) {

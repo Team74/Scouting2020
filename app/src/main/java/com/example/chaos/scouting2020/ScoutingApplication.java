@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.io.File;
 import java.io.FileReader;
@@ -428,7 +429,7 @@ public class ScoutingApplication extends Application {
 
         int[] teamNumbers = daoTeamData.getAllTeamNumbers();
         List<String> teamNumbersAsStrings = new ArrayList<String>();
-        for (int teamNumber : teamNumbers)
+        for(int teamNumber : teamNumbers)
         {
             String teamNumberAsString = Integer.toString(teamNumber);
             teamNumbersAsStrings.add(teamNumberAsString);
@@ -450,11 +451,11 @@ public class ScoutingApplication extends Application {
         List<Integer> teamNumbers = new ArrayList<Integer>();
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
-        for (int current : currentTeamNumbers) {
+        for(int current : currentTeamNumbers) {
             teamNumbers.add(Integer.valueOf(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
-        for (int sample : sampleTeamNumbers) {
+        for(int sample : sampleTeamNumbers) {
             Integer teamNumber = Integer.valueOf(sample);
             if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
@@ -470,8 +471,8 @@ public class ScoutingApplication extends Application {
 
         // a typical event has 60 rounds with 6 teams per round
         int j = 0; // index of team number
-        for (int roundNumber = 1; roundNumber < 61; roundNumber++) {
-            for (int i = 0; i < 6; i++) {
+        for(int roundNumber = 1; roundNumber < 61; roundNumber++) {
+            for(int i = 0; i < 6; i++) {
                 // get team number for this loop
                 int teamNumber = teamNumbers.get(j);
                 // and go to the next team number for next loop
@@ -510,7 +511,7 @@ public class ScoutingApplication extends Application {
         if (entityScouterName == null) {
             entityScouterName = new EntityScouterName();
         }
-        for (String scouter: sampleScouters) {
+        for(String scouter: sampleScouters) {
             entityScouterName.ScouterName = scouter;
             daoScouterName.insert(entityScouterName);
         }
@@ -529,11 +530,11 @@ public class ScoutingApplication extends Application {
         List<Integer> teamNumbers = new ArrayList<Integer>();
         // first get any team numbers that exist in the current team data
         int[] currentTeamNumbers = daoTeamData.getAllTeamNumbers();
-        for (int current : currentTeamNumbers) {
+        for(int current : currentTeamNumbers) {
             teamNumbers.add(Integer.valueOf(current));
         }
         // then include any numbers in our sampleTeamNumbers array not already in list
-        for (int sample : sampleTeamNumbers) {
+        for(int sample : sampleTeamNumbers) {
             Integer teamNumber = Integer.valueOf(sample);
             if (!teamNumbers.contains(teamNumber)) { // no  dupes!
                 teamNumbers.add(teamNumber);
@@ -547,7 +548,7 @@ public class ScoutingApplication extends Application {
             }
         }
 
-        for (int teamNumber : teamNumbers) {
+        for(int teamNumber : teamNumbers) {
             // generate a random team name
             String[] name0 = { "", "The " };
             String[] name1 = { "Fighting ", "Flying ", "Byting ", "Blazing ", "Amazing ", "Soaring " };
@@ -599,7 +600,7 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String filePath = baseDir + File.separator + curDate + "-TeamRoundData-" + androidId + ".csv";
@@ -639,7 +640,7 @@ public class ScoutingApplication extends Application {
             EntityTeamRoundData[] teamRoundDatas = daoTeamRoundData.getAllTeamRoundData();
 
             // for each record returned from the DB, write a line to the CSV file
-            for (EntityTeamRoundData teamRoundData: teamRoundDatas) {
+            for(EntityTeamRoundData teamRoundData: teamRoundDatas) {
                 String[] csvDataLine = {
                         Integer.toString(teamRoundData.TeamNumber),
                         Integer.toString(teamRoundData.RoundNumber),
@@ -755,7 +756,7 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String filePath = baseDir + File.separator + curDate + "-ScouterNames-" + androidId + ".csv";
@@ -773,7 +774,7 @@ public class ScoutingApplication extends Application {
             String[] scouters = daoScouterName.getAllScouterNames();
 
             // for each record returned from the DB, write a line to the CSV file
-            for (String scouter: scouters) {
+            for(String scouter: scouters) {
                 String[] csvDataLine = { scouter };
                 // write the CSV record to the file
                 writer.writeNext(csvDataLine);
@@ -842,7 +843,7 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
             String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
             String filePath = baseDir + File.separator + curDate + "-TeamData-" + androidId + ".csv";
@@ -871,7 +872,7 @@ public class ScoutingApplication extends Application {
             EntityTeamData[] TeamDatas = daoTeamData.getAllTeamData();
 
             // for each record returned from the DB, write a line to the CSV file
-            for (EntityTeamData TeamData: TeamDatas) {
+            for(EntityTeamData TeamData: TeamDatas) {
                 String[] csvDataLine = {
                         Integer.toString(TeamData.TeamNumber),
                         TeamData.TeamName,
@@ -924,6 +925,8 @@ public class ScoutingApplication extends Application {
                 if (csvLine[0].equals("TeamNumber")) {
                     continue;
                 }
+
+                // initial CSV import files for events will only have team number and name
                 if (csvLine.length == 2) {
                     entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
                     entityTeamData.TeamName = csvLine[1];
@@ -940,7 +943,6 @@ public class ScoutingApplication extends Application {
                     entityTeamData.StartLocationCenter = Boolean.valueOf(csvLine[8]);
                     entityTeamData.StartLocationRight = Boolean.valueOf(csvLine[9]);
                 }
-
 
                 // if it's a valid record...
                 // TBD: are there other things would we NOT want in the DB?

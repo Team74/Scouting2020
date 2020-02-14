@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".33333" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline66"
+        android:id="@+id/guideline67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".66667" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <Button
         android:id="@+id/menuMatchScoutingButton"
@@ -30,8 +30,9 @@
         android:layout_marginBottom="16dp"
         android:onClick="matchScoutingButtonPressed"
         android:text="Match Scouting"
-        android:textAllCaps="false"
-        android:textSize="60sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline33"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,20 +48,20 @@
         android:layout_marginBottom="16dp"
         android:onClick="dataViewingButtonPressed"
         android:text="Data Viewing"
-        android:textAllCaps="false"
-        android:textSize="60sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline66" />
+        app:layout_constraintTop_toTopOf="@+id/guideline67" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="485dp"
-        app:layout_constraintGuide_percent=".50" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <Button
         android:id="@+id/menuPitScoutingMainButton"
@@ -72,14 +73,13 @@
         android:layout_marginBottom="16dp"
         android:onClick="pitScoutingMainButtonPressed"
         android:text="Pit Scouting"
-        android:textAllCaps="false"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline66"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline67"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline33"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
     <Button
         android:id="@+id/menuAdminButton"
@@ -91,12 +91,12 @@
         android:layout_marginBottom="16dp"
         android:onClick="adminButtonPressed"
         android:text="Admin"
-        android:textAllCaps="false"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline66"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline67"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline33"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline33" />
+        
 </android.support.constraint.ConstraintLayout>

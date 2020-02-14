@@ -14,8 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="256dp"
-        app:layout_constraintGuide_percent=".25" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <Button
         android:id="@+id/pitScoutingMenuButton"
@@ -27,8 +26,9 @@
         android:layout_marginBottom="8dp"
         android:onClick="menuButtonPressed"
         android:text="Menu"
-        android:textAllCaps="false"
-        android:textSize="50sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline75"
@@ -40,24 +40,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="479dp"
-        app:layout_constraintGuide_percent=".80" />
+        app:layout_constraintGuide_percent="0.80" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingVerticalGuideline75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="589dp"
-        app:layout_constraintGuide_percent=".75" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingVerticalGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="436dp"
-        app:layout_constraintGuide_percent=".50" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <Button
         android:id="@+id/pitScoutingResetbutton"
@@ -69,7 +66,9 @@
         android:layout_marginBottom="8dp"
         android:onClick="resetButtonPressed"
         android:text="Reset"
-        android:textSize="50sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline25"
@@ -80,24 +79,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="170dp"
-        app:layout_constraintGuide_percent=".20" />
+        app:layout_constraintGuide_percent="0.20" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingVerticalGuideline15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="186dp"
-        app:layout_constraintGuide_percent=".15" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingVerticalGuideline65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="612dp"
-        app:layout_constraintGuide_percent=".65" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <TextView
         android:id="@+id/pitScoutingScouterTextView"
@@ -110,13 +106,11 @@
         android:text="Scouter"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline20"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline65"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline50"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/pitScoutingScouterSpinner"
@@ -142,7 +136,7 @@
         android:text="Team #"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline20"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline15"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,16 +160,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="196dp"
-        app:layout_constraintGuide_percent=".40" />
+        app:layout_constraintGuide_percent="0.40" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingHorizontalGuideline60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="319dp"
-        app:layout_constraintGuide_percent=".60" />
+        app:layout_constraintGuide_percent="0.60" />
 
     <EditText
         android:id="@+id/pitScoutingWeightEditText"
@@ -187,7 +179,7 @@
         android:layout_marginBottom="8dp"
         android:inputType="number"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline67"
@@ -198,32 +190,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="404dp"
-        app:layout_constraintGuide_percent=".66667" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingHorizontalGuideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="159dp"
-        app:layout_constraintGuide_percent=".25" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingHorizontalGuideline45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="304dp"
-        app:layout_constraintGuide_percent=".45" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <android.support.constraint.Guideline
         android:id="@+id/pitScoutingHorizontalGuideline65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="410dp"
-        app:layout_constraintGuide_percent=".65" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <TextView
         android:id="@+id/pitScoutingWeightTextView"
@@ -233,7 +221,7 @@
         android:text="Weight (lbs)"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline65"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline67"
@@ -259,7 +247,7 @@
         android:text="Drive Base Type"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline65"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline67"
         app:layout_constraintStart_toStartOf="@+id/pitScoutingVerticalGuideline25"
@@ -287,7 +275,7 @@
         android:text="Notes"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline65"
         app:layout_constraintEnd_toStartOf="@+id/pitScoutingVerticalGuideline25"
         app:layout_constraintStart_toStartOf="parent"
@@ -300,7 +288,7 @@
         android:text="Possible Shooting Locations"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -311,8 +299,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="331dp"
-        app:layout_constraintGuide_percent=".333" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <TextView
         android:id="@+id/pitScoutingAutonStartLocationsTextView"
@@ -321,7 +308,7 @@
         android:text="Possible Auton Start Locations (Looking Towards Goal)"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/pitScoutingHorizontalGuideline45"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

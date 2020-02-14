@@ -49,7 +49,7 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " RateDriver,"
                     + " WouldPick"
                     + " FROM EntityTeamRoundData"
-                    + " WHERE TeamNumber IN (" + TeamArray[TeamNumberKey] + ") and TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
+                    + " WHERE TeamNumber IN (" + TeamArray[TeamNumberKey] + ") AND TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamRoundData.TeamRoundDataReportData dataRecords[] = daoTeamRoundData.getTeamRoundDataReportDataRaw(new SimpleSQLiteQuery(query));
 
@@ -57,7 +57,7 @@ public class TeamRoundDataReportActivity extends BaseActivity {
             AddHeaderStringsAsRowToReportTable(R.id.teamRoundDataReportTable, headings, this);
 
             // create a data row for each data record returned from DB
-            for (DaoTeamRoundData.TeamRoundDataReportData dataRecord : dataRecords) {
+            for(DaoTeamRoundData.TeamRoundDataReportData dataRecord : dataRecords) {
 
                 // add each data value to an array of strings
                 String[] values = {
@@ -110,25 +110,27 @@ public class TeamRoundDataReportActivity extends BaseActivity {
         for(Integer filteredTeamNumber : filteredTeamNumberList) {
             ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
+
+        // get the list of all team numbers
         TeamArray = daoTeamData.getAllTeamNumbers();
 
         // display the report table for the first time
         UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
         updateTeamRoundDataReportTable.update();
     }
+
     // needs to be fixed so that it can't go over.
     // need to add a for loop that loops through all the filtered teams to skip them.
     public void nextButtonPressed(View nextButton){
-        if(TeamNumberKey < TeamArray.length) {
+        if (TeamNumberKey < (TeamArray.length - 1)) {
             TeamNumberKey++;
-
             UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
             updateTeamRoundDataReportTable.update();
         }
     }
 
     public void previousButtonPressed(View previosButton){
-        if(TeamNumberKey > 0){
+        if (TeamNumberKey > 0){
             TeamNumberKey--;
             UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
             updateTeamRoundDataReportTable.update();

@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
 
     // set layout background color
     protected void SetLayoutBackgroundColor(int layoutId, String teamColor) {
-        if(layoutId != 0) {
+        if (layoutId != 0) {
             ConstraintLayout layout = (ConstraintLayout) findViewById(layoutId);
             if (teamColor.equals("Blue")) {
                 // layout.setBackgroundColor(Color.argb(64, 53, 121, 220));
@@ -42,22 +42,22 @@ public class BaseActivity extends AppCompatActivity {
 
     // this sets team #, round #, scouter name, and layout background color
     protected void UpdateCommonLayoutItems(int teamNumberViewId, int roundNumberViewId, int scouterNameViewId, int layoutId) {
-        if(teamNumberViewId != 0) {
+        if (teamNumberViewId != 0) {
             int teamNumber = ((ScoutingApplication) this.getApplication()).getTeamNumber();
             TextView TNumber = (TextView) findViewById(teamNumberViewId);
             TNumber.setText("Team: " + teamNumber);
         }
-        if(roundNumberViewId != 0) {
+        if (roundNumberViewId != 0) {
             int roundNumber = ((ScoutingApplication) this.getApplication()).getRoundNumber();
             TextView QRNumber = (TextView) findViewById(roundNumberViewId);
             QRNumber.setText("Round: " + roundNumber);
         }
-        if(scouterNameViewId != 0) {
+        if (scouterNameViewId != 0) {
             String scouterName = ((ScoutingApplication) this.getApplication()).getScouterName();
             TextView ScouterName = (TextView) findViewById(scouterNameViewId);
             ScouterName.setText("Scouter: " + scouterName);
         }
-        if(layoutId != 0) {
+        if (layoutId != 0) {
             String teamColor = ((ScoutingApplication) this.getApplication()).getTeamColor();
             SetLayoutBackgroundColor(layoutId, teamColor);
         }
@@ -65,20 +65,33 @@ public class BaseActivity extends AppCompatActivity {
 
     // add strings to spinner and set font size
     protected void AddStringsToSpinner(int spinnerViewId, List<String> stringList, final int fontSize) {
-        if (spinnerViewId != 0) {
-            ArrayAdapter<String> adapterScouter = new ArrayAdapter<String>(
+        if ((spinnerViewId != 0) && (stringList != null)) {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     this, android.R.layout.simple_spinner_item, stringList);
-            adapterScouter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             final Spinner spinnerItems = (Spinner) findViewById(spinnerViewId);
-            spinnerItems.setAdapter(adapterScouter);
+            spinnerItems.setAdapter(adapter);
 
-            // set the text size of the team number selection spinner
+            // set the text size of the spinner's selected view
+            spinnerItems.setSelection(0, true);
+            View selectedItemView = spinnerItems.getSelectedView();
+            if (selectedItemView != null) {
+                ((TextView) selectedItemView).setTextSize(fontSize);
+            }
+
+            // when changed, set the text size of the team number selection spinner
             spinnerItems.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onNothingSelected(AdapterView<?> parent) { }
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    ((TextView) parentView.getChildAt(0)).setTextSize(fontSize);
+                    // TBD: this can throw an exception on screen rotates, so we put
+                    // the null check in, but that means in those cases the text size
+                    // reverts back to the default.  Need to figure that out!
+                    if (selectedItemView != null) {
+                        // set the text size of the spinner's selected view
+                        ((TextView) selectedItemView).setTextSize(fontSize);
+                    }
                 }
             });
         }
@@ -114,7 +127,7 @@ public class BaseActivity extends AppCompatActivity {
             // set an onclick handler for each header so we can update the sort when clicked
             hdrView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if(ReportSortColumn == headingIndex) {
+                    if (ReportSortColumn == headingIndex) {
                         // reverse the current sort order
                         ReportSortAsc = !ReportSortAsc;
                     } else {
@@ -149,7 +162,7 @@ public class BaseActivity extends AppCompatActivity {
         row.setLayoutParams(lpRow);
 
         // alternate the background color of each row
-        if((rowNumber % 2) == 0) {
+        if ((rowNumber % 2) == 0) {
             row.setBackgroundResource(R.color.colorBlueBackground);
         } else {
             row.setBackgroundResource(R.color.colorRedBackground);
@@ -169,10 +182,10 @@ public class BaseActivity extends AppCompatActivity {
         table.addView(row);
     }
 
-    //set a spinners value
+    // set a spinners value
     protected void SetSpinnerByValue(int spinnerId, String value) {
         Spinner spinner = (Spinner) findViewById(spinnerId);
-        for (int i=0; i<spinner.getCount(); i++){
+        for(int i=0; i<spinner.getCount(); i++){
             if (spinner.getItemAtPosition(i).toString().equals(value)) {
                 spinner.setSelection(i);
                 break;

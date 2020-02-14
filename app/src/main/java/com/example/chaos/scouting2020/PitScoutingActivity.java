@@ -97,14 +97,14 @@ public class PitScoutingActivity extends BaseActivity {
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = App.getAllScouterNamesAsList();
-        AddStringsToSpinner(R.id.pitScoutingScouterSpinner, scouters, 36);
+        AddStringsToSpinner(R.id.pitScoutingScouterSpinner, scouters, 32);
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
-        AddStringsToSpinner(R.id.pitScoutingTeamNumberSpinner, teamNumbers, 36);
+        AddStringsToSpinner(R.id.pitScoutingTeamNumberSpinner, teamNumbers, 32);
 
         List<String> driveTypes = Arrays.asList("Tank","Mecanum","Omni","Swerve","Other");
-        AddStringsToSpinner(R.id.pitScoutingDriveBaseSpinner, driveTypes, 36);
+        AddStringsToSpinner(R.id.pitScoutingDriveBaseSpinner, driveTypes, 32);
 
         // create a handler to update the page when ever team number changes
         Spinner spinnerItems = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
@@ -112,9 +112,10 @@ public class PitScoutingActivity extends BaseActivity {
             public void onNothingSelected(AdapterView<?> parent) { }
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextSize(36);
-                // load any previously collected data for current team
                 try {
+                    // set text size
+                    ((TextView) parentView.getChildAt(0)).setTextSize(32);
+                    // load any previously collected data for current team
                     Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingTeamNumberSpinner);
                     TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
                 } catch (Exception e) {
@@ -122,7 +123,6 @@ public class PitScoutingActivity extends BaseActivity {
                     e.printStackTrace();
                     TeamNumber = -1;
                 }
-
                 // ... and update display with specific items for this activity
                 UpdatePitScoutingFields();
             }

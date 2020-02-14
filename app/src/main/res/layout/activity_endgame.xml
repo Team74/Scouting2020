@@ -59,6 +59,7 @@
         android:layout_marginEnd="8dp"
         android:onClick="autonButtonPressed"
         android:text="Auton"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline34"
@@ -74,6 +75,7 @@
         android:layout_marginEnd="8dp"
         android:onClick="teleopButtonPressed"
         android:text="Teleop"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline42"
@@ -108,8 +110,9 @@
         android:layout_marginEnd="8dp"
         android:onClick="opinionButtonPressed"
         android:text="Opinion"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
@@ -139,7 +142,7 @@
         android:layout_marginBottom="8dp"
         android:inputType="text"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline98"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
@@ -169,7 +172,7 @@
             android:onClick="didClimbButtonPressed"
             android:text="Climb Successful"
             android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/endgameDidntRadioButton"
@@ -181,7 +184,7 @@
             android:onClick="didntClimbButtonPressed"
             android:text="Climb Not Attempted"
             android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/endgameFailedRadioButton"
@@ -193,7 +196,7 @@
             android:onClick="failedClimbButtonPressed"
             android:text="Climb Failed"
             android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:textSize="16sp" />
     </RadioGroup>
 
     <RadioGroup
@@ -220,7 +223,7 @@
             android:onClick="robotBrokeDownButtonPressed"
             android:text="The Robot Broke Down"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameDidntBreakDownRadioButton"
@@ -232,7 +235,7 @@
             android:onClick="robotDidntBreakDownButtonPressed"
             android:text="The Robot Didn't Break Down"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="32sp" />
     </RadioGroup>
 
     <TextView
@@ -244,7 +247,7 @@
         android:text="Which stage did they finish?"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline74"
         app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
@@ -274,7 +277,7 @@
             android:onClick="stageOnePressed"
             android:text="Stage 1"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameStage2RadioButton"
@@ -286,7 +289,7 @@
             android:onClick="stageTwoPressed"
             android:text="Stage 2"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameStage3RadioButton"
@@ -298,7 +301,7 @@
             android:onClick="stageThreePressed"
             android:text="Stage 3"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="32sp" />
     </RadioGroup>
 
     <android.support.constraint.Guideline
@@ -348,7 +351,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/endgameHorizontalGuideline74"
@@ -376,7 +379,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/endgameVerticalGuideline75"

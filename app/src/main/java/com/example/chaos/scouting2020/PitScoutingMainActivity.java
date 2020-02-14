@@ -101,7 +101,7 @@ public class PitScoutingMainActivity extends BaseActivity {
 
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
-        AddStringsToSpinner(R.id.pitScoutingMainTeamNumberSpinner, teamNumbers, 36);
+        AddStringsToSpinner(R.id.pitScoutingMainTeamNumberSpinner, teamNumbers, 32);
 
         TeamNumber = App.getPitTeamNumber();
         if (TeamNumber > 0) {
@@ -110,11 +110,11 @@ public class PitScoutingMainActivity extends BaseActivity {
 
         // use DB to populate scouter name selection spinner
         List<String> scouters = App.getAllScouterNamesAsList();
-        AddStringsToSpinner(R.id.pitScoutingMainScouterSpinner, scouters, 36);
+        AddStringsToSpinner(R.id.pitScoutingMainScouterSpinner, scouters, 32);
 
         // drive base types are not in DB, they are hard coded
         List<String> driveTypes = Arrays.asList(App.getSampleDriveBases());
-        AddStringsToSpinner(R.id.pitScoutingMainDriveBaseSpinner, driveTypes, 36);
+        AddStringsToSpinner(R.id.pitScoutingMainDriveBaseSpinner, driveTypes, 32);
 
         // create a handler to update the page when ever team number changes
         Spinner spinnerItems = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
@@ -122,11 +122,17 @@ public class PitScoutingMainActivity extends BaseActivity {
             public void onNothingSelected(AdapterView<?> parent) { }
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                ((TextView) parentView.getChildAt(0)).setTextSize(36);
-                // save the record for the current team number
-                SavePitScoutingFields();
-                // ... and update display with specific items for this activity for new team number
-                UpdatePitScoutingFields();
+                try {
+                    // set text size
+                    ((TextView) parentView.getChildAt(0)).setTextSize(32);
+                    // save the record for the current team number
+                    SavePitScoutingFields();
+                    // ... and update display with specific items for this activity for new team number
+                    UpdatePitScoutingFields();
+                } catch (Exception e) {
+                    // some sort of error
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -106,7 +106,7 @@
         android:text="Rate the Shooting of This Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline10"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
@@ -189,7 +189,7 @@
         android:text="Rate the Climbing of This Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
@@ -272,7 +272,7 @@
         android:text="Rate the Wheel Spinning of This Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline42"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
@@ -355,7 +355,7 @@
         android:text="Rate the Auton Stage of This Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline58"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
@@ -368,7 +368,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline66"
+        app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline67"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opinionAutonRatingTextView">
@@ -438,11 +438,11 @@
         android:text="Rate the Driver of This Robot"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline74"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline50"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline66" />
+        app:layout_constraintTop_toBottomOf="@+id/opinionHorizontalGuideline67" />
 
     <RadioGroup
         android:id="@+id/opinionDriverRadioGroup"
@@ -522,7 +522,7 @@
         android:text="Would You Pick This Robot?"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline74"
         app:layout_constraintEnd_toEndOf="parent"
@@ -550,7 +550,7 @@
             android:onClick="wouldPickRobotPressed"
             android:text="Yes"
             android:textAlignment="inherit"
-            android:textSize="48sp" />
+            android:textSize="32sp" />
 
         <RadioButton
             android:id="@+id/opinionPickNoRadioButton"
@@ -561,7 +561,7 @@
             android:onClick="wouldNotPickRobotPressed"
             android:text="No"
             android:textAlignment="inherit"
-            android:textSize="48sp" />
+            android:textSize="32sp" />
     </RadioGroup>
 
     <Button
@@ -572,10 +572,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#4aff08"
         android:onClick="exitButtonPressed"
         android:text="Exit"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"
@@ -589,7 +591,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Empty"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
@@ -644,7 +646,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline58"
@@ -654,11 +656,11 @@
         app:layout_constraintGuide_percent="0.58" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/opinionHorizontalGuideline66"
+        android:id="@+id/opinionHorizontalGuideline67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionHorizontalGuideline74"
@@ -700,7 +702,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/opinionVerticalGuideline75"

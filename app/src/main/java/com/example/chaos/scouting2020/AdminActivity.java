@@ -44,8 +44,8 @@ public class AdminActivity extends BaseActivity {
             // "/storage/usbotg" -- this is the one if you use an USB OTG drive
             for(String volume : volumes) {
                 // if it's a USB OTG volume
-                if(   volume.toUpperCase().contains("USB")
-                        && volume.toUpperCase().contains("OTG")) {
+                if (   volume.toUpperCase().contains("USB")
+                    && volume.toUpperCase().contains("OTG")) {
                     // check to see if it's mounted
                     Boolean mounted = (Boolean) storageManager.getClass()
                             .getMethod("getVolumeState", String.class)
@@ -81,35 +81,32 @@ public class AdminActivity extends BaseActivity {
     }
 
     public void adminAddScouterNameButtonPressed(View adminAddScouterNameButton){
-        // TBD: get text from R.id.adminAddScouterNameEditText
-        String scout = "new scouter name";
-        try{
+        try {
             EditText adminAddScouterNameText = (EditText) findViewById(R.id.adminAddScouterNameEditText);
-            scout = adminAddScouterNameText.getText().toString();
-            if((!scout.equals("")) && (scout != null)) {
-                App.addScouterName(scout);
+            String scouterName = adminAddScouterNameText.getText().toString();
+            if ((scouterName != null) && (!scouterName.equals(""))) {
+                App.addScouterName(scouterName);
                 Toast.makeText(this, "Name added successfully.", Toast.LENGTH_SHORT).show();
                 adminAddScouterNameText.setText("");
             }else{
                 Toast.makeText(this, "Name can not be blank.", Toast.LENGTH_SHORT).show();
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error adding scouter name.", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void adminAddTeamNumberButtonPressed(View adminAddScouterNameButton){
-        int team = -1;
-        try{
+        try {
             EditText adminAddTeamNumberText = (EditText) findViewById(R.id.adminAddTeamNumberEditText);
-            team = Integer.parseInt(adminAddTeamNumberText.getText().toString());
+            int teamNumber = Integer.parseInt(adminAddTeamNumberText.getText().toString());
             App.newTeamData();
-            App.setPitTeamNumber(team);
+            App.setPitTeamNumber(teamNumber);
             App.saveTeamData();
             Toast.makeText(this, "Team added successfully.", Toast.LENGTH_SHORT).show();
             adminAddTeamNumberText.setText("");
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Error adding team number.", Toast.LENGTH_SHORT).show();
         }

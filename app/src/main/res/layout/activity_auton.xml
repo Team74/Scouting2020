@@ -200,6 +200,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonHighGoalMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -218,6 +219,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonHighGoalPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -236,6 +238,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonLowGoalMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -254,6 +257,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonLowGoalPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -272,6 +276,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonPickUpMinus"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -290,6 +295,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="autonPickUpPlus"
         android:text="+"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -345,7 +351,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/autonHorizontalGuideline74"
@@ -373,7 +379,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <android.support.constraint.Guideline
         android:id="@+id/autonVerticalGuideline75"
@@ -415,7 +421,7 @@
             android:onClick="autonStartLineYes"
             android:text="Yes"
             android:textAlignment="inherit"
-            android:textSize="30sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/autonNoRadioButton"
@@ -426,7 +432,7 @@
             android:onClick="autonStartLineNo"
             android:text="No"
             android:textAlignment="inherit"
-            android:textSize="30sp" />
+            android:textSize="16sp" />
     </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

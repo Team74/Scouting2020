@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/teamRoundDataReportHorizontalGuideline99"
+        app:layout_constraintBottom_toTopOf="@+id/teamRoundDataReportHorizontalGuideline90"
         app:layout_constraintEnd_toEndOf="@+id/teamRoundDataReportVerticalGuideline99"
         app:layout_constraintStart_toStartOf="@+id/teamRoundDataReportVerticalGuideline1"
         app:layout_constraintTop_toBottomOf="@+id/teamRoundDataReportHorizontalGuideline1" >
@@ -39,11 +39,11 @@
         app:layout_constraintGuide_percent="0.01" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/teamRoundDataReportHorizontalGuideline99"
+        android:id="@+id/teamRoundDataReportHorizontalGuideline90"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.90" />
 
     <android.support.constraint.Guideline
         android:id="@+id/teamRoundDataReportVerticalGuideline1"
@@ -64,30 +64,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="nextButtonPressed"
-        android:text="Next >"
+        android:text="Next &gt;"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".05"
-        app:layout_constraintStart_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline99" />
+        app:layout_constraintStart_toStartOf="@+id/teamRoundDataReportVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline90" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline13"
+        android:id="@+id/teamRoundDataReportVerticalGuideline50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <Button
         android:id="@+id/previousButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="previousButtonPressed"
-        android:text="Previous"
+        android:text="&lt; Previous"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="@+id/teamRoundDataReportVerticalGuideline1"
-        app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline99" />
+        app:layout_constraintEnd_toStartOf="@+id/teamRoundDataReportVerticalGuideline50"
+        app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline90" />
 
 </android.support.constraint.ConstraintLayout>

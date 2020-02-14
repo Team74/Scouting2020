@@ -41,7 +41,7 @@ public class PitScoutingReportActivity extends BaseActivity {
             AddHeaderStringsAsRowToReportTable(R.id.pitScoutingReportTable, headings, this);
 
             // create a data row for each data record returned from DB
-            for (DaoTeamData.PitScoutingReportData dataRecord : dataRecords) {
+            for(DaoTeamData.PitScoutingReportData dataRecord : dataRecords) {
                 // add each data value to an array of strings
                 String[] values = {
                         Integer.toString(dataRecord.TeamNumber),

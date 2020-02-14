@@ -4,6 +4,7 @@ import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
 
 import java.util.List;
+import java.util.Locale;
 
 public class OpinionReportActivity extends BaseActivity {
 
@@ -40,17 +41,17 @@ public class OpinionReportActivity extends BaseActivity {
             AddHeaderStringsAsRowToReportTable(R.id.opinionReportTable, headings, this);
 
             // create a data row for each data record returned from DB
-            for (DaoTeamRoundData.OpinionReportData dataRecord : dataRecords) {
+            for(DaoTeamRoundData.OpinionReportData dataRecord : dataRecords) {
                 // add each data value to an array of strings
                 String[] values = {
                         Integer.toString(dataRecord.TeamNumber),
-                        String.format("%.3f", dataRecord.AvgShootingOpinion),
-                        String.format("%.3f", dataRecord.AvgClimbingOpinion),
-                        String.format("%.3f", dataRecord.AvgSpinningOpinion),
-                        String.format("%.3f", dataRecord.AvgAutonOpinion),
-                        String.format("%.3f", dataRecord.AvgDriverOpinion),
-                        String.format("%.3f", dataRecord.AvgWouldPickOpinion),
-                        String.format("%.3f", dataRecord.AvgStarOpinion)
+                        String.format(Locale.US, "%.3f", dataRecord.AvgShootingOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgClimbingOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgSpinningOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgAutonOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgDriverOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgWouldPickOpinion),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgStarOpinion)
                 };
 
                 // add the data strings as a row to our table

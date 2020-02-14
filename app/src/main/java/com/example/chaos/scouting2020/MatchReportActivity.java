@@ -4,6 +4,7 @@ import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
 
 import java.util.List;
+import java.util.Locale;
 
 
 public class MatchReportActivity extends BaseActivity {
@@ -48,19 +49,19 @@ public class MatchReportActivity extends BaseActivity {
             AddHeaderStringsAsRowToReportTable(R.id.matchReportTable, headings, this);
 
             // create a data row for each data record returned from DB
-            for (DaoTeamRoundData.MatchReportData dataRecord : dataRecords) {
+            for(DaoTeamRoundData.MatchReportData dataRecord : dataRecords) {
                 // add each data value to an array of strings
                 String[] values = {
                         Integer.toString(dataRecord.TeamNumber),
                         Integer.toString(dataRecord.NumRounds),
-                        String.format("%.3f", dataRecord.AvgHighScore),
-                        String.format("%.3f", dataRecord.AvgLowScore),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgHighScore),
+                        String.format(Locale.US, "%.3f", dataRecord.AvgLowScore),
                         Integer.toString(dataRecord.NumSuccessfulClimbs),
                         Integer.toString(dataRecord.NumFailedClimbs),
-                        String.format("%.3f", dataRecord.PercentClimbs),
-                        String.format("%.3f", dataRecord.PercentBreakdowns),
-                        String.format("%.3f", dataRecord.PercentStage2),
-                        String.format("%.3f", dataRecord.PercentStage3)
+                        String.format(Locale.US, "%.3f", dataRecord.PercentClimbs),
+                        String.format(Locale.US, "%.3f", dataRecord.PercentBreakdowns),
+                        String.format(Locale.US, "%.3f", dataRecord.PercentStage2),
+                        String.format(Locale.US, "%.3f", dataRecord.PercentStage3)
                 };
 
                 // add the data strings as a row to our table
