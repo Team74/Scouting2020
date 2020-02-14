@@ -923,22 +923,27 @@ public class ScoutingApplication extends Application {
                 if (csvLine[0].equals("TeamNumber")) {
                     continue;
                 }
+                if (csvLine.length == 2) {
+                    entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
+                    entityTeamData.TeamName = csvLine[1];
+                } else {
+                    // convert all the data strings to the appropriate DB type
+                    entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
+                    entityTeamData.TeamName = csvLine[1];
+                    entityTeamData.PitScouter = csvLine[2];
+                    entityTeamData.RobotWeight = Integer.valueOf(csvLine[3]);
+                    entityTeamData.ShootingLocation1 = Boolean.valueOf(csvLine[4]);
+                    entityTeamData.ShootingLocation2 = Boolean.valueOf(csvLine[5]);
+                    entityTeamData.ShootingLocation3 = Boolean.valueOf(csvLine[6]);
+                    entityTeamData.StartLocationLeft = Boolean.valueOf(csvLine[7]);
+                    entityTeamData.StartLocationCenter = Boolean.valueOf(csvLine[8]);
+                    entityTeamData.StartLocationRight = Boolean.valueOf(csvLine[9]);
+                }
 
-                // convert all the data strings to the appropriate DB type
-                entityTeamData.TeamNumber = Integer.valueOf(csvLine[0]);
-                entityTeamData.TeamName = csvLine[1];
-                entityTeamData.PitScouter = csvLine[2];
-                entityTeamData.RobotWeight = Integer.valueOf(csvLine[3]);
-                entityTeamData.ShootingLocation1 = Boolean.valueOf(csvLine[4]);
-                entityTeamData.ShootingLocation2 = Boolean.valueOf(csvLine[5]);
-                entityTeamData.ShootingLocation3 = Boolean.valueOf(csvLine[6]);
-                entityTeamData.StartLocationLeft = Boolean.valueOf(csvLine[7]);
-                entityTeamData.StartLocationCenter = Boolean.valueOf(csvLine[8]);
-                entityTeamData.StartLocationRight = Boolean.valueOf(csvLine[9]);
 
                 // if it's a valid record...
                 // TBD: are there other things would we NOT want in the DB?
-                if (TeamNumber>0) {
+                if (entityTeamData.TeamNumber>0) {
                     // ...add the team data record to the DB
                     daoTeamData.insert(entityTeamData);
                 }

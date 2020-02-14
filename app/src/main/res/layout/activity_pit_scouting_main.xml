@@ -156,10 +156,10 @@
 
     <TextView
         android:id="@+id/pitScoutingMainWeightTextView"
-        android:labelFor="@+id/pitScoutingMainWeightEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Weight"
+        android:labelFor="@+id/pitScoutingMainWeightEditText"
+        android:text="Weight (lbs)"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"

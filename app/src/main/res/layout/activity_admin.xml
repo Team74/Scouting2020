@@ -2,95 +2,90 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/adminConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     tools:context=".AdminActivity">
 
     <Button
-        android:id="@+id/adminExportScouterNamesButton"
+        android:id="@+id/exportScouterNamesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="adminExportScouterNamesButtonPressed"
+        android:onClick="exportScouterNamesButtonPressed"
         android:text="Export Scouter Names To CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminExportTeamRoundDataButton"
+        app:layout_constraintBottom_toTopOf="@id/exportTeamRoundDataButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/adminExportTeamRoundDataButton"
+        android:id="@+id/exportTeamRoundDataButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="adminExportTeamRoundDataButtonPressed"
         android:text="Export Team Round Data To CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminExportTeamDataButton"
+        app:layout_constraintBottom_toTopOf="@id/exportTeamDataButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminExportScouterNamesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/exportScouterNamesButton" />
 
     <Button
-        android:id="@+id/adminExportTeamDataButton"
+        android:id="@+id/exportTeamDataButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="adminExportTeamDataButtonPressed"
         android:text="Export Team Data To CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminImportButton"
+        app:layout_constraintBottom_toTopOf="@id/importButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminExportTeamRoundDataButton" />
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamRoundDataButton" />
 
     <Button
-        android:id="@+id/adminImportButton"
+        android:id="@+id/importButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="adminImportButtonPressed"
         android:text="Import CSV"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminAddScouterNameButton"
+        app:layout_constraintBottom_toTopOf="@+id/addScouterName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminExportTeamDataButton" />
+        app:layout_constraintTop_toBottomOf="@+id/exportTeamDataButton" />
 
     <Button
-        android:id="@+id/adminAddScouterNameButton"
+        android:id="@+id/dataViewingMenubutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="adminAddScouterNameButtonPressed"
-        android:text="Add Scouter"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
-        app:layout_constraintEnd_toStartOf="@+id/adminAddScouterNameEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminImportButton" />
-
-    <EditText
-        android:id="@+id/adminAddScouterNameEditText"
-        android:hint="New Scouter Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="new scouter name here"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adminAddScouterNameButton"
-        app:layout_constraintTop_toBottomOf="@+id/adminImportButton" />
-
-    <Button
-        android:id="@+id/adminMenuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:onClick="adminMenuButtonPressed"
-        android:text="Menu"
+        android:text="menu"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminAddScouterNameButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addScouterName" />
+
+    <Button
+        android:id="@+id/addScouterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
+        app:layout_constraintEnd_toStartOf="@+id/addScouterNameEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/importButton" />
+
+    <TextView
+        android:id="@+id/addScouterNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/dataViewingMenubutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toEndOf="@+id/addScouterName"
+        app:layout_constraintTop_toBottomOf="@+id/importButton" />
 
 </android.support.constraint.ConstraintLayout>
