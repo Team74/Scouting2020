@@ -2,6 +2,7 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.List;
 
@@ -9,6 +10,9 @@ public class TeamRoundDataReportActivity extends BaseActivity {
 
     protected ScoutingApplication App;
     protected DaoTeamRoundData daoTeamRoundData = null;
+    protected DaoTeamData daoTeamData = null;
+    protected int TeamNumberKey = 0;
+    protected int[] TeamArray;
 
     public class UpdateTeamRoundDataReportTable implements ReportUpdateCommand {
 
@@ -45,7 +49,7 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " RateDriver,"
                     + " WouldPick"
                     + " FROM EntityTeamRoundData"
-                    + " WHERE TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
+                    + " WHERE TeamNumber IN (" + TeamArray[TeamNumberKey] + ") and TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamRoundData.TeamRoundDataReportData dataRecords[] = daoTeamRoundData.getTeamRoundDataReportDataRaw(new SimpleSQLiteQuery(query));
 
@@ -98,6 +102,7 @@ public class TeamRoundDataReportActivity extends BaseActivity {
 
         // get data access objects (tables)
         daoTeamRoundData = App.getDaoTeamRoundData();
+        daoTeamData = App.getDaoTeamData();
 
         // get the list of filtered team numbers
         List<Integer> filteredTeamNumberList = App.getFilteredTeamNumberList();
@@ -105,9 +110,28 @@ public class TeamRoundDataReportActivity extends BaseActivity {
         for(Integer filteredTeamNumber : filteredTeamNumberList) {
             ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
+        TeamArray = daoTeamData.getAllTeamNumbers();
 
         // display the report table for the first time
         UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
         updateTeamRoundDataReportTable.update();
+    }
+    // needs to be fixed so that it can't go over.
+    // need to add a for loop that loops through all the filtered teams to skip them.
+    public void nextButtonPressed(View nextButton){
+        if(TeamNumberKey < TeamArray.length) {
+            TeamNumberKey++;
+
+            UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
+            updateTeamRoundDataReportTable.update();
+        }
+    }
+
+    public void previousButtonPressed(View previosButton){
+        if(TeamNumberKey > 0){
+            TeamNumberKey--;
+            UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
+            updateTeamRoundDataReportTable.update();
+        }
     }
 }

@@ -38,6 +38,7 @@ public class ScoutingApplication extends Application {
 
     // list of filtered teams for reports
     protected List<Integer> FilteredTeamNumberList = null;
+    protected List<Integer> TeamNumberList = null;
 
     // primary key data
     private int TeamNumber = -1;

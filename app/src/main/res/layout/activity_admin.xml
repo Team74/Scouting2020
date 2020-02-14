@@ -64,22 +64,50 @@
         android:onClick="adminAddScouterNameButtonPressed"
         android:text="Add Scouter"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
-        app:layout_constraintEnd_toStartOf="@+id/adminAddScouterNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/adminAddTeamNumberButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias=".95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminImportButton" />
 
     <EditText
         android:id="@+id/adminAddScouterNameEditText"
-        android:hint="New Scouter Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new scouter name here"
-        android:inputType="textPersonName"
+        android:hint="New Scouter Name"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/adminAddTeamNumberButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toBottomOf="@+id/adminImportButton" />
+
+    <Button
+        android:id="@+id/adminAddTeamNumberButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="adminAddTeamNumberButtonPressed"
+        android:text="add Team"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias=".95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminAddScouterNameButton" />
+
+    <EditText
+        android:id="@+id/adminAddTeamNumberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Add Team Number"
+        android:inputType="number"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/adminMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adminAddScouterNameButton"
-        app:layout_constraintTop_toBottomOf="@+id/adminImportButton" />
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/guideline12"
+        app:layout_constraintTop_toBottomOf="@+id/adminAddScouterNameEditText" />
 
     <Button
         android:id="@+id/adminMenuButton"
@@ -91,6 +119,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminAddScouterNameButton" />
+        app:layout_constraintTop_toBottomOf="@+id/adminAddTeamNumberButton" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="480dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

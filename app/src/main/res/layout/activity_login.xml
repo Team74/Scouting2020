@@ -195,14 +195,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.19800332" />
 
     <android.support.constraint.Guideline
         android:id="@+id/loginHorizontalGuideline40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.39933443" />
 
     <android.support.constraint.Guideline
         android:id="@+id/loginHorizontalGuideline60"
@@ -223,14 +223,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.2993763" />
 
     <android.support.constraint.Guideline
         android:id="@+id/loginVerticalGuideline70"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".7" />
+        app:layout_constraintGuide_percent="0.6985447" />
 
     <Button
         android:id="@+id/loginMenuButton"

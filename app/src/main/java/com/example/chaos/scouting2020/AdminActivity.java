@@ -9,6 +9,7 @@ import android.os.storage.StorageManager;
 import android.provider.OpenableColumns;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
@@ -81,8 +82,37 @@ public class AdminActivity extends BaseActivity {
 
     public void adminAddScouterNameButtonPressed(View adminAddScouterNameButton){
         // TBD: get text from R.id.adminAddScouterNameEditText
-        // String scout = "new scouter name";
-        // App.addScouterName(scout);
+        String scout = "new scouter name";
+        try{
+            EditText adminAddScouterNameText = (EditText) findViewById(R.id.adminAddScouterNameEditText);
+            scout = adminAddScouterNameText.getText().toString();
+            if((!scout.equals("")) && (scout != null)) {
+                App.addScouterName(scout);
+                Toast.makeText(this, "Name added successfully.", Toast.LENGTH_SHORT).show();
+                adminAddScouterNameText.setText("");
+            }else{
+                Toast.makeText(this, "Name can not be blank.", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error adding scouter name.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void adminAddTeamNumberButtonPressed(View adminAddScouterNameButton){
+        int team = -1;
+        try{
+            EditText adminAddTeamNumberText = (EditText) findViewById(R.id.adminAddTeamNumberEditText);
+            team = Integer.parseInt(adminAddTeamNumberText.getText().toString());
+            App.newTeamData();
+            App.setPitTeamNumber(team);
+            App.saveTeamData();
+            Toast.makeText(this, "Team added successfully.", Toast.LENGTH_SHORT).show();
+            adminAddTeamNumberText.setText("");
+        }catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error adding team number.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void adminMenuButtonPressed(View adminMenuButton) {
