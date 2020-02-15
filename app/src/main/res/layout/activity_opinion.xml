@@ -56,10 +56,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="autonButtonPressed"
+        android:maxLines="1"
         android:text="Auton"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -72,10 +74,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="teleopButtonPressed"
+        android:maxLines="1"
         android:text="Teleop"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline42"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -88,10 +92,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="endgameButtonPressed"
+        android:maxLines="1"
         android:text="Endgame"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline75"
@@ -132,8 +138,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="shootingRating1StarPressed"
+            android:maxLines="1"
             android:text="1 STAR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton2"
@@ -143,8 +152,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="shootingRating2StarPressed"
+            android:maxLines="1"
             android:text="2 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton3"
@@ -154,8 +166,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="shootingRating3StarPressed"
+            android:maxLines="1"
             android:text="3 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton4"
@@ -165,8 +180,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="shootingRating4StarPressed"
+            android:maxLines="1"
             android:text="4 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionShootingRatingRadioButton5"
@@ -176,8 +194,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="shootingRating5StarPressed"
+            android:maxLines="1"
             android:text="5 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
     </RadioGroup>
 
     <TextView
@@ -215,8 +236,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="climbingRating1StarPressed"
+            android:maxLines="1"
             android:text="1 STAR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton2"
@@ -226,8 +250,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="climbingRating2StarPressed"
+            android:maxLines="1"
             android:text="2 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton3"
@@ -237,8 +264,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="climbingRating3StarPressed"
+            android:maxLines="1"
             android:text="3 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton4"
@@ -248,8 +278,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="climbingRating4StarPressed"
+            android:maxLines="1"
             android:text="4 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionClimbingRatingRadioButton5"
@@ -259,8 +292,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="climbingRating5StarPressed"
+            android:maxLines="1"
             android:text="5 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
     </RadioGroup>
 
     <TextView
@@ -298,8 +334,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="wheelSpinningRating1StarPressed"
+            android:maxLines="1"
             android:text="1 STAR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton2"
@@ -309,8 +348,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="wheelSpinningRating2StarPressed"
+            android:maxLines="1"
             android:text="2 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton3"
@@ -320,8 +362,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="wheelSpinningRating3StarPressed"
+            android:maxLines="1"
             android:text="3 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton4"
@@ -331,8 +376,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="wheelSpinningRating4StarPressed"
+            android:maxLines="1"
             android:text="4 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionWheelRatingRadioButton5"
@@ -342,8 +390,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="wheelSpinningRating5StarPressed"
+            android:maxLines="1"
             android:text="5 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
     </RadioGroup>
 
     <TextView
@@ -381,8 +432,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="autonStageRating1StarPressed"
+            android:maxLines="1"
             android:text="1 STAR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton2"
@@ -392,8 +446,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="autonStageRating2StarPressed"
+            android:maxLines="1"
             android:text="2 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton3"
@@ -403,8 +460,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="autonStageRating3StarPressed"
+            android:maxLines="1"
             android:text="3 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton4"
@@ -414,8 +474,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="autonStageRating4StarPressed"
+            android:maxLines="1"
             android:text="4 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionAutonRatingRadioButton5"
@@ -425,8 +488,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="autonStageRating5StarPressed"
+            android:maxLines="1"
             android:text="5 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
     </RadioGroup>
 
     <TextView
@@ -464,8 +530,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="driverRating1StarPressed"
+            android:maxLines="1"
             android:text="1 STAR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton2"
@@ -475,8 +544,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="driverRating2StarPressed"
+            android:maxLines="1"
             android:text="2 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton3"
@@ -486,8 +558,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="driverRating3StarPressed"
+            android:maxLines="1"
             android:text="3 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton4"
@@ -497,8 +572,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="driverRating4StarPressed"
+            android:maxLines="1"
             android:text="4 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
 
         <RadioButton
             android:id="@+id/opinionDriverRatingRadioButton5"
@@ -508,8 +586,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="driverRating5StarPressed"
+            android:maxLines="1"
             android:text="5 STARS"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="14sp" />
     </RadioGroup>
 
     <TextView
@@ -548,6 +629,7 @@
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
             android:onClick="wouldPickRobotPressed"
+            android:maxLines="1"
             android:text="Yes"
             android:textAlignment="inherit"
             android:textSize="32sp" />
@@ -559,6 +641,7 @@
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
             android:onClick="wouldNotPickRobotPressed"
+            android:maxLines="1"
             android:text="No"
             android:textAlignment="inherit"
             android:textSize="32sp" />
@@ -574,10 +657,12 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="#4aff08"
         android:onClick="exitButtonPressed"
+        android:maxLines="1"
         android:text="Exit"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="32sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/opinionHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/opinionVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/opinionVerticalGuideline50"

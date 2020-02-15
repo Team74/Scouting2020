@@ -58,10 +58,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="autonButtonPressed"
+        android:maxLines="1"
         android:text="Auton"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline34"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
@@ -74,10 +76,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="teleopButtonPressed"
+        android:maxLines="1"
         android:text="Teleop"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline42"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline75"
@@ -92,10 +96,12 @@
         android:layout_marginEnd="8dp"
         android:enabled="false"
         android:shadowColor="#000000"
+        android:maxLines="1"
         android:text="Endgame"
         android:textAlignment="center"
         android:textColor="#A3000000"
-        android:textSize="12sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         android:theme="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline50"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,10 +115,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="opinionButtonPressed"
+        android:maxLines="1"
         android:text="Opinion"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/endgameHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/endgameVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/endgameVerticalGuideline50"
@@ -170,9 +178,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="didClimbButtonPressed"
+            android:maxLines="2"
             android:text="Climb Successful"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="16sp" />
 
         <RadioButton
             android:id="@+id/endgameDidntRadioButton"
@@ -182,9 +192,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="didntClimbButtonPressed"
+            android:maxLines="2"
             android:text="Climb Not Attempted"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="16sp" />
 
         <RadioButton
             android:id="@+id/endgameFailedRadioButton"
@@ -194,9 +206,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="failedClimbButtonPressed"
+            android:maxLines="2"
             android:text="Climb Failed"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="16sp" />
     </RadioGroup>
 
     <RadioGroup
@@ -221,9 +235,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="robotBrokeDownButtonPressed"
+            android:maxLines="2"
             android:text="The Robot Broke Down"
             android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameDidntBreakDownRadioButton"
@@ -233,9 +249,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="robotDidntBreakDownButtonPressed"
+            android:maxLines="2"
             android:text="The Robot Didn't Break Down"
             android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="32sp" />
     </RadioGroup>
 
     <TextView
@@ -275,9 +293,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="stageOnePressed"
+            android:maxLines="1"
             android:text="Stage 1"
             android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameStage2RadioButton"
@@ -287,9 +307,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="stageTwoPressed"
+            android:maxLines="1"
             android:text="Stage 2"
             android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="32sp" />
 
         <RadioButton
             android:id="@+id/endgameStage3RadioButton"
@@ -299,9 +321,11 @@
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="stageThreePressed"
+            android:maxLines="1"
             android:text="Stage 3"
             android:textColor="@android:color/black"
-            android:textSize="32sp" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="32sp" />
     </RadioGroup>
 
     <android.support.constraint.Guideline

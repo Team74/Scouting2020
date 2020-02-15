@@ -67,7 +67,9 @@
         android:text="Next &gt;"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/teamRoundDataReportVerticalGuideline50"
         app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline90" />
@@ -87,7 +89,9 @@
         android:text="&lt; Previous"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/teamRoundDataReportVerticalGuideline50"
         app:layout_constraintTop_toTopOf="@+id/teamRoundDataReportHorizontalGuideline90" />

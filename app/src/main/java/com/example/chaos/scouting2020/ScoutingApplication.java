@@ -210,7 +210,7 @@ public class ScoutingApplication extends Application {
     public void startUpDb() {
         // get room (db)
         if (db == null) {
-            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb2")
+            db = Room.databaseBuilder(getApplicationContext(), ScoutingDatabase.class, "scoutDb3")
                     .allowMainThreadQueries().fallbackToDestructiveMigration().build();
             // TBD: figure out how to allow for "Non-destructive Migrations" of the ROOM DB
             // for when the version changes
