@@ -23,6 +23,9 @@ public class PitScoutingMapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Pit Scouting");
+
         setContentView(R.layout.activity_pit_scouting_map);
 
         // get a handle to our global app state

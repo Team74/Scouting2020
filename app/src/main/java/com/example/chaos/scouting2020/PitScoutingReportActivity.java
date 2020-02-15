@@ -80,6 +80,8 @@ public class PitScoutingReportActivity extends BaseActivity {
             ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
 
+        setTitle("Scouting2020 - Pit Scouting Report");
+
         // display the report table for the first time
         UpdatePitScoutingReportTable updatePitScoutingReportTable = new UpdatePitScoutingReportTable();
         updatePitScoutingReportTable.update();

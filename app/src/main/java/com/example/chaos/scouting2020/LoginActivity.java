@@ -26,6 +26,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Login");
+
         setContentView(R.layout.activity_login);
 
         // get a handle to our global app state

@@ -41,6 +41,9 @@ public class TeleopActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Teleop");
+
         setContentView(R.layout.activity_teleop);
 
         // get a handle to our global app state

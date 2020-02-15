@@ -73,6 +73,9 @@ public class MatchReportActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Match Report");
+
         setContentView(R.layout.activity_match_report);
 
         // get a handle to our global app state

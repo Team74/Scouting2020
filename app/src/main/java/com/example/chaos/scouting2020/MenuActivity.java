@@ -11,6 +11,9 @@ public class MenuActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Menu");
+
         setContentView(R.layout.activity_menu);
 
         // get a handle to our global app state
@@ -26,7 +29,7 @@ public class MenuActivity extends BaseActivity {
     }
 
     public void adminButtonPressed(View pitScoutingButton) {
-        Intent intent = new Intent(this, AdminActivity.class);
+        Intent intent = new Intent(this, AdminPasswordActivity.class);
         startActivity(intent);
     }
 

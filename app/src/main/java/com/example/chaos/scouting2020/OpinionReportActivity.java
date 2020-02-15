@@ -63,6 +63,9 @@ public class OpinionReportActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Opinion Report");
+
         setContentView(R.layout.activity_opinion_report);
 
         // get a handle to our global app state

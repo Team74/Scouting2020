@@ -11,6 +11,9 @@ public class DataViewingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Data Viewing");
+
         setContentView(R.layout.activity_data_viewing);
 
         // get a handle to our global app state

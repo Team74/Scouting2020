@@ -13,6 +13,7 @@
         android:roundIcon="@drawable/scouting2020_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdminPasswordActivity"></activity>
         <activity android:name=".AdminActivity" />
         <activity android:name=".ReportFiltersActivity" />
         <activity android:name=".TeamRoundDataReportActivity" />

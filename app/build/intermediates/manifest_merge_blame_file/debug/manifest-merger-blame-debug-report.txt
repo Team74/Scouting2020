@@ -1,0 +1,105 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.chaos.scouting2020"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="27" />
+9-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+11-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:5:5-81
+11-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:5:22-78
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:6:5-67
+12-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:6:22-64
+13
+14    <application
+14-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:8:5-40:19
+15        android:name="com.example.chaos.scouting2020.ScoutingApplication"
+15-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:9:9-44
+16        android:allowBackup="true"
+16-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:10:9-35
+17        android:debuggable="true"
+18        android:icon="@drawable/scouting2020_icon"
+18-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:11:9-51
+19        android:label="@string/app_name"
+19-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:12:9-41
+20        android:roundIcon="@drawable/scouting2020_icon"
+20-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:13:9-56
+21        android:supportsRtl="true"
+21-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:14:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:15:9-40
+24        <activity android:name="com.example.chaos.scouting2020.AdminPasswordActivity" />
+24-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:16:9-68
+24-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:16:19-56
+25        <activity android:name="com.example.chaos.scouting2020.AdminActivity" />
+25-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:17:9-51
+25-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:17:19-48
+26        <activity android:name="com.example.chaos.scouting2020.ReportFiltersActivity" />
+26-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:18:9-59
+26-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:18:19-56
+27        <activity android:name="com.example.chaos.scouting2020.TeamRoundDataReportActivity" />
+27-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:19:9-65
+27-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:19:19-62
+28        <activity android:name="com.example.chaos.scouting2020.PitScoutingMapActivity" />
+28-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:20:9-60
+28-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:20:19-57
+29        <activity android:name="com.example.chaos.scouting2020.PitScoutingMainActivity" />
+29-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:21:9-61
+29-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:21:19-58
+30        <activity android:name="com.example.chaos.scouting2020.PitScoutingReportActivity" />
+30-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:22:9-63
+30-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:22:19-60
+31        <activity android:name="com.example.chaos.scouting2020.OpinionReportActivity" />
+31-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:23:9-59
+31-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:23:19-56
+32        <activity android:name="com.example.chaos.scouting2020.MatchReportActivity" />
+32-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:24:9-57
+32-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:24:19-54
+33        <activity android:name="com.example.chaos.scouting2020.DataViewingActivity" />
+33-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:25:9-57
+33-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:25:19-54
+34        <activity android:name="com.example.chaos.scouting2020.LoginActivity" />
+34-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:26:9-51
+34-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:26:19-48
+35        <activity android:name="com.example.chaos.scouting2020.PitScoutingActivity" />
+35-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:27:9-57
+35-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:27:19-54
+36        <activity android:name="com.example.chaos.scouting2020.BaseActivity" />
+36-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:28:9-50
+36-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:28:19-47
+37        <activity android:name="com.example.chaos.scouting2020.AutonActivity" />
+37-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:29:9-51
+37-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:29:19-48
+38        <activity android:name="com.example.chaos.scouting2020.TeleopActivity" />
+38-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:30:9-52
+38-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:30:19-49
+39        <activity android:name="com.example.chaos.scouting2020.EndgameActivity" />
+39-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:31:9-53
+39-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:31:19-50
+40        <activity android:name="com.example.chaos.scouting2020.OpinionActivity" />
+40-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:32:9-53
+40-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:32:19-50
+41        <activity android:name="com.example.chaos.scouting2020.MenuActivity" >
+41-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:33:9-39:20
+41-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:33:19-47
+42            <intent-filter>
+42-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:34:13-38:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:35:17-69
+43-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:35:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:37:17-77
+45-->/home/chaos/Scouting2020/app/src/main/AndroidManifest.xml:37:27-74
+46            </intent-filter>
+47        </activity>
+48    </application>
+49
+50</manifest>

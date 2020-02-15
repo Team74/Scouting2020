@@ -95,6 +95,9 @@ public class TeamRoundDataReportActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Team Round Data Report");
+
         setContentView(R.layout.activity_team_round_data_report);
 
         // get a handle to our global app state

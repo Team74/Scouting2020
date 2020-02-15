@@ -22,6 +22,9 @@ public class AdminActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Scouting2020 - Admin");
+
         setContentView(R.layout.activity_admin);
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
