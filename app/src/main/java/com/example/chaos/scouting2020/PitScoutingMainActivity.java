@@ -60,32 +60,39 @@ public class PitScoutingMainActivity extends BaseActivity {
     protected void UpdatePitScoutingFields() {
         // get the new team number from the spinner
         Spinner spinnerTeamNumber = (Spinner) findViewById(R.id.pitScoutingMainTeamNumberSpinner);
-        TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
+        try {
+            TeamNumber = Integer.parseInt(spinnerTeamNumber.getSelectedItem().toString());
 
-        // since the TeamNumber changed, we need to refresh the
-        // team data record...
-        App.setPitTeamNumber(TeamNumber);
-        App.refreshTeamData();
+            // since the TeamNumber changed, we need to refresh the
+            // team data record...
+            App.setPitTeamNumber(TeamNumber);
+            App.refreshTeamData();
 
-        // update all the fields on the screen here
-        PitScouterName = App.getPitScouter();
-        RobotDriveBaseType = App.getRobotDriveBaseType();
-        PitScoutingMainRobotWeight = App.getRobotWeight();
-        PitScoutingMainNotes = App.getPitScoutingNotes();
+            // update all the fields on the screen here
+            PitScouterName = App.getPitScouter();
+            RobotDriveBaseType = App.getRobotDriveBaseType();
+            PitScoutingMainRobotWeight = App.getRobotWeight();
+            PitScoutingMainNotes = App.getPitScoutingNotes();
 
-        // Update scouter spinner
-        SetSpinnerByValue(R.id.pitScoutingMainScouterSpinner, PitScouterName);
+            // Update scouter spinner
+            SetSpinnerByValue(R.id.pitScoutingMainScouterSpinner, PitScouterName);
 
-        // Update drive base type spinner
-        SetSpinnerByValue(R.id.pitScoutingMainDriveBaseSpinner, RobotDriveBaseType);
+            // Update drive base type spinner
+            SetSpinnerByValue(R.id.pitScoutingMainDriveBaseSpinner, RobotDriveBaseType);
 
-        // Update weight textView
-        TextView WeightEditText = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
-        WeightEditText.setText("" + PitScoutingMainRobotWeight);
+            // Update weight textView
+            TextView WeightEditText = (EditText) findViewById(R.id.pitScoutingMainWeightEditText);
+            WeightEditText.setText("" + PitScoutingMainRobotWeight);
 
-        // Update notes textView
-        TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
-        NotesEditText.setText(PitScoutingMainNotes);
+            // Update notes textView
+            TextView NotesEditText = (EditText) findViewById(R.id.pitScoutingMainNotesEditText);
+            NotesEditText.setText(PitScoutingMainNotes);
+        } catch (Exception e) {
+            // some sort of error
+            // this is usually caused by not having any team data or scouters in DB
+            // which shouldn't happen at a real event.
+            e.printStackTrace();
+        }
     }
 
     @Override
