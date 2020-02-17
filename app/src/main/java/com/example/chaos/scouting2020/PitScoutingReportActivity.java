@@ -67,6 +67,9 @@ public class PitScoutingReportActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit_scouting_report);
 
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Pit Scouting Report");
+
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 
@@ -79,8 +82,6 @@ public class PitScoutingReportActivity extends BaseActivity {
         for(Integer filteredTeamNumber : filteredTeamNumberList) {
             ReportFilteredTeamNumberStringList = ReportFilteredTeamNumberStringList + "," + filteredTeamNumber;
         }
-
-        setTitle("Scouting2020 - Pit Scouting Report");
 
         // display the report table for the first time
         UpdatePitScoutingReportTable updatePitScoutingReportTable = new UpdatePitScoutingReportTable();

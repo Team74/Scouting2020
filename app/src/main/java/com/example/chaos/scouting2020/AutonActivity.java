@@ -40,10 +40,10 @@ public class AutonActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Auton");
-
         setContentView(R.layout.activity_auton);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Auton");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -52,7 +52,7 @@ public class AutonActivity extends BaseActivity {
         App.refreshTeamRoundData();
 
         // update display with common items
-        UpdateCommonLayoutItems(R.id.autonTNumberTextView, R.id.autonQRNumberTextView, R.id.autonScouterTextView, R.id.autonConstraintLayout);
+        UpdateCommonLayoutItems(R.id.autonTNumberTextView, R.id.autonRoundNumberTextView, R.id.autonScouterTextView, R.id.autonConstraintLayout);
 
         // update display with specific items for this activity
         AutonHighGoalNumber = App.getAutonHighScore();

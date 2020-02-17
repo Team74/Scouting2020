@@ -49,8 +49,8 @@ public class BaseActivity extends AppCompatActivity {
         }
         if (roundNumberViewId != 0) {
             int roundNumber = ((ScoutingApplication) this.getApplication()).getRoundNumber();
-            TextView QRNumber = (TextView) findViewById(roundNumberViewId);
-            QRNumber.setText("Round: " + roundNumber);
+            TextView RoundNumber = (TextView) findViewById(roundNumberViewId);
+            RoundNumber.setText("Round: " + roundNumber);
         }
         if (scouterNameViewId != 0) {
             String scouterName = ((ScoutingApplication) this.getApplication()).getScouterName();

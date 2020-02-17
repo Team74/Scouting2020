@@ -172,9 +172,9 @@ public class PitScoutingActivity extends BaseActivity {
         EditText Notes = (EditText) findViewById(R.id.pitScoutingNotesEditText);
         PitScoutingNotes = Notes.getText().toString();
 
-        EditText QRNumberEditText = (EditText) findViewById(R.id.pitScoutingWeightEditText);
+        EditText RoundNumberEditText = (EditText) findViewById(R.id.pitScoutingWeightEditText);
         try {
-            PitScoutingRobotWeight = Integer.parseInt(QRNumberEditText.getText().toString());
+            PitScoutingRobotWeight = Integer.parseInt(RoundNumberEditText.getText().toString());
         } catch (Exception e) {
             // some sort of error converting RoundNumber to int
             e.printStackTrace();

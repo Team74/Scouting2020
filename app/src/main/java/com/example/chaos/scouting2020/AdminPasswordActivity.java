@@ -12,15 +12,13 @@ import android.widget.Toast;
 
 public class AdminPasswordActivity extends AppCompatActivity {
 
-    protected String InputtedPassword = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Admin Password");
-
         setContentView(R.layout.activity_admin_password);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Admin Password");
     }
 
     public void cancelButtonPressed(View menuButton) {
@@ -29,16 +27,15 @@ public class AdminPasswordActivity extends AppCompatActivity {
     }
 
     public void confirmButtonPressed(View pitScoutingButton) {
-        EditText Password = (EditText) findViewById(R.id.AdminPasswordEditText);
-        InputtedPassword = Password.getText().toString();
-        if (InputtedPassword.equals("")) {
+        EditText passwordEditText = (EditText) findViewById(R.id.adminPasswordEditText);
+        String inputtedPassword = passwordEditText.getText().toString();
+        if (inputtedPassword.equals("")) {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
         }
         else{
             Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
-            EditText Clear = (EditText) findViewById(R.id.AdminPasswordEditText);
-            Clear.setText("");
+            passwordEditText.setText("");
         }
     }
 }

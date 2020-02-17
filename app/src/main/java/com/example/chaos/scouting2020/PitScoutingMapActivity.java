@@ -23,10 +23,10 @@ public class PitScoutingMapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Pit Scouting");
-
         setContentView(R.layout.activity_pit_scouting_map);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Pit Scouting");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -67,7 +67,6 @@ public class PitScoutingMapActivity extends BaseActivity {
         ShootingLocation3.setChecked(PitScoutingShootingLocation3);
 
         // Update start position toggleButtons
-
         ToggleButton StartLocationLeft = (ToggleButton) findViewById(R.id.pitScoutingLeftStartToggleButton);
         StartLocationLeft.setChecked(PitScoutingStartLocationLeft);
 

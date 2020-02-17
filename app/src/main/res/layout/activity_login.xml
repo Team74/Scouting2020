@@ -17,34 +17,36 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:maxLines="1"
+        android:gravity="center_vertical"
         android:text="Scouter"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="1"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline20"
-        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/loginQRNumberTextView"
-        android:labelFor="@+id/loginQRNumberEditText"
+        android:id="@+id/loginRoundNumberTextView"
+        android:labelFor="@+id/loginRoundNumberEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:maxLines="1"
-        android:text="QR #"
+        android:gravity="center_vertical"
+        android:text="Round Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="2"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline40"
-        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline20" />
 
@@ -56,14 +58,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:maxLines="1"
-        android:text="Team #"
+        android:gravity="center_vertical"
+        android:text="Team Number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="2"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline60"
-        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline40" />
 
@@ -75,19 +78,20 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:maxLines="1"
+        android:gravity="center_vertical"
         android:text="Color"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="1"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline80"
-        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline60" />
 
     <EditText
-        android:id="@+id/loginQRNumberEditText"
+        android:id="@+id/loginRoundNumberEditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -100,7 +104,7 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline40"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline20" />
 
     <RadioGroup
@@ -108,43 +112,41 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline80"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline60">
 
         <RadioButton
             android:id="@+id/loginBlueRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
             android:onClick="blueRadioButtonPressed"
             android:text="Blue"
             android:textColor="@android:color/black"
-            android:textSize="64sp" />
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="64sp" />
 
         <RadioButton
             android:id="@+id/loginRedRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
             android:onClick="redRadioButtonPressed"
             android:text="Red"
             android:textColor="@android:color/black"
-            android:textSize="64sp" />
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="64sp" />
 
     </RadioGroup>
 
@@ -160,7 +162,7 @@
         android:textAlignment="textStart"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -174,7 +176,7 @@
         android:prompt="@string/teamNum_prompt"
         app:layout_constraintBottom_toTopOf="@+id/loginHorizontalGuideline60"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintStart_toEndOf="@+id/loginVerticalGuideline33"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline40" />
 
     <Button
@@ -187,15 +189,15 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="#4aff08"
         android:onClick="startButtonPressed"
-        android:maxLines="1"
         android:text="Start"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="1"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline70"
-        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline30"
+        app:layout_constraintEnd_toStartOf="@+id/loginVerticalGuideline66"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline33"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline80" />
 
     <Button
@@ -207,15 +209,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="menuButtonPressed"
-        android:maxLines="1"
         android:text="Menu"
         android:textAlignment="center"
         android:textColor="@android:color/black"
+        android:maxLines="1"
         app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline70"
+        app:layout_constraintStart_toStartOf="@+id/loginVerticalGuideline66"
         app:layout_constraintTop_toTopOf="@+id/loginHorizontalGuideline80" />
 
     <android.support.constraint.Guideline
@@ -247,17 +249,17 @@
         app:layout_constraintGuide_percent="0.80" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/loginVerticalGuideline30"
+        android:id="@+id/loginVerticalGuideline33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/loginVerticalGuideline70"
+        android:id="@+id/loginVerticalGuideline66"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.66" />
 
 </android.support.constraint.ConstraintLayout>

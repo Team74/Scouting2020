@@ -24,10 +24,10 @@ public class EndgameActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Endgame");
-
         setContentView(R.layout.activity_endgame);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Endgame");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -36,7 +36,7 @@ public class EndgameActivity extends BaseActivity {
         App.refreshTeamRoundData();
 
         // update display with common items
-        UpdateCommonLayoutItems(R.id.endgameTNumberTextView, R.id.endgameQRNumberTextView, R.id.endgameScouterTextView, R.id.endgameConstraintLayout);
+        UpdateCommonLayoutItems(R.id.endgameTNumberTextView, R.id.endgameRoundNumberTextView, R.id.endgameScouterTextView, R.id.endgameConstraintLayout);
 
         // update display with specific items for this activity
         EndgameClimb = App.getClimb();

@@ -1,13 +1,17 @@
 package com.example.chaos.scouting2020;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.storage.StorageManager;
 import android.provider.OpenableColumns;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,12 +24,40 @@ public class AdminActivity extends BaseActivity {
     protected String BaseDir;  // location when to export things
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 456:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // granted - not much to do here
+                } else {
+                    // denied
+                    Toast.makeText(this, "Permissions for exporting denied.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin);
 
+        // set a more descriptive title for this screen
         setTitle("Scouting2020 - Admin");
 
-        setContentView(R.layout.activity_admin);
+        // Newer versions of Android expect permissions to be requested at runtime instead
+        // of via the manifest file.  The manifest file will be used on API < 23, and this
+        // code wil do nothing.
+        // if you don't have required permissions ask for it (only required for API 23+)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ) {
+            String[] permissions = { Manifest.permission.WRITE_EXTERNAL_STORAGE };
+            // Note: when the user responds to the permission request, this will generate
+            // a result response which will be handled by onRequestPermissionsResult() above.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permissions, 456);
+            }
+        }
+
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 

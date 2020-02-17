@@ -41,10 +41,10 @@ public class TeleopActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Teleop");
-
         setContentView(R.layout.activity_teleop);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Teleop");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -53,7 +53,7 @@ public class TeleopActivity extends BaseActivity {
         App.refreshTeamRoundData();
 
         // update display with common items
-        UpdateCommonLayoutItems(R.id.teleopTNumberTextView, R.id.teleopQRNumberTextView, R.id.teleopScouterTextView, R.id.teleopConstraintLayout);
+        UpdateCommonLayoutItems(R.id.teleopTNumberTextView, R.id.teleopRoundNumberTextView, R.id.teleopScouterTextView, R.id.teleopConstraintLayout);
 
         // update display with specific items for this activity
         TeleopHighGoalNumber = App.getTeleopHighScore();

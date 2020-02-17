@@ -26,10 +26,10 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Login");
-
         setContentView(R.layout.activity_login);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Login");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -74,9 +74,9 @@ public class LoginActivity extends BaseActivity {
             TeamNumber = -1;
         }
 
-        EditText QRNumberEditText = (EditText) findViewById(R.id.loginQRNumberEditText);
+        EditText RoundNumberEditText = (EditText) findViewById(R.id.loginRoundNumberEditText);
         try {
-            RoundNumber = Integer.parseInt(QRNumberEditText.getText().toString());
+            RoundNumber = Integer.parseInt(RoundNumberEditText.getText().toString());
         } catch (Exception e) {
             // some sort of error converting RoundNumber to int
             e.printStackTrace();

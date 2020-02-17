@@ -25,10 +25,10 @@ public class OpinionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setTitle("Scouting2020 - Opinion");
-
         setContentView(R.layout.activity_opinion);
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Opinion");
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
@@ -37,7 +37,7 @@ public class OpinionActivity extends BaseActivity {
         App.refreshTeamRoundData();
 
         // update display with common items
-        UpdateCommonLayoutItems(R.id.opinionTNumberTextView, R.id.opinionQRNumberTextView, R.id.opinionScouterTextView, R.id.opinionConstraintLayout);
+        UpdateCommonLayoutItems(R.id.opinionTNumberTextView, R.id.opinionRoundNumberTextView, R.id.opinionScouterTextView, R.id.opinionConstraintLayout);
 
         // update display with specific items for this activity
         OpinionShootingRating = App.getRateShooting();
