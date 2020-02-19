@@ -45,6 +45,8 @@ public class ScoutingApplication extends Application {
     private int TeamNumber = -1;
     private int RoundNumber = -1;
 
+    public int LastRoundNumber = 1;
+
     // Get Functions
     // Get functions for sample data
     public String[] getSampleScouters() {
@@ -147,6 +149,9 @@ public class ScoutingApplication extends Application {
         }
         return FilteredTeamNumberList;
     }
+    public int getLastRoundNumber(){
+        return LastRoundNumber;
+    }
     // Get Functions End
 
     // Set Functions
@@ -204,6 +209,8 @@ public class ScoutingApplication extends Application {
     public void setRobotWeight(int robotWeight) { entityTeamData.RobotWeight = robotWeight; }
     public void setPitScoutingNotes(String pitScoutingNotes) { entityTeamData.PitScoutingNotes = pitScoutingNotes; }
     public void setAutonNotes(String autonNotes) { entityTeamData.AutonNotes = autonNotes; }
+
+    public void setLastRoundNumber(int lastRoundNumber){LastRoundNumber = lastRoundNumber;}
     // Set Functions End
 
     // This is a helper function to setup DB and DAOs.

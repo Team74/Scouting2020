@@ -68,7 +68,6 @@ public interface DaoTeamRoundData {
         int Climb;
         boolean BrokeDown;
         int FinalStage;
-        String Notes;
         int RateShooting;
         int RateClimb;
         int RateWheel;

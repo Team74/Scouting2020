@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,6 +45,10 @@ public class LoginActivity extends BaseActivity {
         // use DB to populate team number selection spinner
         List<String> teamNumbers = App.getAllTeamNumbersAsList();
         AddStringsToSpinner(R.id.loginTeamNumberSpinner, teamNumbers, 64);
+
+        EditText editText = (EditText)findViewById(R.id.loginRoundNumberEditText);
+        int LastRoundNumber = App.getLastRoundNumber();
+        editText.setText(Integer.toString(LastRoundNumber), TextView.BufferType.EDITABLE);
     }
 
     public void menuButtonPressed(View menuButton) {
@@ -88,6 +93,10 @@ public class LoginActivity extends BaseActivity {
             && ((RoundNumber>0) && (RoundNumber<100))
             && ((TeamColor.equals("Blue")) || (TeamColor.equals("Red")))
             && (!ScouterName.isEmpty())) {
+
+            int LastRoundNumber = RoundNumber + 1;
+            App.setLastRoundNumber(LastRoundNumber);
+
 
             // all login fields are valid, switch to the first activity: auton
             Intent intent = new Intent(this, AutonActivity.class);

@@ -42,4 +42,6 @@ public class MenuActivity extends BaseActivity {
         Intent intent = new Intent(this, DataViewingActivity.class);
         startActivity(intent);
     }
+
+
 }

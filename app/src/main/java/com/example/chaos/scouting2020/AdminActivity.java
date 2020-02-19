@@ -21,7 +21,7 @@ import java.io.File;
 public class AdminActivity extends BaseActivity {
 
     protected ScoutingApplication App;
-    protected String BaseDir;  // location when to export things
+    protected String BaseDir;  // location where to export things
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
