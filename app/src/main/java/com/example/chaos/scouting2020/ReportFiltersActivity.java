@@ -19,13 +19,12 @@ public class ReportFiltersActivity extends BaseActivity {
 
     protected boolean boxesChecked = false;
     protected List<Integer> FilteredTeamNumberList;
-    protected Context ctx;
+    protected Context Ctx;
     protected UpdateReportFiltersTable updateReportFiltersTable;
 
     public class UpdateReportFiltersTable implements ReportUpdateCommand {
 
         public void update() {
-
 
             // get handle to display table (TableLayout)
             TableLayout table = (TableLayout)findViewById(R.id.reportFiltersTable);
@@ -36,14 +35,14 @@ public class ReportFiltersActivity extends BaseActivity {
             TableRow.LayoutParams lpItem = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 1);
 
             // create a new row for headers
-            TableRow hdr = new TableRow(ctx);
+            TableRow hdr = new TableRow(Ctx);
             hdr.setLayoutParams(lpRow);
 
             // set the background color of the header row
             hdr.setBackgroundResource(R.color.colorWhiteBackground);
 
             // add text view for team name header to row
-            TextView hdrNameView = new TextView(ctx);
+            TextView hdrNameView = new TextView(Ctx);
             hdrNameView.setLayoutParams(lpItem);
             hdrNameView.setText("Team Name");
             hdrNameView.setPadding(2, 0, 2, 0);
@@ -51,7 +50,7 @@ public class ReportFiltersActivity extends BaseActivity {
             hdr.addView(hdrNameView);
 
             // add text view for team number header to row
-            TextView hdrNumberView = new TextView(ctx);
+            TextView hdrNumberView = new TextView(Ctx);
             hdrNumberView.setLayoutParams(lpItem);
             hdrNumberView.setText("Team Number");
             hdrNumberView.setPadding(2, 0, 2, 0);
@@ -59,33 +58,33 @@ public class ReportFiltersActivity extends BaseActivity {
             hdr.addView(hdrNumberView);
 
             // add check box header to row
-            TextView hdrBoxview = new TextView(ctx);
+            TextView hdrBoxview = new TextView(Ctx);
             hdrBoxview.setLayoutParams(lpItem);
             hdrBoxview.setText("Filter Out");
             hdrBoxview.setPadding(2, 0, 2, 0);
             hdrBoxview.setGravity(Gravity.CENTER);
             hdrBoxview.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    if (boxesChecked == false) {
-                        for (EntityTeamData team : TeamData) {
-                            Integer teamNumber = Integer.valueOf(team.TeamNumber);
-                            // add Integer TeamNumber to list of filtered numbers
-                            if (!FilteredTeamNumberList.contains(teamNumber)) { // no dupes!
-                                FilteredTeamNumberList.add(teamNumber);
-                            }
+                if (boxesChecked == false) {
+                    for (EntityTeamData team : TeamData) {
+                        Integer teamNumber = Integer.valueOf(team.TeamNumber);
+                        // add Integer TeamNumber to list of filtered numbers
+                        if (!FilteredTeamNumberList.contains(teamNumber)) { // no dupes!
+                            FilteredTeamNumberList.add(teamNumber);
                         }
                     }
-                    else {
-                        for (EntityTeamData team : TeamData) {
-                            Integer teamNumber = Integer.valueOf(team.TeamNumber);
-                            // remove Integer TeamNumber from list of filtered numbers
-                            while (FilteredTeamNumberList.contains(teamNumber)) { // no dupes!
-                                FilteredTeamNumberList.remove(teamNumber);
-                            }
+                }
+                else {
+                    for (EntityTeamData team : TeamData) {
+                        Integer teamNumber = Integer.valueOf(team.TeamNumber);
+                        // remove Integer TeamNumber from list of filtered numbers
+                        while (FilteredTeamNumberList.contains(teamNumber)) { // no dupes!
+                            FilteredTeamNumberList.remove(teamNumber);
                         }
                     }
-                    updateReportFiltersTable.update();
-                    boxesChecked = !boxesChecked;
+                }
+                boxesChecked = !boxesChecked;
+                updateReportFiltersTable.update();
                 }
             });
 
@@ -97,7 +96,7 @@ public class ReportFiltersActivity extends BaseActivity {
             // loop over team numbers
             for(EntityTeamData team : TeamData) {
                 // create a new row to hold our data values
-                TableRow row = new TableRow(ctx);
+                TableRow row = new TableRow(Ctx);
                 row.setLayoutParams(lpRow);
 
                 // alternate the background color of each row
@@ -109,7 +108,7 @@ public class ReportFiltersActivity extends BaseActivity {
                 }
 
                 // add text view for team name to row
-                TextView dataNameView = new TextView(ctx);
+                TextView dataNameView = new TextView(Ctx);
                 dataNameView.setLayoutParams(lpItem);
                 dataNameView.setText(team.TeamName);
                 dataNameView.setPadding(2, 0, 2, 0);
@@ -117,7 +116,7 @@ public class ReportFiltersActivity extends BaseActivity {
                 row.addView(dataNameView);
 
                 // add text view for team number to row
-                TextView dataNumberView = new TextView(ctx);
+                TextView dataNumberView = new TextView(Ctx);
                 dataNumberView.setLayoutParams(lpItem);
                 dataNumberView.setText(""+team.TeamNumber);
                 dataNumberView.setPadding(2, 0, 2, 0);
@@ -126,25 +125,25 @@ public class ReportFiltersActivity extends BaseActivity {
 
                 // add check box to row
                 final Integer TeamNumber = Integer.valueOf(team.TeamNumber);
-                CheckBox dataBox = new CheckBox(ctx);
+                CheckBox dataBox = new CheckBox(Ctx);
                 dataBox.setLayoutParams(lpItem);
                 dataBox.setChecked(FilteredTeamNumberList.contains(TeamNumber));
                 dataBox.setPadding(2, 0, 2, 0);
                 dataBox.setGravity(Gravity.END);
                 dataBox.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        CheckBox dataBox = (CheckBox) view;
-                        if (dataBox.isChecked()) {
-                            // add Integer TeamNumber to list of filtered numbers
-                            if (!FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
-                                FilteredTeamNumberList.add(TeamNumber);
-                            }
-                        } else {
-                            // remove Integer TeamNumber from list of filtered numbers
-                            while (FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
-                                FilteredTeamNumberList.remove(TeamNumber);
-                            }
+                    CheckBox dataBox = (CheckBox) view;
+                    if (dataBox.isChecked()) {
+                        // add Integer TeamNumber to list of filtered numbers
+                        if (!FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
+                            FilteredTeamNumberList.add(TeamNumber);
                         }
+                    } else {
+                        // remove Integer TeamNumber from list of filtered numbers
+                        while (FilteredTeamNumberList.contains(TeamNumber)) { // no dupes!
+                            FilteredTeamNumberList.remove(TeamNumber);
+                        }
+                    }
                     }
                 });
                 row.addView(dataBox);
@@ -166,7 +165,8 @@ public class ReportFiltersActivity extends BaseActivity {
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 
-        ctx  = this;
+        // get a handle to the current activity context
+        Ctx  = this;
 
         // get a handle to the current list of filtered team numbers
         FilteredTeamNumberList = App.getFilteredTeamNumberList();
