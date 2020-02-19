@@ -20,23 +20,25 @@ public class ScouterScheduleReportActivity extends BaseActivity {
 
         public void update() {
             try {
+                // Get default CSV export location (the system download directory)
+                String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
+
+                // makes the filepath
+                FilePath = baseDir + File.separator + "ScouterSchedule.csv";
+
                 // open file and attach a CSV reader to file reader
                 CSVReader reader = new CSVReader(new FileReader(FilePath));
 
                 // create a CSV record that we will fill in
                 String[] csvLine;
+                String[] partial = new String[6];
 
-                // for each record returned from the CSV file, add a record to DB
-                int line = 0;
+                // for each record returned from the CSV file, add a row to our table
                 while ((csvLine = reader.readNext()) != null) {
-                    if (line == 0) {
-                        // add the header strings as a row to our table
-                        AddHeaderStringsAsRowToReportTable(R.id.scouterScheduleReportTable, csvLine, this, 12);
-                    } else {
-                        // add the data strings as a row to our table
-                        AddDataStringsAsRowToReportTable(R.id.scouterScheduleReportTable, csvLine);
-                    }
-                    line = line + 1;
+                    // copy columns 1 - 7 into our "partial" string array
+                    System.arraycopy(csvLine, 1, partial, 0, 6);
+                    // add the data strings as a row to our table
+                    AddDataStringsAsRowToReportTable(R.id.scouterScheduleReportTable, partial);
                 }
                 // close the CSV file
                 reader.close();
@@ -60,12 +62,6 @@ public class ScouterScheduleReportActivity extends BaseActivity {
 
         // get handle to app context
         Ctx  = this;
-
-        // Get default CSV export location (the system download directory)
-        String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + Environment.DIRECTORY_DOWNLOADS;
-
-        // makes the filepath
-        FilePath = baseDir + File.separator + "ScouterSchedule.csv";
 
         // display the report table for the first time
         UpdateScouterScheduleReportTable updateScouterScheduleReportTable = new UpdateScouterScheduleReportTable();

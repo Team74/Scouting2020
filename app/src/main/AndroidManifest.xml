@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScouterScheduleReportActivity"/>
+        <activity android:name=".ScouterScheduleReportActivity" />
         <activity android:name=".AdminPasswordActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".ReportFiltersActivity" />
