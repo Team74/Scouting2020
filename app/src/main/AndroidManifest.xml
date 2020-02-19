@@ -13,8 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/scouting2020_icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ScouterScheduleReportActivity"/>
         <activity android:name=".AdminPasswordActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".ReportFiltersActivity" />
@@ -35,6 +36,7 @@
         <activity android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
