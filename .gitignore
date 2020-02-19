@@ -10,5 +10,11 @@
 .DS_Store
 /build
 /app/build
+/app/.idea/assetWizardSettings.xml
+/app/.idea/gradle.xml
+/app/.idea/caches
+/app/.idea/libraries
+/app/.idea/modules.xml
+/app/.idea/workspace.xml
 /captures
 .externalNativeBuild
