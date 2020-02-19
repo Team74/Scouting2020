@@ -22,8 +22,8 @@ public class TeamRoundDataReportActivity extends BaseActivity {
             // as well as the names in the query SELECT below.
             // You also need to provide conversions for the columns to strings down
             // below where the data values are added to the table.
-            String columns[] = {"TeamNumber", "RoundNumber", "Scouter", "TeamColor", "AutonHighScore", "AutonLowScore", "AutonPickUp", "AutonStartLine", "TeleopHighScore", "TeleopLowScore", "TeleopPickUp", "RotationControl", "PositionControl", "Climb", "BrokeDown", "FinalStage", "Notes", "RateShooting", "RateClimb", "RateWheel", "RateAuton", "RateDriver", "WouldPick"};
-            String headings[] = {"Team #", "Round Number", "Scouter", "Team Color", "Auton High Score", "Auton Low Score", "Auton Pick Up", "Auton Start Line", "Teleop High Score", "Teleop Low Score", "Teleop Pick Up", "Rotation Control", "Position Control", "Climbed", "Broke Down", "Final Stage", "Notes", "Rate Shooting", "Rate Climb", "Rate Wheel", "Rate Auton", "Rate Driver", "Would Pick"};
+            String columns[] = {"TeamNumber", "RoundNumber", "Scouter", "TeamColor", "AutonHighScore", "AutonLowScore", "AutonPickUp", "AutonStartLine", "TeleopHighScore", "TeleopLowScore", "TeleopPickUp", "RotationControl", "PositionControl", "Climb", "BrokeDown", "FinalStage", "RateShooting", "RateClimb", "RateWheel", "RateAuton", "RateDriver", "WouldPick"};
+            String headings[] = {"Team #", "Round Number", "Scouter", "Team Color", "Auton High Score", "Auton Low Score", "Auton Pick Up", "Auton Start Line", "Teleop High Score", "Teleop Low Score", "Teleop Pick Up", "Rotation Control", "Position Control", "Climbed", "Broke Down", "Final Stage", "Rate Shooting", "Rate Climb", "Rate Wheel", "Rate Auton", "Rate Driver", "Would Pick"};
             String query = "SELECT "
                     + " TeamNumber,"
                     + " RoundNumber,"
@@ -41,7 +41,6 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " Climb,"
                     + " BrokeDown,"
                     + " FinalStage,"
-                    + " Notes,"
                     + " RateShooting,"
                     + " RateClimb,"
                     + " RateWheel,"
@@ -49,12 +48,12 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                     + " RateDriver,"
                     + " WouldPick"
                     + " FROM EntityTeamRoundData"
-                    + " WHERE TeamNumber IN (" + TeamArray[TeamNumberKey] + ") AND TeamNumber NOT IN (" + ReportFilteredTeamNumberStringList + ")"
+                    + " WHERE TeamNumber IN (" + TeamArray[TeamNumberKey] + ")"
                     + " ORDER BY " + columns[ReportSortColumn] + (ReportSortAsc ? " ASC" : " DESC");
             DaoTeamRoundData.TeamRoundDataReportData dataRecords[] = daoTeamRoundData.getTeamRoundDataReportDataRaw(new SimpleSQLiteQuery(query));
 
             // add the header strings as a row to our table
-            AddHeaderStringsAsRowToReportTable(R.id.teamRoundDataReportTable, headings, this);
+            AddHeaderStringsAsRowToReportTable(R.id.teamRoundDataReportTable, headings, this, 10);
 
             // create a data row for each data record returned from DB
             for(DaoTeamRoundData.TeamRoundDataReportData dataRecord : dataRecords) {
@@ -77,7 +76,6 @@ public class TeamRoundDataReportActivity extends BaseActivity {
                         Integer.toString(dataRecord.Climb),
                         Boolean.toString(dataRecord.BrokeDown),
                         Integer.toString(dataRecord.FinalStage),
-                        dataRecord.Notes,
                         Integer.toString(dataRecord.RateShooting),
                         Integer.toString(dataRecord.RateClimb),
                         Integer.toString(dataRecord.RateWheel),
