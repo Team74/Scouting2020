@@ -38,7 +38,7 @@ public class OpinionReportActivity extends BaseActivity {
             DaoTeamRoundData.OpinionReportData dataRecords[] = daoTeamRoundData.getOpinionReportDataRaw(new SimpleSQLiteQuery(query));
 
             // add the header strings as a row to our table
-            AddHeaderStringsAsRowToReportTable(R.id.opinionReportTable, headings, this);
+            AddHeaderStringsAsRowToReportTable(R.id.opinionReportTable, headings, this, 15);
 
             // create a data row for each data record returned from DB
             for(DaoTeamRoundData.OpinionReportData dataRecord : dataRecords) {

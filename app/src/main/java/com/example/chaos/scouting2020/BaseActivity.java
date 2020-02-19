@@ -98,7 +98,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // add heading strings to specified table.  used for reports.
-    protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand) {
+    protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand, int textSize) {
         // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         table.removeAllViews();
@@ -119,7 +119,7 @@ public class BaseActivity extends AppCompatActivity {
             TextView hdrView = new TextView(this);
             hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
-            hdrView.setTextSize(12);
+            hdrView.setTextSize(textSize);
             // make the column heading we are sorting on italic
             hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
             hdrView.setPadding(2, 0, 2, 0);

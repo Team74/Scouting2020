@@ -46,7 +46,7 @@ public class MatchReportActivity extends BaseActivity {
             DaoTeamRoundData.MatchReportData dataRecords[] = daoTeamRoundData.getMatchReportDataRaw(new SimpleSQLiteQuery(query));
 
             // add the header strings as a row to our table
-            AddHeaderStringsAsRowToReportTable(R.id.matchReportTable, headings, this);
+            AddHeaderStringsAsRowToReportTable(R.id.matchReportTable, headings, this, 15);
 
             // create a data row for each data record returned from DB
             for(DaoTeamRoundData.MatchReportData dataRecord : dataRecords) {
