@@ -149,7 +149,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // add data strings to specified table.  used for reports.
-    protected void AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
+    protected TableRow AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
         // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         int rowNumber = table.getChildCount();
@@ -181,6 +181,7 @@ public class BaseActivity extends AppCompatActivity {
 
         // add the data row to the end of the table
         table.addView(row);
+        return row;
     }
 
     // set a spinners value

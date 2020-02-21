@@ -114,6 +114,9 @@ public class TeamRoundDataReportActivity extends BaseActivity {
 
         // get the list of all team numbers
         TeamArray = daoTeamData.getAllTeamNumbers();
+        while((filteredTeamNumberList.contains(TeamArray[TeamNumberKey])) && (TeamNumberKey < (TeamArray.length - 1))) {
+            TeamNumberKey++;
+        }
 
         // display the report table for the first time
         UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
@@ -123,16 +126,32 @@ public class TeamRoundDataReportActivity extends BaseActivity {
     // needs to be fixed so that it can't go over.
     // need to add a for loop that loops through all the filtered teams to skip them.
     public void nextButtonPressed(View nextButton){
+        List<Integer> filteredTeamNumberList = App.getFilteredTeamNumberList();
         if (TeamNumberKey < (TeamArray.length - 1)) {
+            int oldTeamKey = TeamNumberKey;
             TeamNumberKey++;
+            while((filteredTeamNumberList.contains(TeamArray[TeamNumberKey])) && (TeamNumberKey < (TeamArray.length - 1))) {
+                TeamNumberKey++;
+            }
+            if(filteredTeamNumberList.contains(TeamArray[TeamNumberKey])){
+                TeamNumberKey = oldTeamKey;
+            }
             UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
             updateTeamRoundDataReportTable.update();
         }
     }
 
     public void previousButtonPressed(View previosButton){
+        List<Integer> filteredTeamNumberList = App.getFilteredTeamNumberList();
         if (TeamNumberKey > 0){
+            int oldTeamKey = TeamNumberKey;
             TeamNumberKey--;
+            while((filteredTeamNumberList.contains(TeamArray[TeamNumberKey])) && (TeamNumberKey > 0)) {
+                TeamNumberKey--;
+            }
+            if(filteredTeamNumberList.contains(TeamArray[TeamNumberKey])){
+                TeamNumberKey = oldTeamKey;
+            }
             UpdateTeamRoundDataReportTable updateTeamRoundDataReportTable = new UpdateTeamRoundDataReportTable();
             updateTeamRoundDataReportTable.update();
         }

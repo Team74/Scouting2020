@@ -2,6 +2,11 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.Locale;
@@ -54,8 +59,39 @@ public class OpinionReportActivity extends BaseActivity {
                         String.format(Locale.US, "%.3f", dataRecord.AvgStarOpinion)
                 };
 
+
                 // add the data strings as a row to our table
-                AddDataStringsAsRowToReportTable(R.id.opinionReportTable, values);
+                TableRow row = AddDataStringsAsRowToReportTable(R.id.opinionReportTable, values);
+                //25% = 1.25
+                //33% = 1.65
+                if(dataRecord.AvgShootingOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(1);
+                    setHighLightedText(textView, values[1]);
+                }
+                if(dataRecord.AvgClimbingOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(2);
+                    setHighLightedText(textView, values[2]);
+                }
+                if(dataRecord.AvgSpinningOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(3);
+                    setHighLightedText(textView, values[3]);
+                }
+                if(dataRecord.AvgAutonOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(4);
+                    setHighLightedText(textView, values[4]);
+                }
+                if(dataRecord.AvgDriverOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(5);
+                    setHighLightedText(textView, values[5]);
+                }
+                if(dataRecord.AvgWouldPickOpinion < .333){
+                    TextView textView = (TextView) row.getChildAt(6);
+                    setHighLightedText(textView, values[6]);
+                }
+                if(dataRecord.AvgStarOpinion < 1.65){
+                    TextView textView = (TextView) row.getChildAt(7);
+                    setHighLightedText(textView, values[7]);
+                }
             }
         }
     }
@@ -84,5 +120,21 @@ public class OpinionReportActivity extends BaseActivity {
         // display the report table for the first time
         UpdateOpinionReportTable updateOpinionReportTable = new UpdateOpinionReportTable();
         updateOpinionReportTable.update();
+    }
+    //highlights text
+    public void setHighLightedText(TextView tv, String textToHighlight) {
+        String tvt = tv.getText().toString();
+        int ofe = tvt.indexOf(textToHighlight, 0);
+        Spannable wordToSpan = new SpannableString(tv.getText());
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                // set color here
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFF3838), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
     }
 }
