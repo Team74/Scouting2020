@@ -38,7 +38,7 @@ public class PitScoutingReportActivity extends BaseActivity {
             DaoTeamData.PitScoutingReportData dataRecords[] = daoTeamData.getPitScoutingReportDataRaw(new SimpleSQLiteQuery(query));
 
             // add the header strings as a row to our table
-            AddHeaderStringsAsRowToReportTable(R.id.pitScoutingReportTable, headings, this, 14);
+            AddHeaderStringsAsRowToReportTable(R.id.pitScoutingReportTable, headings, this, 13);
 
             // create a data row for each data record returned from DB
             for(DaoTeamData.PitScoutingReportData dataRecord : dataRecords) {

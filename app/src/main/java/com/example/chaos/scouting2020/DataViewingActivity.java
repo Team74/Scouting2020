@@ -45,6 +45,11 @@ public class DataViewingActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    public void dataViewingScouterScheduleButtonPressed(View scouterScheduleReportButton) {
+        Intent intent = new Intent(this, ScouterScheduleReportActivity.class);
+        startActivity(intent);
+    }
+
     public void dataViewingMenuButtonPressed(View menuButton) {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);

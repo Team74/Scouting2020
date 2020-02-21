@@ -9,9 +9,9 @@
     <application
         android:name=".ScoutingApplication"
         android:allowBackup="true"
-        android:icon="@drawable/scouting2020_icon_96x96"
+        android:icon="@drawable/scouting2020_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/scouting2020_icon_96x96"
+        android:roundIcon="@drawable/scouting2020_icon"
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/AppTheme">
