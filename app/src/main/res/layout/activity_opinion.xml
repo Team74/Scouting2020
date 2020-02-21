@@ -642,29 +642,31 @@
 
         <RadioButton
             android:id="@+id/opinionPickYesRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="wouldPickRobotPressed"
             android:text="Yes"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="32sp"
+            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/opinionPickNoRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="wouldNotPickRobotPressed"
             android:text="No"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="32sp"
+            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeTextType="uniform" />
     </RadioGroup>
 
     <Button

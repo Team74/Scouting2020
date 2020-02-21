@@ -114,4 +114,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataViewingPitScoutingReportButton" />
 
+    <Button
+        android:id="@+id/dataViewingScouterScheduleReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="dataViewingScouterScheduleButtonPressed"
+        android:text="Scouter Schedule"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="16dp" />
+
 </android.support.constraint.ConstraintLayout>

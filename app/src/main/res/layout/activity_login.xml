@@ -123,30 +123,32 @@
 
         <RadioButton
             android:id="@+id/loginBlueRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="blueRadioButtonPressed"
             android:text="Blue"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="64sp" />
+            android:textSize="64sp"
+            app:autoSizeMaxTextSize="64sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/loginRedRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="redRadioButtonPressed"
             android:text="Red"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="64sp" />
+            android:textSize="64sp"
+            app:autoSizeMaxTextSize="64sp"
+            app:autoSizeTextType="uniform" />
 
     </RadioGroup>
 
