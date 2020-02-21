@@ -3,6 +3,7 @@ package com.example.chaos.scouting2020;
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TableRow;
 
 import java.util.List;
 

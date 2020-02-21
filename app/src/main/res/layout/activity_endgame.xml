@@ -184,12 +184,13 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="3"
             android:onClick="didClimbButtonPressed"
             android:text="Climb Successful"
             android:textColor="@android:color/black"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="12sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameDidntRadioButton"
@@ -198,12 +199,13 @@
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="3"
             android:onClick="didntClimbButtonPressed"
             android:text="Climb Not Attempted"
             android:textColor="@android:color/black"
-            android:maxLines="3"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="13sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameFailedRadioButton"

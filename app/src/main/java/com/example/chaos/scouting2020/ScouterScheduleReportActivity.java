@@ -35,8 +35,8 @@ public class ScouterScheduleReportActivity extends BaseActivity {
 
                 // for each record returned from the CSV file, add a row to our table
                 while ((csvLine = reader.readNext()) != null) {
-                    // copy columns 1 - 7 into our "partial" string array
-                    System.arraycopy(csvLine, 1, partial, 0, 6);
+                    // copy columns 1 - 9 into our "partial" string array
+                    System.arraycopy(csvLine, 1, partial, 0, 9);
                     // add the data strings as a row to our table
                     AddDataStringsAsRowToReportTable(R.id.scouterScheduleReportTable, partial);
                 }
