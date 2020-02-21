@@ -179,45 +179,48 @@
 
         <RadioButton
             android:id="@+id/endgameClimbRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
-            android:onClick="didClimbButtonPressed"
-            android:text="Climb Successful"
-            android:textColor="@android:color/black"
             android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:onClick="didClimbButtonPressed"
+            android:text="Climb Success"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameDidntRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="2"
             android:onClick="didntClimbButtonPressed"
-            android:text="Climb Not Attempted"
+            android:text="No Climb Attempt"
             android:textColor="@android:color/black"
-            android:maxLines="3"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="16sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameFailedRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="2"
             android:onClick="failedClimbButtonPressed"
             android:text="Climb Failed"
             android:textColor="@android:color/black"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="16sp"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeTextType="uniform" />
     </RadioGroup>
 
     <RadioGroup
@@ -236,31 +239,33 @@
 
         <RadioButton
             android:id="@+id/endgameBrokeDownRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="4"
             android:onClick="robotBrokeDownButtonPressed"
             android:text="Robot Did Break Down"
             android:textColor="@android:color/black"
-            android:maxLines="3"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="32sp"
+            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameDidntBreakDownRadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="4"
             android:onClick="robotDidntBreakDownButtonPressed"
             android:text="Robot Did Not Break Down"
             android:textColor="@android:color/black"
-            android:maxLines="3"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="32sp"
+            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeTextType="uniform" />
     </RadioGroup>
 
     <TextView
@@ -294,45 +299,48 @@
 
         <RadioButton
             android:id="@+id/endgameStage1RadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="2"
             android:onClick="stageOnePressed"
             android:text="Stage 1"
             android:textColor="@android:color/black"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="24sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameStage2RadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="2"
             android:onClick="stageTwoPressed"
             android:text="Stage 2"
             android:textColor="@android:color/black"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="24sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/endgameStage3RadioButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@android:color/black"
             android:buttonTint="@android:color/black"
+            android:maxLines="2"
             android:onClick="stageThreePressed"
             android:text="Stage 3"
             android:textColor="@android:color/black"
-            android:maxLines="2"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="32sp" />
+            android:textSize="24sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeTextType="uniform" />
     </RadioGroup>
 
     <android.support.constraint.Guideline

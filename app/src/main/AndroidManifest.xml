@@ -27,7 +27,6 @@
         <activity android:name=".MatchReportActivity" />
         <activity android:name=".DataViewingActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PitScoutingActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AutonActivity" />
         <activity android:name=".TeleopActivity" />
