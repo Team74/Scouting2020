@@ -31,12 +31,12 @@ public class ScouterScheduleReportActivity extends BaseActivity {
 
                 // create a CSV record that we will fill in
                 String[] csvLine;
-                String[] partial = new String[6];
+                String[] partial = new String[9];
 
                 // for each record returned from the CSV file, add a row to our table
                 while ((csvLine = reader.readNext()) != null) {
                     // copy columns 1 - 9 into our "partial" string array
-                    System.arraycopy(csvLine, 1, partial, 0, 9);
+                    System.arraycopy(csvLine, 1, partial, 0, Math.min(csvLine.length,9));
                     // add the data strings as a row to our table
                     AddDataStringsAsRowToReportTable(R.id.scouterScheduleReportTable, partial);
                 }
