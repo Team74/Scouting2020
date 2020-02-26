@@ -430,7 +430,7 @@
         app:layout_constraintBottom_toTopOf="@+id/autonHorizontalGuideline26"
         app:layout_constraintEnd_toStartOf="@+id/autonVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/autonVerticalGuideline50"
-        app:layout_constraintTop_toBottomOf="@+id/autonStartLineTextView">
+        app:layout_constraintTop_toTopOf="@+id/autonHorizontalGuideline10">
 
         <RadioButton
             android:id="@+id/autonYesRadioButton"
@@ -438,12 +438,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="autonStartLineYes"
             android:text="Yes"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="30sp"
+            app:autoSizeMaxTextSize="36sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/autonNoRadioButton"
@@ -451,12 +452,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@android:color/black"
+            android:maxLines="1"
             android:onClick="autonStartLineNo"
             android:text="No"
             android:textColor="@android:color/black"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMaxTextSize="16sp" />
+            android:textSize="30sp"
+            app:autoSizeMaxTextSize="36sp"
+            app:autoSizeTextType="uniform" />
     </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

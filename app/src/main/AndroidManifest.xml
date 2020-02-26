@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScouterScheduleReportActivity"/>
+        <activity android:name=".ScouterScheduleReportActivity" />
         <activity android:name=".AdminPasswordActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".ReportFiltersActivity" />
@@ -27,7 +27,6 @@
         <activity android:name=".MatchReportActivity" />
         <activity android:name=".DataViewingActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PitScoutingActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AutonActivity" />
         <activity android:name=".TeleopActivity" />

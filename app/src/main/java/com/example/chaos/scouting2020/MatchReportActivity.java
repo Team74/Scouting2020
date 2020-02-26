@@ -2,6 +2,11 @@ package com.example.chaos.scouting2020;
 
 import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.Locale;
@@ -52,20 +57,33 @@ public class MatchReportActivity extends BaseActivity {
             for(DaoTeamRoundData.MatchReportData dataRecord : dataRecords) {
                 // add each data value to an array of strings
                 String[] values = {
-                        Integer.toString(dataRecord.TeamNumber),
-                        Integer.toString(dataRecord.NumRounds),
-                        String.format(Locale.US, "%.3f", dataRecord.AvgHighScore),
-                        String.format(Locale.US, "%.3f", dataRecord.AvgLowScore),
-                        Integer.toString(dataRecord.NumSuccessfulClimbs),
-                        Integer.toString(dataRecord.NumFailedClimbs),
-                        String.format(Locale.US, "%.3f", dataRecord.PercentClimbs),
-                        String.format(Locale.US, "%.3f", dataRecord.PercentBreakdowns),
-                        String.format(Locale.US, "%.3f", dataRecord.PercentStage2),
-                        String.format(Locale.US, "%.3f", dataRecord.PercentStage3)
+                        Integer.toString(dataRecord.TeamNumber),//0
+                        Integer.toString(dataRecord.NumRounds),//1
+                        String.format(Locale.US, "%.3f", dataRecord.AvgHighScore),//2
+                        String.format(Locale.US, "%.3f", dataRecord.AvgLowScore),//3
+                        Integer.toString(dataRecord.NumSuccessfulClimbs),//4
+                        Integer.toString(dataRecord.NumFailedClimbs),//5
+                        String.format(Locale.US, "%.3f", dataRecord.PercentClimbs),//6
+                        String.format(Locale.US, "%.3f", dataRecord.PercentBreakdowns),//7
+                        String.format(Locale.US, "%.3f", dataRecord.PercentStage2),//8
+                        String.format(Locale.US, "%.3f", dataRecord.PercentStage3)//9
                 };
 
                 // add the data strings as a row to our table
-                AddDataStringsAsRowToReportTable(R.id.matchReportTable, values);
+                TableRow row = AddDataStringsAsRowToReportTable(R.id.matchReportTable, values);
+
+                if(dataRecord.AvgHighScore < 5){
+                    TextView textView = (TextView) row.getChildAt(2);
+                    setHighLightedText(textView, values[2]);
+                }
+                if(dataRecord.PercentClimbs < .333){
+                    TextView textView = (TextView) row.getChildAt(6);
+                    setHighLightedText(textView, values[6]);
+                }
+                if(dataRecord.PercentBreakdowns > .2){
+                    TextView textView = (TextView) row.getChildAt(7);
+                    setHighLightedText(textView, values[7]);
+                }
             }
         }
     }
@@ -94,5 +112,21 @@ public class MatchReportActivity extends BaseActivity {
         // display the report table for the first time
         UpdateMatchReportTable updateMatchReportTable = new UpdateMatchReportTable();
         updateMatchReportTable.update();
+    }
+    //highlights text
+    public void setHighLightedText(TextView tv, String textToHighlight) {
+        String tvt = tv.getText().toString();
+        int ofe = tvt.indexOf(textToHighlight, 0);
+        Spannable wordToSpan = new SpannableString(tv.getText());
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                // set color here
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFF3838), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
     }
 }

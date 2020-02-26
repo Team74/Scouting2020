@@ -3,10 +3,16 @@ package com.example.chaos.scouting2020;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class DataViewingActivity extends BaseActivity {
 
     protected ScoutingApplication App;
+    List<Integer> filteredTeamNumberList = null;
+    protected DaoTeamData daoTeamData = null;
+    protected int[] TeamArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,9 @@ public class DataViewingActivity extends BaseActivity {
 
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
+        daoTeamData = App.getDaoTeamData();
+        filteredTeamNumberList = App.getFilteredTeamNumberList();
+        TeamArray = daoTeamData.getAllTeamNumbers();
     }
 
     public void dataViewingReportFiltersButtonPressed(View reportFiltersButton) {
@@ -26,22 +35,47 @@ public class DataViewingActivity extends BaseActivity {
     }
 
     public void dataViewingMatchReportButtonPressed(View matchReportButton) {
-        Intent intent = new Intent(this, MatchReportActivity.class);
-        startActivity(intent);
+        if(TeamArray.length == filteredTeamNumberList.size()){
+            Toast.makeText(this, "Please deselect at least one team.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(this, MatchReportActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void dataViewingOpinionReportButtonPressed(View opinionReportButton) {
-        Intent intent = new Intent(this, OpinionReportActivity.class);
-        startActivity(intent);
+        if(TeamArray.length == filteredTeamNumberList.size()){
+            Toast.makeText(this, "Please deselect at least one team.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(this, OpinionReportActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void dataViewingTeamRoundDataReportButtonPressed(View teamRoundDataReportButton) {
-        Intent intent = new Intent(this, TeamRoundDataReportActivity.class);
-        startActivity(intent);
+        if(TeamArray.length == filteredTeamNumberList.size()){
+            Toast.makeText(this, "Please deselect at least one team.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(this, TeamRoundDataReportActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void dataViewingPitScoutingReportButtonPressed(View pitScoutingReportButton) {
-        Intent intent = new Intent(this, PitScoutingReportActivity.class);
+        if(TeamArray.length == filteredTeamNumberList.size()){
+            Toast.makeText(this, "Please deselect at least one team.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(this, PitScoutingReportActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void dataViewingScouterScheduleButtonPressed(View scouterScheduleReportButton) {
+        Intent intent = new Intent(this, ScouterScheduleReportActivity.class);
         startActivity(intent);
     }
 

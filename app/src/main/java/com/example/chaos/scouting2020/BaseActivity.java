@@ -2,6 +2,7 @@ package com.example.chaos.scouting2020;
 
 import android.graphics.Typeface;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -98,7 +99,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // add heading strings to specified table.  used for reports.
-    protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand, int textSize) {
+    protected void AddHeaderStringsAsRowToReportTable(int tableId, String[] headerStrings, final ReportUpdateCommand reportUpdateCommand, int headerTextSize) {
         // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         table.removeAllViews();
@@ -119,7 +120,7 @@ public class BaseActivity extends AppCompatActivity {
             TextView hdrView = new TextView(this);
             hdrView.setLayoutParams(lpItem);
             hdrView.setText(heading);
-            hdrView.setTextSize(textSize);
+            hdrView.setTextSize(headerTextSize);
             // make the column heading we are sorting on italic
             hdrView.setTypeface(null, (ReportSortColumn == headingIndex) ? Typeface.BOLD_ITALIC : Typeface.BOLD);
             hdrView.setPadding(2, 0, 2, 0);
@@ -148,7 +149,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     // add data strings to specified table.  used for reports.
-    protected void AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
+    protected TableRow AddDataStringsAsRowToReportTable(int tableId, String[] dataStrings) {
         // get handle to display table (TableLayout)
         TableLayout table = (TableLayout)findViewById(tableId);
         int rowNumber = table.getChildCount();
@@ -175,11 +176,13 @@ public class BaseActivity extends AppCompatActivity {
             dataView.setText(dataString);
             dataView.setPadding(2, 0, 2, 0);
             dataView.setGravity(Gravity.CENTER);
+            dataView.setTextSize(15);
             row.addView(dataView);
         }
 
         // add the data row to the end of the table
         table.addView(row);
+        return row;
     }
 
     // set a spinners value

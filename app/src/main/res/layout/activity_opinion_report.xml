@@ -12,12 +12,12 @@
         app:layout_constraintBottom_toTopOf="@+id/opinionReportHorizontalGuideline99"
         app:layout_constraintEnd_toEndOf="@+id/opinionReportVerticalGuideline99"
         app:layout_constraintStart_toStartOf="@+id/opinionReportVerticalGuideline1"
-        app:layout_constraintTop_toBottomOf="@+id/opinionReportHorizontalGuideline1" >
+        app:layout_constraintTop_toBottomOf="@+id/opinionReportHorizontalGuideline1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TableLayout
                 android:id="@+id/opinionReportTable"
@@ -26,8 +26,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </TableLayout>
+                app:layout_constraintTop_toTopOf="parent"></TableLayout>
         </LinearLayout>
     </ScrollView>
 
