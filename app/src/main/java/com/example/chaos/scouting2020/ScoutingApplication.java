@@ -227,19 +227,19 @@ public class ScoutingApplication extends Application {
             daoTeamRoundData = db.daoTeamRoundData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team round data in the DB.
-            addSampleTeamRoundData();
+            //addSampleTeamRoundData();
         }
         if (daoScouterName == null) {
             daoScouterName = db.daoScouterName();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample scouter data in the DB.
-            addSampleScouterNames();
+            //addSampleScouterNames();
         }
         if (daoTeamData == null) {
             daoTeamData = db.daoTeamData();
             // TBD: this is an example call that should be removed in final app.
             // it's just here to make sure there's some sample team data in the DB.
-            addSampleTeamData();
+            //addSampleTeamData();
         }
     }
 
