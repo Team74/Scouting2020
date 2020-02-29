@@ -112,6 +112,11 @@ public class TeleopActivity extends BaseActivity {
         DisplayPickUpNumber();
     }
 
+    public void teleopPickUp5Plus(View teleopPickUp5Plus){
+        TeleopPickUpNumber = TeleopPickUpNumber + 5;
+        DisplayPickUpNumber();
+    }
+
     public void teleopPickUpMinus(View teleopPickUpMinus) {
         if (TeleopPickUpNumber > 0) {
             TeleopPickUpNumber = TeleopPickUpNumber - 1;

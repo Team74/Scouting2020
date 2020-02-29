@@ -139,15 +139,14 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:autoSizeTextType="uniform"
         app:autoSizeMaxTextSize="96sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline74"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/teleopVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/teleopVerticalGuideline50"
         app:layout_constraintTop_toBottomOf="@+id/teleopPickUpTextView" />
 
@@ -264,6 +263,26 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:maxLines="1"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline98"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/teleopVerticalGuideline75"
+        app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline74" />
+
+    <Button
+        android:id="@+id/teleopPickUpPlusButton2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:maxLines="1"
+        android:onClick="teleopPickUpPlus"
+        android:text="+"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/teleopHorizontalGuideline98"
@@ -449,5 +468,25 @@
         app:layout_constraintEnd_toStartOf="@+id/teleopVerticalGuideline75"
         app:layout_constraintStart_toStartOf="@+id/teleopVerticalGuideline50"
         app:layout_constraintTop_toTopOf="@+id/teleopHorizontalGuideline26" />
+
+    <Button
+        android:id="@+id/teleopPickUp5PlusButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:maxLines="1"
+        android:onClick="teleopPickUp5Plus"
+        android:text="+5"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/teleopPickUpPlusButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teleopPickUpNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/teleopPickUpTextView" />
 
 </android.support.constraint.ConstraintLayout>
