@@ -13,9 +13,7 @@ import com.opencsv.CSVWriter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 import java.io.File;
 import java.io.FileReader;
@@ -607,10 +605,8 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
-            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String filePath = baseDir + File.separator + curDate + "-TeamRoundData-" + androidId + ".csv";
+            String filePath = baseDir + File.separator + "TeamRoundData-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
@@ -741,8 +737,8 @@ public class ScoutingApplication extends Application {
 
                 // if it's a valid record...
                 // are the other things would we NOT want in the DB?
-                if (   (TeamNumber>0)
-                    && ((RoundNumber>0) && (RoundNumber<100))) {
+                if (   (entityTeamRoundData.TeamNumber>0)
+                    && ((entityTeamRoundData.RoundNumber>0) && (entityTeamRoundData.RoundNumber<100))) {
                     // ...add the team round data record to the DB
                     daoTeamRoundData.insert(entityTeamRoundData);
                 }
@@ -763,10 +759,8 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
-            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String filePath = baseDir + File.separator + curDate + "-ScouterNames-" + androidId + ".csv";
+            String filePath = baseDir + File.separator + "ScouterNames-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
@@ -850,10 +844,8 @@ public class ScoutingApplication extends Application {
             startUpDb();
 
             // makes the filepath
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd'T'HHmmss", Locale.US);
-            String curDate = simpleDateFormat.format(Calendar.getInstance().getTime());
             String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            String filePath = baseDir + File.separator + curDate + "-TeamData-" + androidId + ".csv";
+            String filePath = baseDir + File.separator + "TeamData-" + androidId + ".csv";
 
             // creates file and attaches CSV writer to it
             CSVWriter writer = new CSVWriter(new FileWriter(filePath, false));
