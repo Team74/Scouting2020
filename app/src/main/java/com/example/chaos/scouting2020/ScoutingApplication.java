@@ -598,6 +598,14 @@ public class ScoutingApplication extends Application {
         }
     }
 
+
+    public getTabletName () {
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        if (androidId.equals("")){
+
+        }
+    }
+
     // export EntityTeamRoundData to CSV
     public void exportTeamRoundData(String baseDir) {
         try {
