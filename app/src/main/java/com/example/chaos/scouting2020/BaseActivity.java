@@ -2,7 +2,6 @@ package com.example.chaos.scouting2020;
 
 import android.graphics.Typeface;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
