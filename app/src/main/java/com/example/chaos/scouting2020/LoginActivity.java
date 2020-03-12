@@ -7,6 +7,7 @@ import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ public class LoginActivity extends BaseActivity {
     protected int RoundNumber = -1;
     protected String ScouterName = "";
     protected String TeamColor = "";
+    protected String TabletNumber = "";
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -52,6 +54,20 @@ public class LoginActivity extends BaseActivity {
         EditText editText = (EditText)findViewById(R.id.loginRoundNumberEditText);
         int LastRoundNumber = App.getLastRoundNumber();
         editText.setText(Integer.toString(LastRoundNumber), TextView.BufferType.EDITABLE);
+
+        // set color based on tablet color
+        TabletNumber = App.getTabletColor();
+        if (TabletNumber.contains("Red")) {
+            TeamColor = "Red";
+            RadioButton Red = (RadioButton) findViewById(R.id.loginRedRadioButton);
+            Red.setChecked(true);
+        }
+        if (TabletNumber.contains("Blue")) {
+            TeamColor = "Blue";
+            RadioButton Blue = (RadioButton) findViewById(R.id.loginBlueRadioButton);
+            Blue.setChecked(true);
+        }
+        SetLayoutBackgroundColor(R.id.loginConstraintLayout, TeamColor);
     }
 
     public void menuButtonPressed(View menuButton) {

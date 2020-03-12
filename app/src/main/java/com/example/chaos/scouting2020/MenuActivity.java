@@ -7,20 +7,24 @@ import android.view.View;
 public class MenuActivity extends BaseActivity {
 
     protected ScoutingApplication App;
+    public String TabletColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        // set a more descriptive title for this screen
-        setTitle("Scouting2020 - Menu");
-
         // get a handle to our global app state
         App = (ScoutingApplication) this.getApplication();
 
+        TabletColor = App.getTabletColor();
+
+        // set a more descriptive title for this screen
+        setTitle("Scouting2020 - Menu - " + TabletColor);
+
         // make sure DB started
         App.startUpDb();
+
     }
 
     public void matchScoutingButtonPressed(View matchScoutingButton) {

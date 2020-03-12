@@ -29,7 +29,7 @@ public class AdminPasswordActivity extends AppCompatActivity {
     public void confirmButtonPressed(View pitScoutingButton) {
         EditText passwordEditText = (EditText) findViewById(R.id.adminPasswordEditText);
         String inputtedPassword = passwordEditText.getText().toString();
-        if (inputtedPassword.equals("St@r74")) {
+        if (inputtedPassword.equals("74")) {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
         }

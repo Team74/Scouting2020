@@ -598,6 +598,47 @@ public class ScoutingApplication extends Application {
         }
     }
 
+    //change the tablet color based on Android Id
+    public String getTabletColor () {
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String tabletColor = "";
+        switch(androidId)
+        {
+            case "ecd3122edd0bec8a":
+                tabletColor = "Blue 1";
+                break;
+            case "b8e26f4b4608a172":
+                tabletColor = "Blue 2";
+                break;
+            case "ad1c0be72560baae":
+                tabletColor = "Blue 3";
+                break;
+            case "70c1462d4d9e3b0":
+                tabletColor = "Blue 4";
+                break;
+            case "9dbfd27bdce002574":
+                tabletColor = "Blue 5";
+                break;
+            case "ae7e1e3f12d5c189":
+                tabletColor = "Red 1";
+                break;
+            case "b2e3454b72f4619c":
+                tabletColor = "Red 2";
+                break;
+            case "313c90324e8c4e13":
+                tabletColor = "Red 3";
+                break;
+            case "e9a40541cd02a0b1":
+                tabletColor = "Red 4";
+                break;
+            case "b052010dd35fd816":
+                tabletColor = "Red 5";
+                break;
+            default:
+                tabletColor = "";
+        }
+        return tabletColor;
+    }
 
     // export EntityTeamRoundData to CSV
     public void exportTeamRoundData(String baseDir) {
